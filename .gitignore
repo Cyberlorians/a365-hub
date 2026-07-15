@@ -1,0 +1,25 @@
+# Secrets & credentials — NEVER commit
+*.env
+.env
+attendee-credentials.csv
+**/attendee-credentials.csv
+*.secret
+*secret*.txt
+*.pfx
+*.p12
+*.pem
+*.key
+*token*.txt
+*credentials*.json
+*deployment-inventory*.md
+
+# Local output
+*.log
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+.vscode/
+
+# local scratch scripts
+.tmp/

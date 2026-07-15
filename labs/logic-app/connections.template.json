@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus2"
+    },
+    "formsConnectionName": {
+      "type": "string",
+      "defaultValue": "microsoftforms"
+    },
+    "office365ConnectionName": {
+      "type": "string",
+      "defaultValue": "office365-1"
+    },
+    "displayNameSuffix": {
+      "type": "string",
+      "defaultValue": "a365-workshop",
+      "metadata": { "description": "Friendly suffix shown in the portal for the two API connections." }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Web/connections",
+      "apiVersion": "2016-06-01",
+      "name": "[parameters('formsConnectionName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "displayName": "[concat('forms-', parameters('displayNameSuffix'))]",
+        "api": {
+          "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/microsoftforms')]"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Web/connections",
+      "apiVersion": "2016-06-01",
+      "name": "[parameters('office365ConnectionName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "displayName": "[concat('office365-', parameters('displayNameSuffix'))]",
+        "api": {
+          "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/office365')]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "formsConnectionName": {
+      "type": "string",
+      "value": "[parameters('formsConnectionName')]"
+    },
+    "office365ConnectionName": {
+      "type": "string",
+      "value": "[parameters('office365ConnectionName')]"
+    }
+  }
+}

@@ -1,0 +1,190 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "logicAppName": {
+      "type": "string",
+      "defaultValue": "A365-Workshop-Provisioner"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "upnDomain": {
+      "type": "string",
+      "metadata": { "description": "Verified domain in the target tenant." }
+    },
+    "tapLifetimeMinutes": {
+      "type": "int",
+      "defaultValue": 480
+    },
+    "senderUpn": {
+      "type": "string",
+      "metadata": { "description": "Mailbox used to send attendee access instructions." }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Logic/workflows",
+      "apiVersion": "2019-05-01",
+      "name": "[parameters('logicAppName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "state": "Enabled",
+        "definition": {
+          "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "upnDomain": {
+              "type": "String",
+              "defaultValue": "[parameters('upnDomain')]"
+            },
+            "tapLifetimeMinutes": {
+              "type": "Int",
+              "defaultValue": "[parameters('tapLifetimeMinutes')]"
+            },
+            "senderUpn": {
+              "type": "String",
+              "defaultValue": "[parameters('senderUpn')]"
+            },
+            "$connections": {
+              "type": "Object",
+              "defaultValue": {}
+            }
+          },
+          "triggers": {
+            "manual": {
+              "type": "Request",
+              "kind": "Http",
+              "inputs": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "firstName": { "type": "string" },
+                    "lastName": { "type": "string" },
+                    "email": { "type": "string" }
+                  },
+                  "required": [ "firstName", "lastName" ]
+                }
+              }
+            }
+          },
+          "actions": {
+            "Create_user": {
+              "type": "Http",
+              "runAfter": {},
+              "inputs": {
+                "method": "POST",
+                "uri": "https://graph.microsoft.com/v1.0/users",
+                "headers": { "Content-Type": "application/json" },
+                "body": {
+                  "accountEnabled": true,
+                  "displayName": "@concat(triggerBody()?['firstName'], ' ', triggerBody()?['lastName'])",
+                  "givenName": "@triggerBody()?['firstName']",
+                  "surname": "@triggerBody()?['lastName']",
+                  "mailNickname": "@toLower(replace(concat(triggerBody()?['firstName'], '.', triggerBody()?['lastName']), ' ', ''))",
+                  "userPrincipalName": "@concat(toLower(replace(concat(triggerBody()?['firstName'], '.', triggerBody()?['lastName']), ' ', '')), '@', parameters('upnDomain'))",
+                  "department": "workshop",
+                  "usageLocation": "US",
+                  "passwordProfile": {
+                    "forceChangePasswordNextSignIn": false,
+                    "password": "@concat('Aa1!', guid())"
+                  }
+                },
+                "authentication": {
+                  "type": "ManagedServiceIdentity",
+                  "audience": "https://graph.microsoft.com"
+                }
+              }
+            },
+            "Issue_TAP": {
+              "type": "Http",
+              "runAfter": { "Create_user": [ "Succeeded" ] },
+              "inputs": {
+                "method": "POST",
+                "uri": "@concat('https://graph.microsoft.com/v1.0/users/', body('Create_user')?['id'], '/authentication/temporaryAccessPassMethods')",
+                "headers": { "Content-Type": "application/json" },
+                "body": {
+                  "lifetimeInMinutes": "@parameters('tapLifetimeMinutes')",
+                  "isUsableOnce": false
+                },
+                "authentication": {
+                  "type": "ManagedServiceIdentity",
+                  "audience": "https://graph.microsoft.com"
+                }
+              }
+            },
+            "Send_email": {
+              "type": "ApiConnection",
+              "runAfter": { "Issue_TAP": [ "Succeeded" ] },
+              "inputs": {
+                "host": {
+                  "connection": { "name": "@parameters('$connections')['office365']['connectionId']" }
+                },
+                "method": "post",
+                "path": "/v2/Mail",
+                "body": {
+                  "To": "@triggerBody()?['email']",
+                  "Subject": "Your A365 Workshop lab access",
+                  "Body": "@concat('<p>Hi ', triggerBody()?['firstName'], ',</p><p>Your A365 Workshop lab account is ready. You will sign in with a <b>Temporary Access Pass (TAP)</b> - no password, no phone needed.</p><p><b>Step 1 - Sign in:</b> Go to <a href=\"https://www.office.com\">office.com</a>, enter the username below, choose <b>Sign in with a Temporary Access Pass</b>, and paste your pass.</p><ul><li><b>Username:</b> ', body('Create_user')?['userPrincipalName'], '</li><li><b>Temporary Access Pass:</b> ', body('Issue_TAP')?['temporaryAccessPass'], ' (valid 8 hours)</li></ul><p><b>Step 2 - Start building:</b></p><ul><li>Build agents in <b>Copilot Studio</b>: <a href=\"https://copilotstudio.microsoft.com\">copilotstudio.microsoft.com</a></li><li>Explore identity in <b>Microsoft Entra</b>: <a href=\"https://entra.microsoft.com\">entra.microsoft.com</a></li></ul>')",
+                  "Importance": "Normal"
+                }
+              }
+            },
+            "Response": {
+              "type": "Response",
+              "kind": "Http",
+              "runAfter": { "Send_email": [ "Succeeded" ] },
+              "inputs": {
+                "statusCode": 200,
+                "headers": { "Content-Type": "application/json" },
+                "body": {
+                  "userPrincipalName": "@body('Create_user')?['userPrincipalName']",
+                  "displayName": "@body('Create_user')?['displayName']",
+                  "temporaryAccessPass": "@body('Issue_TAP')?['temporaryAccessPass']",
+                  "lifetimeMinutes": "@body('Issue_TAP')?['lifetimeInMinutes']"
+                }
+              }
+            }
+          },
+          "outputs": {}
+        },
+        "parameters": {
+          "$connections": {
+            "value": {
+              "office365": {
+                "connectionId": "[resourceId('Microsoft.Web/connections', 'office365')]",
+                "connectionName": "office365",
+                "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/office365')]"
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/connections', 'office365')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/connections",
+      "apiVersion": "2016-06-01",
+      "name": "office365",
+      "location": "[parameters('location')]",
+      "properties": {
+        "displayName": "office365-mcrane",
+        "api": {
+          "id": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Web/locations/', parameters('location'), '/managedApis/office365')]"
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "principalId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Logic/workflows', parameters('logicAppName')), '2019-05-01', 'Full').identity.principalId]"
+    }
+  }
+}
