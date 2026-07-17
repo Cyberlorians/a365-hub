@@ -25,7 +25,7 @@ as an automated authorization audit.
 | Area | Least-privilege target | Acceptance test |
 |------|------------------------|-----------------|
 | Sign-in | Temporary lab member account protected by an 8-hour multi-use TAP and workshop MFA policy | Sign in to the lab tenant in a private browser session without registering a personal phone |
-| Licensing | Tenant-specific licenses required by the selected Agent in a Day exercises; current Microsoft Learn states self-directed Copilot Studio learners need a Copilot Studio trial or equivalent licensed access | Open Copilot Chat and Copilot Studio; create a throwaway draft in the intended environment |
+| Licensing | Microsoft 365 E7 or the approved equivalent Agent 365, Copilot/Copilot Studio, and security entitlements required by the selected exercises | Open Copilot Chat, Copilot Studio, Agent 365, and the required security portals with a test attendee; create a throwaway draft in the intended environment |
 | Power Platform environment | Access to the instructor-provided Copilot Studio environment and only the maker/import capability required by the exercises | Select the correct environment, import the supplied solution, create/save an agent, and remove the test artifact |
 | Entra inspection | Read-only directory access sufficient for the exact Agents blades used by the walkthrough | Open Entra admin center, locate the relevant Agents inventory/details, and confirm editing actions are unavailable |
 | Defender XDR | Custom Unified RBAC **read-only** role with only required security data and data sources | Open Advanced Hunting and run a benign query; confirm response/remediation actions are unavailable |

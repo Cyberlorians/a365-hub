@@ -24,7 +24,7 @@ belongs in `labs/`.
 
 | Module | Outcome | Current evidence | Next deliverable | Status |
 |--------|---------|------------------|------------------|--------|
-| 1 — Concepts & taxonomy | Explain behavior-based agent taxonomy, Agent ID, and Agent 365 | Interactive HTML deck plus complete 30-minute package in `slides/module-01/` | Complete second-facilitator dry run; optionally export branded PPTX/PDF | 🟢 Interactive package complete; delivery validation pending |
+| 1 — E7 and Agent 365 value | Explain the agent control gap, Agent 365, identity protection, and the E7 value | Simple eight-slide interactive package in `slides/module-01/` | Complete second-facilitator dry run; optionally export branded PPTX/PDF | 🟢 Interactive package complete; delivery validation pending |
 | 2 — Agent ID anatomy | Map blueprint, principal, identity, and agent user | Outline and grounding research | Architecture diagram, deck, object-mapping exercise | 📋 Planned |
 | 3 — Portal walkthrough | Inventory identities, credentials, owners, and permissions | Workshop outline | Screenshot-guided lab with checkpoints | 📋 Planned |
 | 4 — Attack paths | Explain blueprint blast radius, ownership abuse, and consent risk | Curated research narratives | Safe lab demo and attack-path deck | 📋 Planned |

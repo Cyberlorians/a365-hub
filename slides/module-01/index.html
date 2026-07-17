@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Interactive Module 1 deck for A365 Hub: Agents Are Identities">
-  <title>A365 Hub · Module 1 · Agents Are Identities</title>
+  <meta name="description" content="A simple interactive Microsoft 365 E7 and Agent 365 value conversation">
+  <title>A365 Hub · Microsoft 365 E7 and Agent 365</title>
   <style>
     :root {
       color-scheme: dark;
@@ -149,216 +149,99 @@
 <div id="app">
   <div id="progress" aria-hidden="true"><div></div></div>
   <main id="deck" aria-live="polite">
-    <section class="slide active" data-title="Agents are identities" data-note="Today is not an AI-features tour. It is a control-plane workshop. The moment software can act in enterprise systems, we must identify it, authorize it, observe it, and stop it when necessary. Point to the sequence and transition to a behavior-based taxonomy.">
-      <span class="eyebrow">A365 Hub · Module 1</span>
-      <h1>Agents are <span class="accent">identities.</span></h1>
-      <p class="lede">The control plane for AI that can act.</p>
-      <div class="chain" aria-label="Build, identify, authorize, observe, govern">
-        <span>Build</span><b>→</b><span>Identify</span><b>→</b><span>Authorize</span><b>→</b><span>Observe</span><b>→</b><span>Govern</span>
-      </div>
-      <span class="pill">30 minutes · Concepts & taxonomy</span>
+    <section class="slide active" data-title="Agents are already here" data-note="Open with the business issue, not product architecture. Agents already use company data and tools. The question is whether the customer can scale them with confidence.">
+      <span class="eyebrow">Microsoft 365 E7 · Agent 365</span>
+      <h1>Agents are already <span class="accent">here.</span></h1>
+      <p class="lede">Can you see them, govern them, and secure them?</p>
+      <span class="pill">A simple executive conversation</span>
     </section>
 
-    <section class="slide" data-title="Learning outcomes" data-note="Set the learning contract. Learners do not need protocol details yet. Ask which outcome is newest and take no more than two responses.">
-      <span class="eyebrow">Your destination</span>
-      <h2>Explain the control boundary in <span class="accent">60 seconds.</span></h2>
+    <section class="slide" data-title="Why agents change the risk" data-note="Keep this simple: agents do more than answer questions. They can use data, call tools, and take action. That useful capability also creates a new control requirement.">
+      <span class="eyebrow">Why now</span>
+      <h2>Agents do more than <span class="accent">generate answers.</span></h2>
       <div class="grid three">
-        <article class="card"><span class="number">1</span><h3>Classify</h3><p>Judge AI by what it accesses, decides, and changes.</p></article>
-        <article class="card"><span class="number">2</span><h3>Differentiate</h3><p>Separate Entra Agent ID from Microsoft Agent 365.</p></article>
-        <article class="card"><span class="number">3</span><h3>Recognize</h3><p>Name the four core Agent ID objects.</p></article>
+        <article class="card"><span class="number">1</span><h3>Access</h3><p>Company data and applications.</p></article>
+        <article class="card"><span class="number">2</span><h3>Act</h3><p>Tools, APIs, and workflows.</p></article>
+        <article class="card"><span class="number">3</span><h3>Scale</h3><p>Fast—often beyond manual oversight.</p></article>
       </div>
-      <p class="callout">Success means choosing baseline controls for a real agent scenario—not memorizing marketing language.</p>
+      <p class="big-quote">The opportunity is real. So is the need for <span class="purple">control.</span></p>
     </section>
 
-    <section class="slide" data-title="Inspect behavior" data-note="The categories overlap and are not universal standards. A generative model may be inside an agent. An interactive agent may plan without being autonomous. Ask: Can a chatbot be an agent? Yes—if it uses tools or data and acts under defined authority.">
-      <span class="eyebrow">Behavior beats branding</span>
-      <h2>Stop arguing over labels. <span class="accent">Inspect behavior.</span></h2>
-      <div class="grid three">
-        <article class="card"><h3>Generative experience</h3><p><strong>Produces:</strong> content</p><p><strong>Acts:</strong> usually not in enterprise systems</p><p><strong>Human:</strong> prompt-by-prompt</p></article>
-        <article class="card"><h3>Interactive agent</h3><p><strong>Produces:</strong> answers + actions</p><p><strong>Acts:</strong> for a signed-in user</p><p><strong>Human:</strong> usually in the loop</p></article>
-        <article class="card"><h3>Autonomous agent</h3><p><strong>Produces:</strong> decisions + actions</p><p><strong>Acts:</strong> under its own identity</p><p><strong>Human:</strong> by exception</p></article>
-      </div>
-      <p class="big-quote">What can it <span class="accent">access</span>, <span class="purple">decide</span>, and <span class="green">change</span>?</p>
-    </section>
-
-    <section class="slide" data-title="Autonomy and trust" data-note="Walk left to right. Each step increases potential impact and reduces immediate human review. Autonomy is not bad; unmanaged autonomy is. Ask where identity becomes non-negotiable and accept tools, enterprise data, or actions with a defensible explanation.">
-      <span class="eyebrow">Trust boundary</span>
-      <h2>Autonomy changes the <span class="purple">risk equation.</span></h2>
-      <div class="flow" role="img" aria-label="Progression from prompt to generation, tools, decisions, actions, and repeated autonomous execution">
-        <div class="node">Prompt</div><div class="arrow">→</div>
-        <div class="node">Generate</div><div class="arrow">→</div>
-        <div class="node">Tools & APIs</div><div class="arrow">→</div>
-        <div class="node">Decide</div><div class="arrow">→</div>
-        <div class="node">Act & repeat</div>
-      </div>
-      <div class="grid four">
-        <div class="card"><h3>Access</h3><p>More data and resources.</p></div>
-        <div class="card"><h3>Authority</h3><p>More permissions.</p></div>
-        <div class="card"><h3>Impact</h3><p>More durable change.</p></div>
-        <div class="card"><h3>Control</h3><p>More need for policy, logs, and containment.</p></div>
-      </div>
-    </section>
-
-    <section class="slide" data-title="Three scenarios" data-note="Take a quick show of hands for which needs the strongest identity controls. C is expected because it acts independently and changes financial state. B still needs strong controls because delegated authority can be abused. Do not fully debrief yet.">
-      <span class="eyebrow">Quick pulse check</span>
-      <h2>Same model family. <span class="accent">Different boundaries.</span></h2>
-      <div class="grid three">
-        <article class="card"><span class="pill">Scenario A</span><h3>Public report summary</h3><p>Reads public text and produces five findings. No tools or tenant data.</p></article>
-        <article class="card"><span class="pill">Scenario B</span><h3>Order cancellation</h3><p>Reads customer data and invokes an API after the signed-in user confirms.</p></article>
-        <article class="card"><span class="pill">Scenario C</span><h3>Refund monitor</h3><p>Runs every 15 minutes, decides, suspends refunds, and opens incidents.</p></article>
-      </div>
-      <p class="big-quote">Which needs the strongest identity controls—and <span class="amber">why?</span></p>
-    </section>
-
-    <section class="slide" data-title="Identity control point" data-note="Read the questions, not just the control names. If who is unknown, attribution fails. If authority is unclear, consent fails. Without logs, investigation fails. Without disable or rollback, containment fails. Identity is necessary but not sufficient—it connects all controls.">
-      <span class="eyebrow">Enterprise control plane</span>
-      <h2>The moment an agent acts, <span class="accent">identity becomes the control point.</span></h2>
-      <table>
-        <thead><tr><th>Question</th><th>Control</th><th>Failure without it</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Who</strong> is acting?</td><td>Identity</td><td>Attribution fails</td></tr>
-          <tr><td><strong>What</strong> may it access?</td><td>Authorization</td><td>Least privilege fails</td></tr>
-          <tr><td>Under <strong>whose authority</strong>?</td><td>Delegation or workload identity</td><td>Consent fails</td></tr>
-          <tr><td>What did it <strong>do</strong>?</td><td>Audit & observability</td><td>Investigation fails</td></tr>
-          <tr><td>How do we <strong>stop</strong> it?</td><td>Policy & lifecycle</td><td>Containment fails</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="slide" data-title="Microsoft Entra Agent ID" data-note="Use Microsoft's definition. Purpose-built does not mean every AI app automatically uses Agent ID. Ask what problem Agent ID solves: identity, access, governance, protection, and traceability for agents at scale.">
-      <span class="eyebrow">Identity foundation</span>
-      <h2>Microsoft Entra <span class="accent">Agent ID</span></h2>
-      <p class="big-quote">“An identity and security framework that extends Microsoft Entra capabilities to AI agents.”</p>
-      <div class="grid four">
-        <article class="card"><h3>Authenticate</h3><p>Purpose-built agent identities and protocols.</p></article>
-        <article class="card"><h3>Authorize</h3><p>Access policies and permission boundaries.</p></article>
-        <article class="card"><h3>Govern</h3><p>Ownership, sponsorship, and lifecycle.</p></article>
-        <article class="card"><h3>Trace</h3><p>Agent-aware sign-in and audit records.</p></article>
-      </div>
-      <p class="pill">Microsoft and non-Microsoft agent platforms</p>
-    </section>
-
-    <section class="slide" data-title="Agent ID versus Agent 365" data-note="This is the main positioning slide. Agent ID is the identity and security substrate. Agent 365 is the operational control plane: observe, govern, secure. Licensing depends on capability and current plans. Ask a learner to finish: Agent ID tells me who; Agent 365 helps me operate the fleet.">
-      <span class="eyebrow">Complementary—not synonyms</span>
-      <h2><span class="accent">Agent ID</span> tells you who. <span class="purple">Agent 365</span> helps operate the fleet.</h2>
+    <section class="slide" data-title="The control gap" data-note="Pause on the five questions. Most customers can answer some, but not all. This is the gap Agent 365 and the E7 security stack address.">
+      <span class="eyebrow">The control gap</span>
+      <h2>Can you answer these questions <span class="amber">today?</span></h2>
       <div class="grid two">
-        <article class="card"><h3>Microsoft Entra Agent ID</h3><ul><li>Identity and security framework</li><li>Purpose-built agent objects</li><li>Authentication, authorization, policy, logs</li><li>Advanced protections depend on licensing</li></ul></article>
-        <article class="card"><h3>Microsoft Agent 365</h3><ul><li>Enterprise control plane</li><li>Central registry and administration</li><li>Observe, govern, and secure</li><li>Per-user licensed product</li></ul></article>
+        <article class="card"><h3>Inventory</h3><p>What agents exist—and where?</p></article>
+        <article class="card"><h3>Ownership</h3><p>Who is accountable for each one?</p></article>
+        <article class="card"><h3>Access</h3><p>What data and tools can they reach?</p></article>
+        <article class="card"><h3>Activity</h3><p>What did they do—and can you stop them?</p></article>
       </div>
-      <p class="callout">They work together: identity establishes trust; fleet operations scale it.</p>
     </section>
 
-    <section class="slide" data-title="Familiar foundation" data-note="Use this as a confidence bridge. Say built on familiar object types, not exactly the same. For beginners: app registration is the definition and service principal is its presence in a tenant. Stop there.">
-      <span class="eyebrow">A familiar foundation</span>
-      <h2>If you know Entra applications, you already have a <span class="green">head start.</span></h2>
-      <table>
-        <thead><tr><th>Traditional application model</th><th>Agent identity model</th></tr></thead>
-        <tbody>
-          <tr><td>Application registration</td><td><strong>Agent identity blueprint</strong></td></tr>
-          <tr><td>Tenant-local service principal</td><td><strong>Blueprint principal</strong></td></tr>
-          <tr><td>One workload identity</td><td><strong>One or more agent identities</strong></td></tr>
-          <tr><td>Separately created human user</td><td><strong>Optional paired agent user</strong></td></tr>
-        </tbody>
-      </table>
-      <p class="callout warning">Familiar building blocks—plus agent-aware hierarchy, accountability, lifecycle, and logging.</p>
+    <section class="slide" data-title="Microsoft Agent 365" data-note="This is the core product message from Microsoft Learn: Agent 365 is the control plane to observe, govern, and secure agents. Avoid feature overload.">
+      <span class="eyebrow">One control plane</span>
+      <h2>Microsoft <span class="accent">Agent 365</span></h2>
+      <div class="grid three">
+        <article class="card"><h3>Observe</h3><p>See agents, adoption, activity, and health in a centralized registry.</p></article>
+        <article class="card"><h3>Govern</h3><p>Apply ownership, lifecycle, access, and compliance guardrails.</p></article>
+        <article class="card"><h3>Secure</h3><p>Extend identity, data, and threat protection to agents.</p></article>
+      </div>
+      <p class="callout">Microsoft and supported ecosystem agents. Familiar admin and security workflows.</p>
     </section>
 
-    <section class="slide" data-title="Four objects" data-note="Introduce names at recognition level: blueprint is the template and authentication foundation; principal is tenant-local presence; agent identity is the primary acting identity; agent user is optional. Ask which is optional: agent user.">
-      <span class="eyebrow">Recognition vocabulary</span>
-      <h2>Four object names to <span class="accent">recognize.</span></h2>
+    <section class="slide" data-title="Identity is the foundation" data-note="Identity is the hero of the workshop. Entra Agent ID gives agents purpose-built identities so access can be authorized, activity attributed, and risky agents contained.">
+      <span class="eyebrow">The security foundation</span>
+      <h2>Every agent needs a <span class="green">governed identity.</span></h2>
+      <div class="flow" role="img" aria-label="Agent identity connects ownership, access, activity, and containment">
+        <div class="node">Owner</div><div class="arrow">→</div><div class="node">Agent identity</div><div class="arrow">→</div><div class="node">Access</div><div class="arrow">→</div><div class="node">Activity</div><div class="arrow">→</div><div class="node">Containment</div>
+      </div>
+      <p class="big-quote"><span class="accent">Microsoft Entra Agent ID</span> extends identity and security controls to AI agents.</p>
+    </section>
+
+    <section class="slide" data-title="Why Microsoft 365 E7" data-note="Land the commercial message clearly: Agent 365 is included in Microsoft 365 E7. E7 combines the agent control plane with the identity, security, data, and AI capabilities needed to scale safely. Confirm current pricing and terms before a customer quote.">
+      <span class="eyebrow">The integrated offer</span>
+      <h2>Why <span class="purple">Microsoft 365 E7?</span></h2>
       <div class="grid four">
-        <article class="card"><span class="number">1</span><h3>Blueprint</h3><p>Template and authentication foundation.</p></article>
-        <article class="card"><span class="number">2</span><h3>Blueprint principal</h3><p>Records the blueprint's presence in a tenant.</p></article>
-        <article class="card"><span class="number">3</span><h3>Agent identity</h3><p>Primary identity used by an individual agent.</p></article>
-        <article class="card"><span class="number">4</span><h3>Agent user</h3><p>Optional 1:1 user-shaped account.</p></article>
+        <article class="card"><h3>Agent 365</h3><p>Control plane for agents.</p></article>
+        <article class="card"><h3>Entra</h3><p>Identity, access, and network controls.</p></article>
+        <article class="card"><h3>Defender + Purview</h3><p>Threat, data, and compliance protection.</p></article>
+        <article class="card"><h3>Microsoft 365 AI</h3><p>Secure AI and agent creation for work.</p></article>
       </div>
-      <p class="callout">An agent user supplements the agent identity—it does not replace it.</p>
+      <p class="callout"><strong>Agent 365 is included in Microsoft 365 E7.</strong> One integrated path from AI adoption to enterprise control.</p>
     </section>
 
-    <section class="slide" data-title="Hierarchy map" data-note="Trace top to bottom. Agent identities have no credentials of their own; authentication is rooted in the blueprint. Do not teach token exchange here. Say: authentication is Module 2; compromise expansion is Module 4.">
-      <span class="eyebrow">The map—not the protocol</span>
-      <h2>One hierarchy. <span class="purple">Different jobs.</span></h2>
-      <div class="hierarchy" role="img" aria-label="Agent identity blueprint leads to a blueprint principal in a tenant, which creates agent identities that can each have an optional agent user">
-        <div class="node">Agent identity blueprint</div>
-        <div class="arrow">↓</div>
-        <div class="node">Blueprint principal in tenant</div>
-        <div class="arrow">↓</div>
-        <div class="branch"><div class="node">Agent identity A<br><small>optional agent user</small></div><div class="node">Agent identity B<br><small>optional agent user</small></div></div>
-      </div>
-      <p class="callout warning"><strong>Preview:</strong> agent identities do not hold credentials of their own; the blueprint is the authentication foundation.</p>
-    </section>
-
-    <section class="slide" data-title="Accountability" data-note="A technically valid identity can still be operationally orphaned. Owner administers, sponsor decides the agent should exist, manager applies to the optional agent user relationship. Ask who decides whether access is still justified six months from now.">
-      <span class="eyebrow">Human accountability</span>
-      <h2>An agent should never be an unexplained object with <span class="amber">permissions.</span></h2>
+    <section class="slide" data-title="The value story" data-note="Use three words throughout the rest of the workshop. Visibility: see the fleet. Risk: understand permissions and paths. Control: govern and contain. The later labs prove each point.">
+      <span class="eyebrow">What E7 enables</span>
+      <h2>Turn agent adoption into <span class="accent">controlled scale.</span></h2>
       <div class="grid three">
-        <article class="card"><h3>Owner</h3><p>Technical administration and configuration.</p></article>
-        <article class="card"><h3>Sponsor</h3><p>Business accountability and lifecycle decisions.</p></article>
-        <article class="card"><h3>Manager</h3><p>Operational relationship for an optional agent user.</p></article>
+        <article class="card"><span class="number">1</span><h3>Visibility</h3><p>Know what agents exist.</p></article>
+        <article class="card"><span class="number">2</span><h3>Risk insight</h3><p>Understand identities, access, and exposure.</p></article>
+        <article class="card"><span class="number">3</span><h3>Control</h3><p>Apply policy, detect threats, and respond.</p></article>
       </div>
-      <p class="big-quote">Every agent needs a purpose, an accountable human, and an <span class="green">end date.</span></p>
+      <p class="big-quote">Move from experimentation to production with <span class="green">confidence.</span></p>
     </section>
 
-    <section class="slide" data-title="Operating model" data-note="Connect the day. Agent ID handles identity and access foundations. Agent 365 centralizes fleet operations. Defender and Purview protect runtime and data. XDR and Sentinel support SOC workflows. Product integrations evolve; avoid absolute boundaries.">
-      <span class="eyebrow">Operate the fleet</span>
-      <h2>Build anywhere. <span class="accent">Observe, govern, secure.</span></h2>
-      <div class="flow" role="img" aria-label="Lifecycle from build to register, observe, govern, secure, and improve or retire">
-        <div class="node">Build</div><div class="arrow">→</div><div class="node">Register</div><div class="arrow">→</div><div class="node">Observe</div><div class="arrow">→</div><div class="node">Govern</div><div class="arrow">→</div><div class="node">Secure</div>
-      </div>
+    <section class="slide" data-title="The next step" data-note="Close with a concrete ask. Do not ask the customer to buy from a slide alone. Propose an E7 readiness conversation using their real agent estate and priority use cases.">
+      <span class="eyebrow">The ask</span>
+      <h2>Start with your <span class="accent">agent estate.</span></h2>
       <div class="grid three">
-        <article class="card"><h3>Identity</h3><p>Entra Agent ID</p></article>
-        <article class="card"><h3>Fleet</h3><p>Microsoft Agent 365</p></article>
-        <article class="card"><h3>SOC & data</h3><p>Defender, Purview, XDR, Sentinel</p></article>
+        <article class="card"><span class="number">1</span><h3>Discover</h3><p>Inventory agents, owners, and platforms.</p></article>
+        <article class="card"><span class="number">2</span><h3>Assess</h3><p>Review access, data, and business risk.</p></article>
+        <article class="card"><span class="number">3</span><h3>Pilot E7</h3><p>Prove observe, govern, and secure with a real use case.</p></article>
       </div>
-    </section>
-
-    <section class="slide" data-title="Interactive exercise" data-note="Open the exercise with the Q key or button. Learners work in pairs for four minutes. Listen for authority confusion: Scenario B is delegated; C uses its own workload or agent identity.">
-      <span class="eyebrow">Your turn · 4 minutes</span>
-      <h2>Classify the <span class="accent">control boundary.</span></h2>
-      <div class="grid two">
-        <article class="card"><h3>For each scenario</h3><ol><li>Classify the behavior.</li><li>Choose delegated or workload authority.</li><li>Name the highest-impact action.</li><li>Choose a preventive control.</li><li>Name one SOC event.</li></ol></article>
-        <article class="card"><h3>Success criteria</h3><p>Connect capability to identity: access and actions must be attributable, authorized, observable, and containable.</p><div class="modal-actions"><button class="primary" data-open="quiz">Launch interactive exercise</button></div></article>
-      </div>
-      <p class="pill">Keyboard: press Q</p>
-    </section>
-
-    <section class="slide" data-title="Exercise debrief" data-note="Reveal one row at a time. Ask one pair for a preventive control and another for an observable event. Scenario A still has data handling, safety, and logging concerns; it simply has a smaller enterprise action boundary.">
-      <span class="eyebrow">Debrief</span>
-      <h2>Behavior drives <span class="green">controls.</span></h2>
-      <table>
-        <thead><tr><th>Scenario</th><th>Classification</th><th>Authority</th><th>Baseline control</th></tr></thead>
-        <tbody>
-          <tr><td>Public report</td><td><strong>Generative</strong></td><td>None/public</td><td>Input/output handling + logging</td></tr>
-          <tr><td>Order cancellation</td><td><strong>Interactive agent</strong></td><td>Delegated user</td><td>Least privilege + confirmation</td></tr>
-          <tr><td>Refund remediation</td><td><strong>Autonomous agent</strong></td><td>Workload/agent identity</td><td>Narrow access + policy + audit + kill switch</td></tr>
-        </tbody>
-      </table>
-      <p class="big-quote">Controls follow <span class="accent">capability</span>—not the word “AI.”</p>
-    </section>
-
-    <section class="slide" data-title="Takeaways" data-note="Ask the room to say the distinction aloud: Agent ID is the identity and security framework; Agent 365 is the fleet control plane. Open readiness with R before the build lab if not already completed.">
-      <span class="eyebrow">Module 1 complete</span>
-      <h2>Four things to <span class="accent">remember.</span></h2>
-      <div class="grid two">
-        <article class="card"><span class="number">1</span><p>Classify by <strong>access, decisions, and actions.</strong></p></article>
-        <article class="card"><span class="number">2</span><p>An acting agent needs a <strong>governed identity</strong> and attributable authority.</p></article>
-        <article class="card"><span class="number">3</span><p><strong>Agent ID</strong> is identity/security; <strong>Agent 365</strong> operates the fleet.</p></article>
-        <article class="card"><span class="number">4</span><p>Blueprint → principal → identity → optional user is the recognition map.</p></article>
-      </div>
-      <div class="modal-actions"><button class="primary" data-open="readiness">Check build-lab readiness</button><button class="secondary" onclick="goTo(0)">Restart module</button></div>
+      <div class="modal-actions"><button class="primary" data-open="readiness">Check workshop readiness</button><button class="secondary" onclick="goTo(0)">Restart</button></div>
     </section>
   </main>
 
   <footer class="controls" aria-label="Presentation controls">
-    <div class="brand">A365 Hub · Agents Are Identities</div>
+    <div class="brand">A365 Hub · E7 + Agent 365</div>
     <nav class="nav">
       <button class="icon-btn" id="prev" aria-label="Previous slide" title="Previous (Left arrow)">←</button>
-      <span class="slide-count" id="slideCount">1 / 16</span>
+      <span class="slide-count" id="slideCount">1 / 8</span>
       <button class="icon-btn" id="next" aria-label="Next slide" title="Next (Right arrow or Space)">→</button>
     </nav>
     <div class="tools">
       <button class="icon-btn optional" data-open="readiness" aria-label="Open readiness checklist" title="Readiness (R)">✓</button>
-      <button class="icon-btn optional" data-open="quiz" aria-label="Open exercise" title="Exercise (Q)">Q</button>
       <button class="icon-btn" id="notesToggle" aria-label="Toggle presenter notes" aria-pressed="false" title="Notes (N)">N</button>
       <button class="icon-btn optional" id="fullscreen" aria-label="Toggle fullscreen" title="Fullscreen (F)">⛶</button>
       <button class="icon-btn" data-open="help" aria-label="Open keyboard help" title="Help (?)">?</button>
@@ -378,7 +261,7 @@
     <h3>Required for the next build lab</h3>
     <div class="checklist" id="readinessChecks">
       <label class="check-row"><input type="checkbox" data-key="account"><span><strong>Lab account works.</strong> Sign in with the workshop UPN and TAP; no personal phone is required.</span></label>
-      <label class="check-row"><input type="checkbox" data-key="license"><span><strong>Required licenses are assigned.</strong> Confirm Microsoft 365 Copilot/Copilot Studio and Agent 365 entitlements used by the lab.</span></label>
+      <label class="check-row"><input type="checkbox" data-key="license"><span><strong>Required licenses are assigned.</strong> Confirm Microsoft 365 E7 or the approved equivalent Copilot, Copilot Studio, Agent 365, and security entitlements used by the lab.</span></label>
       <label class="check-row"><input type="checkbox" data-key="maker"><span><strong>Build experience opens.</strong> Verify <a href="https://m365.cloud.microsoft/chat" target="_blank" rel="noreferrer">Microsoft 365 Copilot Chat</a> and <a href="https://copilotstudio.microsoft.com" target="_blank" rel="noreferrer">Copilot Studio</a>.</span></label>
       <label class="check-row"><input type="checkbox" data-key="entra"><span><strong>Entra read experience opens.</strong> Verify the learner can reach <a href="https://entra.microsoft.com" target="_blank" rel="noreferrer">Entra admin center</a>. Grant only the read access required by the walkthrough—never Global Administrator.</span></label>
       <label class="check-row"><input type="checkbox" data-key="xdr"><span><strong>Defender XDR read access works.</strong> The attendee group has a Unified RBAC read-only role with the required data sources, and <a href="https://security.microsoft.com" target="_blank" rel="noreferrer">security.microsoft.com</a> opens.</span></label>
@@ -391,16 +274,6 @@
   </div>
 </div>
 
-<div class="modal-backdrop" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizTitle">
-  <div class="modal">
-    <div class="modal-head"><div><span class="eyebrow">Interactive exercise</span><h2 id="quizTitle">Classify the control boundary</h2></div><button class="icon-btn modal-close" aria-label="Close exercise">×</button></div>
-    <p>Choose the behavior and authority for each scenario. Then capture one preventive control and one event the SOC should observe.</p>
-    <div class="quiz-grid" id="quizGrid"></div>
-    <div class="modal-actions"><button class="primary" id="scoreQuiz">Score classifications</button><button class="secondary" id="resetQuiz">Reset exercise</button></div>
-    <div class="result" id="quizResult" aria-live="polite"></div>
-  </div>
-</div>
-
 <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
   <div class="modal">
     <div class="modal-head"><div><span class="eyebrow">Controls</span><h2 id="helpTitle">Click or use the keyboard</h2></div><button class="icon-btn modal-close" aria-label="Close help">×</button></div>
@@ -408,8 +281,8 @@
       <p><span class="kbd">→</span> <span class="kbd">Space</span> Next slide</p><p><span class="kbd">←</span> Previous slide</p>
       <p><span class="kbd">Home</span> First slide</p><p><span class="kbd">End</span> Last slide</p>
       <p><span class="kbd">N</span> Presenter notes</p><p><span class="kbd">F</span> Fullscreen</p>
-      <p><span class="kbd">Q</span> Exercise</p><p><span class="kbd">R</span> Readiness</p>
-      <p><span class="kbd">?</span> This help</p><p><span class="kbd">Esc</span> Close panel</p>
+      <p><span class="kbd">R</span> Readiness</p><p><span class="kbd">?</span> This help</p>
+      <p><span class="kbd">Esc</span> Close panel</p><p><span class="kbd">Click</span> Bottom arrows</p>
     </div>
     <p class="callout">The URL hash tracks the current slide, so links such as <strong>#slide-8</strong> open directly to that slide. Readiness is stored only in this browser.</p>
   </div>
@@ -465,7 +338,7 @@
   document.getElementById('notesClose').addEventListener('click', () => toggleNotes(false));
   document.getElementById('fullscreen').addEventListener('click', () => document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen());
 
-  const modals = { readiness: document.getElementById('readinessModal'), quiz: document.getElementById('quizModal'), help: document.getElementById('helpModal') };
+  const modals = { readiness: document.getElementById('readinessModal'), help: document.getElementById('helpModal') };
   let lastFocus = null;
   function openModal(name) {
     lastFocus = document.activeElement;
@@ -490,7 +363,6 @@
     else if (e.key === 'End') goTo(slides.length - 1);
     else if (e.key.toLowerCase() === 'n') toggleNotes();
     else if (e.key.toLowerCase() === 'f') document.getElementById('fullscreen').click();
-    else if (e.key.toLowerCase() === 'q') openModal('quiz');
     else if (e.key.toLowerCase() === 'r') openModal('readiness');
     else if (e.key === '?') openModal('help');
   });
@@ -528,31 +400,6 @@
     updateReadiness();
   });
   updateReadiness();
-
-  const scenarios = [
-    { id:'a', name:'A · Public report summary', text:'Public input, no tools or tenant data.', behavior:'generative', authority:'none', sample:'Control: approved input/output handling. Observe: prompt/response policy and usage events where available.' },
-    { id:'b', name:'B · Order cancellation', text:'A signed-in representative confirms an API action.', behavior:'interactive', authority:'delegated', sample:'Control: least-privilege delegated scope plus explicit confirmation. Observe: sign-in, lookup, confirmation, API call, target and result.' },
-    { id:'c', name:'C · Autonomous refund monitor', text:'Runs every 15 minutes and changes financial state.', behavior:'autonomous', authority:'workload', sample:'Control: narrow workload access, thresholds and kill switch. Observe: workload sign-in, decision, tool calls, suspension result and incident creation.' }
-  ];
-  const quizGrid = document.getElementById('quizGrid');
-  quizGrid.innerHTML = scenarios.map(s => `<article class="quiz-item" data-scenario="${s.id}"><h3>${s.name}</h3><p>${s.text}</p><label>Behavior<select class="behavior"><option value="">Choose…</option><option value="generative">Generative experience</option><option value="interactive">Interactive agent</option><option value="autonomous">Autonomous agent</option></select></label><label>Authority<select class="authority"><option value="">Choose…</option><option value="none">None/public</option><option value="delegated">Delegated user</option><option value="workload">Workload/agent identity</option></select></label><label>Preventive control + observable event<textarea placeholder="Control… SOC event…"></textarea></label></article>`).join('');
-  document.getElementById('scoreQuiz').addEventListener('click', () => {
-    let score = 0;
-    const feedback = scenarios.map(s => {
-      const row = quizGrid.querySelector(`[data-scenario="${s.id}"]`);
-      const correct = Number(row.querySelector('.behavior').value === s.behavior) + Number(row.querySelector('.authority').value === s.authority);
-      score += correct;
-      return `<li><strong>${s.name}:</strong> ${correct}/2. ${s.sample}</li>`;
-    }).join('');
-    const result = document.getElementById('quizResult');
-    result.innerHTML = `<h3>${score}/6 classification points</h3><p>${score >= 5 ? 'Ready to continue. Explain why identity becomes necessary as access and actions grow.' : 'Revisit slides 3, 6, and 8, then try again.'}</p><ul>${feedback}</ul>`;
-    result.classList.add('open');
-  });
-  document.getElementById('resetQuiz').addEventListener('click', () => {
-    quizGrid.querySelectorAll('select').forEach(s => s.value = '');
-    quizGrid.querySelectorAll('textarea').forEach(t => t.value = '');
-    document.getElementById('quizResult').classList.remove('open');
-  });
 
   goTo(current);
 })();

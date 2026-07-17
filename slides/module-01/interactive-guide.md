@@ -5,7 +5,7 @@ The Module 1 presentation is a self-contained interactive file:
 - [index.html](index.html)
 
 No web framework, package installation, build command, account, or tenant permission is
-required. CSS, diagrams, presenter notes, exercise logic, and readiness state are contained
+required. CSS, diagrams, presenter notes, and readiness state are contained
 in the file.
 
 ## Open locally
@@ -26,25 +26,23 @@ Opening through a local web server is optional. The file works using a `file:///
 | Previous slide | Left arrow button or swipe right | `Left` or `PageUp` |
 | First/last slide | — | `Home` / `End` |
 | Presenter notes | `N` button | `N` |
-| Interactive exercise | `Q` button | `Q` |
 | Permissions/readiness | Check button | `R` |
 | Fullscreen | Fullscreen button | `F` |
 | Help | `?` button | `?` |
 | Close panel | Close button | `Esc` |
 
-The current slide is reflected in the URL hash. For example, `index.html#slide-8` opens the
-Agent ID versus Agent 365 slide.
+The current slide is reflected in the URL hash. For example, `index.html#slide-6` opens the
+Microsoft 365 E7 slide.
 
 ## Presenter workflow
 
 1. Before attendees arrive, press `R` and walk through the permissions/readiness checklist
    using a real attendee test account.
 2. Press `N` to expose the current slide's talk track on the presenter display.
-3. Present slides 1–13.
-4. On slide 14, press `Q`. Learners classify the three scenarios; select **Score
-   classifications** for feedback and sample controls/events.
-5. Close the exercise and use slide 15 for the room debrief.
-6. On slide 16, reopen readiness before transitioning to the first build lab.
+3. Present the eight-slide story in 10–15 minutes.
+4. Pause on slide 3 and ask which control question is hardest to answer today.
+5. On slide 8, agree on an E7 readiness or pilot next step.
+6. Reopen readiness before transitioning to the first build lab.
 
 Readiness selections remain only in browser `localStorage`. They contain no credentials or
 user identifiers and are not synchronized. Use the [full permission guide](permissions-preflight.md)

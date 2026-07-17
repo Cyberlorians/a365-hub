@@ -20,6 +20,8 @@ change; facilitators should recheck the linked pages before a customer delivery.
 | Interactive agents commonly use delegated/OBO access; autonomous agents use their own identity | [Fundamental concepts](https://learn.microsoft.com/entra/agent-id/key-concepts) |
 | Agent 365 provides observe, govern, and secure capabilities | [Microsoft Agent 365 overview](https://learn.microsoft.com/microsoft-agent-365/overview) |
 | Agent 365 is generally available commercially and licensed per user | [Microsoft Agent 365 overview](https://learn.microsoft.com/microsoft-agent-365/overview) |
+| Agent 365 is included in Microsoft 365 E7 | [Microsoft Entra Agent ID licensing guidance](https://learn.microsoft.com/entra/agent-id/what-is-microsoft-entra-agent-id) and [Microsoft Agent 365 plans](https://www.microsoft.com/microsoft-agent-365#plans-and-pricing) |
+| E7 combines Agent 365 with unified identity/security/network controls, XDR, data security, and secure AI capabilities | [Microsoft Agent 365 plans](https://www.microsoft.com/microsoft-agent-365#plans-and-pricing) |
 | Agent in a Day builds agents in Copilot Chat and Copilot Studio | [Agent in a Day learning path](https://learn.microsoft.com/training/paths/agents-online-workshop/) |
 
 ## Security grounding

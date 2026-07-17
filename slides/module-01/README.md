@@ -1,19 +1,21 @@
-# Module 1 — Agents Are Identities
+# Module 1 — Agents Are Already Here
 
-**Theme:** Concepts and taxonomy  
-**Duration:** 30 minutes  
-**Audience:** Identity, security, SOC, platform, and AI-maker teams  
+**Theme:** Microsoft 365 E7 and Agent 365 value story
+
+**Duration:** 10–15 minutes
+
+**Audience:** Identity, security, SOC, platform, and AI-maker teams
+
 **Placement:** Welcome/framing, immediately before the first Agent in a Day build lab
 
 ## Purpose
 
-Module 1 gives learners a shared vocabulary before they build anything. It answers four
-questions:
+Module 1 gives customers a simple reason to act before the technical workshop. It answers
+three questions:
 
-1. What changes as AI moves from generating content to taking actions?
-2. Why does an acting agent need a purpose-built identity?
-3. What is the difference between Microsoft Entra Agent ID and Microsoft Agent 365?
-4. Which Agent ID object names should learners recognize in later modules?
+1. Why do agents create a new visibility and control gap?
+2. How does Microsoft Agent 365 help organizations observe, govern, and secure agents?
+3. Why is Microsoft 365 E7 the integrated path to controlled agent adoption?
 
 This is a **recognition-level introduction**, not the architecture deep dive. Module 2
 owns authentication flows and object anatomy; Module 3 owns permissions; Module 4 owns
@@ -21,24 +23,22 @@ blast radius and attacks.
 
 ## Learning objectives
 
-By the end, learners can:
+By the end, customers can:
 
-- distinguish generative AI, interactive agents, and autonomous agents using behavior—not
-  marketing labels;
-- explain why tools, data access, and actions create identity and authorization needs;
-- describe Microsoft Entra Agent ID as the purpose-built identity and security framework;
-- distinguish Entra Agent ID from Microsoft Agent 365;
-- recognize blueprint, blueprint principal, agent identity, and agent user;
-- identify the minimum controls required by a simple agent scenario.
+- state the agent control gap in business language;
+- describe Agent 365 with three verbs: observe, govern, and secure;
+- explain why governed identity is the security foundation;
+- state that Agent 365 is included in Microsoft 365 E7;
+- agree on a practical E7 readiness or pilot next step.
 
 ## Package
 
 | File | Use |
 |------|-----|
-| [index.html](index.html) | Self-contained interactive click-through deck with presenter notes, exercise, and readiness check |
+| [index.html](index.html) | Self-contained eight-slide click-through deck with presenter notes and readiness check |
 | [interactive-guide.md](interactive-guide.md) | Local use, keyboard controls, presenter workflow, sharing, and customization |
 | [permissions-preflight.md](permissions-preflight.md) | Module 1 requirements plus least-privilege validation for build, Entra, XDR, and Sentinel labs |
-| [slides.md](slides.md) | 16-slide presentation source |
+| [slides.md](slides.md) | Eight-slide presentation source |
 | [speaker-notes.md](speaker-notes.md) | Timed talk track, prompts, misconceptions, and transitions |
 | [exercise.md](exercise.md) | 6-minute learner classification exercise and answer key |
 | [taxonomy-handout.md](taxonomy-handout.md) | One-page learner reference |
@@ -50,33 +50,30 @@ By the end, learners can:
 - **Hosted:** [Open the click-through presentation](https://cyberlorians.github.io/a365-hub/)
 - **Offline:** download the repository and open `index.html` in this folder.
 
-Use arrow buttons, swipe, or the keyboard. Press `N` for presenter notes, `Q` for the
-interactive scenario exercise, `R` for access/readiness, `F` for fullscreen, and `?` for
+Use arrow buttons, swipe, or the keyboard. Press `N` for presenter notes, `R` for
+access/readiness, `F` for fullscreen, and `?` for
 help. The HTML performs no tenant API calls and requires no administrator permission.
 
 ## Run of show
 
 | Time | Segment | Slides |
 |------|---------|--------|
-| 0:00–0:03 | Hook and outcomes | 1–2 |
-| 0:03–0:08 | Behavior taxonomy | 3–5 |
-| 0:08–0:14 | Identity control plane | 6–8 |
-| 0:14–0:19 | Agent ID vocabulary | 9–11 |
-| 0:19–0:22 | Observe, govern, secure | 12–13 |
-| 0:22–0:28 | Scenario exercise + debrief | 14–15 |
-| 0:28–0:30 | Takeaways and lab transition | 16 |
+| 0:00–0:03 | Agent opportunity and control gap | 1–3 |
+| 0:03–0:07 | Agent 365 and identity foundation | 4–5 |
+| 0:07–0:11 | Microsoft 365 E7 value | 6–7 |
+| 0:11–0:15 | Customer next step | 8 |
 
 ## Definition of done
 
 Module 1 is delivery-ready when:
 
-- [x] slide source is complete and scoped to 30 minutes;
+- [x] slide source is complete and scoped to 10–15 minutes;
 - [x] each slide has a tested talk track and timing;
 - [x] the exercise has an answer key and objective scoring rubric;
 - [x] the learner handout uses current Microsoft terminology;
 - [x] authoritative claims map to sources;
-- [x] interactive HTML deck supports keyboard, touch, presenter notes, exercise scoring,
-      print, deep links, and reduced motion;
+- [x] interactive HTML deck supports keyboard, touch, presenter notes, print, deep links,
+      and reduced motion;
 - [x] least-privilege permission preflight separates Module 1 from later lab access;
 - [ ] visual design has been applied in PowerPoint;
 - [ ] delivery has been dry-run by a second facilitator;
@@ -86,8 +83,8 @@ Module 1 is delivery-ready when:
 
 Do not teach every technical detail here. The desired learner reaction is:
 
-> “An agent takes actions under an identity. I now know which control plane and object
-> names to look for.”
+> “Agents are already here. E7 gives us Agent 365 and the integrated controls to scale
+> them with confidence.”
 
 If learners leave asking how token exchange, inherited permissions, or cross-tenant
 blueprints work, the module has succeeded—the next modules answer those questions.

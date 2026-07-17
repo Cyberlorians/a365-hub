@@ -45,7 +45,7 @@ detections, and capture-the-flag content still being built.
 
 | Module | Theme | Status |
 |--------|-------|--------|
-| 1 | Concepts and taxonomy | 🟢 Interactive deck + complete teaching package; dry run pending |
+| 1 | E7 and Agent 365 value story | 🟢 Simple interactive deck + complete teaching package; dry run pending |
 | 2 | Anatomy of Entra Agent ID | 📋 Planned |
 | 3 | Portal walkthrough | 📋 Planned |
 | 4 | Attack paths and blast radius | 📋 Planned |

@@ -2,9 +2,9 @@
 
 ## Delivery target
 
-Deliver a 30-minute shared vocabulary lesson that prepares mixed identity, SOC, executive,
-and maker audiences for the build labs. The module is successful when learners reason from
-capability to control instead of debating AI marketing labels.
+Deliver a 10–15 minute executive-friendly conversation that creates urgency without fear,
+positions Microsoft Agent 365 clearly, and lands Microsoft 365 E7 as the integrated path
+to controlled agent adoption.
 
 ## Preparation checklist
 
@@ -12,9 +12,7 @@ capability to control instead of debating AI marketing labels.
 - [ ] Complete the [permission preflight](permissions-preflight.md) with a real attendee test
       account; the deck's `R` checklist is a manual record, not an API audit.
 - [ ] Confirm current product terminology against [sources.md](sources.md).
-- [ ] Print or share [taxonomy-handout.md](taxonomy-handout.md).
-- [ ] Give each pair [exercise.md](exercise.md) without the answer-key section visible.
-- [ ] Confirm a timer is available for the four-minute exercise.
+- [ ] Confirm the current E7 and Agent 365 licensing statement against Microsoft sources.
 - [ ] Know whether the engagement has Agent 365, Entra P1/P2, Defender, and Sentinel.
 - [ ] Do not promise that every build lab produces every Agent ID object; verify in the lab
       tenant and describe only what learners actually observe.
@@ -43,20 +41,13 @@ level and anchor the value proposition in safe scale—not fear.
 
 ## Validation rubric
 
-A learner is ready for the build lab when they can state:
+A customer has understood the story when they can state:
 
-1. an agent's risk follows what it can access, decide, and change;
-2. an interactive agent may act under delegated user authority while an autonomous agent
-   commonly needs its own identity;
-3. Entra Agent ID and Agent 365 are complementary, not synonyms;
-4. blueprint, principal, agent identity, and optional agent user are different objects;
-5. at least one preventive and one detective control for a scenario.
-
-Use the exercise score:
-
-- **9–12:** proceed;
-- **7–8:** repeat the identity/authority distinction;
-- **0–6:** facilitate one scenario from start to finish before proceeding.
+1. agents create a visibility and control gap because they access data and take action;
+2. Agent 365 helps organizations observe, govern, and secure agents;
+3. identity is the security foundation for agent access and accountability;
+4. Agent 365 is included in Microsoft 365 E7;
+5. the next step is to discover, assess, and pilot against a real use case.
 
 ## Misconception recovery
 
@@ -82,24 +73,22 @@ Do not:
 
 ## Delivery modes
 
-### Full 30-minute mode
+### Standard 10–15 minute mode
 
-Use all 16 slides and the exercise.
+Use all eight slides. Ask the customer which control-gap question is hardest today.
 
-### Compressed 15-minute mode
+### Five-minute executive mode
 
-Use slides 1, 3, 4, 6–8, 10–11, 13, and 16. Ask Scenario C verbally. The exercise is
-assigned as a handout checkpoint before Module 2.
+Use slides 1, 3, 4, 6, and 8.
 
 ### Virtual mode
 
-Use a poll for slide 5 and breakout pairs for slide 14. Have pairs post one preventive and
-one detective control in chat.
+Use a poll on slide 3: inventory, ownership, access, or activity/containment.
 
 ## Transition into the build lab
 
 Close with:
 
-> “We classified the control boundary before building. Now we will build the first agent,
-> record what it can access and change, and then inspect which identity objects actually
-> appear in this tenant. We will not assume—the portal and logs are our evidence.”
+> “We have the business question: how do we scale agents without losing control? Now we
+> will build one, reveal its identity and access, and prove the visibility, risk, and
+> control story behind Microsoft 365 E7.”

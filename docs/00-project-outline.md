@@ -28,12 +28,14 @@ hunting).
 
 ## 2. Curriculum modules
 
-### Module 1 — Concepts & taxonomy
-- Generative AI vs Agentic AI vs AI Agents (ref: `grounding/reference-images.md`, Image 2).
-- What is an agent identity? Why agents need first-class identities.
-- Where this shows up: Copilot Studio, Azure AI Foundry, Security Copilot, Agent 365 / E7.
-- Deliverable: [complete 30-minute package](../slides/module-01/README.md) with slides, speaker
-  notes, scenario exercise, facilitator guide, source map, and 1-page taxonomy handout.
+### Module 1 — E7 and Agent 365 value story
+- Why agents create a new visibility and control gap.
+- Agent 365 as the control plane to observe, govern, and secure agents.
+- Microsoft Entra Agent ID as the security foundation.
+- Microsoft 365 E7 as the integrated path to controlled agent adoption.
+- Deliverable: [simple 10–15 minute package](../slides/module-01/README.md) with an
+  eight-slide interactive deck, speaker notes, facilitator guide, source map, and workshop
+  permission preflight. Technical taxonomy remains available as supporting material.
 
 ### Module 2 — Anatomy of Entra Agent ID  ⭐ (anchor: Datadog "Blueprint Blast Radius")
 - The four objects and how they map to app reg / SP / user.
