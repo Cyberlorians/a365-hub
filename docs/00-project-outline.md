@@ -32,7 +32,8 @@ hunting).
 - Generative AI vs Agentic AI vs AI Agents (ref: `grounding/reference-images.md`, Image 2).
 - What is an agent identity? Why agents need first-class identities.
 - Where this shows up: Copilot Studio, Azure AI Foundry, Security Copilot, Agent 365 / E7.
-- Deliverable: intro slides + 1-page taxonomy handout.
+- Deliverable: [complete 30-minute package](../slides/module-01/README.md) with slides, speaker
+  notes, scenario exercise, facilitator guide, source map, and 1-page taxonomy handout.
 
 ### Module 2 — Anatomy of Entra Agent ID  ⭐ (anchor: Datadog "Blueprint Blast Radius")
 - The four objects and how they map to app reg / SP / user.

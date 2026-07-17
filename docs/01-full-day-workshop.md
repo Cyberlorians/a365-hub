@@ -89,7 +89,8 @@ day ends with a **teardown/deprovision** step (Block 8).
   expire so nothing is left dangling (dangling agent identities/blueprints are a real risk, not just cleanup).
 
 ## To build for delivery (backlog)
-- [ ] Slides per block (markdown → .pptx) in `slides/`.
+- [x] Module 1 content package (slides, notes, exercise, handout, facilitator guide).
+- [ ] Apply visual design/export to Module 1 and build slide packages for Blocks 1–8.
 - [ ] Portal walkthrough lab + screenshots in `labs/`.
 - [ ] `AIAgents` advanced-hunting queries + 3 custom detections in `detections/`.
 - [ ] CTF challenge set + answer key + scoreboard.

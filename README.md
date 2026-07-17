@@ -44,7 +44,7 @@ detections, and capture-the-flag content still being built.
 
 | Module | Theme | Status |
 |--------|-------|--------|
-| 1 | Concepts and taxonomy | 🟡 Slide source started |
+| 1 | Concepts and taxonomy | 🟢 Complete teaching package; visual design/dry run pending |
 | 2 | Anatomy of Entra Agent ID | 📋 Planned |
 | 3 | Portal walkthrough | 📋 Planned |
 | 4 | Attack paths and blast radius | 📋 Planned |
