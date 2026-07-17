@@ -1,92 +1,150 @@
-# Module 1 — Agents Are Already Here
+# Module 1 — See It. Control It. Protect It.
 
-**A simple Microsoft 365 E7 and Microsoft Agent 365 conversation**
+## Prerequisites — Get into the workshop
 
-> Eight-slide source deck. One `---` separator equals one slide. Detailed delivery notes
-> are in [speaker-notes.md](speaker-notes.md).
+### Slide 1 — Get your lab account
 
----
+Open the workshop form from the link or QR code supplied by the facilitator.
 
-# 1. Agents are already here
+> Use the link for this event. Do not use a form from another event.
 
-## Can you see them, control them, and keep them safe?
+### Slide 2 — Fill out the form
 
-Microsoft 365 E7 · Microsoft Agent 365
+1. Enter your full name.
+2. Enter an email you can open now.
+3. Enter your company if requested.
+4. Read and accept the lab terms.
+5. Submit the form.
 
----
+Do not enter a password, secret, or customer data.
 
-# 2. Agents do more than generate answers
+### Slide 3 — Check your email
 
-Agents can:
+Look for **Your A365 Workshop lab access**.
 
-1. **Read** — agents can use company data.
-2. **Do** — agents can use tools and take action.
-3. **Grow** — teams can create many agents quickly.
+The email contains:
 
-Agents can help your business. They also need rules.
+- your lab username;
+- your Temporary Access Pass (TAP);
+- the workshop sign-in link.
 
----
+The TAP works for eight hours and can be reused during that window. Check Junk and then ask the facilitator if the email does not arrive. Do not submit the form many times.
 
-# 3. Can you answer these questions today?
+### Slide 4 — Sign in with the TAP
 
-- What agents do we have?
-- Who is in charge of each agent?
-- Which data and tools can it use?
-- What did it do, and can we stop it?
+1. Open the sign-in link in the email.
+2. Enter the lab username.
+3. Choose **Temporary Access Pass** if prompted.
+4. Paste the TAP.
 
-This is the enterprise agent control gap.
+No phone or Authenticator registration is needed for this workshop flow. Never share the TAP.
 
----
+### Slide 5 — You are ready
 
-# 4. Microsoft Agent 365
-
-## One control plane to:
-
-- **Observe** — see your agents in one place.
-- **Govern** — set owners, access, and rules.
-- **Secure** — protect agents and company data.
-
-In plain words: **see them, control them, protect them.**
+Confirm that the Microsoft 365 home page opens with the lab account. Raise your hand and remain on this slide if it does not.
 
 ---
 
-# 5. Every agent needs its own work ID
+## Official Module 1 — Agent security basics
 
-**Owner → Work ID → Allowed access → Activity → Stop button**
+### Slide 6 — See it. Control it. Protect it.
 
-Microsoft Entra Agent ID gives agents an identity you can protect.
+How Microsoft 365 E7 helps secure AI agents through identity, data, and threat controls.
 
-Identity makes agent access attributable, authorized, observable, and containable.
+### Slide 7 — Four questions guide everything
 
----
+1. **What?** What agents exist?
+2. **Who?** Who owns them?
+3. **Which?** Which data and tools can they use?
+4. **What happened?** Can we see and stop bad activity?
 
-# 6. Why Microsoft 365 E7?
+Learners watch the administrator. They do not open admin portals unless instructed.
 
-Microsoft 365 E7 brings together:
+### Slide 8 — What is an agent?
 
-- **Agent 365** — see and control agents;
-- **Microsoft Entra** — control identity and access;
-- **Microsoft Defender and Purview** — protect activity and data;
-- **Microsoft 365 AI** — build and use AI at work.
+An agent is an AI helper that can:
 
-## Agent 365 comes with Microsoft 365 E7.
+- read company data;
+- choose a next step;
+- use a tool or change something.
 
----
+Useful access needs clear rules.
 
-# 7. Grow AI use and stay in control
+### Slide 9 — Microsoft Agent 365
 
-1. **See** — know which agents you have.
-2. **Understand** — know what each agent can reach.
-3. **Control** — set rules and stop bad activity.
+- **Observe:** see agents in one place.
+- **Govern:** set owners, access, and rules.
+- **Secure:** protect identities, data, and actions.
 
-Move from a small test to real work with confidence.
+### Slide 10 — Open the Agent Registry
 
----
+**Watch the administrator:**
 
-# 8. Start with the agents you already have
+`admin.microsoft.com` → **Agents** → **All agents** → **Registry**
 
-1. **Find** — list your agents and owners.
-2. **Check** — see what data and tools they use.
-3. **Try E7** — use one real agent to prove the value.
+Look for total agents, agents without owners, unmanaged or at-risk agents, and useful filters.
 
-## The next conversation: where would visibility and control unlock safe adoption?
+### Slide 11 — Open one agent
+
+Use the same four-question review:
+
+- What is its name and purpose?
+- Who is its owner and publisher?
+- Which permissions, data, and tools can it use?
+- Which security signals and policies apply?
+
+### Slide 12 — Identity protection with Entra
+
+Microsoft Entra Agent ID is the identity and security framework for AI agents. It helps identify the agent, limit access, record activity, apply risk controls, and stop access when needed.
+
+### Slide 13 — Data protection with Purview
+
+Purview helps organizations:
+
+- know which data agents use;
+- classify and label sensitive data;
+- use DLP to reduce unsafe sharing;
+- audit AI interactions;
+- investigate, retain, and manage compliance data.
+
+Important: newly created Agent 365 content does not automatically inherit sensitivity labels from source items.
+
+### Slide 14 — Open Purview AI observability
+
+**Watch the administrator:**
+
+`purview.microsoft.com` → **DSPM** → **AI observability**
+
+Review active agents, risky activity such as oversharing or exfiltration, and recommended remediation. Use current DSPM, not Data Security Posture Management (classic).
+
+### Slide 15 — Threat protection with Defender
+
+Microsoft Defender can audit activity, detect unsafe behavior, and block supported risky actions during runtime. Coverage depends on agent type and integration.
+
+### Slide 16 — Open Defender real-time protection
+
+**Watch the administrator:**
+
+`security.microsoft.com` → **Settings** → **Security for AI** → **Policies & rules** → **Real-time protection**
+
+The default rule audits. Carefully scoped custom rules can block selected high-confidence threats. Treat prompt evidence as sensitive data.
+
+### Slide 17 — Why Microsoft 365 E7?
+
+- **Agent 365:** observe and govern agents.
+- **Entra:** protect identity and access.
+- **Purview:** protect data and compliance.
+- **Defender:** detect and block threats.
+
+Agent 365 is included in Microsoft 365 E7, bringing the security layers together.
+
+### Slide 18 — Module 1 complete
+
+For every agent:
+
+1. Find it.
+2. Name the owner.
+3. Check data, tools, and access.
+4. Watch activity and respond.
+
+Choose one agent to review next.

@@ -2,18 +2,19 @@
 
 ## Delivery target
 
-Deliver a 10–15 minute executive-friendly conversation that creates urgency without fear,
-positions Microsoft Agent 365 clearly, and lands Microsoft 365 E7 as the integrated path
-to controlled agent adoption.
+Guide attendees through lab sign-in, then deliver a 17–23 minute security-first Module 1
+that positions Agent 365 and Microsoft 365 E7 without fear or unnecessary complexity.
 
 ## Preparation checklist
 
 - [ ] Open the [interactive deck](index.html), press `?`, and test navigation/fullscreen.
+- [ ] Test the event form, email, TAP, and sign-in link end to end.
 - [ ] Complete the [admin setup guide](permissions-preflight.md). The audience needs no
-      account or permissions for the slides.
+      admin permissions; it needs only the workshop lab account.
 - [ ] Confirm current product terminology against [sources.md](sources.md).
 - [ ] Confirm the current E7 and Agent 365 licensing statement against Microsoft sources.
-- [ ] Sign in with the presenter demo account and open every page that will be shown.
+- [ ] Sign in with the presenter account and open Agent Registry, Purview AI observability,
+      and Defender real-time protection.
 - [ ] Do not promise that every build lab produces every Agent ID object; verify in the lab
       tenant and describe only what learners actually observe.
 
@@ -45,9 +46,9 @@ A customer has understood the story when they can state:
 
 1. agents create a visibility and control gap because they access data and take action;
 2. Agent 365 helps organizations observe, govern, and secure agents;
-3. identity is the security foundation for agent access and accountability;
+3. Entra controls identity, Purview protects data, and Defender protects runtime activity;
 4. Agent 365 is included in Microsoft 365 E7;
-5. the next step is to discover, assess, and pilot against a real use case.
+5. every review asks what, who, which access, and what happened.
 
 ## Misconception recovery
 
@@ -73,13 +74,16 @@ Do not:
 
 ## Delivery modes
 
-### Standard 10–15 minute mode
+### Standard 25–35 minute mode
 
-Use all eight slides. Ask the customer which control-gap question is hardest today.
+Use all 18 slides. Slides 1–5 are attendee prerequisites. Slides 6–18 are official Module
+1. Learners act only during prerequisites and watch the administrator on slides 10, 14,
+and 16.
 
 ### Five-minute executive mode
 
-Use slides 1, 3, 4, 6, and 8.
+Skip prerequisites only when accounts are already validated. Use slides 6, 8, 9, 12, 13,
+15, 17, and 18.
 
 ### Virtual mode
 

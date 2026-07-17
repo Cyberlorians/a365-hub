@@ -4,9 +4,9 @@ The Module 1 presentation is a self-contained interactive file:
 
 - [index.html](index.html)
 
-No web framework, package installation, build command, account, or tenant permission is
-required. CSS, diagrams, presenter notes, and presenter checklist state are contained
-in the file.
+No web framework, package installation, or build command is required. CSS, diagrams,
+presenter notes, and presenter checklist state are contained in the file. Attendees need
+the lab account created during prerequisites, but they do not need admin roles.
 
 ## Open locally
 
@@ -26,22 +26,24 @@ Opening through a local web server is optional. The file works using a `file:///
 | Previous slide | Left arrow button or swipe right | `Left` or `PageUp` |
 | First/last slide | — | `Home` / `End` |
 | Presenter notes | `N` button | `N` |
-| Presenter setup | Check button | `R` |
+| Presenter setup (admin only) | Hidden from audience controls | `R` |
 | Fullscreen | Fullscreen button | `F` |
 | Help | `?` button | `?` |
 | Close panel | Close button | `Esc` |
 
-The current slide is reflected in the URL hash. For example, `index.html#slide-6` opens the
-Microsoft 365 E7 slide.
+The current slide is reflected in the URL hash. For example, `index.html#slide-6` starts
+official Module 1 and `index.html#slide-17` opens the Microsoft 365 E7 slide.
 
 ## Presenter workflow
 
 1. Before attendees arrive, press `R` and complete the presenter setup checklist.
 2. Press `N` to expose the current slide's talk track on the presenter display.
-3. Present the eight-slide story in 10–15 minutes.
-4. Pause on slide 3 and ask which control question is hardest to answer today.
-5. On slide 8, agree on one agent to use in an E7 trial.
-6. If a hands-on lab follows, use the admin setup guide before giving attendees access.
+3. Use slides 1–5 to guide form submission, email retrieval, and TAP sign-in.
+4. Pause on slide 5 until each attendee sees the Microsoft 365 home page.
+5. Start official Module 1 on slide 6.
+6. Use slides 10, 14, and 16 for presenter-only admin demonstrations.
+7. On slide 18, agree on one agent to review next.
+8. Never give learners admin roles just to follow the demonstration.
 
 Presenter setup selections remain only in browser `localStorage`. They contain no
 credentials or user identifiers and are not synchronized. Use the
