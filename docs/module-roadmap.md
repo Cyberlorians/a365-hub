@@ -24,7 +24,7 @@ belongs in `labs/`.
 
 | Module | Outcome | Current evidence | Next deliverable | Status |
 |--------|---------|------------------|------------------|--------|
-| 1 — Concepts & taxonomy | Explain behavior-based agent taxonomy, Agent ID, and Agent 365 | Complete 30-minute package in `slides/module-01/` | Apply PowerPoint visual design and complete second-facilitator dry run | 🟢 Content complete; delivery validation pending |
+| 1 — Concepts & taxonomy | Explain behavior-based agent taxonomy, Agent ID, and Agent 365 | Interactive HTML deck plus complete 30-minute package in `slides/module-01/` | Complete second-facilitator dry run; optionally export branded PPTX/PDF | 🟢 Interactive package complete; delivery validation pending |
 | 2 — Agent ID anatomy | Map blueprint, principal, identity, and agent user | Outline and grounding research | Architecture diagram, deck, object-mapping exercise | 📋 Planned |
 | 3 — Portal walkthrough | Inventory identities, credentials, owners, and permissions | Workshop outline | Screenshot-guided lab with checkpoints | 📋 Planned |
 | 4 — Attack paths | Explain blueprint blast radius, ownership abuse, and consent risk | Curated research narratives | Safe lab demo and attack-path deck | 📋 Planned |
@@ -80,8 +80,8 @@ A detection is **done** when it has:
 
 ### Milestone 1 — teachable foundation
 
-- [x] Finish Module 1 deck, speaker notes, exercise, facilitator guide, source map, and taxonomy handout.
-- [ ] Apply visual design, export accessible PPTX/PDF, and complete a second-facilitator dry run.
+- [x] Finish Module 1 interactive deck, speaker notes, exercise, facilitator guide, source map, taxonomy handout, and permission preflight.
+- [ ] Complete a second-facilitator dry run and optionally export branded PPTX/PDF.
 - Produce the Module 2 object model diagram.
 - Add the Module 3 portal walkthrough skeleton.
 

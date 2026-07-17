@@ -23,6 +23,7 @@ detections, and capture-the-flag content still being built.
 |------|-------|
 | Understand the workshop | [Project outline](docs/00-project-outline.md) |
 | Deliver the full day | [Facilitator agenda](docs/01-full-day-workshop.md) |
+| Present Module 1 | [Interactive click-through deck](https://cyberlorians.github.io/a365-hub/) |
 | Build the lab environment | [Deployment runbook](docs/05-onboarding-deployment-runbook.md) |
 | Deploy attendee onboarding | [Logic App quick start](labs/logic-app/README.md) |
 | See what is finished | [Module roadmap](docs/module-roadmap.md) |
@@ -44,7 +45,7 @@ detections, and capture-the-flag content still being built.
 
 | Module | Theme | Status |
 |--------|-------|--------|
-| 1 | Concepts and taxonomy | 🟢 Complete teaching package; visual design/dry run pending |
+| 1 | Concepts and taxonomy | 🟢 Interactive deck + complete teaching package; dry run pending |
 | 2 | Anatomy of Entra Agent ID | 📋 Planned |
 | 3 | Portal walkthrough | 📋 Planned |
 | 4 | Attack paths and blast radius | 📋 Planned |

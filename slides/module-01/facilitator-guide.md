@@ -8,6 +8,9 @@ capability to control instead of debating AI marketing labels.
 
 ## Preparation checklist
 
+- [ ] Open the [interactive deck](index.html), press `?`, and test navigation/fullscreen.
+- [ ] Complete the [permission preflight](permissions-preflight.md) with a real attendee test
+      account; the deck's `R` checklist is a manual record, not an API audit.
 - [ ] Confirm current product terminology against [sources.md](sources.md).
 - [ ] Print or share [taxonomy-handout.md](taxonomy-handout.md).
 - [ ] Give each pair [exercise.md](exercise.md) without the answer-key section visible.

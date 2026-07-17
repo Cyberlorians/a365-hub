@@ -35,12 +35,24 @@ By the end, learners can:
 
 | File | Use |
 |------|-----|
+| [index.html](index.html) | Self-contained interactive click-through deck with presenter notes, exercise, and readiness check |
+| [interactive-guide.md](interactive-guide.md) | Local use, keyboard controls, presenter workflow, sharing, and customization |
+| [permissions-preflight.md](permissions-preflight.md) | Module 1 requirements plus least-privilege validation for build, Entra, XDR, and Sentinel labs |
 | [slides.md](slides.md) | 16-slide presentation source |
 | [speaker-notes.md](speaker-notes.md) | Timed talk track, prompts, misconceptions, and transitions |
 | [exercise.md](exercise.md) | 6-minute learner classification exercise and answer key |
 | [taxonomy-handout.md](taxonomy-handout.md) | One-page learner reference |
 | [facilitator-guide.md](facilitator-guide.md) | Setup, delivery modes, validation rubric, and recovery plan |
 | [sources.md](sources.md) | Claim-to-source map and content boundaries |
+
+## Launch the interactive deck
+
+- **Hosted:** [Open the click-through presentation](https://cyberlorians.github.io/a365-hub/)
+- **Offline:** download the repository and open `index.html` in this folder.
+
+Use arrow buttons, swipe, or the keyboard. Press `N` for presenter notes, `Q` for the
+interactive scenario exercise, `R` for access/readiness, `F` for fullscreen, and `?` for
+help. The HTML performs no tenant API calls and requires no administrator permission.
 
 ## Run of show
 
@@ -63,6 +75,9 @@ Module 1 is delivery-ready when:
 - [x] the exercise has an answer key and objective scoring rubric;
 - [x] the learner handout uses current Microsoft terminology;
 - [x] authoritative claims map to sources;
+- [x] interactive HTML deck supports keyboard, touch, presenter notes, exercise scoring,
+      print, deep links, and reduced motion;
+- [x] least-privilege permission preflight separates Module 1 from later lab access;
 - [ ] visual design has been applied in PowerPoint;
 - [ ] delivery has been dry-run by a second facilitator;
 - [ ] final deck has been exported to accessible PDF/PPTX.
