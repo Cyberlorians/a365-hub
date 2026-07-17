@@ -29,15 +29,15 @@ By the end, customers can:
 - describe Agent 365 with three verbs: observe, govern, and secure;
 - explain why governed identity is the security foundation;
 - state that Agent 365 is included in Microsoft 365 E7;
-- agree on a practical E7 readiness or pilot next step.
+- agree on one real agent to use in an E7 trial.
 
 ## Package
 
 | File | Use |
 |------|-----|
-| [index.html](index.html) | Self-contained eight-slide click-through deck with presenter notes and readiness check |
+| [index.html](index.html) | Self-contained eight-slide click-through deck with presenter notes and admin setup checklist |
 | [interactive-guide.md](interactive-guide.md) | Local use, keyboard controls, presenter workflow, sharing, and customization |
-| [permissions-preflight.md](permissions-preflight.md) | Module 1 requirements plus least-privilege validation for build, Entra, XDR, and Sentinel labs |
+| [permissions-preflight.md](permissions-preflight.md) | Simple admin setup guide that separates presenter access from audience access |
 | [slides.md](slides.md) | Eight-slide presentation source |
 | [speaker-notes.md](speaker-notes.md) | Timed talk track, prompts, misconceptions, and transitions |
 | [exercise.md](exercise.md) | 6-minute learner classification exercise and answer key |
@@ -51,7 +51,7 @@ By the end, customers can:
 - **Offline:** download the repository and open `index.html` in this folder.
 
 Use arrow buttons, swipe, or the keyboard. Press `N` for presenter notes, `R` for
-access/readiness, `F` for fullscreen, and `?` for
+presenter setup, `F` for fullscreen, and `?` for
 help. The HTML performs no tenant API calls and requires no administrator permission.
 
 ## Run of show
@@ -74,7 +74,7 @@ Module 1 is delivery-ready when:
 - [x] authoritative claims map to sources;
 - [x] interactive HTML deck supports keyboard, touch, presenter notes, print, deep links,
       and reduced motion;
-- [x] least-privilege permission preflight separates Module 1 from later lab access;
+- [x] admin setup guide separates presenter access from audience access;
 - [ ] visual design has been applied in PowerPoint;
 - [ ] delivery has been dry-run by a second facilitator;
 - [ ] final deck has been exported to accessible PDF/PPTX.

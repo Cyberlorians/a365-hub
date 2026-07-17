@@ -9,11 +9,11 @@ to controlled agent adoption.
 ## Preparation checklist
 
 - [ ] Open the [interactive deck](index.html), press `?`, and test navigation/fullscreen.
-- [ ] Complete the [permission preflight](permissions-preflight.md) with a real attendee test
-      account; the deck's `R` checklist is a manual record, not an API audit.
+- [ ] Complete the [admin setup guide](permissions-preflight.md). The audience needs no
+      account or permissions for the slides.
 - [ ] Confirm current product terminology against [sources.md](sources.md).
 - [ ] Confirm the current E7 and Agent 365 licensing statement against Microsoft sources.
-- [ ] Know whether the engagement has Agent 365, Entra P1/P2, Defender, and Sentinel.
+- [ ] Sign in with the presenter demo account and open every page that will be shown.
 - [ ] Do not promise that every build lab produces every Agent ID object; verify in the lab
       tenant and describe only what learners actually observe.
 

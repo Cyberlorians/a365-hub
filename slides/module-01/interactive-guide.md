@@ -5,7 +5,7 @@ The Module 1 presentation is a self-contained interactive file:
 - [index.html](index.html)
 
 No web framework, package installation, build command, account, or tenant permission is
-required. CSS, diagrams, presenter notes, and readiness state are contained
+required. CSS, diagrams, presenter notes, and presenter checklist state are contained
 in the file.
 
 ## Open locally
@@ -26,7 +26,7 @@ Opening through a local web server is optional. The file works using a `file:///
 | Previous slide | Left arrow button or swipe right | `Left` or `PageUp` |
 | First/last slide | — | `Home` / `End` |
 | Presenter notes | `N` button | `N` |
-| Permissions/readiness | Check button | `R` |
+| Presenter setup | Check button | `R` |
 | Fullscreen | Fullscreen button | `F` |
 | Help | `?` button | `?` |
 | Close panel | Close button | `Esc` |
@@ -36,17 +36,16 @@ Microsoft 365 E7 slide.
 
 ## Presenter workflow
 
-1. Before attendees arrive, press `R` and walk through the permissions/readiness checklist
-   using a real attendee test account.
+1. Before attendees arrive, press `R` and complete the presenter setup checklist.
 2. Press `N` to expose the current slide's talk track on the presenter display.
 3. Present the eight-slide story in 10–15 minutes.
 4. Pause on slide 3 and ask which control question is hardest to answer today.
-5. On slide 8, agree on an E7 readiness or pilot next step.
-6. Reopen readiness before transitioning to the first build lab.
+5. On slide 8, agree on one agent to use in an E7 trial.
+6. If a hands-on lab follows, use the admin setup guide before giving attendees access.
 
-Readiness selections remain only in browser `localStorage`. They contain no credentials or
-user identifiers and are not synchronized. Use the [full permission guide](permissions-preflight.md)
-for actual role assignment and acceptance testing.
+Presenter setup selections remain only in browser `localStorage`. They contain no
+credentials or user identifiers and are not synchronized. Use the
+[admin setup guide](permissions-preflight.md) for demo and lab access planning.
 
 ## Share it
 

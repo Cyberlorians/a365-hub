@@ -41,7 +41,7 @@ Later demos should prove each one in the customer's language.
 
 ## Slide 8 — The ask (1:00)
 
-Do not ask for a purchase based on slides alone. Offer an E7 readiness conversation:
-inventory the agent estate, assess one priority use case, and pilot Agent 365 controls.
+Do not ask for a purchase based on slides alone. Offer one easy next step: list the agents
+the customer already has, choose one useful example, and try the Agent 365 controls.
 
 Close with: “Where would better visibility and control let you adopt agents faster?”

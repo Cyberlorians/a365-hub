@@ -9,7 +9,7 @@
 
 # 1. Agents are already here
 
-## Can you see them, govern them, and secure them?
+## Can you see them, control them, and keep them safe?
 
 Microsoft 365 E7 · Microsoft Agent 365
 
@@ -19,21 +19,20 @@ Microsoft 365 E7 · Microsoft Agent 365
 
 Agents can:
 
-1. **Access** company data and applications.
-2. **Act** through tools, APIs, and workflows.
-3. **Scale** faster than manual oversight.
+1. **Read** — agents can use company data.
+2. **Do** — agents can use tools and take action.
+3. **Grow** — teams can create many agents quickly.
 
-The opportunity is real. So is the need for control.
+Agents can help your business. They also need rules.
 
 ---
 
 # 3. Can you answer these questions today?
 
-- What agents exist—and where?
-- Who owns each one?
-- What data and tools can they reach?
-- What did they do?
-- Can you stop them?
+- What agents do we have?
+- Who is in charge of each agent?
+- Which data and tools can it use?
+- What did it do, and can we stop it?
 
 This is the enterprise agent control gap.
 
@@ -43,19 +42,19 @@ This is the enterprise agent control gap.
 
 ## One control plane to:
 
-- **Observe** agents, adoption, activity, and health.
-- **Govern** ownership, lifecycle, access, and compliance.
-- **Secure** agent identities, data, and runtime activity.
+- **Observe** — see your agents in one place.
+- **Govern** — set owners, access, and rules.
+- **Secure** — protect agents and company data.
 
-Microsoft and supported ecosystem agents. Familiar admin and security workflows.
+In plain words: **see them, control them, protect them.**
 
 ---
 
-# 5. Every agent needs a governed identity
+# 5. Every agent needs its own work ID
 
-**Owner → Agent identity → Access → Activity → Containment**
+**Owner → Work ID → Allowed access → Activity → Stop button**
 
-Microsoft Entra Agent ID extends identity and security controls to AI agents.
+Microsoft Entra Agent ID gives agents an identity you can protect.
 
 Identity makes agent access attributable, authorized, observable, and containable.
 
@@ -65,29 +64,29 @@ Identity makes agent access attributable, authorized, observable, and containabl
 
 Microsoft 365 E7 brings together:
 
-- **Agent 365** — the control plane for agents;
-- **Microsoft Entra** — identity, access, and network controls;
-- **Microsoft Defender and Purview** — threat, data, and compliance protection;
-- **Microsoft 365 AI** — secure AI and agent creation for work.
+- **Agent 365** — see and control agents;
+- **Microsoft Entra** — control identity and access;
+- **Microsoft Defender and Purview** — protect activity and data;
+- **Microsoft 365 AI** — build and use AI at work.
 
-## Agent 365 is included in Microsoft 365 E7.
-
----
-
-# 7. Turn adoption into controlled scale
-
-1. **Visibility** — know what agents exist.
-2. **Risk insight** — understand identities, access, and exposure.
-3. **Control** — apply policy, detect threats, and respond.
-
-Move from experimentation to production with confidence.
+## Agent 365 comes with Microsoft 365 E7.
 
 ---
 
-# 8. Start with your agent estate
+# 7. Grow AI use and stay in control
 
-1. **Discover** agents, owners, and platforms.
-2. **Assess** access, data, and business risk.
-3. **Pilot E7** with one real agent use case.
+1. **See** — know which agents you have.
+2. **Understand** — know what each agent can reach.
+3. **Control** — set rules and stop bad activity.
+
+Move from a small test to real work with confidence.
+
+---
+
+# 8. Start with the agents you already have
+
+1. **Find** — list your agents and owners.
+2. **Check** — see what data and tools they use.
+3. **Try E7** — use one real agent to prove the value.
 
 ## The next conversation: where would visibility and control unlock safe adoption?
