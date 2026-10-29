@@ -1,98 +1,39 @@
 # Module 1 Facilitator Guide
 
-## Delivery target
+**Content review draft.** Use the [notes](speaker-notes.md) for all eighteen slides.
+The 25-minute core starts at slide 6; five planned onboarding slides sit outside it.
 
-Guide attendees through lab sign-in, then deliver a 17–23 minute security-first Module 1
-that positions Agent 365 and Microsoft 365 E7 without fear or unnecessary complexity.
+## Delivery
 
-## Preparation checklist
+- Lead with secure AI adoption, the dual attack surface, and one customer case.
+- Use one preflighted Registry view or clearly labeled verified prior-run screenshot.
+  The published fictional card is neither.
+- Explain the five Entra pillars without five demos. Keep deep flow/authority work
+  for Module 3; do not promise CA on every exchange or universal gateway coverage.
+- Explain Purview supported data controls, owned improvement evidence, and the
+  Defender/ISOC loop. Do not add three live portal transitions.
+- Close with the four-point check on slide 16; target at least 3/4 including question 3.
+- Handoff to the separate [Module 2 draft](../module-02/README.md).
 
-- [ ] Open the [interactive deck](index.html), press `?`, and test navigation/fullscreen.
-- [ ] Test the event form, email, TAP, and sign-in link end to end.
-- [ ] Complete the [admin setup guide](permissions-preflight.md). The audience needs no
-      admin permissions; it needs only the workshop lab account.
-- [ ] Confirm current product terminology against [sources.md](sources.md).
-- [ ] Confirm the current E7 and Agent 365 licensing statement against Microsoft sources.
-- [ ] Sign in with the presenter account and open Agent Registry, Purview AI observability,
-      and Defender real-time protection.
-- [ ] Do not promise that every build lab produces every Agent ID object; verify in the lab
-      tenant and describe only what learners actually observe.
+## Review and preparation gates
 
-## Audience calibration
+Content review precedes test users, fake-data fixtures, simulator execution, and
+automation. Then approve the isolated environment, actual roles/entitlements,
+presentation/evidence mode, cost/run bounds, and exact reset manifest.
+No broad admin roles for attendees, policy bypass, or silent account-age cleanup.
 
-### Identity-heavy audience
+## Recovery
 
-Spend less time on the classic app analogy. Ask learners to contrast delegated authority
-with workload identity and reserve protocol questions for Module 2.
+| Problem | Response |
+|---|---|
+| Identity-only interpretation | Revisit slide 9; distinguish injection-time versus later identity evidence |
+| Missing actual agent view | Keep fictional/labeled screenshot mode explicit; do not claim inventory success |
+| Empty/late telemetry | State missing/late coverage; do not infer safety |
+| Portal/role unavailable | Use approved prior-run evidence or narrow scope; do not elevate learners |
+| Onboarding trouble | Confirm real event setup with the owner after approval; do not activate signup in the draft |
+| Time overrun | Remove extra demos, not the control/evidence caveats or knowledge check |
 
-### SOC-heavy audience
-
-Emphasize attribution: sign-in, decision, tool call, target, result, and containment. Do not
-turn Module 1 into a KQL session.
-
-### Maker-heavy audience
-
-Use the three scenarios and connect every tool/API addition to permissions and an owner.
-Avoid implying builders must become identity administrators.
-
-### Executive-heavy audience
-
-Lead with accountability and the operating model. Keep object vocabulary to recognition
-level and anchor the value proposition in safe scale—not fear.
-
-## Validation rubric
-
-A customer has understood the story when they can state:
-
-1. agents create a visibility and control gap because they access data and take action;
-2. Agent 365 helps organizations observe, govern, and secure agents;
-3. Entra controls identity, Purview protects data, and Defender protects runtime activity;
-4. Agent 365 is included in Microsoft 365 E7;
-5. every review asks what, who, which access, and what happened.
-
-## Misconception recovery
-
-| Misconception | Response |
-|---------------|----------|
-| “Anything using an LLM is an agent.” | Ask whether it uses tools, takes actions, has durable state, or runs without a prompt. Classify behavior, not branding. |
-| “Agentic AI and autonomous agents are identical.” | Autonomy is a spectrum. An interactive tool-using agent may remain under human authority; an autonomous agent acts independently. |
-| “Agent ID and Agent 365 are the same product.” | Agent ID is the identity/security framework. Agent 365 is the broader fleet control plane that integrates identity, administration, observability, compliance, and defense. |
-| “An agent user replaces the agent identity.” | The user is optional and paired 1:1 for user-shaped resources. The agent identity remains primary. |
-| “A service principal is good enough for every agent.” | Current Microsoft guidance recommends purpose-built agent identities because traditional service principals lack agent-aware sponsorship, audit, and blueprint lifecycle. |
-| “The blueprint is just documentation.” | It is an Entra object and authentication foundation used to create/manage agent identities. The architecture details come next. |
-
-## Hard boundaries
-
-Do not:
-
-- teach detailed token exchange in Module 1;
-- enumerate privileged role exceptions;
-- claim every Copilot or third-party agent already has an Agent ID;
-- claim licensing is uniform across all controls;
-- use a production tenant for demonstrations;
-- make numerical scale claims without revalidating current service limits.
-
-## Delivery modes
-
-### Standard 25–35 minute mode
-
-Use all 18 slides. Slides 1–5 are attendee prerequisites. Slides 6–18 are official Module
-1. Learners act only during prerequisites and watch the administrator on slides 10, 14,
-and 16.
-
-### Five-minute executive mode
-
-Skip prerequisites only when accounts are already validated. Use slides 6, 8, 9, 12, 13,
-15, 17, and 18.
-
-### Virtual mode
-
-Use a poll on slide 3: inventory, ownership, access, or activity/containment.
-
-## Transition into the build lab
-
-Close with:
-
-> “We have the business question: how do we scale agents without losing control? Now we
-> will build one, reveal its identity and access, and prove the visibility, risk, and
-> control story behind Microsoft 365 E7.”
+Rehearse with another facilitator; confirm source/HTML/notes parity, keyboard/notes/
+print behavior, proposed 25-minute timing, and explicit release mode.
+See [permissions](permissions-preflight.md), [exercise](exercise.md),
+and [master plan](../../docs/06-customer-learning-plan.md).

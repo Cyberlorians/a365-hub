@@ -1,10 +1,17 @@
-name: Publish Module 1 interactive deck
+name: Publish A365 Hub workshop modules
 
 on:
   push:
     branches: [main]
     paths:
       - "slides/module-01/**"
+      - "slides/module-02/**"
+      - "slides/module-01-what-is-agent-id.md"
+      - "labs/module-02-business-agent.md"
+      - "docs/**"
+      - "grounding/**"
+      - "README.md"
+      - "scripts/check-workshop.mjs"
       - ".github/workflows/module-01-pages.yml"
   workflow_dispatch:
 
@@ -27,13 +34,28 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Validate workshop packages
+        run: node scripts/check-workshop.mjs
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload interactive deck
+      - name: Stage both standalone presentations
+        shell: bash
+        run: |
+          mkdir -p _site/module-02
+          cp slides/module-01/index.html _site/index.html
+          cp slides/module-01/speaker-notes.md _site/speaker-notes.md
+          cp slides/module-01/exercise.md _site/exercise.md
+          cp slides/module-02/index.html _site/module-02/index.html
+          cp slides/module-02/speaker-notes.md _site/module-02/speaker-notes.md
+          cp labs/module-02-business-agent.md _site/module-02/lab.md
+          touch _site/.nojekyll
+
+      - name: Upload workshop site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: slides/module-01
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment

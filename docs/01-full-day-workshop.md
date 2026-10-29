@@ -1,97 +1,59 @@
-# A365 Hub — Full-Day Workshop Agenda
+# A365 Hub: Full-Day Security Workshop
 
-**Format:** Instructor-led, ~1 day (7 hrs content + breaks). Blends Microsoft's **"Agent in a Day"**
-builder track with the A365 Hub **identity & security** track, so learners *build* an agent, then
-*see its identity*, *secure it*, and *detect abuse of it*.
+**Status:** Proposed core-day agenda. Modules 1-2 have public content drafts;
+Modules 3-8 require complete activity packages and validation.
 
-- MS Learn path (build): https://learn.microsoft.com/training/paths/agents-online-workshop/
-- Instructor-led "Agent in a Day": https://aka.ms/AGIAD
-- Grounding: [`../grounding/`](../grounding/) · Module map: [`00-project-outline.md`](00-project-outline.md)
+The [master plan](06-customer-learning-plan.md) defines each module's playbook focus,
+risk, control, activity, evidence, decision, source contribution, and preparation needs.
+The core uses one customer story, not four classroom agent deployments.
 
-**Prereqs per learner:** every attendee is **temporarily licensed** with an M365 Copilot / Copilot
-Studio environment, Entra admin center access to a shared safe lab tenant, and Defender XDR access
-(advanced hunting). Because licensing is temporary, all build blocks are **fully hands-on** and the
-day ends with a **teardown/deprovision** step (Block 8).
+## Proposed seven-hour agenda
 
----
+| Time | Block | Minutes |
+|---|---|---:|
+| 09:00-09:15 | Approved onboarding/access check | 15 |
+| 09:15-09:40 | [Module 1: See It. Control It. Protect It.](https://cyberlorians.github.io/a365-hub/#slide-6) | 25 |
+| 09:40-10:15 | [Module 2: Establish the Approved Agent Baseline](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | 35 |
+| 10:15-10:30 | Break | 15 |
+| 10:30-11:05 | Module 3: Identity, Authority, and Blast Radius | 35 |
+| 11:05-11:45 | Module 4: Governance and Lifecycle | 40 |
+| 11:45-12:30 | Lunch | 45 |
+| 12:30-13:10 | Module 5: Data Protection and Control Evidence | 40 |
+| 13:10-13:50 | Module 6: Compromise and Misuse | 40 |
+| 13:50-14:05 | Break | 15 |
+| 14:05-15:20 | Module 7: Investigate and Contain in Defender / ISOC | 75 |
+| 15:20-16:00 | Module 8: Prove Readiness and Plan Adoption | 40 |
 
-## The "build it and secure it" spine
+Instruction **330** + onboarding **15** + lunch **45** + breaks **30** = **420 minutes**.
+The proposed first slice is 60 instructional minutes plus onboarding, not a full-day release.
+Independent rehearsal must confirm the timeboxes.
 
-| MS Learn module (build) | A365 Hub overlay (secure) |
+## What changes during the day
+
+| Progression | Evidence/output |
 |---|---|
-| Build agents in Copilot Chat (declarative) | What identity did that create? Classic app/SP vs. agent identity |
-| Build a conversational agent in Copilot Studio | Agent ID objects: blueprint → principal → agent identity → agent user |
-| Use tools in Copilot Studio | Permissions: direct vs. inheritable vs. restricted; blast radius |
-| Make your agent autonomous | Attack paths + detect/respond/govern; disable & Conditional Access |
+| Frame risk and define normal | Readiness worksheet and actual agent passport |
+| Understand and govern authority | Actual object/grant map and access/lifecycle decision |
+| Protect data | Supported DLP result and owned Compliance Manager action |
+| Recognize and investigate misuse | Attributed scenario evidence and a scoped response/retest |
+| Decide adoption | Four scored findings and an accountable 30-day pilot |
 
----
+Every stage keeps the Agent Identities playbook focus. A valid sign-in does not prove
+safe runtime behavior; an absent identity signal does not make the action safe.
+Correlate the appropriate runtime/tool, data/workload, identity, and supported network
+evidence. Do not mix the separate GBB and toolkit target streams without proof.
 
-## Timeboxed agenda
+## Preparation and optional tracks
 
-### 08:30 – 09:00 · Welcome & framing (0:30)
-- Generative AI vs Agentic AI vs AI Agents (ref image 2).
-- The day's promise: build four agents, and secure/detect each one.
-- Lab tenant + access check.
+Review the content before provisioning. Then approve isolated accounts/resources,
+actual licenses/roles/consents, cost/run limits, synthetic data, evidence handling, and
+cleanup. Presenter admin views do not justify learner admin roles.
 
-### 09:00 – 10:00 · Block 1 — Declarative agent in Copilot Chat (1:00)
-- **Build (MS):** create a customer-service declarative agent from template + from scratch.
-- **Secure (A365):** inspect the resulting identity. Agents *with* vs *without* agent identities;
-  where agents show up (Copilot Studio, Foundry, Security Copilot, Agent 365 / E7).
+Full SDK, maker/Agent-in-a-Day, AWS, GSA/TLS, ISOC enrollment, workbooks, connectors,
+generated playbooks, and automated scoring are optional separately validated tracks.
+Do not add them as hidden prerequisites for Modules 1-2. Existing Sentinel customers
+keep their supported experience; do not disconnect Sentinel for ISOC preview.
 
-### 10:00 – 10:15 · Break
-
-### 10:15 – 11:30 · Block 2 — Conversational agent in Copilot Studio (1:15)
-- **Build (MS):** import solution, build with natural language, add knowledge sources.
-- **Secure (A365):** Anatomy of Entra Agent ID — the four objects; credentials live only on the
-  blueprint; the two-hop token exchange. Portal walkthrough: Entra ID → Agents.
-
-### 11:30 – 12:30 · Block 3 — Tools & permissions (1:00)
-- **Build (MS):** add tools, build a custom prompt, run an order cancellation via agent flow.
-- **Secure (A365):** permissions model — direct / inheritable / restricted; review Access → Granted
-  permissions; **the blueprint blast radius** (anchor deck from Datadog part 1).
-
-### 12:30 – 13:15 · Lunch
-
-### 13:15 – 14:15 · Block 4 — Autonomous agents (1:00)
-- **Build (MS):** autonomous triggers, conditional triggers, test/validate, monitor, publish.
-- **Secure (A365):** why autonomy raises the stakes — over-privileged agents, Tier-0 permissions
-  still assignable (`UserAuthMethod-*`, `RoleAssignmentSchedule.ReadWrite.Directory`, Azure Owner).
-
-### 14:15 – 15:00 · Block 5 — Attack paths (0:45)
-- Story-driven demo: cross-tenant blueprint compromise → TAP → Global Admin (Datadog part 2).
-- Ownership abuse & consent phishing (Compass). Enterprise AI security best-practices overlay (image 1).
-
-### 15:00 – 15:15 · Break
-
-### 15:15 – 16:15 · Block 6 — Detect, respond, govern (1:00)
-- Audit/sign-in mapping (`agentType`, `agentSignIn`; create = "add service principal").
-- Defender XDR `AIAgents` table + advanced hunting; deploy a **custom detection rule** together.
-- Respond: disable (object-scoped) + 3 Conditional Access block policies (report-only first).
-
-### 16:15 – 16:55 · Block 7 — Capture the Flag (0:40)
-- Mixed challenges (not all KQL): find the over-privileged agent, the foreign blueprint, the
-  secret-authenticating blueprint; write one detection. Scoreboard + prizes.
-
-### 16:55 – 17:10 · Block 8 — Teardown & wrap (0:15)
-- Disable/delete the agents and blueprints each learner created (object-scoped disable in the portal;
-  delete via Microsoft Graph). Confirm no orphaned agent identities/blueprints remain.
-- Reconcile temporary license reclamation + lab-tenant cleanup checklist.
-- Wrap & next steps; share the repo + takeaways.
-
----
-
-## Facilitator notes
-- Each block = ~30–45 min build + 20–30 min secure. Keep the lab tenant separate from anything real.
-- All attendees are temporarily licensed → every build block is hands-on; still keep pre-baked agents +
-  screenshots as a fallback so the security overlay runs even if a learner's build stalls.
-- Attack demos are **read-only / narrated** unless run in an isolated throwaway tenant.
-- Temporary licensing = plan reclamation: track who built what, and run Block 8 teardown before licenses
-  expire so nothing is left dangling (dangling agent identities/blueprints are a real risk, not just cleanup).
-
-## To build for delivery (backlog)
-- [x] Module 1 content package (slides, notes, exercise, handout, facilitator guide).
-- [ ] Apply visual design/export to Module 1 and build slide packages for Blocks 1–8.
-- [ ] Portal walkthrough lab + screenshots in `labs/`.
-- [ ] `AIAgents` advanced-hunting queries + 3 custom detections in `detections/`.
-- [ ] CTF challenge set + answer key + scoreboard.
-- [ ] Instructor run-of-show one-pager + learner prereq checklist.
+Teardown is scoped to the approved run manifest and verified during preparation/reset;
+the capstone does not authorize broad agent or tenant deletion. See the
+[data/automation matrix](06-customer-learning-plan.md#16-per-module-data-and-automation-preparation).

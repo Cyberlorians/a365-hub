@@ -1,46 +1,34 @@
-# Grounding Sources
+# Grounding and Source Index
 
-Curated source material for the A365 Hub agentic identity curriculum.
+**Updated October 29, 2026.** Product behavior comes from Microsoft Learn.
+The Cloud-Architekt Agent Identities chapter is the required security spine in every
+module. A reviewed source does not prove a deployment, entitlement, or reuse permission.
 
-## Datadog Security Labs — Entra Agent ID series (Katie Knowles)
+The complete **39-entry source register**, immutable reviewed revisions, and product
+boundaries are in the [master plan](../docs/06-customer-learning-plan.md#14-grounding-and-traceability).
+The [integration map](integration-map.md) explains exactly what we reuse, adapt, or author.
 
-1. **The blueprint blast radius** (Jun 11, 2026) — how the agent identity model works; blueprints, blueprint principals, agent identities, agent users; blast radius vs. classic app model.
-   https://securitylabs.datadoghq.com/articles/agent-id-blueprint-blast-radius/
-2. **Inside a cross-tenant agent compromise** (Jun 18, 2026) — full attack: compromise a third-party blueprint, pivot cross-tenant, escalate to Global Admin via TAP.
-   https://securitylabs.datadoghq.com/articles/agent-id-inside-agent-compromise/
-3. **Protect, detect, respond** (Jul 6, 2026) — restrict roles/permissions, avoid blueprint secrets, monitor credential adds, disable/delete agents.
-   https://securitylabs.datadoghq.com/articles/agent-id-protect-detect-respond/
+| Source family | Role |
+|---|---|
+| [Cloud-Architekt Agent Identities](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/09e9d2365e89c1eedb36c8a01ac0a3dcbb229a27/AgentIdentities.md) | Dual attack surfaces, objects/authority, management and ownership risks, LOAT, investigation, mitigations |
+| [Microsoft Learn Agent 365](https://learn.microsoft.com/microsoft-agent-365/overview) | Current supported platform behavior and prerequisites |
+| [Entra governance](https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview), [CA](https://learn.microsoft.com/entra/identity/conditional-access/agent-id), [agent risk](https://learn.microsoft.com/entra/id-protection/concept-risky-agents) | Five-pillar control structure, flow/role/licensing boundaries |
+| [Purview for Agent 365](https://learn.microsoft.com/purview/ai-agent-365), [DLP](https://learn.microsoft.com/purview/dlp-learn-about-dlp), [Compliance Manager](https://learn.microsoft.com/purview/compliance-manager) | Supported data controls and owned improvement evidence |
+| [Defender agent investigation](https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-detection-protection), [ISOC](https://learn.microsoft.com/defender-xdr/isoc-overview) | Evidence, response, operating model and eligibility |
+| [Stefano's a365-lab-toolkit](https://github.com/stefanpems/a365-lab-toolkit/tree/1a1d3f5253771a20915fa519aaaa58f576a5cf35) | Candidate runtime/UI, documented internal-mail task, selected governance and observability |
+| [GBBLabs](https://github.com/mcaps-microsoft/GBBLabs) | Selected approved SDK/setup, workload case and hunting patterns; authorization may be required |
+| [Blue16 Secure AI](https://blue16.nl/secure-ai-explainer.html#why) and [ISOC Explained](https://blue16.nl/isoc-explainer.html) | Inspiration for original explanations, not copied code/artwork or pricing authority |
 
-## Microsoft Learn — Entra Agent ID
+## Prior research retained for context
 
-- What is Microsoft Entra Agent ID — https://learn.microsoft.com/entra/agent-id/what-is-microsoft-entra-agent-id
-- Key concepts — https://learn.microsoft.com/entra/agent-id/key-concepts
-- Disable agent identities in your tenant — https://learn.microsoft.com/entra/agent-id/disable-agent-identities
-- Agent blueprint — https://learn.microsoft.com/entra/agent-id/agent-blueprint
-- Configure inheritable permissions — https://learn.microsoft.com/entra/agent-id/configure-inheritable-permissions-blueprints
-- Autonomous agent app OAuth flow — https://learn.microsoft.com/entra/agent-id/agent-autonomous-app-oauth-flow
-- On-behalf-of OAuth flow — https://learn.microsoft.com/entra/agent-id/agent-on-behalf-of-oauth-flow
-- Agent's user account OAuth flow — https://learn.microsoft.com/entra/agent-id/agent-user-oauth-flow
-- Sign-in / audit logs for agents — https://learn.microsoft.com/entra/agent-id/sign-in-audit-logs-agents
-- ID Protection for risky agents — https://learn.microsoft.com/entra/id-protection/concept-risky-agents
+- [Datadog Agent ID series](datadog-agent-id-series.md)
+- [Compass ownership/consent research](compass-agent-id-security.md)
+- [Object-scoped disable research](ms-learn-disable-agent-identities.md)
+- [Reference-image notes](reference-images.md)
 
-## Microsoft Learn — Workshops / training
+Historical notes can contain obsolete portal, table, integration, or licensing statements.
+Use current Microsoft Learn and actual tenant validation before delivery. No raw GBB
+extract or external source-code/screenshot collection is redistributed here.
 
-- Agent in a Day (online workshop learning path) — https://learn.microsoft.com/training/paths/agents-online-workshop/
-- Agent in a Day (instructor-led) — https://aka.ms/AGIAD · events https://aka.ms/nextAgIAD
-
-## Microsoft Learn — Agent 365 / third-party agents
-
-- Third-party agents — https://learn.microsoft.com/microsoft-agent-365/third-party-agents
-- Agent ID platform overview (blocked Graph permissions) — https://learn.microsoft.com/graph/api/resources/agentid-platform-overview
-
-## Third-party research & tooling
-
-- Compass Security — Entra Agent ID from a Security Perspective — https://blog.compass-security.com/2026/06/entra-agent-id-from-a-security-perspective/
-- Red Canary — Investigating suspicious AI workflows (Entra + Teams) — https://redcanary.com/blog/threat-detection/entra-id-ai-workflows-teams/
-- Eric Woodruff — Spying on your ISV's credential choices — https://ericonidentity.com/2025/01/13/spying-on-your-isvs-credential-choices/
-- AzTier (Azure Administrative Tiering) — https://aztier.com/
-- EntraFalcon (Compass assessment tool) — https://github.com/CompassSecurity/EntraFalcon
-- EntraTokenAid (auth flow tooling) — https://github.com/zh54321/EntraTokenAid
-- Katie Knowles — GitHub https://github.com/siigil · site https://kknowl.es/
-- "Who Are the Robots? Uncovering AI Agents" (video) — https://www.youtube.com/watch?v=mMxACHKIAwY
+Cloud-Architekt contributor-owned material is MIT; preserve notices when reusing it.
+Third-party assets and toolkit/GBB material need separate rights review.

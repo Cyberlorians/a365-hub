@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Private review drafts: reworked A365 Hub Module 1 and rough Module 2. No accounts, deployments, or messages are created.">
+  <title>A365 Hub | Module 2 content draft</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme = param === "light" || param === "dark"
+        ? param
+        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--cp-bg); color: var(--cp-text); font: 18px/1.5 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    a { color: var(--cp-link); text-underline-offset: 3px; }
+    button, select { font: inherit; color: var(--cp-text); }
+    .button { display: inline-flex; align-items: center; text-decoration: none; }
+    button, select, .button { border: 1px solid var(--cp-border-strong); border-radius: .625rem; background: var(--cp-surface); padding: 8px 12px; min-height: 44px; cursor: pointer; }
+    button:hover, .button:hover { border-color: var(--cp-accent); background: var(--cp-accent-soft); }
+    button[aria-pressed="true"], .primary { background: var(--cp-accent); color: var(--cp-accent-fg); border-color: var(--cp-accent); }
+    button[aria-pressed="true"]:hover, .primary:hover { background: var(--cp-accent-hover); }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    :focus-visible { outline: 3px solid var(--cp-accent); outline-offset: 4px; }
+    .skip { position: absolute; top: -100px; left: 16px; z-index: 20; background: var(--cp-surface); padding: 12px; }
+    .skip:focus { top: 8px; }
+    header { border-bottom: 1px solid var(--cp-border); background: var(--cp-bg-elevated); padding: 16px 24px; }
+    .top, .toolbar, .row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .top { justify-content: space-between; }
+    .brand { font-size: 24px; font-weight: 750; letter-spacing: -.5px; }
+    .brand span { color: var(--cp-accent); }
+    .draft { color: var(--cp-text-muted); font-size: 14px; margin: 8px 0 0; }
+    .toolbar { justify-content: space-between; margin-top: 12px; }
+    .toolbar .row { gap: 8px; }
+    main { flex: 1; width: min(1160px, 100%); margin: 24px auto; padding: 0 24px; }
+    .slide { background: var(--cp-surface); border: 1px solid var(--cp-border); border-radius: 16px; padding: clamp(20px, 3vw, 40px); min-height: 480px; box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border); }
+    [hidden] { display: none !important; }
+    .eyebrow { color: var(--cp-accent); text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 750; margin: 0 0 8px; }
+    h1 { font-size: clamp(36px, 5vw, 60px); line-height: 1.08; letter-spacing: -1.5px; margin: 8px 0 20px; }
+    h2 { font-size: clamp(28px, 3.5vw, 42px); line-height: 1.16; letter-spacing: -.6px; margin: 0 0 20px; }
+    h3 { font-size: 21px; margin: 0 0 8px; }
+    p { margin: 12px 0; }
+    .lede { font-size: 23px; color: var(--cp-text-muted); max-width: 76ch; }
+    .muted, .small { color: var(--cp-text-muted); }
+    .small { font-size: 15px; }
+    .grid { display: grid; gap: 16px; margin: 20px 0; }
+    .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .card { border: 1px solid var(--cp-border); border-radius: 16px; padding: 20px; background: var(--cp-bg-elevated); min-width: 0; }
+    .card p:last-child { margin-bottom: 0; }
+    .callout { border-left: 4px solid var(--cp-accent); background: var(--cp-accent-soft); padding: 16px 20px; border-radius: .625rem; margin: 20px 0; }
+    .quote { font-size: clamp(24px, 3vw, 34px); font-weight: 650; line-height: 1.3; }
+    ul, ol { padding-left: 24px; margin: 12px 0; }
+    li { margin: 8px 0; }
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; font-size: 16px; }
+    th, td { text-align: left; vertical-align: top; border-bottom: 1px solid var(--cp-border); padding: 12px; }
+    th { background: var(--cp-surface-soft); font-weight: 650; }
+    caption { text-align: left; font-weight: 650; padding-bottom: 8px; }
+    code, pre, kbd { font-family: Consolas, "Courier New", Courier, monospace; }
+    code, pre { background: var(--cp-surface-soft); overflow-wrap: anywhere; }
+    code { padding: 2px 4px; }
+    pre { border: 1px solid var(--cp-border); border-radius: .625rem; padding: 16px; white-space: pre-wrap; font-size: 16px; }
+    kbd { border: 1px solid var(--cp-border); padding: 2px 6px; border-radius: 4px; background: var(--cp-surface-soft); }
+    details { border: 1px solid var(--cp-border); border-radius: .625rem; padding: 12px 16px; margin-top: 16px; }
+    summary { cursor: pointer; font-weight: 650; }
+    .notes { background: var(--cp-bg-elevated); border: 1px solid var(--cp-border-strong); border-radius: 16px; padding: 24px; margin-top: 20px; }
+    .notes h2 { font-size: 24px; }
+    footer { border-top: 1px solid var(--cp-border); padding: 12px 24px; background: var(--cp-bg-elevated); }
+    .navigation { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    #slideCount { min-width: 120px; text-align: center; font-variant-numeric: tabular-nums; }
+    #jump { width: min(380px, 100%); max-width: 100%; }
+    progress { width: 100%; height: 6px; display: block; border: 0; accent-color: var(--cp-accent); background: var(--cp-border); }
+    progress::-webkit-progress-bar { background: var(--cp-border); }
+    progress::-webkit-progress-value { background: var(--cp-accent); }
+    progress::-moz-progress-bar { background: var(--cp-accent); }
+    dialog { width: min(1000px, calc(100vw - 32px)); max-height: 88vh; overflow: auto; border: 1px solid var(--cp-border-strong); border-radius: 16px; background: var(--cp-surface); color: var(--cp-text); padding: 24px; }
+    dialog::backdrop { background: var(--cp-overlay); }
+    .dialog-head { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
+    .dialog-head h2 { font-size: 28px; }
+    .check { display: flex; gap: 12px; margin: 16px 0; }
+    .check input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--cp-accent); }
+    #error { color: var(--cp-danger); border: 1px solid var(--cp-danger); padding: 12px; }
+    @media (max-width: 760px) {
+      body { font-size: 17px; }
+      header, footer { padding: 12px 16px; }
+      main { padding: 0 12px; margin: 12px auto; }
+      .two, .three, .four { grid-template-columns: 1fr; }
+      .slide { min-height: 0; padding: 24px 20px; }
+      .lede { font-size: 20px; }
+      .toolbar, .top { align-items: start; }
+      table { min-width: 560px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+    @media print {
+      body { display: block; background: var(--cp-surface); font-size: 12pt; }
+      header, footer, progress, .notes, dialog, #error, .skip { display: none !important; }
+      main { width: 100%; margin: 0; padding: 0; }
+      .module[hidden], .slide[hidden] { display: block !important; }
+      .slide { box-shadow: none; min-height: 0; border: 0; border-radius: 0; padding: 12mm; break-after: page; break-inside: avoid; }
+      .module:last-of-type .slide:last-child { break-after: auto; }
+      h1 { font-size: 30pt; } h2 { font-size: 25pt; } h3 { font-size: 16pt; }
+      .lede { font-size: 15pt; } .small { font-size: 10pt; } table { font-size: 11pt; min-width: 0; }
+      .table-wrap { overflow: visible; } .two { grid-template-columns: 1fr 1fr; } .three { grid-template-columns: repeat(3, 1fr); } .four { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#deck">Skip to current slide</a>
+  <header>
+    <div class="top">
+      <div class="brand">A365 Hub <span>/ Module 2 draft</span></div>
+      <nav class="row" aria-label="Choose module">
+        <a class="button" href="https://cyberlorians.github.io/a365-hub/#slide-6">Module 1 - Reworked</a>
+        <a class="button primary" aria-current="page" href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1">Module 2 - Rough draft</a>
+      </nav>
+    </div>
+    <p class="draft"><strong>Published content draft - October 29, 2026.</strong> No test users, deployments, mail, or security telemetry have been created. Runtime steps are proposals, not validated results.</p>
+    <div class="toolbar">
+      <div class="row">
+        <a id="coreLink" href="#slide-6">Start Module 1 core</a>
+        <button type="button" id="notesToggle" aria-expanded="false" aria-controls="notesPanel">Notes (N)</button>
+        <button type="button" data-dialog="dataDialog">Data &amp; automation</button>
+        <button type="button" data-dialog="sourcesDialog">Sources</button>
+        <a href="https://github.com/Cyberlorians/a365-hub/blob/main/docs/06-customer-learning-plan.md">Master plan</a>
+        <a href="https://github.com/Cyberlorians/a365-hub/blob/main/labs/module-02-business-agent.md">Learner guide</a>
+      </div>
+      <div class="row">
+        <button type="button" data-dialog="readinessDialog">Preflight (R)</button>
+        <button type="button" id="fullscreen">Fullscreen (F)</button>
+        <button type="button" id="print">Print</button>
+        <button type="button" data-dialog="helpDialog" aria-label="Open keyboard and review help">Help (?)</button>
+      </div>
+    </div>
+  </header>
+  <progress id="progress" max="8" value="1" aria-label="Position in current module"></progress>
+  <main id="deck" tabindex="-1">
+    <noscript><p class="callout">JavaScript is required for navigation. All slides remain available when this file is printed from a JavaScript-enabled browser. No external services are used by the presentation.</p></noscript>
+    <p id="error" role="alert" hidden></p>
+    <div class="module" data-module="2" data-name="Establish the Approved Agent Baseline" hidden>
+      <section class="slide" data-title="Establish the approved agent baseline" data-minutes="2" data-phase="core" hidden>
+        <p class="eyebrow">Module 2 / Rough draft / 35 proposed minutes</p>
+        <h1>Meet the agent.<br>Define normal.</h1>
+        <p class="lede">A useful task first. Then actor, authority, data, tools, and evidence.</p>
+        <div class="callout"><strong>Planned lab, not a working demo.</strong> No account, mailbox, agent run, email, or downstream event has been created for this draft.</div>
+        <p class="small">Playbook focus: understand legitimate tool use before investigating living off the agent's tools (LOAT).</p>
+        <template class="speaker-notes"><p><strong>2 minutes.</strong> Candidate: Stefano's documented ACA-OBO runtime/shared UI with internal Mail MCP. We are not inventing a retrieval system or assuming autonomous access. After review, prove the exact route with an approved test identity. Tool execution proves utility, not complete security.</p></template>
+      </section>
+      <section class="slide" data-title="Approve the task, not unlimited access" data-minutes="2" data-phase="core" hidden>
+        <p class="eyebrow">Fictional case / Project Beacon</p>
+        <h2>Approve the task, not unlimited access.</h2>
+        <div class="table-wrap"><table><thead><tr><th>Proposed activity</th><th>Boundary to verify later</th></tr></thead><tbody>
+          <tr><td>Draft a short status email from the supplied synthetic brief</td><td>No production/customer data, retrieval, attachments, or extra sources</td></tr>
+          <tr><td>Review the content and one approved internal recipient</td><td>Review is an activity instruction, not proven technical approval enforcement</td></tr>
+          <tr><td>Explicitly request sending after review</td><td>Actual tool grants, mailbox access, and any recipient/data policy must be checked</td></tr>
+          <tr><td>Verify receipt and attributed evidence</td><td>Health, inference, delivery, registration, and observability are separate checks</td></tr>
+        </tbody></table></div>
+        <template class="speaker-notes"><p><strong>2 minutes.</strong> Prompt instructions do not enforce an allowlist or human approval gate. Use an isolated environment and reviewed permissions before attempting the task. All email addresses in this draft use the reserved .invalid domain; they are not delivery destinations. A real approved internal recipient is a later prerequisite.</p></template>
+      </section>
+      <section class="slide" data-title="Who actually sends the message?" data-minutes="4" data-phase="core" hidden>
+        <p class="eyebrow">Actor and authority / To be confirmed after review</p>
+        <h2>Who actually sends the message?</h2>
+        <div class="grid three"><div class="card"><h3>Signed-in user</h3><p>The candidate task sends from this user's mailbox.</p><p class="small">Example only: learner-01@workshop.invalid</p></div><div class="card"><h3>Agent/runtime</h3><p>Separate registration, app/object IDs, owner, and observability attribution.</p></div><div class="card"><h3>Mail tool</h3><p>Delegated access to a real mailbox is a write capability, not read-only access.</p></div></div>
+        <div class="callout">The sample is named ACA-OBO. Its documented web UI uses <code>MAIL_TOKEN_MODE=direct</code>; do not infer a formal OAuth OBO exchange from the label.</div>
+        <template class="speaker-notes"><p><strong>4 minutes.</strong> Future action: open the prepared UI with the lab identity and confirm tenant/user. No login happens in this draft. Read the actual route before drawing the authority diagram. A365_AGENT_ID for exported telemetry is not automatically the mailbox sender or the same identifier type. No agent user or autonomous flow is assumed. The setup includes a blueprint secret and broad instructor consents, so "secretless end-to-end" and "least privilege proven" are not current claims.</p></template>
+      </section>
+      <section class="slide" data-title="Draft from a synthetic brief" data-minutes="7" data-phase="core" hidden>
+        <p class="eyebrow">Proposed activity / Draft only</p>
+        <h2>Draft from a synthetic brief.</h2>
+        <div class="grid two"><div class="card"><h3>Fictional input</h3><ul><li>Project: Beacon training rollout</li><li>Three of four documentation tasks complete</li><li>Remaining task: review the architecture diagram</li><li>Next milestone: November 6, 2026</li><li>Next action: confirm the review owner by November 3</li></ul></div><div class="card"><h3>Proposed prompt</h3><p>Use only this synthetic brief to draft a 60-80-word internal status email.</p><p><strong>Return draft text only. Do not send or call a sending tool.</strong></p><p>No attachments, added recipients, or invented facts.</p></div></div>
+        <p class="small">These are author-written examples, not model output or telemetry. The companion learner guide contains the exact draft steps.</p>
+        <template class="speaker-notes"><p><strong>7 minutes.</strong> After approval and runtime proof: the learner pastes the safe brief, requests a draft, and checks its facts. All time spent presenting this slide is included in seven minutes; do not add a separate 35-minute lab. Stop if the agent tries an unrequested action. The instruction not to send must not be described as a separately enforced security approval boundary.</p></template>
+      </section>
+      <section class="slide" data-title="Review, request send, verify receipt" data-minutes="5" data-phase="core" hidden>
+        <p class="eyebrow">Proposed activity / Only after approved lab setup</p>
+        <h2>Review. Request send. Verify receipt.</h2>
+        <ol><li>Check the message against the brief.</li><li>Confirm the real approved internal test recipient.</li><li>Explicitly request sending the reviewed message.</li><li>Verify actual receipt, sender, subject, and time.</li></ol>
+        <div class="callout">A draft, a healthy container, or a successful HTTP response is not proof of mail delivery.</div>
+        <p class="small">If the result is uncertain, check for receipt before retrying. Do not duplicate sends or widen permissions to recover.</p>
+        <template class="speaker-notes"><p><strong>5 minutes.</strong> This review file has no send button or connected API. Later replace the .invalid placeholders only with an approved internal recipient. External .onmicrosoft.com delivery can be anti-spam restricted; do not use external mail as the baseline. If auth/tool access fails, stop and record the error with the facilitator; do not bypass CA or add broad consent. Wrong recipient/content is a stop condition.</p></template>
+      </section>
+      <section class="slide" data-title="Find evidence without inventing it" data-minutes="7" data-phase="core" hidden>
+        <p class="eyebrow">Proposed activity / Evidence provenance</p>
+        <h2>Find evidence without inventing it.</h2>
+        <div class="table-wrap"><table><thead><tr><th>Check</th><th>Expected proof after preparation</th><th>Not equivalent</th></tr></thead><tbody>
+          <tr><td>Task</td><td>Actual internal receipt and intended sender</td><td>Draft text or tool success message alone</td></tr>
+          <tr><td>Actor / tool</td><td>Real user, tool/action, target/resource, time, result</td><td>A matching display name</td></tr>
+          <tr><td>Management / telemetry</td><td>Verified registration and actual downstream evidence path</td><td>Exporter configured or empty inventory</td></tr>
+          <tr><td>Control</td><td>Observed supported policy/result, if tested</td><td>Successful delivery proves security</td></tr>
+        </tbody></table></div>
+        <p><strong>Label every record:</strong> current run / verified prior run / synthetic example / missing.</p>
+        <template class="speaker-notes"><p><strong>7 minutes.</strong> After approval, capture actual identifier types and verified join keys; do not equate app IDs with object IDs or sender with exported agent ID. A real, sanitized prior run from the same target can cover ingestion delay if its time/mode are explicit. There is no such validated evidence pack yet. Missing evidence is a coverage finding, not a successful or safe outcome. Mail delivery alone does not establish Agent 365-managed protection.</p></template>
+      </section>
+      <section class="slide" data-title="Complete the agent passport" data-minutes="5" data-phase="core" hidden>
+        <p class="eyebrow">Learner output / Do not fill gaps with guesses</p>
+        <h2>Complete the agent passport.</h2>
+        <div class="grid two"><div class="card"><h3>Identity and authority</h3><ul><li>Purpose and platform/version</li><li>Technical owner and sponsor</li><li>Acting user and identifier types</li><li>Actual access route and grants</li></ul></div><div class="card"><h3>Actions and evidence</h3><ul><li>Tool, resource, allowed data/recipient</li><li>Action, result, and timestamp</li><li>Evidence location, target, and mode</li><li>Open gap and response owner</li></ul></div></div>
+        <div class="callout">Expected boundary: the reviewed synthetic status message to one approved internal recipient. An unexpected recipient or tool needs investigation.</div>
+        <template class="speaker-notes"><p><strong>5 minutes.</strong> The full blank template is in the companion learner guide. At this stage of review, record fields as "not provisioned" or "not verified" rather than supplying fake operational IDs. In eventual public handouts, use placeholders; keep sensitive operational identifiers in approved lab records. Sponsorship and technical rights must be described separately.</p></template>
+      </section>
+      <section class="slide" data-title="Useful does not yet mean secure" data-minutes="3" data-phase="core" hidden>
+        <p class="eyebrow">Debrief / Review gate</p>
+        <h2>Useful does not yet mean secure.</h2>
+        <ol><li>What did the approved task prove?</li><li>What did it not prove about permissions or data protection?</li><li>Which deviation would matter, and where would you look?</li></ol>
+        <p class="lede">Module 3 maps the actual authority. Later modules govern access, test data controls, and investigate misuse.</p>
+        <div class="callout"><strong>Next step:</strong> review this content first. Then approve the test user, fake-data fixtures, runtime preparation, and any scoped automation.</div>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Total proposed Module 2 time: 35 minutes. Completion later requires real receipt, correct authority, evidence, and a defensible boundary explanation. A synthetic example or draft review is not hands-on completion. Prepare one initial test user after approval, then verify two fresh accounts before a learner release. Reuse approved GBB components for later evidence; do not imply GBB's separate model fixture drives this toolkit agent.</p></template>
+      </section>
+    </div>
+    <aside class="notes" id="notesPanel" aria-label="Presenter notes" hidden>
+      <div class="row"><h2 id="notesTitle">Presenter notes</h2><button type="button" id="notesClose">Close notes</button></div>
+      <div id="notesContent"></div>
+    </aside>
+  </main>
+  <footer>
+    <nav class="navigation" aria-label="Slide navigation">
+      <button type="button" id="prev" aria-label="Previous slide">Previous</button>
+      <span id="slideCount" aria-live="polite" aria-atomic="true">Slide 6 / 18</span>
+      <button type="button" id="next" class="primary" aria-label="Next slide">Next</button>
+      <label for="jump" class="small">Jump</label><select id="jump" aria-label="Jump to slide"></select>
+    </nav>
+    <p class="small" style="text-align:center;margin:8px 0 0">Original teaching synthesis. Playbook-led, Microsoft Learn-grounded. Offline-capable; no tracking or external assets.</p>
+  </footer>
+  <dialog id="helpDialog" aria-labelledby="helpTitle">
+    <div class="dialog-head"><h2 id="helpTitle">Review and navigation</h2><button type="button" data-close-dialog>Close</button></div>
+    <p>Use the two module links to open the separate presentations. Module 1 retains its five planned onboarding slides; Start Module 1 core skips to slide 6.</p>
+    <ul><li><kbd>Right</kbd> / <kbd>PageDown</kbd>: next; <kbd>Left</kbd> / <kbd>PageUp</kbd>: previous</li><li><kbd>Home</kbd> / <kbd>End</kbd>: first / last slide in this module</li><li><kbd>N</kbd>: presenter notes; <kbd>R</kbd>: preflight; <kbd>F</kbd>: fullscreen when supported</li><li><kbd>?</kbd>: help; <kbd>Esc</kbd>: close a dialog or notes</li></ul>
+    <p>Touch: horizontal swipe outside controls/tables. Print produces all 8 slides in this module. Use the browser's zoom if needed.</p>
+    <p>Deep links: <code>#slide-6</code> for Module 1 core; <code>/module-02/#slide-1</code> for Module 2.</p>
+    <p><strong>Review focus:</strong> Is the pitch clear? Is the Module 2 task useful? What should change before lab preparation? Nothing in this file creates users, sends mail, or calls a tenant.</p>
+  </dialog>
+  <dialog id="readinessDialog" aria-labelledby="readinessTitle">
+    <div class="dialog-head"><h2 id="readinessTitle">Preparation checklist - not readiness proof</h2><button type="button" data-close-dialog>Close</button></div>
+    <p>These are review aids only. Checking a box does not run or certify a test. State is not stored.</p>
+    <label class="check"><input type="checkbox"><span>Content/story reviewed and approved before provisioning.</span></label>
+    <label class="check"><input type="checkbox"><span>Approved isolated tenant, entitlement, roles, test user and internal recipient.</span></label>
+    <label class="check"><input type="checkbox"><span>Actual runtime, authority, task, and downstream evidence separately verified.</span></label>
+    <label class="check"><input type="checkbox"><span>Scoped fixture/automation plan, cost bounds, manifest, and cleanup approved.</span></label>
+    <label class="check"><input type="checkbox"><span>Two fresh accounts, explicit error recovery, and independent timed rehearsal completed before hands-on release.</span></label>
+    <p class="small">Presenter-only portals remain presenter-only. No default role escalation, bypass, or production-policy change.</p>
+  </dialog>
+  <dialog id="dataDialog" aria-labelledby="dataTitle">
+    <div class="dialog-head"><h2 id="dataTitle">Per-module data and automation considerations</h2><button type="button" data-close-dialog>Close</button></div>
+    <p><strong>Design notes only:</strong> no automation is deployed or executed. Review first; approve the exact environment and resource plan next.</p>
+    <div class="table-wrap"><table><thead><tr><th>Module</th><th>Needed later</th><th>Automation / manual alternative</th></tr></thead><tbody>
+      <tr data-data-module="1"><td>1</td><td>One real/labeled agent view; event access only if delivering onboarding</td><td>No generator required; reuse the approved baseline or sanitized prior-run screenshot</td></tr>
+      <tr data-data-module="2"><td>2</td><td>Isolated user/mailbox, internal recipient, candidate runtime, safe brief, real receipt/evidence</td><td>Reuse approved onboarding/runtime scripts after review; brief can remain static</td></tr>
+      <tr data-data-module="3"><td>3</td><td>Actual IDs/grants/object relationships</td><td>Read-only inventory export or instructor capture; never invent operational joins</td></tr>
+      <tr data-data-module="4"><td>4</td><td>Supported governance case and before/after state</td><td>Scoped access-package fixture after privilege review; labeled prior run if needed</td></tr>
+      <tr data-data-module="5"><td>5</td><td>Synthetic restricted content, supported DLP scope, improvement action</td><td>Scoped policy/test content preparation; manual owned action and test record</td></tr>
+      <tr data-data-module="6"><td>6</td><td>Approved GBB workload fixture plus narrated identity case</td><td>Authorized bounded simulator later, or a verified sanitized evidence pack</td></tr>
+      <tr data-data-module="7"><td>7</td><td>Queryable actual evidence and authorized response/reset</td><td>Read-only evidence capture first; no automatic containment or fabricated security ingestion</td></tr>
+      <tr data-data-module="8"><td>8</td><td>Four flags, answer key, pilot worksheet</td><td>Static pack is sufficient; automated scoring is optional</td></tr>
+    </tbody></table></div>
+    <p>For each proposed automation: owner, least privilege, scope, cost/run limit, idempotency, evidence mode, exact resource manifest, retest, and cleanup. Existing disabled cleanup stays disabled unless separately approved.</p>
+    <p class="small">Full details are in Section 16 of the companion master plan. GBB material requires reuse approval; do not publish its raw extraction or credential workflows.</p>
+  </dialog>
+  <dialog id="sourcesDialog" aria-labelledby="sourcesTitle">
+    <div class="dialog-head"><h2 id="sourcesTitle">Grounding and limitations</h2><button type="button" data-close-dialog>Close</button></div>
+    <p><strong>Required security spine:</strong> <a href="https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/09e9d2365e89c1eedb36c8a01ac0a3dcbb229a27/AgentIdentities.md" target="_blank" rel="noopener noreferrer">Cloud-Architekt Agent Identities</a>. Contributor-owned source is MIT; third-party assets have separate rights. This review uses original wording/diagrams and links.</p>
+    <ul>
+      <li><a href="https://github.com/Cyberlorians/a365-hub/tree/ccf6fcdb0648d20be427aacdc3edd18817b687af/slides/module-01" target="_blank" rel="noopener noreferrer">Existing A365 Hub Module 1</a>: retains the onboarding/core structure and standalone delivery approach.</li>
+      <li><a href="https://github.com/stefanpems/a365-lab-toolkit/blob/1a1d3f5253771a20915fa519aaaa58f576a5cf35/docs/setup-MAF-ACA-OBO.md" target="_blank" rel="noopener noreferrer">Stefano's ACA-OBO setup</a>: documented task/route only, not a deployment validated for this draft.</li>
+      <li><a href="https://learn.microsoft.com/microsoft-agent-365/overview" target="_blank" rel="noopener noreferrer">Agent 365</a>, <a href="https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview" target="_blank" rel="noopener noreferrer">governance</a>, <a href="https://learn.microsoft.com/entra/identity/conditional-access/agent-id" target="_blank" rel="noopener noreferrer">Conditional Access</a>, and <a href="https://learn.microsoft.com/entra/id-protection/concept-risky-agents" target="_blank" rel="noopener noreferrer">agent risk</a>: supported behavior and limits.</li>
+      <li><a href="https://learn.microsoft.com/purview/ai-agent-365" target="_blank" rel="noopener noreferrer">Purview/Agent 365</a>, <a href="https://learn.microsoft.com/purview/dlp-learn-about-dlp" target="_blank" rel="noopener noreferrer">DLP</a>, and <a href="https://learn.microsoft.com/purview/compliance-manager" target="_blank" rel="noopener noreferrer">Compliance Manager</a>: workload-specific data/control evidence.</li>
+      <li><a href="https://learn.microsoft.com/defender-xdr/isoc-overview" target="_blank" rel="noopener noreferrer">ISOC</a>, <a href="https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-detection-protection" target="_blank" rel="noopener noreferrer">agent detection</a>, <a href="https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents" target="_blank" rel="noopener noreferrer">gateway</a>, and <a href="https://learn.microsoft.com/entra/global-secure-access/concept-generative-ai-insights" target="_blank" rel="noopener noreferrer">GenAI Insights</a>: integration/preview limits apply.</li>
+      <li><a href="https://learn.microsoft.com/microsoft-365/copilot/compare-copilot-e3-e5-e7" target="_blank" rel="noopener noreferrer">E3/E5/E7 comparison</a>: recheck feature entitlements and costs before a customer proposal.</li>
+      <li><a href="https://blue16.nl/secure-ai-explainer.html#why" target="_blank" rel="noopener noreferrer">Blue16 Secure AI</a> and <a href="https://blue16.nl/isoc-explainer.html" target="_blank" rel="noopener noreferrer">Blue16 ISOC</a>: teaching inspiration, not copied code or product authority.</li>
+    </ul>
+    <p>Approved local GBB guides inform later setup/hunting/scenarios, not invented Module 2 capabilities. Their raw content is not bundled here. Revalidate product availability, roles, and licensing before delivery.</p>
+  </dialog>
+  <script>
+    (() => {
+      "use strict";
+      const DEFAULT_MODULE = "2";
+      const modules = new Map([...document.querySelectorAll(".module")].map(element => [
+        element.dataset.module, { element, slides: [...element.querySelectorAll(".slide")] }
+      ]));
+      const count = document.getElementById("slideCount");
+      const progress = document.getElementById("progress");
+      const jump = document.getElementById("jump");
+      const notes = document.getElementById("notesPanel");
+      const notesToggle = document.getElementById("notesToggle");
+      const lastPosition = new Map([["1", 5], ["2", 0]]);
+      let moduleId = DEFAULT_MODULE;
+      let current = 0;
+      let touchStart = null;
+      function route() {
+        const match = /^#(?:module-2-)?slide-(\d+)$/.exec(location.hash);
+        return { module: DEFAULT_MODULE, index: match ? Number(match[1]) - 1 : 0 };
+      }
+      function show(index, requestedModule = moduleId) {
+        moduleId = modules.has(requestedModule) ? requestedModule : DEFAULT_MODULE;
+        const selected = modules.get(moduleId);
+        current = Math.max(0, Math.min(selected.slides.length - 1, Number.isFinite(index) ? index : 0));
+        lastPosition.set(moduleId, current);
+        modules.forEach((value, id) => {
+          value.element.hidden = id !== moduleId;
+          value.slides.forEach((slide, i) => { slide.hidden = id !== moduleId || i !== current; });
+        });
+        document.querySelectorAll("[data-module-select]").forEach(button =>
+          button.setAttribute("aria-pressed", String(button.dataset.moduleSelect === moduleId)));
+        const slide = selected.slides[current];
+        count.textContent = `Slide ${current + 1} / ${selected.slides.length}`;
+        progress.max = selected.slides.length;
+        progress.value = current + 1;
+        jump.replaceChildren(...selected.slides.map((entry, i) => {
+          const option = document.createElement("option");
+          option.value = String(i);
+          option.textContent = `${i + 1}. ${entry.dataset.title}`;
+          return option;
+        }));
+        jump.value = String(current);
+        document.getElementById("prev").disabled = current === 0;
+        document.getElementById("next").disabled = current === selected.slides.length - 1;
+        document.getElementById("coreLink").hidden = moduleId !== "1";
+        document.getElementById("notesTitle").textContent = `Module ${moduleId}, slide ${current + 1}: ${slide.dataset.title}`;
+        document.getElementById("notesContent").replaceChildren(slide.querySelector(".speaker-notes").content.cloneNode(true));
+        document.title = `M${moduleId}.${current + 1} ${slide.dataset.title} | A365 Hub draft`;
+        history.replaceState(null, "", `#slide-${current + 1}`);
+      }
+      function toggleNotes(force) {
+        const open = typeof force === "boolean" ? force : notes.hidden;
+        notes.hidden = !open;
+        notesToggle.setAttribute("aria-expanded", String(open));
+      }
+      document.querySelector(".skip").addEventListener("click", event => {
+        event.preventDefault();
+        document.getElementById("deck").focus();
+      });
+      document.getElementById("next").addEventListener("click", () => show(current + 1));
+      document.getElementById("prev").addEventListener("click", () => show(current - 1));
+      jump.addEventListener("change", () => show(Number(jump.value)));
+      document.querySelectorAll("[data-module-select]").forEach(button =>
+        button.addEventListener("click", () => show(lastPosition.get(button.dataset.moduleSelect), button.dataset.moduleSelect)));
+      window.addEventListener("hashchange", () => { const requested = route(); show(requested.index, requested.module); });
+      notesToggle.addEventListener("click", () => toggleNotes());
+      document.getElementById("notesClose").addEventListener("click", () => { toggleNotes(false); notesToggle.focus(); });
+      document.querySelectorAll("[data-dialog]").forEach(button =>
+        button.addEventListener("click", () => document.getElementById(button.dataset.dialog).showModal()));
+      document.querySelectorAll("[data-close-dialog]").forEach(button =>
+        button.addEventListener("click", () => button.closest("dialog").close()));
+      document.getElementById("print").addEventListener("click", () => window.print());
+      const fullscreen = document.getElementById("fullscreen");
+      fullscreen.disabled = !document.fullscreenEnabled;
+      fullscreen.addEventListener("click", async () => {
+        try {
+          if (document.fullscreenElement) await document.exitFullscreen();
+          else await document.documentElement.requestFullscreen();
+        } catch (error) {
+          const message = document.getElementById("error");
+          message.textContent = `Fullscreen unavailable: ${error instanceof Error ? error.message : String(error)}. Use browser zoom or the normal view.`;
+          message.hidden = false;
+        }
+      });
+      document.addEventListener("keydown", event => {
+        const openDialog = document.querySelector("dialog[open]");
+        if (event.key === "Escape") {
+          if (openDialog) { event.preventDefault(); openDialog.close(); }
+          else {
+            if (notes.contains(document.activeElement)) notesToggle.focus();
+            toggleNotes(false);
+          }
+          return;
+        }
+        if (openDialog) return;
+        if (event.altKey || event.ctrlKey || event.metaKey || event.target.closest("input, textarea, select, [contenteditable='true']")) return;
+        if (event.key === " " && event.target.closest("button, a, summary")) return;
+        if (["ArrowRight", "PageDown", " "].includes(event.key)) { event.preventDefault(); show(current + 1); }
+        else if (["ArrowLeft", "PageUp"].includes(event.key)) { event.preventDefault(); show(current - 1); }
+        else if (event.key === "Home") { event.preventDefault(); show(0); }
+        else if (event.key === "End") { event.preventDefault(); show(modules.get(moduleId).slides.length - 1); }
+        else if (event.key.toLowerCase() === "n") toggleNotes();
+        else if (event.key.toLowerCase() === "f") fullscreen.click();
+        else if (event.key.toLowerCase() === "r") document.getElementById("readinessDialog").showModal();
+        else if (event.key === "?") document.getElementById("helpDialog").showModal();
+      });
+      document.getElementById("deck").addEventListener("touchstart", event => {
+        touchStart = event.target.closest("button, a, select, input, summary, table") ? null
+          : { x: event.changedTouches[0].clientX, y: event.changedTouches[0].clientY };
+      }, { passive: true });
+      document.getElementById("deck").addEventListener("touchend", event => {
+        if (!touchStart) return;
+        const dx = event.changedTouches[0].clientX - touchStart.x;
+        const dy = event.changedTouches[0].clientY - touchStart.y;
+        if (Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy) * 1.5) show(current + (dx < 0 ? 1 : -1));
+        touchStart = null;
+      }, { passive: true });
+      const initial = route();
+      show(initial.index, initial.module);
+    })();
+  </script>
+</body>
+</html>

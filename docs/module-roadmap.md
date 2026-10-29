@@ -1,108 +1,57 @@
 # Module Development Roadmap
 
-This roadmap separates the **working workshop platform** from the **teaching modules still
-under development**. A module is complete only when its slides, lab, facilitator notes,
-validation steps, and teardown guidance all meet the definition of done below.
+**Updated October 29, 2026.** This is the eight-module security journey, replacing
+the old six-module map. The original anatomy module moves to Module 3.
 
-## Delivery model
+| Module | Current deliverable | Remaining gate |
+|---|---|---|
+| [1. See It. Control It. Protect It.](../slides/module-01/README.md) | Reworked 18-slide package: five planned onboarding slides + thirteen core slides, notes, check, handout, sources | User content review, actual presentation-mode preparation, independent 25-minute rehearsal |
+| [2. Establish the Approved Agent Baseline](../slides/module-02/README.md) | Separate eight-slide rough draft, notes, synthetic learner guide, passport, recovery guidance | User review before provisioning; actual runtime/authority/task/evidence proof; fresh learners; 35-minute rehearsal |
+| 3. Identity, Authority, and Blast Radius | Playbook-aligned scope, output, source map, preparation needs | Actual authority diagram and validated activity |
+| 4. Governance and Lifecycle | Playbook-aligned scope and governance-case design | Supported roles/entitlements, actual effect, reset |
+| 5. Data and Compliance Evidence | DLP/Compliance Manager activity design | Scoped supported policy/result, action record and evidence |
+| 6. Compromise and Misuse | Separate GBB/identity-case design | Authorized fixture, actual observed or labeled prior-run evidence |
+| 7. Investigate and Contain | Defender/ISOC investigation and response design | Source/engine/schema/keys, scope, retest/reset |
+| 8. Prove Readiness and Plan Adoption | Four flags and pilot decision design | Validated earlier evidence, answer key, timing |
 
-Each module is designed as an independent teaching package:
+## Publication versus readiness
 
-```text
-module-N/
-├── README.md          # objective, duration, prerequisites, and facilitator flow
-├── slides.md          # source deck
-├── lab.md             # attendee instructions and checkpoints
-├── facilitator.md     # demo notes, timing, failure recovery, and answers
-└── assets/            # sanitized screenshots and diagrams
-```
+- **Public draft:** reviewable content exists at stable module URLs.
+- **Content-ready:** feedback incorporated, sources/supporting surfaces aligned.
+- **Hands-on-ready:** actual task, supported controls/evidence, fresh accounts, explicit
+  error recovery, safe reset, and independent timed rehearsal pass.
 
-Cross-module detection content belongs in `detections/`; reusable deployment automation
-belongs in `labs/`.
+No tenant provisioning, test-user creation, GBB execution, or data generator deployment
+was performed for the current publication. Automation candidates for all eight modules
+are recorded in the [master plan](06-customer-learning-plan.md#16-per-module-data-and-automation-preparation).
 
-## Status at a glance
+## Platform state
 
-| Module | Outcome | Current evidence | Next deliverable | Status |
-|--------|---------|------------------|------------------|--------|
-| 1 — E7 and Agent 365 value | Explain the agent control gap, Agent 365, identity protection, and the E7 value | Simple eight-slide interactive package in `slides/module-01/` | Complete second-facilitator dry run; optionally export branded PPTX/PDF | 🟢 Interactive package complete; delivery validation pending |
-| 2 — Agent ID anatomy | Map blueprint, principal, identity, and agent user | Outline and grounding research | Architecture diagram, deck, object-mapping exercise | 📋 Planned |
-| 3 — Portal walkthrough | Inventory identities, credentials, owners, and permissions | Workshop outline | Screenshot-guided lab with checkpoints | 📋 Planned |
-| 4 — Attack paths | Explain blueprint blast radius, ownership abuse, and consent risk | Curated research narratives | Safe lab demo and attack-path deck | 📋 Planned |
-| 5 — Detect, respond, govern | Hunt, detect, contain, and apply Conditional Access | Response research and deployment runbook | KQL pack, validation data, response lab | 🟡 Partial |
-| 6 — Capture the Flag | Apply portal, Graph, and hunting skills | Challenge themes in project outline | Challenges, answer key, scoring rubric | 📋 Planned |
+Existing managed-identity onboarding/deployment scripts remain in the repository.
+Historical successful runs do not establish this event's live state. Local operational
+notes report cleanup disabled. Verify TAP expiry, CA, licenses, mailbox/UI access, and
+controlled cleanup. Never infer TAP expiry from account age.
 
-## Platform workstream
+No broad learner admin roles; presenter access stays presenter-only. XDR/Sentinel
+read access, tenant changes, and entitlement details require per-event validation.
 
-| Component | State | Notes |
-|-----------|-------|-------|
-| Form-driven attendee provisioner | ✅ Working | Creates user, issues TAP, sends email |
-| Expired-account cleanup | ✅ Working | Hourly, department-scoped deletion |
-| Entra prerequisite automation | ✅ Working | Dynamic group, CA MFA policy, licensing discovery |
-| Repeatable ARM deployment | ✅ Working | Parameterized templates and managed identities |
-| Permission and teardown runbook | ✅ Working | Deployer, runtime, XDR, Sentinel, and revocation tracking |
-| Defender XDR URBAC assignment | 🟠 Manual | Portal-only; documented and must be validated per tenant |
-| Other-CA exclusions | 🟠 Manual | Script reports policies; operator tests and decides exclusions |
+## Detection workstream
 
-## Detection-pack backlog
-
-The `detections/` workstream will deliver tested queries and—not merely query snippets—
-expected telemetry, tuning notes, false-positive guidance, and response actions.
-
-1. Blueprint credential added.
-2. Agent identity receives a Tier-0 permission.
-3. TAP created by a service or agent identity.
-4. Secret-authenticating blueprints and stale credentials.
-5. Agent inventory and activity hunting using the Defender XDR `AIAgents` table.
-6. Conditional Access containment templates, report-only first.
+The [detection pack](../detections/README.md) remains a backlog, not tested production
+rules. Candidate cases include blueprint credential changes, excessive grants, TAP
+creation, secret-authenticating blueprints, and activity attribution. Validate current
+`AgentsInfo`, relevant activity/behavior/alert tables, engines, keys, history, roles,
+license, expected output, tuning, and response. New identities do not have a
+fourteen-day baseline by default.
 
 ## Definition of done
 
-A teaching module is **done** when it has:
+Each module needs objectives, prerequisites, timed slide flow, sources, instructions,
+checkpoint/answer key, actual role/control/evidence validation, error recovery, scoped
+reset, and independent rehearsal. A source guide or README checkbox is not proof.
+No secrets, live tenant identifiers, real attendee data, or unapproved third-party
+content belongs in public packages.
 
-- clear learner objectives and prerequisites;
-- a time-boxed facilitator flow;
-- finished slide source with attribution;
-- attendee instructions that work in a fresh lab tenant;
-- checkpoints and an answer key;
-- a security boundary and safe teardown;
-- validation by someone other than the author;
-- no live tenant identifiers, credentials, or attendee information.
-
-A detection is **done** when it has:
-
-- a documented data source and required licensing;
-- valid KQL tested against representative telemetry;
-- expected result examples with sensitive values removed;
-- tuning and false-positive guidance;
-- a mapped investigation and containment action.
-
-## Near-term milestones
-
-### Milestone 1 — teachable foundation
-
-- [x] Finish Module 1 interactive deck, speaker notes, exercise, facilitator guide, source map, taxonomy handout, and permission preflight.
-- [ ] Complete a second-facilitator dry run and optionally export branded PPTX/PDF.
-- Produce the Module 2 object model diagram.
-- Add the Module 3 portal walkthrough skeleton.
-
-### Milestone 2 — security content
-
-- Ship the first three detections with test notes.
-- Build the object-scoped disable and Conditional Access response exercise.
-- Validate XDR and Sentinel read-only attendee access in a clean tenant.
-
-### Milestone 3 — workshop release candidate
-
-- Complete Modules 4–6.
-- Run a facilitator dry run from a fresh deployment.
-- Publish timing, troubleshooting, answer keys, and teardown validation.
-
-## Help wanted
-
-- Microsoft Entra Agent ID reviewers.
-- Defender XDR/Sentinel KQL contributors.
-- Facilitators willing to test the runbook in a disposable tenant.
-- Slide designers and technical diagram contributors.
-- CTF authors focused on safe, reversible exercises.
-
-Use an issue or pull request and identify the module/workstream in the title.
+Near term: review Modules 1-2 -> approve preparation -> prove one task -> finalize ->
+test fresh learners -> rehearse. Then author Modules 3-8 against the same customer case
+and playbook focus. See the [master plan](06-customer-learning-plan.md).

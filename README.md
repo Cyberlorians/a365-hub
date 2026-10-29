@@ -1,155 +1,95 @@
 # A365 Hub
 
-### Agentic identity and security — from first agent to incident response
+## Adopt AI. Govern Agents. Protect the Business.
 
-[![PowerShell](https://img.shields.io/badge/PowerShell-7%2B-5391FE?logo=powershell&logoColor=white)](https://learn.microsoft.com/powershell/)
-[![Microsoft Entra](https://img.shields.io/badge/Microsoft-Entra%20Agent%20ID-7B61FF)](https://learn.microsoft.com/entra/agent-id/)
-[![Azure Logic Apps](https://img.shields.io/badge/Azure-Logic%20Apps-0062AD?logo=microsoftazure)](https://learn.microsoft.com/azure/logic-apps/)
-[![Status](https://img.shields.io/badge/status-active%20development-orange)](docs/module-roadmap.md)
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+An open, attack-informed security workshop connecting Microsoft Entra, Agent 365,
+Microsoft Purview, and Defender / integrated security operations.
 
-A365 Hub is an open workshop kit for teaching **agentic identity**, **Microsoft Entra
-Agent ID**, and **Microsoft Agent 365**. It combines a full-day curriculum with a
-repeatable, secret-less attendee onboarding platform and an honest roadmap for the labs,
-detections, and capture-the-flag content still being built.
+**A correctly authenticated agent can still be manipulated into misusing legitimate
+access.** Every module follows **risk -> control -> evidence -> decision**, anchored
+in the Cloud-Architekt Agent Identities chapter and grounded in Microsoft Learn.
 
-> [!WARNING]
-> This project creates temporary identities and can grant access to security telemetry.
-> Use a **dedicated lab tenant only**—never a production tenant.
+## Open the slides
+
+| Module | Public presentation | Supporting material | Status |
+|---|---|---|---|
+| 1. See It. Control It. Protect It. | [Open Module 1](https://cyberlorians.github.io/a365-hub/#slide-6) | [Package and notes](slides/module-01/README.md) | Reworked content draft: 25-minute core; five separate onboarding slides |
+| 2. Establish the Approved Agent Baseline | [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | [Package and notes](slides/module-02/README.md), [learner guide](labs/module-02-business-agent.md) | Eight-slide rough draft: 35 proposed minutes; runtime not yet validated |
+
+These are **separate, independently addressable slide decks**, not a combined local
+review file. Press **N** for per-slide presenter notes. Use the module links in either
+deck to switch presentations. Each HTML file also works offline for its own slides.
+
+> Public content drafts are not hands-on release claims. No test accounts, tenant
+> fixtures, GBB scenarios, or automation were created or executed for this publication.
+> Review the content, then approve an isolated preparation plan before provisioning.
+
+## Complete eight-module story
+
+| # | Module | Learner output | Minutes |
+|---|---|---|---:|
+| 1 | See It. Control It. Protect It. | Readiness worksheet | 25 |
+| 2 | Establish the Approved Agent Baseline | Actual actor/tool/data/evidence passport | 35 |
+| 3 | Understand Identity, Authority, and Blast Radius | Authority diagram and justified boundary | 35 |
+| 4 | Govern Creators, Access, and Lifecycle | Ownership/access/lifecycle decision | 40 |
+| 5 | Protect Data and Record Control Evidence | Supported DLP result and owned Compliance Manager action | 40 |
+| 6 | Recognize Agent Compromise and Misuse | Attributed identity/AI-native scenario evidence | 40 |
+| 7 | Investigate and Contain in Defender / ISOC | Timeline, scoped response, retest/reset | 75 |
+| 8 | Prove Readiness and Plan Adoption | Four findings and a 30-day pilot decision | 40 |
+
+Proposed instruction: **330 minutes**. Onboarding 15 + lunch 45 + breaks 30 =
+**420 minutes / seven hours**. Modules 1-2 alone: 60 instructional minutes plus
+15 onboarding. Modules 3-8 are planned, not complete teaching packages.
 
 ## Start here
 
-| Goal | Guide |
-|------|-------|
-| Understand the workshop | [Project outline](docs/00-project-outline.md) |
-| Deliver the full day | [Facilitator agenda](docs/01-full-day-workshop.md) |
-| Present Module 1 | [Interactive click-through deck](https://cyberlorians.github.io/a365-hub/) |
-| Build the lab environment | [Deployment runbook](docs/05-onboarding-deployment-runbook.md) |
-| Deploy attendee onboarding | [Logic App quick start](labs/logic-app/README.md) |
-| See what is finished | [Module roadmap](docs/module-roadmap.md) |
-| Review research sources | [Grounding index](grounding/sources.md) |
+| Goal | Link |
+|---|---|
+| Read the whole story and first-release plan | [Master learning plan](docs/06-customer-learning-plan.md) |
+| See what each module needs for data/automation | [Per-module preparation matrix](docs/06-customer-learning-plan.md#16-per-module-data-and-automation-preparation) |
+| Understand source contributions | [Integration map](grounding/integration-map.md), [grounding index](grounding/sources.md) |
+| Follow the customer/security pitch | [Delivery playbook](docs/02-baseline-agenda.md) |
+| Plan the full day | [Agenda](docs/01-full-day-workshop.md) |
+| Check actual package status | [Roadmap](docs/module-roadmap.md) |
+| Review the existing onboarding code | [Logic App quick start](labs/logic-app/README.md), [deployment runbook](docs/05-onboarding-deployment-runbook.md) |
 
-## What is ready today
+## What we incorporate
 
-### Workshop infrastructure — working
+- **Cloud-Architekt Agent Identities:** security spine in all eight modules.
+- **Microsoft Learn:** supported behavior, roles, schemas, licensing, prerequisites, and limits.
+- **Stefano's a365-lab-toolkit:** candidate shared UI/runtime and documented internal-mail task.
+- **Approved GBB material:** selected setup explanation, AI-workload cases, and hunting patterns.
+- **Blue16 explainers:** inspiration for original secure-AI/ISOC explanations, not copied implementation.
+- **New A365 Hub authoring:** customer activities, passports, evidence records, answer keys, reset, and pilot assessment.
 
-- Public Microsoft Form intake with webhook-based provisioning.
-- Managed-identity Logic App that creates a temporary attendee and issues a TAP.
-- Office 365 connector delivery of sign-in instructions.
-- Hourly cleanup Logic App for expired workshop accounts.
-- Idempotent Entra setup for the dynamic group, Conditional Access MFA policy, and
-	best-effort group-based licensing.
-- Full deployment, permission, teardown, XDR URBAC, and Sentinel RBAC tracking.
+The original anatomy module becomes **Module 3**. The first new Module 2 establishes
+approved behavior before later modules investigate misuse. The maker-heavy
+"Agent in a Day" path is an optional extension, not four extra builds in the core day.
 
-### Curriculum — being modularized
+## Safety and readiness
 
-| Module | Theme | Status |
-|--------|-------|--------|
-| 1 | E7 and Agent 365 value story | 🟢 Simple interactive deck + complete teaching package; dry run pending |
-| 2 | Anatomy of Entra Agent ID | 📋 Planned |
-| 3 | Portal walkthrough | 📋 Planned |
-| 4 | Attack paths and blast radius | 📋 Planned |
-| 5 | Detect, respond, and govern | 🟡 Research/runbook ready; detections pending |
-| 6 | Capture the Flag | 📋 Planned |
+Use a **dedicated authorized lab environment**, never production. The repository
+contains existing identity-provisioning and access automation; its presence is not
+proof that the current event deployment works. Local operational notes report
+cleanup disabled. Verify actual state, expiry, roles, CA, licensing, and teardown;
+do not enable account-age deletion as a shortcut.
 
-The intended file boundaries, acceptance criteria, and help-wanted items are tracked in
-the [module development roadmap](docs/module-roadmap.md). Infrastructure being complete
-does **not** mean the teaching modules are complete.
+The candidate Mail task uses delegated-user authority; its sample name does not prove
+OAuth OBO. Its documented setup includes a blueprint secret and powerful instructor
+consents. Do not promise secretless workload authentication or proven least privilege.
+TAP-based attendee onboarding is a different authentication claim.
 
-## Architecture
+E7 is a connected value/entitlement discussion after identifying the gap. Basic DLP,
+ordinary XDR, and ISOC are not all E7-exclusive. Additional Azure, ingestion, retention,
+and capacity costs require assessment.
 
-```mermaid
-flowchart LR
-		Form[Public Microsoft Form] -->|webhook| Provisioner[Provisioner Logic App]
-		Provisioner -->|managed identity| Graph[Microsoft Graph]
-		Graph --> User[Temporary lab user]
-		Graph --> TAP[8-hour TAP]
-		Provisioner -->|Office 365 connection| Mail[Access email]
-		Entra[Entra prerequisite script] --> Group[Dynamic attendee group]
-		Entra --> CA[Conditional Access MFA]
-		Entra --> Licenses[Group licensing]
-		Cleanup[Hourly cleanup Logic App] -->|managed identity| Graph
-```
+No raw GBB extraction, credentials, tenant IDs, attendee data, or third-party assets
+without confirmed reuse rights belong in this repository.
 
-The Graph operations use **system-assigned managed identities**: there is no application
-secret or certificate to store and rotate. The Forms and mail connections use delegated
-OAuth and require one-time authorization by their owners.
+## Publishing
 
-## Quick deployment
+The [Pages workflow](.github/workflows/module-01-pages.yml) validates both packages
+and publishes Module 1 at the existing root and Module 2 under `/module-02/`.
+Published status is visible in the repository's Actions and Pages deployment.
 
-### Prerequisites
-
-- Dedicated Microsoft Entra lab tenant and Azure subscription.
-- PowerShell 7+, Azure CLI, and Microsoft Graph PowerShell authentication module.
-- Azure Contributor or Owner for deployment; Global Administrator or Privileged Role
-	Administrator for Graph app-role assignment.
-- Temporary Access Pass authentication method enabled.
-- A Microsoft Form with full-name and email fields.
-- Appropriate workshop licenses and, for hunting labs, Defender XDR and Sentinel.
-
-### 1. Configure Entra
-
-```powershell
-Set-Location ./labs/logic-app
-./Setup-EntraPrereqs.ps1 -DryRun
-./Setup-EntraPrereqs.ps1 `
-		-PolicyState enabled `
-		-ExcludeUserUpns "breakglass@contoso.onmicrosoft.com"
-```
-
-The script safely skips missing license SKUs and reports other Conditional Access
-policies that may need a **manually tested** attendee-group exclusion.
-
-### 2. Discover the form metadata
-
-```powershell
-./Get-FormMetadata.ps1 -FormUrl "<microsoft-form-design-url>"
-```
-
-### 3. Deploy the pipeline
-
-```powershell
-./deploy.ps1 `
-		-SubscriptionId "<subscription-id>" `
-		-ResourceGroup "A365-Workshop" `
-		-Location "eastus2" `
-		-UpnDomain "contoso.onmicrosoft.com" `
-		-FormId "<form-id>" `
-		-FullNameQuestionId "<question-id>" `
-		-EmailQuestionId "<question-id>"
-```
-
-The deployment pauses once for the Forms and Office 365 OAuth connections to be
-authorized. Continue with the [complete deployment and validation
-instructions](labs/logic-app/README.md).
-
-## Repository map
-
-| Path | Contents |
-|------|----------|
-| [docs](docs/) | Curriculum, agendas, onboarding architecture, and operations runbook |
-| [grounding](grounding/) | Research notes, source summaries, and reference links |
-| [slides](slides/) | Markdown teaching-deck sources |
-| [labs/logic-app](labs/logic-app/) | Repeatable Forms → Logic App → user/TAP deployment |
-| [labs/provisioning](labs/provisioning/) | Delegated CSV provisioning and teardown fallback |
-| [detections](detections/) | Detection-pack contracts and future KQL content |
-
-## Security model
-
-The default dynamic attendee group is populated by `department = workshop`. When a
-**public** form feeds that group, anyone able to submit it may ultimately receive the
-group's licenses and permissions. For workshops that expose XDR or Sentinel telemetry,
-use a separate approved/static SOC-read group or otherwise gate enrollment.
-
-Review [SECURITY.md](SECURITY.md) and the runbook's threat-boundary notes before deploying.
-
-## Contributing
-
-Contributions are welcome—especially module decks, portal walkthroughs, KQL detections,
-safe attack simulations, and CTF challenges. See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License and attribution
-
-Code and original project documentation are available under the [MIT License](LICENSE).
-Third-party research remains the property of its respective authors; links and summaries
-are cataloged in [grounding/sources.md](grounding/sources.md).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), and [LICENSE](LICENSE).

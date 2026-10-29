@@ -1,10 +1,12 @@
 # Module 1 Has Moved
 
-The original slide stub has been expanded into a simple E7 and Agent 365 teaching package.
+Start with [Module 1: See It. Control It. Protect It.](module-01/README.md)
+or [open the public slides](https://cyberlorians.github.io/a365-hub/#slide-6).
 
-Start with [Module 1 — Agents Are Already Here](module-01/README.md).
+The current content draft has five planned onboarding slides plus thirteen core
+slides, timed notes, a short check, handout, sources, and permissions preflight.
+Original identity-anatomy content now belongs to Module 3.
 
-The package includes an eight-slide interactive deck, timed speaker notes, facilitator
-guide, workshop permission preflight, supporting exercises, and authoritative source map.
-
+[Module 2](module-02/README.md) has its own eight-slide rough draft and
+[public presentation](https://cyberlorians.github.io/a365-hub/module-02/#slide-1).
 This compatibility page remains so existing links do not break.

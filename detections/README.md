@@ -1,33 +1,29 @@
 # Detection Pack
 
-> Status: design backlog. No production-ready detections have shipped yet.
+**Status:** Design backlog. No tested production-ready detection rules are shipped.
+The revised investigation package belongs primarily to Module 7, with exposure/risk
+context in Modules 3-6. See the [master plan](../docs/06-customer-learning-plan.md).
 
-This folder will contain Microsoft Defender XDR advanced-hunting queries, custom-detection
-assets, and supporting Microsoft Sentinel content for the workshop's **Detect, Respond,
-and Govern** module.
+| Candidate | Expected source to validate | Status |
+|---|---|---|
+| Blueprint credential added | Actual Entra audit activity and typed target IDs | Planned |
+| Excessive permission / Tier-0 grant | Actual grant/role audit and effective authority | Planned |
+| TAP created by service/agent identity | Actual audit actor/target and supported context | Planned |
+| Secret-authenticating blueprint inventory | Credential metadata and applicable sign-in evidence | Planned |
+| Inventory/activity attribution | Current `AgentsInfo`, relevant `CloudAppEvents`, behavior/alert tables | Schema/coverage/keys require validation |
 
-## Planned detections
+Do not assume the old `AIAgents` table or copy community queries across Advanced Hunting
+and Log Analytics unchanged. Validate `Timestamp` versus `TimeGenerated`, source
+coverage, history, join keys, roles, licensing, expected result, and rule semantics.
+Fresh identities do not provide a fourteen-day baseline automatically.
 
-| Detection | Primary signal | Status |
-|-----------|----------------|--------|
-| Blueprint credential added | Entra audit activity | Planned |
-| Tier-0 permission assigned to agent identity | Entra audit / role assignment | Planned |
-| TAP created by service or agent identity | Entra audit activity | Planned |
-| Secret-authenticating blueprint inventory | Credential and sign-in telemetry | Planned |
-| Agent activity baseline | Defender XDR `AIAgents` and related tables | Schema validation required |
+Current DLP tuning may represent a signal in `BehaviorInfo`/`BehaviorEntities` rather
+than an incident alert. Do not disable tenant-wide tuning to force a workshop outcome.
+An event, behavior, alert, incident, query, and deployed detection rule are different outputs.
 
-## Required content for every detection
+Each detection contribution requires safe authorized test procedure, actual or clearly
+labeled evidence, tuning/false positives, investigation, scoped response/retest/reset,
+and attribution to the Agent Identities playbook.
 
-Each detection contribution must include:
-
-- query and target platform;
-- required table/schema and licensing;
-- attack behavior and expected telemetry;
-- safe test procedure;
-- tuning and false-positive notes;
-- investigation and containment steps;
-- ATT&CK mapping where appropriate;
-- sanitized sample results.
-
-Do not present an untested query as production-ready. See the
-[module roadmap](../docs/module-roadmap.md) and [contribution guide](../CONTRIBUTING.md).
+No fabricated security events, unapproved simulations, or automatic containment are
+deployed for the public content drafts. See [CONTRIBUTING](../CONTRIBUTING.md).
