@@ -4,7 +4,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { buildView, buildModule, views, urlFor } from "./build-walkthroughs.mjs";
-import { codeBlocks, esc } from "./workshop-lab-content.mjs";
+import { codeBlocks, esc, labMeta, labSlides } from "./workshop-lab-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
@@ -31,7 +31,7 @@ for (const id of [1, 2]) {
     new vm.Script(script[1], { filename: `module-${id}-inline-${index + 1}.js` });
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
-  for (const [role, label] of [["learner", "Student lab"], ["admin", "Instructor setup"]])
+  for (const [role, label] of [["learner", "Labs"], ["admin", "Instructor guide"]])
     assert(html.includes(`href="${urlFor({ module: id, role })}">${label}</a>`), "Each teaching deck must open its integrated lab and instructor presentation");
   assert(!html.includes("Instructor lab notes"), "Teaching decks should not add a third, confusing lab link");
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
@@ -117,6 +117,8 @@ for (const module of [1, 2]) {
   for (const view of ["lab", "admin"])
     assert(html.includes(`id="view-${view}"`), "Each module must include both lab and instructor views");
   for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
+  for (const lab of labMeta(module))
+    assert.equal((html.match(new RegExp(`>Start Lab ${lab.n}</a>`, "g")) ?? []).length, 1, `Module ${module} lessons must start Lab ${lab.n} exactly once`);
 }
 const adminGuides = { 1: ["docs/07-module-01-admin-runbook.md", /<details>\n<summary>Optional admin reference:/], 2: ["docs/08-module-02-admin-runbook.md", /<details>\n<summary>Optional technical reference:/] };
 for (const config of views) {
@@ -127,7 +129,7 @@ for (const config of views) {
   for (const [index, script] of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].entries())
     new vm.Script(script[1], { filename: `${config.role}-${config.module}-inline-${index}.js` });
   assert(!/data-lesson|data-reference|Open Slide|\[Slide \d/.test(html), `${label} must not send learners off to other slides`);
-  assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"') && html.includes("1. Learn") && html.includes("3. Instructor setup"));
+  assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"') && html.includes("1. Learn") && html.includes("2. Labs") && html.includes("3. Instructor guide"));
   assert.equal(new Set(slides.map(slide => slide.key)).size, slides.length, `${label} slide keys must be unique`);
   for (const slide of slides) {
     assert(slide.doItems.length >= 1 && slide.doItems.length <= 5, `${label} / ${slide.key}: use one to five short actions`);
@@ -135,7 +137,12 @@ for (const config of views) {
   }
   if (config.role === "learner") {
     const steps = slides.filter(slide => slide.number);
-    assert.equal(steps.length, config.module === 1 ? 9 : 9, `${label} step count`);
+    assert.equal(steps.length, labSlides(config.module).length, `${label} step count`);
+    for (const lab of labMeta(config.module)) {
+      const inLab = steps.filter(slide => slide.lab === lab.n);
+      assert(inLab.length >= 3 && inLab.length <= 6, `${label} Lab ${lab.n} should have three to six small steps`);
+      assert(inLab.at(-1).links.some(link => link.href === `./#slide-${lab.back}`), `${label} Lab ${lab.n} must lead back to its lesson`);
+    }
     assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and instructor notes`);
     assert.equal((html.match(/<aside class="facilitator-note" data-instructor-only hidden/g) ?? []).length, steps.length, "Instructor notes must be hidden by default");
     assert(html.includes('id="notesMode"'), "Student lab needs the instructor-notes toggle");

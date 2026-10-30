@@ -14,7 +14,7 @@ in the Cloud-Architekt Agent Identities chapter and grounded in Microsoft Learn.
 | Module | Public presentation | Supporting material | Status |
 |---|---|---|---|
 | 1. See It. Control It. Protect It. | [Open Module 1](https://cyberlorians.github.io/a365-hub/#slide-6) | [Package and notes](slides/module-01/README.md) | Reworked content draft: 25-minute core; five separate onboarding slides |
-| 2. Establish the Approved Agent Baseline | [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | [Package and notes](slides/module-02/README.md), [student lab](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | Eight teaching slides plus visual lab/instructor sections; runtime not yet validated |
+| 2. Establish the Approved Agent Baseline | [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | [Package and notes](slides/module-02/README.md), [labs](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | Eight teaching slides plus four numbered labs and an instructor guide; runtime not yet validated |
 
 These are **separate, independently addressable slide decks**, not a combined local
 review file. Press **N** for per-slide presenter notes. Use the module links in either
@@ -29,19 +29,22 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 
 Each module is **one presentation with three parts**, all in the original blue style:
 
-1. **Learn** - the teaching slides.
-2. **Student lab** - one short action per slide: numbered "Do this" steps, a picture of
-   what you should see, a Copy box, and a "You are done when" line. Nothing says "go
-   open another slide". A toggle shows instructor-only notes for each step.
-3. **Instructor setup** - the same format for the person preparing the lab: portal
-   steps, copy-and-run scripts, expected output, rehearsal and cleanup.
+1. **Learn** - the teaching slides. After the lessons that need practice, a
+   **LAB 1, LAB 2...** button appears (Module 1 has five labs, Module 2 has four).
+2. **Labs** - each lab is a handful of tiny steps: numbered "Do this" actions, a picture
+   of what you should see, Copy boxes, and a "You are done when" line. The last step
+   of each lab sends you back to the next slide. A toggle shows instructor-only notes
+   for every step.
+3. **Instructor guide** - the same format for the person preparing the labs: portal
+   steps, copy-and-run scripts, expected output, and, per lab, what to do manually
+   when something goes wrong.
 
 Start here:
 
-1. **Instructor:** [Module 1 setup - accounts, licenses, TAPs, mailbox test](https://cyberlorians.github.io/a365-hub/?view=admin).
-2. **Instructor:** [Module 2 setup - deploy the agent and website, prove a real email task](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
-3. **Everyone:** the student labs below, using the instructor-provided account, agent
-   link, and approved internal recipient.
+1. **Instructor:** [Module 1 guide - accounts, licenses, TAPs, mailbox test, lab recovery](https://cyberlorians.github.io/a365-hub/?view=admin).
+2. **Instructor:** [Module 2 guide - deploy the agent and website, prove a real email task, lab recovery](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
+3. **Everyone:** follow the slides and press the lab buttons, using the
+   instructor-provided account, agent link, and approved internal recipient.
 
 This route does not require the old Forms/Logic App pipeline. It uses run-owned
 manifests, does not alter CA/DLP, and never invokes the upstream destructive deployment
@@ -51,19 +54,23 @@ Module 2 admin guide. [Deployment files](labs/workshop/) and [scripts](scripts/)
 
 ## Step-by-step walkthroughs
 
-| Module | Learner presentation | Admin presentation |
+| Module | Labs | Instructor guide |
 |---|---|---|
-| 1 | [Start Module 1 student lab](https://cyberlorians.github.io/a365-hub/?view=lab) | [Start Module 1 instructor setup](https://cyberlorians.github.io/a365-hub/?view=admin) |
-| 2 | [Start Module 2 student lab](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | [Start Module 2 instructor setup](https://cyberlorians.github.io/a365-hub/module-02/?view=admin) |
+| 1 | [Start Module 1 labs](https://cyberlorians.github.io/a365-hub/?view=lab) | [Open Module 1 instructor guide](https://cyberlorians.github.io/a365-hub/?view=admin) |
+| 2 | [Start Module 2 labs](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | [Open Module 2 instructor guide](https://cyberlorians.github.io/a365-hub/module-02/?view=admin) |
 
-Both teaching decks have **Student lab** and **Instructor setup** buttons. Labs have
+Both teaching decks have **Labs** and **Instructor guide** buttons. Labs have
 illustrative pictures (not live screens or evidence), a progress tracker, Next/Previous,
 a step selector, fullscreen, print and Copy. The **Instructor notes** toggle adds
 preparation, script/data needs, student cues and cleanup to each lab step.
 Instructor view is a display mode, **not an authorization boundary**: notes are public,
 and must never contain credentials or private tenant/attendee information.
-No Copy button executes code or stores attendee data. Live tenant proof remains
-unverified until actual deployment and tests are recorded.
+No Copy button executes code or stores attendee data.
+
+> **Not yet done:** nobody has run the labs end to end as a real fake user in a live
+> tenant, so the pictures are schematic (not captured screenshots), and the access-form
+> step needs an instructor-provided link. Live tenant proof remains unverified until
+> actual deployment and tests are recorded.
 
 The Markdown guides remain a plain-text reference and the source of every copy-and-run
 snippet used in the slides (a check fails if they drift):
@@ -76,7 +83,7 @@ Build the two integrated presentations locally with
 `_site/module-02/index.html`. Edit teaching slides in `slides/module-01/index.html` and
 `slides/module-02/index.html`; edit lab/setup steps, pictures and instructor notes in
 `scripts/workshop-lab-content.mjs`; page layout is in `scripts/build-walkthroughs.mjs`.
-Use this same learn -> visual student lab -> instructor setup pattern for future modules.
+Use this same learn -> numbered labs -> instructor guide pattern for future modules.
 
 ## Complete eight-module story
 

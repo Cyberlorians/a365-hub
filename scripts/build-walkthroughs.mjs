@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { esc, rich, labSlides, setupSlides, labIntro, fig, flow } from "./workshop-lab-content.mjs";
+import { esc, rich, labSlides, labMeta, setupSlides, labIntro, fig, grid } from "./workshop-lab-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = file => fs.readFileSync(path.join(root, file), "utf8").replace(/\r\n/g, "\n");
@@ -212,22 +212,32 @@ const snippetHtml = snippet => `<div class="snippet"><div class="snippet-bar"><s
 function slidesFor({ module, role }) {
   if (role === "admin") {
     const items = setupSlides(module);
-    return items.map((item, index) => ({ ...item, number: index + 1, total: items.length, section: "Instructor setup" }));
+    return items.map((item, index) => ({ ...item, number: index + 1, total: items.length, eyebrow: `Module ${module} / Instructor guide / Step ${index + 1} of ${items.length}` }));
   }
+  const meta = labMeta(module);
   const intro = labIntro(module);
-  const items = labSlides(module);
   const first = {
-    key: "intro", title: intro.title, number: 0, total: items.length, section: "Student lab", heading: "You need",
-    doItems: intro.need, doneWhen: `Allow about ${intro.minutes} minutes. Stop and ask your instructor whenever something does not match the picture.`,
-    visual: fig("How this lab works", flow([["Do this", "Short numbered actions"], ["Copy", "Paste exactly what is shown"], ["Done when", "Check before you move on"]])), lead: intro.lead
+    key: "intro", title: intro.title, number: 0, total: 0, eyebrow: `Module ${module} / Labs / Start here`, heading: "You need",
+    lead: intro.lead, doItems: intro.need, doneWhen: "Each lab is placed after its lesson in the slides. Stop and ask your instructor whenever something does not match the picture.",
+    visual: fig("Your labs", grid(meta.map(lab => [`Lab ${lab.n}`, `${lab.title}. About ${lab.minutes} minutes.`])))
   };
-  return [first, ...items.map((item, index) => ({ ...item, number: index + 1, total: items.length, section: "Student lab" }))];
+  const out = [first];
+  for (const lab of meta) {
+    const steps = labSlides(module).filter(item => item.lab === lab.n);
+    steps.forEach((item, index) => {
+      const links = [];
+      if (item.link) links.push(item.link);
+      if (index === steps.length - 1) links.push({ label: `Lab ${lab.n} done. Back to the slides (continue at slide ${lab.back})`, href: `./#slide-${lab.back}`, primary: true });
+      out.push({ ...item, number: index + 1, total: steps.length, links, eyebrow: `Lab ${lab.n}: ${lab.title} / Step ${index + 1} of ${steps.length}`, shortTitle: `Lab ${lab.n} - ${index + 1}. ${item.title}` });
+    });
+  }
+  return out;
 }
 
 export function buildView(config) {
   const { module, role } = config;
   const base = read(`slides/module-0${module}/index.html`);
-  const label = `Module ${module} / ${role === "admin" ? "Instructor setup" : "Student lab"}`;
+  const label = `Module ${module} / ${role === "admin" ? "Instructor guide" : "Labs"}`;
   const head = base.slice(0, base.indexOf("</head>"))
     .replace(/<title>.*?<\/title>/, `<title>A365 Hub | ${label}</title>`)
     .replace(/<meta name="description"[^>]+>/, `<meta name="description" content="Blue step-by-step ${esc(label)} with copyable snippets and pictures of what you should see.">`);
@@ -242,7 +252,7 @@ export function buildView(config) {
     <div class="top"><div class="brand">A365 Hub <span>/ ${label}</span></div>
     <nav class="row" aria-label="Choose module">${moduleLink(1)}${moduleLink(2)}</nav></div>
     <nav class="row mode-nav" aria-label="Choose section">
-      ${tab("1. Learn", `./#slide-${module === 1 ? 6 : 1}`, false)}${tab("2. Student lab", relative(module, module, "learner"), role === "learner")}${tab("3. Instructor setup", relative(module, module, "admin"), role === "admin")}
+      ${tab("1. Learn", `./#slide-${module === 1 ? 6 : 1}`, false)}${tab("2. Labs", relative(module, module, "learner"), role === "learner")}${tab("3. Instructor guide", relative(module, module, "admin"), role === "admin")}
       ${role === "learner" ? '<button type="button" id="notesMode" aria-pressed="false">Instructor notes: Off</button>' : ""}
       <button type="button" id="fullscreen">Fullscreen (F)</button><button type="button" id="print">Print</button>
     </nav>
@@ -255,16 +265,16 @@ export function buildView(config) {
       const side = [item.visual, item.snippet ? snippetHtml(item.snippet) : ""].filter(Boolean).join("\n");
       const noteBlock = item.note ? `<aside class="facilitator-note" data-instructor-only hidden><p class="eyebrow">Instructor only / ${esc(item.note[0])}</p><p><strong>You:</strong> ${rich(item.note[1])}</p><p><strong>Students:</strong> ${rich(item.note[2])}</p>${item.answers ? `<p><strong>Answer key:</strong></p><ul>${item.answers.map(answer => `<li>${rich(answer)}</li>`).join("")}</ul>` : ""}<a href="${adminLink(item.note[3])}">Open the matching setup step</a></aside>` : "";
       const counter = item.number ? `Step ${item.number} of ${item.total}` : "Start here";
-      return `<section class="slide" data-key="${item.key}" data-title="${esc(item.number ? `${item.number}. ${item.title}` : item.title)}" hidden>
+      return `<section class="slide" data-key="${item.key}" data-title="${esc(item.shortTitle ?? (item.number ? `${item.number}. ${item.title}` : item.title))}" hidden>
         <div class="walk-heading"><div class="step-number" aria-hidden="true">${item.number || "GO"}</div><div>
-          <p class="eyebrow">Module ${module} / ${item.section} / ${counter}</p><h1>${esc(item.title)}</h1></div></div>
-        ${tracker(item.total, item.number)}
+          <p class="eyebrow">${esc(item.eyebrow)}</p><h1>${esc(item.title)}</h1></div></div>
+        ${item.total ? tracker(item.total, item.number) : ""}
         <div class="lab-grid${side ? "" : " single"}">
           <div class="lab-text">
             ${item.lead ? `<p class="lede">${rich(item.lead)}</p>` : ""}
             <h2 class="do-heading">${item.heading ?? "Do this"}</h2>
             <ol class="micro">${item.doItems.map(entry => `<li>${rich(entry)}</li>`).join("")}</ol>
-            ${item.link ? `<p><a class="button${item.link.primary ? " primary" : ""}" href="${esc(item.link.href)}"${item.link.href.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(item.link.label)}</a></p>` : ""}
+            ${(item.links ?? (item.link ? [item.link] : [])).map(link => `<p><a class="button${link.primary ? " primary" : ""}" href="${esc(link.href)}"${link.href.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(link.label)}</a></p>`).join("")}
             <p class="done"><strong>${item.number ? "You are done when:" : "Good to know:"}</strong> ${rich(item.doneWhen)}</p>
             ${noteBlock}
           </div>
@@ -289,7 +299,24 @@ export function buildModule(module) {
   const original = read(`slides/module-0${module}/index.html`);
   const scripts = [...original.matchAll(/<script>([\s\S]*?)<\/script>/g)];
   assert.equal(scripts.length, 2, "Teaching deck has a theme script and a navigation script");
-  let html = original.slice(0, scripts[1].index);
+  // Each lab is announced on the lesson it practices, and links to its first lab slide.
+  const labSlideIndex = lab => slidesFor({ module, role: "learner" }).findIndex(item => item.lab === lab) + 1;
+  let slideNumber = 0;
+  const withCallouts = original.replace(/(<section class="slide"[\s\S]*?)(<template class="speaker-notes">)/g, (whole, before, template) => {
+    slideNumber++;
+    const lab = labMeta(module).find(item => item.after === slideNumber);
+    if (!lab) return whole;
+    return `${before}<p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minutes. Step by step, with copy boxes.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>\n        ${template}`;
+  });
+  assert.equal(slideNumber, module === 1 ? 18 : 8, "Every teaching slide must be considered for a lab callout");
+  const style = `<style>
+    .lab-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0 0; padding: 14px 18px; border: 1px solid var(--cp-accent); border-radius: 16px; background: var(--cp-accent-soft); }
+    .lab-badge { padding: 4px 10px; border-radius: 8px; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 750; letter-spacing: 1px; font-size: 14px; }
+    .lab-callout .button { margin-left: auto; }
+  </style>`;
+  const shifted = withCallouts.replace("</head>", `${style}</head>`);
+  const navigation = [...shifted.matchAll(/<script>([\s\S]*?)<\/script>/g)][1];
+  let html = shifted.slice(0, navigation.index);
   for (const role of ["learner", "admin"])
     html += `<template id="view-${viewName(role)}"><style>${css}</style>${buildView({ module, role }).body}</template>\n`;
   html += `<script>
@@ -297,10 +324,10 @@ export function buildModule(module) {
     if (selectedView === "lab" || selectedView === "admin") {
       const selected = document.getElementById("view-" + selectedView).content.cloneNode(true);
       document.body.replaceChildren(selected);
-      document.body.dataset.deck = "Module ${module} / " + (selectedView === "admin" ? "Instructor setup" : "Student lab");
+      document.body.dataset.deck = "Module ${module} / " + (selectedView === "admin" ? "Instructor guide" : "Labs");
       ${runtime}
     } else {
-      ${scripts[1][1]}
+      ${navigation[1]}
     }
   </script></body></html>\n`;
   return html;

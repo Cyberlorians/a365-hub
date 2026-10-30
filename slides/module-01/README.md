@@ -5,8 +5,8 @@
 15 proposed minutes. Presenter-led; no learner admin roles.
 
 [Open Module 1 core](https://cyberlorians.github.io/a365-hub/#slide-6) |
-[Student lab](https://cyberlorians.github.io/a365-hub/?view=lab) |
-[Instructor setup](https://cyberlorians.github.io/a365-hub/?view=admin) |
+[Labs](https://cyberlorians.github.io/a365-hub/?view=lab) |
+[Instructor guide](https://cyberlorians.github.io/a365-hub/?view=admin) |
 [Open onboarding](https://cyberlorians.github.io/a365-hub/#slide-1) |
 [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1)
 
@@ -22,7 +22,7 @@ E7 fit follows the customer gap, not an unsupported exclusivity claim.
 The published module includes visual student lab and instructor sections. Build with
 `node scripts/build-walkthroughs.mjs` from the repository root before local preview.
 The Markdown guides are the plain-text reference; the classroom experience is the
-presentation's Student lab and Instructor setup. Their copy-and-run snippets come from
+presentation's numbered Labs and Instructor guide. Their copy-and-run snippets come from
 those guides.
 
 | File | Use |

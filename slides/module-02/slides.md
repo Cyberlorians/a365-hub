@@ -13,7 +13,7 @@ Define normal.
 
 A useful task first. Then actor, authority, data, tools, and evidence.
 
-**Visual lab included; live environment not yet verified.** Open Student lab for the steps after the authorized instructor completes Instructor setup and proves the real task.
+**Four step-by-step labs, placed after the lessons they practice.** The instructor must complete the Instructor guide and prove the real task before learners start.
 
 Playbook focus: understand legitimate tool use before investigating living off the agent's tools (LOAT).
 
