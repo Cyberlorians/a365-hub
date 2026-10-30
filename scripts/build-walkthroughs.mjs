@@ -47,6 +47,18 @@ const css = `
   .snippet pre, .terminal { margin: 0; padding: 14px 16px; max-height: 360px; overflow: auto; border: 0; border-radius: 0; font-size: 15px; line-height: 1.5; background: var(--cp-bg); white-space: pre-wrap; }
   .terminal { border-radius: 10px; border: 1px solid var(--cp-border); color: var(--cp-success); }
   .snippet code { padding: 0; background: var(--cp-bg); }
+  .quiz { display: grid; gap: 10px; }
+  .quiz-q { margin: 0; font-size: 20px; font-weight: 700; color: var(--cp-accent); }
+  .quiz-option { text-align: left; padding: 12px 14px; border-radius: 10px; border: 2px solid var(--cp-border-strong); background: var(--cp-bg-elevated); color: var(--cp-text); font: inherit; font-size: 17px; cursor: pointer; }
+  .quiz-option:hover:not(:disabled) { border-color: var(--cp-accent); }
+  .quiz-option.right { border-color: var(--cp-success); background: var(--cp-bg); }
+  .quiz-option.wrong { border-color: var(--cp-danger); opacity: .7; }
+  .quiz-option:disabled { cursor: default; }
+  .quiz-feedback { margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--cp-bg-elevated); font-size: 16px; color: var(--cp-text-muted); }
+  .quiz-feedback.right { border-left: 4px solid var(--cp-success); color: var(--cp-text); }
+  .quiz-feedback.wrong { border-left: 4px solid var(--cp-danger); color: var(--cp-text); }
+  .quiz-score { padding: 18px; border: 1px solid var(--cp-border-strong); border-radius: 16px; text-align: center; }
+  .quiz-score strong { display: block; font-size: 44px; color: var(--cp-accent); }
   .visual-flow { display: flex; gap: 10px; align-items: stretch; }
   .visual-card { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 10px; background: var(--cp-bg-elevated); border: 1px solid var(--cp-border); }
   .visual-card strong { color: var(--cp-accent); font-size: 16px; }
@@ -149,6 +161,25 @@ const runtime = `
     document.getElementById("next").addEventListener("click", () => show(current + 1));
     jump.addEventListener("change", () => show(Number(jump.value)));
     window.addEventListener("hashchange", () => show(route()));
+    document.addEventListener("click", event => {
+      const option = event.target.closest(".quiz-option");
+      if (!option) return;
+      const quiz = option.closest(".quiz");
+      if (quiz.dataset.done) return;
+      const right = option.dataset.correct === "1";
+      const feedback = quiz.querySelector(".quiz-feedback");
+      option.classList.add(right ? "right" : "wrong");
+      feedback.textContent = (right ? (option.dataset.feedback.startsWith("Correct") ? "" : "Correct. ") : "Not quite. ") + option.dataset.feedback;
+      feedback.className = "quiz-feedback " + (right ? "right" : "wrong");
+      if (!quiz.dataset.tried) quiz.dataset.tried = right ? "first" : "miss";
+      if (right) {
+        quiz.dataset.done = "1";
+        quiz.querySelectorAll(".quiz-option").forEach(button => { button.disabled = true; });
+      }
+      document.querySelectorAll("[data-score]").forEach(el => {
+        el.textContent = document.querySelectorAll('.quiz[data-graded][data-tried="first"]').length + " of 4";
+      });
+    });
     document.querySelectorAll("[data-copy]").forEach(button => button.addEventListener("click", async () => {
       const code = button.closest(".snippet").querySelector("code");
       try {
@@ -188,6 +219,7 @@ const runtime = `
 `;
 
 const tracker = (total, current) => `<ol class="tracker" aria-label="${current ? `Step ${current} of ${total}` : "Introduction"}">${Array.from({ length: total }, (_, index) => `<li class="${index + 1 === current ? "current" : index + 1 < current ? "done" : ""}"></li>`).join("")}</ol>`;
+const quizHtml = quiz => `<div class="quiz"${quiz.graded ? " data-graded" : ""}><p class="quiz-q">${rich(quiz.question)}</p>${quiz.options.map(([label, correct, feedback]) => `<button type="button" class="quiz-option" data-correct="${correct ? 1 : 0}" data-feedback="${esc(feedback)}">${rich(label)}</button>`).join("")}<p class="quiz-feedback" role="status" aria-live="polite">Click an answer.</p></div>`;
 const snippetHtml = snippet => `<div class="snippet"><div class="snippet-bar"><span>${esc(snippet.language)}</span><button type="button" data-copy>Copy</button></div><pre tabindex="0"><code>${esc(snippet.code)}</code></pre></div>`;
 
 function slidesFor({ module, role }) {
@@ -243,7 +275,7 @@ export function buildView(config) {
   <main id="deck" class="walk-stage" tabindex="-1">
     <noscript><p class="callout">JavaScript is required for slide navigation and Copy buttons.</p></noscript>
     ${slides.map(item => {
-      const side = [item.visual, item.snippet ? snippetHtml(item.snippet) : ""].filter(Boolean).join("\n");
+      const side = [item.visual, item.snippet ? snippetHtml(item.snippet) : "", item.quiz ? quizHtml(item.quiz) : "", item.score ? `<div class="quiz-score"><strong data-score>0 of 4</strong><span>correct on the first try</span></div>` : ""].filter(Boolean).join("\n");
       return `<section class="slide" data-key="${item.key}" data-title="${esc(item.shortTitle ?? (item.number ? `${item.number}. ${item.title}` : item.title))}" hidden>
         <div class="walk-heading"><div class="step-number" aria-hidden="true">${item.number || "GO"}</div><div>
           <p class="eyebrow">${esc(item.eyebrow)}</p><h1>${esc(item.title)}</h1></div></div>

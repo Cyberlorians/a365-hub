@@ -137,7 +137,7 @@ for (const config of views) {
   assert.equal(new Set(slides.map(slide => slide.key)).size, slides.length, `${label} slide keys must be unique`);
   for (const slide of slides) {
     assert(slide.doItems.length >= 1 && slide.doItems.length <= 5, `${label} / ${slide.key}: use one to five short actions`);
-    assert(slide.doneWhen && (slide.visual || slide.snippet), `${label} / ${slide.key}: needs a done-when line and a visual or copy box`);
+    assert(slide.doneWhen && (slide.visual || slide.snippet || slide.score), `${label} / ${slide.key}: needs a done-when line and a visual or copy box`);
   }
   if (config.role === "learner") {
     const steps = slides.filter(slide => slide.number);
@@ -170,7 +170,7 @@ const learnerGuide2 = codeBlocks("labs/module-02-business-agent.md", /<details>\
 const labHtml2 = buildView({ module: 2, role: "learner" }).html;
 for (const key of ["4.1", "5.1", "7.1"]) assert(labHtml2.includes(esc(learnerGuide2[key].code)), `Module 2 lab must contain guide snippet ${key} exactly`);
 assert(labHtml2.includes("Do not send email") && labHtml2.includes("&lt;approved-real-internal-recipient&gt;"), "Module 2 lab needs separate draft and send snippets");
-assert(buildView({ module: 1, role: "learner" }).html.includes(esc(codeBlocks("labs/module-01-security-foundation.md", /<details>\n<summary>Optional reference:/)["0.1"].code)), "Module 1 lab must contain the four questions");
+assert(buildView({ module: 1, role: "learner" }).html.includes("quiz-option"), "Module 1 lab must contain quiz steps");
 assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
   workflow.includes("artifact_name: github-pages-${{ github.run_attempt }}"), "Pages upload/deploy must select the same retry-specific artifact");
 for (const name of markdownFiles) {
