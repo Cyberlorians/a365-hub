@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-brand="a365">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
       const param = new URLSearchParams(window.location.search).get("scoutTheme");
       const theme = param === "light" || param === "dark"
         ? param
-        : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        : "dark";
       document.documentElement.setAttribute("data-theme", theme);
     })();
   </script>
@@ -67,8 +67,55 @@
       --cp-sheen: rgba(255, 255, 255, 0.04);
       --cp-highlight: rgba(253, 142, 161, 0.12);
     }
+    html[data-brand="a365"] {
+      color-scheme: dark;
+      --cp-bg: #07111f;
+      --cp-bg-elevated: #102640;
+      --cp-surface: rgba(13, 29, 49, .92);
+      --cp-surface-soft: #102640;
+      --cp-border: rgba(155, 194, 232, .22);
+      --cp-border-strong: rgba(155, 194, 232, .45);
+      --cp-text: #f5f8ff;
+      --cp-text-muted: #a9bad1;
+      --cp-text-soft: #a9bad1;
+      --cp-accent: #56d7ff;
+      --cp-accent-hover: #a9bad1;
+      --cp-accent-soft: rgba(86, 215, 255, .12);
+      --cp-accent-fg: #07111f;
+      --cp-success: #58e3a2;
+      --cp-danger: #ff7b8b;
+      --cp-warning: #ffcc66;
+      --cp-link: #56d7ff;
+      --cp-overlay: rgba(2, 7, 13, .78);
+      --cp-panel: rgba(13, 29, 49, .92);
+      --cp-panel-strong: #102640;
+      --cp-sheen: rgba(86, 215, 255, .13);
+      --cp-highlight: rgba(86, 215, 255, .12);
+    }
+    html[data-brand="a365"][data-theme="light"] {
+      color-scheme: light;
+      --cp-bg: #f5f8ff;
+      --cp-bg-elevated: #ffffff;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: rgba(155, 194, 232, .22);
+      --cp-border: rgba(13, 29, 49, .22);
+      --cp-border-strong: rgba(13, 29, 49, .45);
+      --cp-text: #07111f;
+      --cp-text-muted: #102640;
+      --cp-text-soft: #102640;
+      --cp-accent: #005a7a;
+      --cp-accent-hover: #102640;
+      --cp-accent-fg: #ffffff;
+      --cp-success: #166534;
+      --cp-danger: #b91c1c;
+      --cp-warning: #92400e;
+      --cp-link: #005a7a;
+      --cp-overlay: rgba(245, 248, 255, .8);
+      --cp-panel: #ffffff;
+      --cp-panel-strong: #ffffff;
+    }
     * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--cp-bg); color: var(--cp-text); font: 18px/1.5 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
+    body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: radial-gradient(circle at 8% 88%, var(--cp-sheen), var(--cp-bg) 40%); color: var(--cp-text); font: 18px/1.5 "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif; }
     a { color: var(--cp-link); text-underline-offset: 3px; }
     button, select { font: inherit; color: var(--cp-text); }
     .button { display: inline-flex; align-items: center; text-decoration: none; }

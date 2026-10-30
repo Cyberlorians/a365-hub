@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
+let brandPalette;
 const markdownFiles = [
   "README.md", "docs/00-project-outline.md", "docs/01-full-day-workshop.md",
   "docs/02-baseline-agenda.md", "docs/module-roadmap.md", "docs/06-customer-learning-plan.md",
@@ -27,6 +28,23 @@ for (const id of [1, 2]) {
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
+  assert(html.includes('<html lang="en" data-brand="a365">'), "A365 branding must be active");
+  const palette = html.match(/html\[data-brand="a365"\] \{([\s\S]*?)\n    \}/)?.[1];
+  assert(palette, "A365 navy/cyan palette is required");
+  for (const token of ["--cp-bg: #07111f;", "--cp-bg-elevated: #102640;", "--cp-accent: #56d7ff;", "--cp-text: #f5f8ff;", "--cp-text-muted: #a9bad1;"])
+    assert(palette.includes(token), `Original Module 1 brand token missing: ${token}`);
+  if (brandPalette) assert.equal(palette, brandPalette, "Both decks must use the same brand palette");
+  brandPalette = palette;
+  const themeScript = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+  for (const [search, expected] of [["", "dark"], ["?scoutTheme=light", "light"], ["?scoutTheme=dark", "dark"], ["?scoutTheme=invalid", "dark"]]) {
+    let theme;
+    vm.runInNewContext(themeScript, {
+      URLSearchParams,
+      window: { location: { search }, matchMedia: () => ({ matches: false }) },
+      document: { documentElement: { setAttribute: (name, value) => { if (name === "data-theme") theme = value; } } }
+    });
+    assert.equal(theme, expected, `Module ${id} theme selection for "${search}"`);
+  }
   assert(!/<(?:form|iframe)\b|<script\s+src=/i.test(html), "No connected forms or external runtime");
   assert(!/fetch\(|XMLHttpRequest|sendBeacon|localStorage/.test(html), "No tenant API or stored attendee data");
   const source = read(`${directory}/slides.md`);
