@@ -21,8 +21,24 @@ review file. Press **N** for per-slide presenter notes. Use the module links in 
 deck to switch presentations. Each HTML file also works offline for its own slides.
 
 > Public content drafts are not hands-on release claims. No test accounts, tenant
-> fixtures, GBB scenarios, or automation were created or executed for this publication.
-> Review the content, then approve an isolated preparation plan before provisioning.
+> fixtures, GBB scenarios, or tenant automation have been executed for this publication.
+> The deployment scripts below are provided for an authorized lab admin to run.
+> Local tests and compiled templates do not establish tenant readiness.
+
+## Deploy and run Modules 1-2
+
+Follow these in order; the guides contain copy/paste commands and expected results:
+
+1. **Admin:** [Create the lab group, licensed users, TAPs, and test mailboxes](docs/07-module-01-admin-runbook.md).
+2. **Admin:** [Register the agent, deploy its API and website, and prove a real email task](docs/08-module-02-admin-runbook.md).
+3. **Everyone:** Follow the numbered learner guides below, using the admin-provided
+   account, deployed UI URL, and approved internal recipient.
+
+This route does not require the old Forms/Logic App pipeline. It uses run-owned
+manifests, does not alter CA/DLP, and never invokes the upstream destructive deployment
+script. Budget, tenant eligibility, licenses, and model quota are required inputs.
+Reuse a chat-model deployment or follow the optional model-creation snippets in the
+Module 2 admin guide. [Deployment files](labs/workshop/) and [scripts](scripts/) are included.
 
 ## Step-by-step walkthroughs
 
@@ -32,8 +48,9 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 | 2 | [Draft/review/send/evidence/passport steps](labs/module-02-business-agent.md) | [Access/runtime/evidence preparation and rehearsal](docs/08-module-02-admin-runbook.md) |
 
 Both decks also link to their learner guide and admin runbook in the toolbar.
-The guides distinguish content/browser rehearsal from live tenant proof. The latter
-remains unverified until separately approved preparation and actual tests are recorded.
+They give a short **Do -> Check -> Next** path first, with optional technical reference
+collapsed below. Live tenant proof remains unverified until actual deployment and tests
+are recorded.
 
 ## Complete eight-module story
 

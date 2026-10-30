@@ -23,9 +23,19 @@ Guide authoring and browser checks do not constitute live tenant or independent
 facilitator validation. No test accounts, deployments, model calls, mail, or fake
 security telemetry were created to produce these guides.
 
+**Deployment package:** Modules 1-2 now also include
+[run-scoped account/TAP scripts](../scripts/New-WorkshopUsers.ps1),
+[pinned source/app initialization](../scripts/Initialize-Workshop.ps1),
+[non-destructive runtime/UI deployment](../scripts/Deploy-Workshop.ps1), and
+[infrastructure templates](../labs/workshop/). The admin guides provide executable
+commands; learner guides follow the actual sign-in/draft/send/check path.
+Compilation/offline tests are not live tenant proof. No claims of tested mail,
+downstream observability, policy enforcement, or independent timing are added.
+
 **Review-first gate:** Publication is for content review, not hands-on readiness.
-No test users, tenant fixtures, GBB scenarios, or automation were created/executed.
-Review the content, then approve an isolated preparation plan before provisioning.
+No test users, tenant fixtures, GBB scenarios, or tenant automation were executed.
+The user requested executable deployment; operators still approve their environment,
+grants, cost, and run scope before provisioning.
 Runtime proof gates the final hands-on release, not creation of an untested draft.
 Per-module synthetic-data/automation considerations are recorded in Section 16.
 The existing local onboarding edits and extracted GBB material are not modified or published.

@@ -9,10 +9,13 @@ on:
       - "slides/module-01-what-is-agent-id.md"
       - "labs/module-01-security-foundation.md"
       - "labs/module-02-business-agent.md"
+      - "labs/workshop/**"
       - "docs/**"
       - "grounding/**"
       - "README.md"
       - "scripts/check-workshop.mjs"
+      - "scripts/*Workshop*.ps1"
+      - "scripts/*workshop*.ps1"
       - ".github/workflows/module-01-pages.yml"
   workflow_dispatch:
 
@@ -26,7 +29,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  validate-automation:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test automation without tenant access
+        shell: pwsh
+        run: .\scripts\test-workshop-automation.ps1
+      - name: Compile workshop infrastructure
+        shell: pwsh
+        run: |
+          az bicep version
+          if ($LASTEXITCODE -ne 0) {
+            az bicep install
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          }
+          az bicep build --file .\labs\workshop\infrastructure.bicep --outfile "$env:RUNNER_TEMP\workshop-infrastructure.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          az bicep build --file .\labs\workshop\applications.bicep --outfile "$env:RUNNER_TEMP\workshop-applications.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          az bicep build --file .\labs\workshop\model-account.bicep --outfile "$env:RUNNER_TEMP\workshop-model.json"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
   deploy:
+    needs: validate-automation
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

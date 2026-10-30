@@ -1,17 +1,162 @@
-# Module 2: Establish the Approved Agent Baseline
+# Module 2: Follow Along Step by Step
 
-**Rough draft for content review - updated October 30, 2026.**
-**Proposed duration:** 35 minutes, including the accompanying eight-slide flow.
-**Status:** No test user, mailbox, agent deployment, message, or telemetry has been
-created for this draft. This is not a tested runbook or evidence of a working lab.
+**What you will do:** Use the lab agent to draft an email, review it, explicitly request
+sending, and check the real result.
+**You need:** Your tested lab account, the deployed agent URL, one approved internal
+recipient, and the admin's go-ahead.
+**Allow:** 35 minutes after admin setup. Use fictional training data only.
 
-Review alongside the [Module 2 presentation](https://cyberlorians.github.io/a365-hub/module-02/#slide-1).
-Presenter notes are built into that presentation; press **N**.
-The [master plan](../docs/06-customer-learning-plan.md) contains the eight-module story and
-per-module data/automation considerations.
+## Get ready
 
-For the operator's preparation, permissions, proof, and reset sequence, use the
-[Module 2 admin runbook](../docs/08-module-02-admin-runbook.md).
+1. [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) in a second tab.
+2. Open the **agent URL supplied by the admin**, not the slide URL.
+3. Click **Sign in**. Use your isolated lab account, not your personal/production account.
+4. Select **Project Beacon Mail Agent**. You should see a message box and **Send** button.
+   Here, **Send** submits a chat message; it is not itself an email approval control.
+5. Confirm the recipient with the admin. Keep this guide and a blank note open.
+
+If you have only the slides, stop here: the admin must complete the
+[deployment and live checks](../docs/08-module-02-admin-runbook.md).
+The public slide site is not the deployed agent.
+
+## Step 1: Name the task (2 minutes)
+
+**Do:** Open [Slide 1](https://cyberlorians.github.io/a365-hub/module-02/#slide-1).
+Write: "Draft, review, and send one internal Project Beacon status email."
+
+**Check:** The goal is to establish normal behavior before investigating misuse.
+That is this module's focus from the Agent Identities playbook.
+
+**Next:** Step 2.
+
+## Step 2: Set the limits (2 minutes)
+
+**Do:** Open [Slide 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-2).
+Under your task, write: "Supplied fictional facts only. One approved internal recipient.
+No attachments, extra sources, or extra recipients."
+
+**Check:** These are the intended limits, not proof that a technical policy enforces them.
+
+**Next:** Step 3.
+
+## Step 3: Identify who would send it (4 minutes)
+
+**Do:** Open [Slide 3](https://cyberlorians.github.io/a365-hub/module-02/#slide-3).
+Confirm the lab username shown in the agent UI. Write: "Mail sends from this signed-in
+user's mailbox." Record the lab username privately, not in public notes.
+
+**Check:** The signed-in user is your assigned lab user. The agent's registration is
+a separate object. Do not treat the sample `.invalid` address as a working account.
+
+**Next:** Step 4.
+
+## Step 4: Ask the agent for a draft (7 minutes)
+
+**Do:** Open [Slide 4](https://cyberlorians.github.io/a365-hub/module-02/#slide-4).
+Copy this into the agent's message box and click the chat **Send** button:
+
+```text
+Use only this fictional brief to draft a 60-80-word internal status email.
+Project: Beacon training rollout.
+Progress: Three of four documentation tasks complete.
+Remaining task: Review the architecture diagram.
+Next milestone: November 6, 2026.
+Next action: Confirm the review owner by November 3, 2026.
+Subject: [A365 TRAINING] Project Beacon status.
+
+Return the subject and draft text only.
+Do not send email, call a sending tool, add recipients, attachments, or facts.
+```
+
+**Check:** A draft appears. Check the word count, all five facts, and subject.
+No email should be sent yet. If the agent acts before you request it, stop and tell
+the admin. The prompt is an instruction, not a proven technical approval boundary.
+
+**Next:** Step 5.
+
+## Step 5: Request sending and check receipt (5 minutes)
+
+**Do:** Open [Slide 5](https://cyberlorians.github.io/a365-hub/module-02/#slide-5).
+Check the draft with the admin. Replace **both placeholders** below, paste the complete
+instruction into the same chat, and click the chat **Send** button:
+
+```text
+Send only this reviewed training email to the single approved internal recipient.
+To: <approved-real-internal-recipient>
+Subject: [A365 TRAINING] Project Beacon status
+Body:
+<paste-the-reviewed-draft>
+
+Do not add recipients, attachments, sources, or facts.
+```
+
+Ask the facilitator to check the controlled recipient's Outlook. You do not need access
+to someone else's mailbox.
+
+**Check:** The actual email arrives with the correct sender, recipient, subject, body,
+and time. A chat success message alone is not receipt. If uncertain, ask the admin to
+check before retrying; do not send duplicates or broaden permissions.
+
+**Next:** Step 6.
+
+## Step 6: Record the proof (7 minutes)
+
+**Do:** Open [Slide 6](https://cyberlorians.github.io/a365-hub/module-02/#slide-6).
+Ask the facilitator to show the actual records. For each item below, write the result,
+source, and time, or write "not observed":
+
+- The intended recipient received the email.
+- A tool record identifies the action, target, time, and result.
+- The user, agent registration, and actual permissions are verified.
+- Any claimed security-policy result has its own evidence.
+
+**Check:** Distinguish your current run from a clearly labeled earlier run, a fictional
+example, or missing evidence. Do not invent logs, alerts, IDs, or a successful policy test.
+A missing downstream record remains a gap even when email delivery succeeds.
+
+**Next:** Step 7.
+
+## Step 7: Make a short agent record (5 minutes)
+
+**Do:** Open [Slide 7](https://cyberlorians.github.io/a365-hub/module-02/#slide-7).
+Fill in these six lines in a private note. The longer record is optional below.
+
+```text
+Task: Draft, review, and send a Project Beacon status email.
+Sender: <actual lab user>
+Responsible owner: <admin-provided owner>
+Allowed data/tool: Fictional brief, Mail tool, one approved internal recipient.
+Result/evidence: <actual receipt and tool record, or the exact failure/missing proof>
+Next gap: <one permission, data-policy, or observability question still unproven>
+```
+
+**Check:** Your record separates what you actually observed from what remains unproven.
+
+**Next:** Step 8.
+
+## Step 8: Explain what you learned (3 minutes)
+
+**Do:** Open [Slide 8](https://cyberlorians.github.io/a365-hub/module-02/#slide-8).
+Answer: What did we do? What did we not prove? What unexpected action would worry us?
+
+**Check:** If the task passed, a good answer is: "The intended email arrived. This does
+not prove every security control. An extra recipient or unrequested tool needs investigation."
+If it failed, describe the failure instead of claiming success.
+
+**Next:** Save your approved evidence note, click **Sign out**, and close the lab profile.
+
+## Finished
+
+You should have a real checked outcome, a six-line agent record, and a list of remaining
+gaps. The admin handles message retention, account shutdown, and Azure cleanup.
+Do not delete shared resources.
+
+Presenting this module? Use the [simple admin steps](../docs/08-module-02-admin-runbook.md).
+Stop on an error, unexpected recipient/tool action, wrong account, or missing approval.
+Do not bypass Conditional Access or request blanket permissions to complete a step.
+
+<details>
+<summary>Optional reference: future live prompts, full agent record, evidence, and sources</summary>
 
 ## Start here: choose review or live mode
 
@@ -294,6 +439,8 @@ explicit manifest. Do not turn on old account-age cleanup or delete shared resou
 
 GBB can inform approved later setup, scenarios, and hunting. It is not a reason to
 deploy its entire environment for this baseline activity.
+
+</details>
 
 ## Sources
 

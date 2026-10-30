@@ -76,6 +76,38 @@ const module2Steps = [...read("labs/module-02-business-agent.md").matchAll(/^\| 
 assert.deepEqual(module2Steps.map(match => Number(match[1])), Array.from({ length: 8 }, (_, index) => index + 1), "Learner guide must cover all eight Module 2 slides in order");
 assert.equal(module2Steps.reduce((total, match) => total + Number(match[2]), 0), 35, "Module 2 walkthrough timing");
 assert(read("docs/08-module-02-admin-runbook.md").includes("deletes its entire resource"), "Admin must retain the upstream deployment deletion warning");
+for (const [file, count, firstSlide] of [
+  ["labs/module-01-security-foundation.md", 7, 6],
+  ["labs/module-02-business-agent.md", 8, 1],
+  ["docs/07-module-01-admin-runbook.md", 7, null],
+  ["docs/08-module-02-admin-runbook.md", 8, null]
+]) {
+  const content = read(file);
+  assert.equal((content.match(/<details>/g) ?? []).length, (content.match(/<\/details>/g) ?? []).length, `Unclosed optional reference in ${file}`);
+  const quick = content.replace(/<details>[\s\S]*?<\/details>/g, "");
+  const steps = [...quick.matchAll(/^## Step (\d+):[^\n]*/gm)];
+  assert.deepEqual(steps.map(step => Number(step[1])), Array.from({ length: count }, (_, index) => index + 1), `Simple numbered path in ${file}`);
+  const stepText = quick.slice(steps[0].index);
+  steps.forEach((step, index) => {
+    const body = quick.slice(step.index, steps[index + 1]?.index ?? quick.length);
+    for (const label of ["**Do:**", "**Check:**", "**Next:**"])
+      assert(body.includes(label), `Step ${index + 1} needs ${label} in ${file}`);
+  });
+  if (firstSlide !== null) {
+    const slideNumbers = [...stepText.matchAll(/\[Slide (\d+)\]/g)].map(match => Number(match[1]));
+    assert.deepEqual(slideNumbers, Array.from({ length: firstSlide === 6 ? 13 : 8 }, (_, index) => index + firstSlide), `Visible walkthrough slide coverage in ${file}`);
+    const minutes = [...stepText.matchAll(/^## Step \d+:.*\((\d+) minutes\)/gm)].reduce((sum, match) => sum + Number(match[1]), 0);
+    assert.equal(minutes, firstSlide === 6 ? 25 : 35, `Visible walkthrough timing in ${file}`);
+  }
+}
+const liveLearner = read("labs/module-02-business-agent.md").split("<details>")[0];
+assert(liveLearner.includes("Do not send email") && liveLearner.includes("<approved-real-internal-recipient>"), "Live guide needs separate draft and explicit send snippets");
+assert(liveLearner.includes("The public slide site is not the deployed agent"), "Learners need the real deployed UI URL");
+const templates = ["infrastructure.bicep", "model-access.bicep", "model-account.bicep", "applications.bicep", "ui.Dockerfile", "config.example.json"];
+templates.forEach(file => assert(fs.existsSync(path.join(root, "labs/workshop", file))));
+const deploy = read("scripts/Deploy-Workshop.ps1");
+assert(!deploy.includes("deploy-aca.ps1") && !deploy.includes("'group', 'delete'"), "Deployment must not call the destructive upstream script or delete a group");
+assert(deploy.includes("git") && deploy.includes("archive") && deploy.includes("ZeroFreeBSTR"), "Build tracked source only and clear the marshalled secret");
 for (const name of markdownFiles) {
   const content = read(name);
   assert(!/[A-Za-z]:[\\/](?:Users|tools)[\\/]|file:\/\/\/|session-state[\\/]/i.test(content), `Private machine path in ${name}`);

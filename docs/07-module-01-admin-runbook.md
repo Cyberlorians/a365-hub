@@ -1,13 +1,190 @@
-# Module 1: Admin and Presenter Step-by-Step Runbook
+# Module 1: Admin - Start Here
 
-**Updated:** October 30, 2026.
-**Status:** Written operator walkthrough. Slide/browser checks do not establish live
-tenant access, successful onboarding, or an independent 25-minute rehearsal.
+**Goal:** Prepare the lab accounts, test sign-in, then deliver Module 1.
+Complete this guide **and the Module 2 admin steps before class**.
+The new scripts are a deployable package, not a claim that your tenant has been tested.
 
-[Module 1 slides](https://cyberlorians.github.io/a365-hub/#slide-6) |
-[Learner steps and worksheet](../labs/module-01-security-foundation.md) |
-[Speaker notes](../slides/module-01/speaker-notes.md) |
-[Module 2 admin runbook](08-module-02-admin-runbook.md)
+Use an authorized **dedicated lab tenant**. Never run this in production.
+Keep the checkout and `.workshop` on a private, non-shared disk, not a synced/shared folder.
+You need PowerShell 7.2+, Git, Azure CLI, available mailbox/Agent 365 entitlements, and
+an admin authorized to create ordinary users/groups, assign the selected licenses,
+and issue Temporary Access Passes (TAPs). Learners get **no admin roles**.
+
+## Step 1: Get the files
+
+**Do:** Open PowerShell 7 and run:
+
+Already have the checkout? Open it in PowerShell and skip this clone block.
+Do not copy the example over an existing working config.
+
+```powershell
+$ErrorActionPreference = 'Stop'
+git clone https://github.com/Cyberlorians/a365-hub.git
+if ($LASTEXITCODE -ne 0) { throw 'Clone failed' }
+Set-Location .\a365-hub
+```
+
+From the repository root, prepare the local files:
+
+```powershell
+$ErrorActionPreference = 'Stop'
+if (-not (Get-Module -ListAvailable Microsoft.Graph.Authentication)) {
+  Install-Module Microsoft.Graph.Authentication -Scope CurrentUser
+}
+New-Item -ItemType Directory -Path .\.workshop -Force
+if (-not (Test-Path .\.workshop\config.json)) {
+  Copy-Item .\labs\workshop\config.example.json .\.workshop\config.json
+}
+$hub = (Get-Location).Path
+```
+
+**Check:** You see the scripts and a local config file. `.workshop` is excluded from Git.
+Keep this PowerShell window open for the following commands.
+
+**Next:** Step 2.
+
+## Step 2: Set your lab values and create its group
+
+**Do:** Replace these three values, then run:
+
+```powershell
+$tenant = '<your-tenant-guid>'
+$domain = '<your-verified-tenant-domain>'
+$run = 'beacon01'
+
+.\scripts\New-WorkshopUsers.ps1 -TenantId $tenant -Domain $domain `
+  -RunName $run -Stage PrepareGroup
+```
+
+Sign in as the authorized lab administrator. Review the requested Graph scopes before
+consenting. The script creates one security group; it does not change any tenant policy.
+
+**Check:** The output contains `Group ID:`. Record it privately.
+An error stops the script; do not continue until it is resolved.
+
+**Next:** Step 3.
+
+## Step 3: Allow TAP sign-in for that group
+
+**Do:** Open [Microsoft Entra admin center](https://entra.microsoft.com).
+Go to **Entra ID -> Authentication methods -> Policies -> Temporary Access Pass**.
+Enable TAP for the **A365 Hub beacon01** group from Step 2, not the entire organization.
+Configure a lifetime that permits your planned 180-minute lab window and permits a
+multi-use pass. Save. The actual tenant policy must allow the requested duration.
+
+This is the one authentication-policy setup step; the script intentionally does not
+weaken Conditional Access or change MFA/device-compliance requirements.
+
+**Check:** The saved policy targets the correct group. Actual sign-in is tested in Step 5.
+If you cannot edit it, have the Authentication Policy Administrator do this step.
+
+**Next:** Step 4.
+
+## Step 4: Create one learner and one test recipient
+
+**Do:** List your actual license SKU IDs:
+
+```powershell
+Connect-MgGraph -TenantId $tenant -Scopes Organization.Read.All -NoWelcome
+(Invoke-MgGraphRequest -Method GET `
+  -Uri 'https://graph.microsoft.com/v1.0/subscribedSkus').value |
+  Select-Object skuPartNumber, skuId, consumedUnits, prepaidUnits
+```
+
+Choose the licensed services required by your tenant's Agent 365 enrollment, including
+a working Exchange Online mailbox. Do not select every SKU or assume a marketing
+bundle name is a Graph SKU. You need seats for **both** accounts.
+
+```powershell
+$licenses = @('<approved-mailbox-sku-guid>', '<other-required-sku-guid>')
+# If one SKU covers the approved requirements, put only that GUID in the array.
+.\scripts\New-WorkshopUsers.ps1 -TenantId $tenant -Domain $domain `
+  -RunName $run -Stage Provision -LearnerCount 1 `
+  -SkuIds $licenses -UsageLocation US -TapLifetimeMinutes 180
+```
+
+Replace `US` if the lab's licensing location is different.
+
+**Check:** The script reports these two accounts and a private credentials-file path:
+
+```text
+beacon01-learner01@your-domain
+beacon01-recipient@your-domain
+```
+
+It records exact object IDs for later shutdown. It will not take over a same-name
+account outside its manifest. It never prints TAP values to the console.
+
+**Next:** Step 5.
+
+## Step 5: Test both accounts before inviting learners
+
+**Do:**
+
+1. Open the private credentials file locally, **off screen share**.
+2. In a separate browser profile, open [Outlook](https://outlook.office.com/mail/).
+3. Use the learner username and TAP. Follow the actual sign-in prompts.
+4. Confirm the learner's mailbox opens.
+5. In another isolated browser profile, repeat for the recipient account.
+6. Send a training message from learner to recipient in Outlook and verify receipt.
+
+**Check:** Both mailboxes work and the test arrives. A newly assigned license may take
+time to provision a mailbox. A TAP does not bypass CA/MFA/device rules.
+If any check fails, stop and resolve it with the relevant policy/license owner.
+
+If preparation outlasts the passes, explicitly renew this run's TAPs immediately before
+class, then distribute the updated private credential file:
+
+```powershell
+.\scripts\New-WorkshopUsers.ps1 -TenantId $tenant -Domain $domain `
+  -RunName $run -Stage Provision -LearnerCount 1 -SkuIds $licenses `
+  -TapLifetimeMinutes 180 -RenewTaps
+```
+
+Use the actual class learner count, not `1`, once additional learners exist. Renewal
+invalidates the previous TAPs for those accounts; notify the affected lab users.
+
+**Next:** [Prepare and deploy the agent using the Module 2 admin guide](08-module-02-admin-runbook.md).
+Return here after that guide's live test passes.
+
+## Step 6: Run Module 1 with the class
+
+**Do:** Give each learner only their own lab username/TAP through an approved private
+channel. Keep the recipient account with the facilitator. Then:
+
+1. [Open Module 1 at slide 6](https://cyberlorians.github.io/a365-hub/#slide-6).
+2. Have learners open the [numbered learner walkthrough](../labs/module-01-security-foundation.md).
+3. Follow learner Steps 1-7 in order. **Next** moves slides; **N** opens your notes.
+4. At learner Step 6, use the [answer key](../slides/module-01/exercise.md).
+5. If showing a real agent, use the read-only Registry instructions in the optional reference below.
+
+**Check:** Each learner has four short answers, understands the identity/runtime
+monitoring gap, and can name one next action. Allow 25 core minutes; record actual time.
+
+**Next:** Run the [Module 2 learner walkthrough](../labs/module-02-business-agent.md).
+
+## Step 7: Close accounts when the workshop is over
+
+**Do:** First preview, then disable **only this run's recorded accounts**:
+
+```powershell
+.\scripts\New-WorkshopUsers.ps1 -TenantId $tenant -Domain $domain `
+  -RunName $run -Stage Close -WhatIf
+
+# After checking the listed accounts:
+.\scripts\New-WorkshopUsers.ps1 -TenantId $tenant -Domain $domain `
+  -RunName $run -Stage Close
+```
+
+**Check:** Verify these accounts are disabled. The script also requests session
+revocation. It does not delete mail, remove licenses, or delete users/groups.
+The event owner must handle those exact objects under the retention policy and
+securely remove expired TAP files. Never bulk-delete all "workshop" users.
+
+**Next:** Follow Module 2's Azure cleanup steps to stop ongoing resource charges.
+
+<details>
+<summary>Optional admin reference: roles, read-only Registry demo, onboarding alternatives, and run records</summary>
 
 ## 1. Select the run mode
 
@@ -153,6 +330,11 @@ See the [master plan](06-customer-learning-plan.md) and
 
 ## Content walkthrough record: October 30, 2026
 
+The earlier browser record below predates the deployable package. Current package
+checks: offline PowerShell/CLI/Graph/snippet assertions pass; all Bicep entry
+templates compile; visible learner/admin steps and links pass the workshop validator.
+These checks use fake services. No live tenant/user/model/mail test was run here.
+
 | Verification | Result |
 |---|---|
 | Guide links cover core slides 6-18 in order | Passed static validation; proposed row timings total 25 minutes |
@@ -163,3 +345,5 @@ See the [master plan](06-customer-learning-plan.md) and
 | Independent facilitator and measured teaching duration | Not run; 25 minutes remains a proposed timebox |
 
 This is an author-assisted content/browser walkthrough, not a completed event run record.
+
+</details>

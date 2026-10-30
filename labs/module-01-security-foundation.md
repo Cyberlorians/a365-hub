@@ -1,11 +1,119 @@
-# Module 1: Learner Step-by-Step Guide
+# Module 1: Follow Along Step by Step
 
-**Status:** Reviewable walkthrough, not an independently timed class or live tenant test.
-**Time:** 25-minute core; optional approved onboarding is a separate 15 minutes.
+**What you will do:** Learn how to review one agent and write four short answers.
+**You need:** A browser, somewhere to take notes, and your lab sign-in details from the admin.
+**Allow:** 25 core minutes, plus sign-in time. No learner admin access is needed.
 
-[Open the core slides](https://cyberlorians.github.io/a365-hub/#slide-6) |
-[Admin runbook](../docs/07-module-01-admin-runbook.md) |
-[Module 2 learner guide](module-02-business-agent.md)
+## Get ready
+
+1. Get your own lab username and Temporary Access Pass (TAP) privately from the admin.
+2. In your lab browser profile, open [Outlook](https://outlook.office.com/mail/).
+   Sign in with that username and TAP. Follow the actual sign-in prompts.
+3. Confirm your lab mailbox opens. If it does not, stop and contact the admin; do not
+   use a production account or bypass a security prompt.
+4. [Open Module 1](https://cyberlorians.github.io/a365-hub/#slide-6) in a second tab.
+5. Leave this guide open. Use the slide links below rather than hunting for a slide.
+6. Copy these four lines into a blank note:
+
+```text
+What does the agent do?
+Who is responsible, and who actually acts?
+What data and tools may it use?
+What evidence would show what happened?
+```
+
+The admin distributes pre-created accounts directly; there is no public signup button
+in these slides. Slides 1-5 explain sign-in if the presenter uses them.
+
+## Step 1: Understand the example (3 minutes)
+
+**Do:** Open [Slide 6](https://cyberlorians.github.io/a365-hub/#slide-6), then
+[Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Read the Project Beacon
+example. Under your first question, write: "Help draft and send an internal project-status email."
+
+**Check:** You can name the useful business task. Project Beacon is fictional.
+
+**Next:** Step 2.
+
+## Step 2: Spot the two kinds of risk (4 minutes)
+
+**Do:** Read [Slide 8](https://cyberlorians.github.io/a365-hub/#slide-8), then
+[Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9). Write one sentence explaining
+why a correctly signed-in agent could still do the wrong thing.
+
+**Check:** Your sentence covers both stolen/misused access and an agent following bad
+instructions in content. A sign-in log alone cannot show every harmful instruction.
+That is why this workshop follows the Agent Identities playbook throughout.
+
+**Next:** Step 3.
+
+## Step 3: Review one agent (4 minutes)
+
+**Do:** Read [Slide 10](https://cyberlorians.github.io/a365-hub/#slide-10), then
+[Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Use the fictional card on
+the slide. Fill in the remaining questions where the card gives an answer. Write
+"unknown" wherever it does not.
+
+**Check:** You have not invented a real owner, permission, or activity record.
+Label your note "fictional practice example."
+
+**Next:** Step 4.
+
+## Step 4: Pick an identity control (5 minutes)
+
+**Do:** Open [Slide 12](https://cyberlorians.github.io/a365-hub/#slide-12). Choose one
+question from your note and match it to one of the five Entra controls.
+For example: "Who is responsible?" needs ownership and lifecycle governance.
+
+**Check:** Explain your choice in plain language. You do not need to configure a policy.
+
+**Next:** Step 5.
+
+## Step 5: Decide what proof you need (4 minutes)
+
+**Do:** Read [Slide 13](https://cyberlorians.github.io/a365-hub/#slide-13),
+[Slide 14](https://cyberlorians.github.io/a365-hub/#slide-14), and
+[Slide 15](https://cyberlorians.github.io/a365-hub/#slide-15). Under your fourth question,
+write: "Check who acted, which tool ran, and whether the intended email arrived."
+Add one open data-protection question.
+
+**Check:** A sign-in, a draft, and an actual delivered email prove different things.
+A DLP audit records activity; it is not the same as blocking it.
+
+**Next:** Step 6.
+
+## Step 6: Check your understanding (3 minutes)
+
+**Do:** Open [Slide 16](https://cyberlorians.github.io/a365-hub/#slide-16).
+Answer its four questions, then compare with the
+[answer key](../slides/module-01/exercise.md).
+
+**Check:** Aim for at least three correct, including why identity logs alone are not
+enough. If you miss that one, reread Step 2 and try again.
+
+**Next:** Step 7.
+
+## Step 7: Write the next action (2 minutes)
+
+**Do:** Read [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17), then
+[Slide 18](https://cyberlorians.github.io/a365-hub/#slide-18).
+Write one gap to investigate before expanding agent use. Discuss licensing only after
+identifying that gap; basic DLP and ordinary XDR are not exclusively E7.
+
+**Check:** You have four short answers, one risk explanation, and one next action.
+You have not claimed that a real agent or security control was tested.
+
+**Next:** [Start the Module 2 walkthrough](module-02-business-agent.md).
+
+## Finished
+
+Keep your notes for Module 2. Do not delete your lab account or change policies. The admin handles access and cleanup.
+If a slide will not open, stop at that step and tell the presenter.
+
+Presenting this module? Use the [simple admin steps](../docs/07-module-01-admin-runbook.md).
+
+<details>
+<summary>Optional reference: detailed timing, worksheet, and future live-session guidance</summary>
 
 ## Before you start
 
@@ -80,3 +188,5 @@ do not turn the fictional card into a claimed real registration, receipt, or pol
 This module performs no tenant changes and has no learner cleanup command. Keep or
 dispose of worksheets according to the event's data policy. Identity, permissions,
 sources, and later controls are described in the [master plan](../docs/06-customer-learning-plan.md).
+
+</details>

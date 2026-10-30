@@ -1,13 +1,358 @@
-# Module 2: Admin Step-by-Step Preparation and Rehearsal
+# Module 2: Admin - Deploy, Test, Then Teach
 
-**Updated:** October 30, 2026.
-**Status:** Draft operator runbook. No live preparation, account creation, deployment,
-mail delivery, or downstream evidence has been validated for this activity.
+**Goal:** Deploy a real Mail agent and its sign-in/chat website, then run the learner
+steps. Start with the [Module 1 admin guide](07-module-01-admin-runbook.md) for accounts.
 
-[Module 2 slides](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) |
-[Learner steps and passport](../labs/module-02-business-agent.md) |
-[Speaker notes](../slides/module-02/speaker-notes.md) |
-[Module 1 admin runbook](07-module-01-admin-runbook.md)
+This package builds the pinned Stefano toolkit source and deploys it through our own
+non-destructive Bicep templates. It **does not run upstream `deploy-aca.ps1`**, which
+deletes its entire resource group by default.
+
+**Before you begin:** An authorized Agent 365-enabled lab tenant, the tested lab
+mailboxes, an Azure subscription, and an existing Azure OpenAI **chat model deployment**
+with quota/network access. Install the Agent 365 CLI (`a365`) and its .NET runtime.
+The pinned sample also documents Python 3.12+ and `uv` as prerequisites. Install
+[Python for Windows](https://www.python.org/downloads/windows/) if missing, then check:
+
+```powershell
+python --version
+if (-not (Get-Command uv -ErrorAction SilentlyContinue)) {
+  python -m pip install uv
+  if ($LASTEXITCODE -ne 0) { throw 'uv installation failed' }
+}
+uv --version
+```
+
+The runtime itself is built in Azure from the sample's Dockerfile; you do not need
+Docker Desktop, a local model, the Static Web Apps CLI, or every toolkit variant.
+
+If `a365` is missing, install the [.NET SDK](https://learn.microsoft.com/en-us/dotnet/core/install/windows)
+and then use the [official CLI installation](https://learn.microsoft.com/en-us/microsoft-agent-365/developer/agent-365-cli):
+
+```powershell
+dotnet tool install --global Microsoft.Agents.A365.DevTools.Cli
+a365 --version
+```
+
+If already installed, record its version instead of reinstalling. The pinned sample
+documents CLI 1.1.x or later. A newer CLI may use Microsoft's managed client or fall
+back to the tenant-owned client; requirements/consent must still pass in your tenant.
+
+The operator needs rights to create the dedicated resource group, deploy resources in
+that group **and the existing model resource group**, and assign the scoped runtime
+roles on the registry/model account. Use the authorized Contributor/deployment and
+RBAC-administrator roles; do not grant them to learners. An authorized Entra admin must approve
+app/blueprint permissions and consent. The source's broad grants and blueprint secret
+are **not** a production least-privilege/fully-secretless design.
+
+## Step 1: Fill in the config once
+
+**Do:** In the repository root, edit `.workshop\config.json`. Replace every `<...>`:
+
+```json
+{
+  "tenantId": "<tenant-guid>",
+  "subscriptionId": "<subscription-guid>",
+  "runName": "beacon01",
+  "location": "eastus2",
+  "resourceGroup": "a365-beacon01",
+  "openAiResourceGroup": "<existing-model-resource-group>",
+  "openAiAccount": "<existing-azure-openai-account>",
+  "modelDeployment": "<existing-chat-model-deployment-name>",
+  "modelApiVersion": "2024-12-01-preview",
+  "cliAppId": "",
+  "spaAppId": ""
+}
+```
+
+Use a **new dedicated resource group name**. Keep the two app IDs blank for automatic
+creation. The model stays in its existing group and is not deleted by our deployment.
+Get its account/deployment names from Azure Portal -> your Azure OpenAI resource ->
+model deployments. Ensure it supports Chat Completions and the selected API version.
+
+**Check:** No placeholders remain except the blank app IDs. Confirm the region, model
+quota, and budget. ACR Basic, containers, and model usage can incur charges.
+
+**Next:** Step 2.
+
+## Step 2: Sign in and prepare Azure
+
+**Do:** Use an external PowerShell 7 / Windows Terminal window (not the VS Code
+integrated terminal) for this guide. Start at the repository root and keep this
+window open through Step 7:
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$hub = (Get-Location).Path
+$c = Get-Content .\.workshop\config.json -Raw | ConvertFrom-Json
+az login --tenant $c.tenantId
+if ($LASTEXITCODE -ne 0) { throw 'Azure sign-in failed' }
+$account = az account show --subscription $c.subscriptionId -o json | ConvertFrom-Json
+if ($LASTEXITCODE -ne 0 -or $account.tenantId -ne $c.tenantId) { throw 'Wrong or unavailable Azure context' }
+$account | Select-Object id, tenantId
+az bicep version
+if ($LASTEXITCODE -ne 0) {
+  az bicep install
+  if ($LASTEXITCODE -ne 0) { throw 'Bicep installation failed' }
+}
+foreach ($provider in @('Microsoft.App', 'Microsoft.ContainerRegistry',
+    'Microsoft.ManagedIdentity', 'Microsoft.CognitiveServices')) {
+  az provider register --namespace $provider --subscription $c.subscriptionId --wait
+  if ($LASTEXITCODE -ne 0) { throw "Provider registration failed: $provider" }
+}
+```
+
+**Check:** The tenant/subscription shown match the config. Have the subscription owner
+register providers if you lack that right. Do not disable Azure Policy to get past a failure.
+
+<details>
+<summary>No existing model? Create a dedicated lab model account first</summary>
+
+Do this only with approved quota/region/cost. Replace the model group/account names in
+the config with **new dedicated names**, then run from the hub root:
+
+```powershell
+$modelGroupExists = az group exists -n $c.openAiResourceGroup --subscription $c.subscriptionId
+if ($LASTEXITCODE -ne 0) { throw 'Could not check the model group; do not continue' }
+if ($modelGroupExists -eq 'true') {
+  throw 'This optional creation path requires a new model resource group. Reuse an existing model through the normal config instead.'
+}
+az group create -n $c.openAiResourceGroup -l $c.location --subscription $c.subscriptionId
+if ($LASTEXITCODE -ne 0) { throw 'Model group creation failed' }
+az deployment group create --subscription $c.subscriptionId -g $c.openAiResourceGroup `
+  --template-file .\labs\workshop\model-account.bicep `
+  --parameters accountName=$($c.openAiAccount) location=$($c.location)
+if ($LASTEXITCODE -ne 0) { throw 'Model account creation failed' }
+az cognitiveservices account list-models --subscription $c.subscriptionId `
+  -g $c.openAiResourceGroup -n $c.openAiAccount -o json
+if ($LASTEXITCODE -ne 0) { throw 'Could not list supported models' }
+```
+
+The account disables API-key authentication. From the returned available-model list,
+choose an available **Chat Completions** model/version/deployment SKU that your approved
+quota supports. Do not copy a retired model name from an old lab. Replace these values:
+
+```powershell
+az cognitiveservices account deployment create --subscription $c.subscriptionId `
+  -g $c.openAiResourceGroup -n $c.openAiAccount `
+  --deployment-name $c.modelDeployment `
+  --model-format OpenAI --model-name '<available-chat-model>' `
+  --model-version '<available-version>' --sku-name '<supported-deployment-SKU>' `
+  --sku-capacity 1
+if ($LASTEXITCODE -ne 0) { throw 'Model deployment failed; verify quota and supported model/SKU. Do not continue.' }
+```
+
+Quota/capacity and regional availability are actual tenant inputs, not guaranteed by
+this script. Keep the new model group in your run record. Our runtime cleanup keeps
+model resources; the owner must separately remove this **new lab-only** model group
+when finished. Never delete a reused model group.
+
+</details>
+
+**Next:** Step 3.
+
+## Step 3: Download the pinned toolkit and create sign-in apps
+
+**Do:**
+
+```powershell
+.\scripts\Initialize-Workshop.ps1 -ConfigPath .\.workshop\config.json -RegisterApps
+```
+
+This downloads revision `1a1d3f5253771a20915fa519aaaa58f576a5cf35`, creates a
+tenant-owned CLI client and browser sign-in app, and writes the local config.
+The browser app requests the delegated Mail MCP scope; consent is a separate step.
+
+**Check:** Output ends with `Sources and app configuration ready`.
+The config now has two app IDs, and `.workshop\apps.json` records created app IDs.
+Errors are blockers, not a reason to grant learners admin roles.
+
+**Next:** Step 4.
+
+## Step 4: Register the real agent
+
+**Do:** Stay in the external terminal from Step 2. Run **one command at a time**:
+
+```powershell
+Set-Location (Join-Path $hub '.workshop\toolkit\aca\obo')
+$agentName = "A365 Hub $($c.runName)"
+a365 setup requirements
+if ($LASTEXITCODE -ne 0) { throw 'Agent 365 requirements failed; stop here' }
+```
+
+Complete approved sign-in/consent. Continue only when requirements report no failures.
+Then run:
+
+```powershell
+a365 setup all --m365 --agent-name $agentName
+if ($LASTEXITCODE -ne 0) { throw 'Agent setup failed; stop here' }
+a365 setup permissions mcp --agent-name $agentName
+if ($LASTEXITCODE -ne 0) { throw 'Mail permission setup failed; stop here' }
+a365 setup permissions bot --agent-name $agentName
+if ($LASTEXITCODE -ne 0) { throw 'Bot/observability permission setup failed; stop here' }
+```
+
+Review each proposed grant and approve **only under the lab's authorized scope**.
+If the source's grants are not acceptable, stop. The CLI may create first-party
+service principals and request observability permission. Leave the messaging endpoint
+blank for now. Store the displayed blueprint secret privately; do not tee the output
+to a log or share your screen. The setup commands change Entra objects and grants.
+
+**Check:** Setup creates `a365.generated.config.json` with `agentBlueprintId` and
+`agenticAppId`. They are different IDs. Do not use the CLI app ID as the agent.
+
+**Next:** Step 5.
+
+## Step 5: Deploy the agent and website
+
+**Do:** Return to the hub root. Preview the changes, then explicitly approve:
+
+```powershell
+Set-Location $hub
+.\scripts\Deploy-Workshop.ps1 -ConfigPath .\.workshop\config.json -Plan
+
+# After reviewing the scope and budget:
+.\scripts\Deploy-Workshop.ps1 -ConfigPath .\.workshop\config.json -ApproveDeployment
+```
+
+When prompted, enter the blueprint secret in the hidden-input prompt. The script uses
+a restricted temporary secure-parameter file and removes it afterward. The application
+stores it as a Container App secret reference, not a plain environment-variable value.
+Azure OpenAI uses a managed identity, **not an API key**.
+
+The script creates the dedicated group, registry, managed identity, environment, API
+and UI; assigns AcrPull and OpenAI User; cloud-builds tracked source only; and adds the
+UI's redirect URI. It refuses to modify an existing unowned resource group.
+It does not delete resources, create users, change CA/DLP, or weaken model policy.
+
+**Check:** Output gives `UI: https://...` and `API: https://...`.
+They are also in `.workshop\deployment.json`. This means deployed, not yet a passed lab.
+
+**Next:** Step 6.
+
+## Step 6: Consent browser access and register the endpoint
+
+**Do:**
+
+```powershell
+$c = Get-Content .\.workshop\config.json -Raw | ConvertFrom-Json
+$d = Get-Content .\.workshop\deployment.json -Raw | ConvertFrom-Json
+$redirect = [uri]::EscapeDataString($d.uiUrl)
+$scope = [uri]::EscapeDataString('ea9ffc3e-8a23-4a7d-836d-234d7c7565c1/.default')
+Start-Process "https://login.microsoftonline.com/$($c.tenantId)/v2.0/adminconsent?client_id=$($c.spaAppId)&scope=$scope&redirect_uri=$redirect"
+```
+
+Check the app is your **A365 Hub beacon01 spa** app before approving its Mail access.
+Then register the messaging endpoint:
+
+```powershell
+Set-Location (Join-Path $hub '.workshop\toolkit\aca\obo')
+a365 setup blueprint --endpoint-only --agent-name $agentName `
+  --messaging-endpoint "$($d.apiUrl)/api/messages"
+if ($LASTEXITCODE -ne 0) { throw 'Endpoint registration failed' }
+Set-Location $hub
+```
+
+**Check:** Consent is granted for the intended app; endpoint registration succeeds.
+The chat uses the signed-in user's delegated Mail token (`direct`), not a proven
+OAuth OBO exchange just because the upstream sample is named ACA-OBO.
+
+**Next:** Step 7.
+
+## Step 7: Test it before giving out the link
+
+**Do:**
+
+```powershell
+.\scripts\Test-Workshop.ps1 -ConfigPath .\.workshop\config.json
+```
+
+Expected HTTP checks:
+
+```text
+Health                 PASS
+UnauthenticatedChat    401 PASS
+SignInPage             PASS
+LiveInference          NOT TESTED
+MailReceipt            NOT TESTED
+DownstreamEvidence     NOT TESTED
+```
+
+Then open the emitted learner URL in the learner's isolated browser profile.
+Follow the [Module 2 learner Steps 1-8](../labs/module-02-business-agent.md) **yourself**.
+Use **Sign in**, select **Project Beacon Mail Agent**, type the draft prompt, then
+explicitly request the reviewed send. The facilitator checks the recipient's Outlook.
+If first-use Mail connections require consent, complete the approved connection as the
+lab user; do not substitute an admin token.
+
+Check actual runtime logs, without publishing raw prompt/user data:
+
+```powershell
+az containerapp logs show --subscription $c.subscriptionId -g $c.resourceGroup `
+  -n "hub-$($c.runName)-api" --type console --tail 50
+```
+
+Record in private notes: user, sender/recipient, subject, receipt time, actual tool
+record, typed agent ID, evidence location, and missing telemetry. A configured
+Agent 365 exporter is not proof of downstream ingestion.
+
+**Check:** Draft/inference succeeds, the right email actually arrives, and the actual
+actor/action evidence is identified. If any part fails, do not announce a working lab.
+For a cold start, rerun the HTTP check after the container is running; investigate
+failed revisions/RBAC/model networking rather than changing security policies.
+
+**Next:** Step 8.
+
+## Step 8: Rehearse, hand off, and clean up
+
+**Do:** Prepare two additional fresh learners using the Module 1 command with
+`-LearnerCount 3`:
+
+```powershell
+$u = Get-Content .\.workshop\users\users.json -Raw | ConvertFrom-Json
+.\scripts\New-WorkshopUsers.ps1 -TenantId $c.tenantId -Domain $u.domain `
+  -RunName $c.runName -Stage Provision -LearnerCount 3 `
+  -SkuIds $u.licenseSkuIds -TapLifetimeMinutes 180
+```
+
+Have another facilitator run the same learner steps with fresh browser profiles.
+Confirm actual timing and recovery from an expired session.
+
+Give each learner:
+
+```text
+Their own lab username and TAP (private)
+The UI URL from deployment.json
+The single approved real internal recipient
+The Module 1 and Module 2 learner-guide links
+The name of the support person
+```
+
+After class, close accounts using Module 1 Step 7. Preview Azure removal before acting:
+
+```powershell
+.\scripts\Remove-WorkshopDeployment.ps1 -ConfigPath .\.workshop\config.json -WhatIf
+# After checking the dedicated group and preserving required evidence:
+.\scripts\Remove-WorkshopDeployment.ps1 -ConfigPath .\.workshop\config.json
+```
+
+The cleanup script checks the exact recorded principal, role ID, and scope before
+removing this runtime's OpenAI User assignment; it keeps the existing model.
+Verify model IAM afterward. If deployment failed before recording the role ID, use
+Azure Portal -> model resource -> **Access control (IAM) -> Role assignments** and
+the recorded runtime principal ID to remove only this run's assignment.
+In Entra, use the IDs in `apps.json` and the generated agent config to remove only
+the run's registered agent/blueprint and CLI/SPA apps when retention/lifecycle approval
+permits it. Have the tenant owner verify removal. Users/licenses/mail retention and
+private TAP files also require the event owner's cleanup; Azure deletion does not do it.
+
+**Check:** Account access, Azure resources, the external model role, app/agent grants,
+licenses, and retained evidence each have an explicit completed or blocked outcome.
+No "delete every workshop user" or upstream resource-group reset is part of this flow.
+
+**Next:** Ready for delivery only after the actual live checks and fresh-user rehearsal pass.
+
+<details>
+<summary>Optional technical reference: exact permissions, source caveats, evidence, and recovery</summary>
 
 ## 1. Select mode and obtain approval
 
@@ -209,6 +554,12 @@ request cap, evidence mode, idempotency, exact manifest, and manual alternative 
 
 ## Content walkthrough record: October 30, 2026
 
+The earlier browser record below predates the deployable package. Current package
+checks: offline PowerShell/CLI/Graph/snippet assertions pass, the Bicep templates
+compile, and generated ARM uses a secure blueprint parameter/secret reference with no
+OpenAI API key. Real deployment, authenticated inference, email receipt, downstream
+telemetry, fresh-user recovery, and independent timing remain untested here.
+
 | Verification | Result |
 |---|---|
 | Learner guide links cover all eight slides in order | Passed static validation; proposed row timings total 35 minutes |
@@ -220,3 +571,5 @@ request cap, evidence mode, idempotency, exact manifest, and manual alternative 
 | Independent facilitator and measured teaching duration | Not run; 35 minutes remains a proposed timebox |
 
 The source review and content/browser walkthrough do not establish hands-on readiness.
+
+</details>

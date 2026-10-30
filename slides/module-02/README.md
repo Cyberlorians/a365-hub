@@ -21,7 +21,7 @@ documented delegated-user internal-mail task, not a new retrieval system.
 | [facilitator-guide.md](facilitator-guide.md) | Setup gates, failures, reset, answers |
 | [sources.md](sources.md) | Actual runtime route and supporting sources |
 | [Learner guide](../../labs/module-02-business-agent.md) | Synthetic brief, proposed prompts, checkpoints, passport, recovery |
-| [Admin runbook](../../docs/08-module-02-admin-runbook.md) | Ordered access/runtime/evidence preparation, safe setup gate, task proof, fresh-user tests and scoped reset |
+| [Admin runbook](../../docs/08-module-02-admin-runbook.md) | Copy/paste agent registration, safe API/UI deployment, HTTP/live tests, handoff and cleanup |
 
 | Step | Minutes |
 |---|---:|
