@@ -24,6 +24,17 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 > fixtures, GBB scenarios, or automation were created or executed for this publication.
 > Review the content, then approve an isolated preparation plan before provisioning.
 
+## Step-by-step walkthroughs
+
+| Module | Learner guide | Admin / presenter runbook |
+|---|---|---|
+| 1 | [Slide-by-slide steps, worksheet and check](labs/module-01-security-foundation.md) | [Preflight, optional onboarding, delivery and reset](docs/07-module-01-admin-runbook.md) |
+| 2 | [Draft/review/send/evidence/passport steps](labs/module-02-business-agent.md) | [Access/runtime/evidence preparation and rehearsal](docs/08-module-02-admin-runbook.md) |
+
+Both decks also link to their learner guide and admin runbook in the toolbar.
+The guides distinguish content/browser rehearsal from live tenant proof. The latter
+remains unverified until separately approved preparation and actual tests are recorded.
+
 ## Complete eight-module story
 
 | # | Module | Learner output | Minutes |

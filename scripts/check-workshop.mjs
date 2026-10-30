@@ -11,7 +11,9 @@ const markdownFiles = [
   "README.md", "docs/00-project-outline.md", "docs/01-full-day-workshop.md",
   "docs/02-baseline-agenda.md", "docs/module-roadmap.md", "docs/06-customer-learning-plan.md",
   "grounding/sources.md", "grounding/integration-map.md", "detections/README.md",
-  "slides/module-01-what-is-agent-id.md", "labs/module-02-business-agent.md"
+  "slides/module-01-what-is-agent-id.md", "labs/module-02-business-agent.md",
+  "labs/module-01-security-foundation.md", "docs/07-module-01-admin-runbook.md",
+  "docs/08-module-02-admin-runbook.md", "docs/05-onboarding-deployment-runbook.md"
 ];
 for (const id of [1, 2]) {
   const directory = `slides/module-0${id}`;
@@ -27,6 +29,10 @@ for (const id of [1, 2]) {
     new vm.Script(script[1], { filename: `module-${id}-inline-${index + 1}.js` });
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
+  const learner = id === 1 ? "labs/module-01-security-foundation.md" : "labs/module-02-business-agent.md";
+  const admin = `docs/0${id + 6}-module-0${id}-admin-runbook.md`;
+  assert(html.includes(`href="https://github.com/Cyberlorians/a365-hub/blob/main/${learner}">Learner guide</a>`), "Each deck needs its learner guide");
+  assert(html.includes(`href="https://github.com/Cyberlorians/a365-hub/blob/main/${admin}">Admin runbook</a>`), "Each deck needs its admin runbook");
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
   assert(html.includes('<html lang="en" data-brand="a365">'), "A365 branding must be active");
   const palette = html.match(/html\[data-brand="a365"\] \{([\s\S]*?)\n    \}/)?.[1];
@@ -63,6 +69,13 @@ assert.equal([...plan.matchAll(/^### Module \d+:/gm)].length, 8);
 assert.equal([...plan.matchAll(/^\| [HTGBLC]\d+ \|/gm)].length, 39);
 assert(plan.includes("## 16. Per-module data and automation preparation"));
 assert(plan.includes("Review-first gate") && plan.includes("R0: public content draft"));
+const module1Steps = [...read("labs/module-01-security-foundation.md").matchAll(/^\| \d+ \| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
+assert.deepEqual(module1Steps.map(match => Number(match[1])), Array.from({ length: 13 }, (_, index) => index + 6), "Learner guide must cover Module 1 slides 6-18 in order");
+assert.equal(module1Steps.reduce((total, match) => total + Number(match[2]), 0), 25, "Module 1 walkthrough timing");
+const module2Steps = [...read("labs/module-02-business-agent.md").matchAll(/^\| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
+assert.deepEqual(module2Steps.map(match => Number(match[1])), Array.from({ length: 8 }, (_, index) => index + 1), "Learner guide must cover all eight Module 2 slides in order");
+assert.equal(module2Steps.reduce((total, match) => total + Number(match[2]), 0), 35, "Module 2 walkthrough timing");
+assert(read("docs/08-module-02-admin-runbook.md").includes("deletes its entire resource"), "Admin must retain the upstream deployment deletion warning");
 for (const name of markdownFiles) {
   const content = read(name);
   assert(!/[A-Za-z]:[\\/](?:Users|tools)[\\/]|file:\/\/\/|session-state[\\/]/i.test(content), `Private machine path in ${name}`);
@@ -72,5 +85,7 @@ for (const name of markdownFiles) {
     const file = decodeURIComponent(target.split("#")[0]);
     assert(fs.existsSync(path.resolve(root, path.dirname(name), file)), `Broken local link in ${name}: ${target}`);
   }
+  for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
+    assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 18), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two standalone decks, 18/8 slides, 15/25/35 timing, source/notes parity, eight-module plan, 39 sources, data/automation matrix, safe draft labels and documentation links.");
+console.log("PASS: Two blue standalone decks, 18/8 slides, 15/25/35 timing, source/notes parity, eight-module plan, 39 sources, slide-linked learner/admin walkthroughs, preparation boundaries and documentation links.");

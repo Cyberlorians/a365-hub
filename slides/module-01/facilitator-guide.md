@@ -3,6 +3,10 @@
 **Content review draft.** Use the [notes](speaker-notes.md) for all eighteen slides.
 The 25-minute core starts at slide 6; five planned onboarding slides sit outside it.
 
+Use the [learner step-by-step guide](../../labs/module-01-security-foundation.md)
+and [ordered admin runbook](../../docs/07-module-01-admin-runbook.md) for a complete
+walkthrough. They separate content-only rehearsal from authorized tenant preparation.
+
 ## Delivery
 
 - Lead with secure AI adoption, the dual attack surface, and one customer case.

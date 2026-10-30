@@ -1,6 +1,6 @@
 # Module 2: Establish the Approved Agent Baseline
 
-**Rough draft for content review - October 29, 2026.**
+**Rough draft for content review - updated October 30, 2026.**
 **Proposed duration:** 35 minutes, including the accompanying eight-slide flow.
 **Status:** No test user, mailbox, agent deployment, message, or telemetry has been
 created for this draft. This is not a tested runbook or evidence of a working lab.
@@ -9,6 +9,24 @@ Review alongside the [Module 2 presentation](https://cyberlorians.github.io/a365
 Presenter notes are built into that presentation; press **N**.
 The [master plan](../docs/06-customer-learning-plan.md) contains the eight-module story and
 per-module data/automation considerations.
+
+For the operator's preparation, permissions, proof, and reset sequence, use the
+[Module 2 admin runbook](../docs/08-module-02-admin-runbook.md).
+
+## Start here: choose review or live mode
+
+1. Open [slide 1](https://cyberlorians.github.io/a365-hub/module-02/#slide-1)
+   and this guide side-by-side. Slides and activity together take 35 proposed minutes.
+2. Ask the facilitator which mode applies:
+   - **Content review (current):** read the proposed steps and author-written example;
+     do not sign in, call a model/tool, create users, or send messages. In the passport,
+     write "not provisioned" or "not observed" where applicable.
+   - **Approved live proof:** the admin supplies a privately verified lab user, UI URL,
+     selected agent/control labels, and controlled internal recipient. Use only these
+     values after the admin confirms the setup/evidence gate passed.
+3. Keep the synthetic brief and a blank passport available.
+4. Do not proceed live when the URL, user/tenant, recipient, actual authority, or support
+   owner is unknown. A `.invalid` address or fictional record is never a live substitute.
 
 ## What this module teaches
 
@@ -85,24 +103,29 @@ internal test recipient and lab identity. No recipient has been provisioned yet.
 
 | Presentation slide | Step | Minutes |
 |---|---|---:|
-| 1 | Outcome and baseline | 2 |
-| 2 | Approve the operating boundary | 2 |
-| 3 | Identify the acting user and actual route | 4 |
-| 4 | Draft and review from the synthetic brief | 7 |
-| 5 | Explicit send and actual receipt | 5 |
-| 6 | Inspect evidence and provenance | 7 |
-| 7 | Passport and boundary explanation | 5 |
-| 8 | Debrief and handoff | 3 |
+| [Slide 1](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | Outcome and baseline | 2 |
+| [Slide 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-2) | Approve the operating boundary | 2 |
+| [Slide 3](https://cyberlorians.github.io/a365-hub/module-02/#slide-3) | Identify the acting user and actual route | 4 |
+| [Slide 4](https://cyberlorians.github.io/a365-hub/module-02/#slide-4) | Draft and review from the synthetic brief | 7 |
+| [Slide 5](https://cyberlorians.github.io/a365-hub/module-02/#slide-5) | Explicit send and actual receipt | 5 |
+| [Slide 6](https://cyberlorians.github.io/a365-hub/module-02/#slide-6) | Inspect evidence and provenance | 7 |
+| [Slide 7](https://cyberlorians.github.io/a365-hub/module-02/#slide-7) | Passport and boundary explanation | 5 |
+| [Slide 8](https://cyberlorians.github.io/a365-hub/module-02/#slide-8) | Debrief and handoff | 3 |
 | **Total** | **Presentation and activity together** | **35** |
 
 ### Step 1: Identify the approved boundary and actor
 
 After preparation is approved and verified:
 
-- Open only the prepared UI and correct isolated lab account.
-- Confirm actual tenant and signed-in user privately with the facilitator.
-- Record the planned agent/runtime, technical owner, sponsor, Mail tool, and recipient.
-- Mark anything not independently verified as unknown.
+1. Read slides 1-2 and repeat the approved task/data/recipient boundary.
+2. At slide 3, open only the verified UI URL supplied by the facilitator; do not guess
+   a host or reuse an earlier event's link.
+3. Sign in with the isolated lab identity and confirm actual tenant and signed-in user
+   privately with the facilitator.
+4. Select only the verified candidate agent. Use the actual UI labels recorded by the
+   admin; the workshop has not yet verified a particular chat button/control.
+5. Record the runtime, technical owner, sponsor, Mail tool, and recipient.
+6. Mark anything not independently verified as unknown.
 
 **Checkpoint:** The mailbox sender is the signed-in user in this candidate task;
 the exported agent identifier is a separate attribution field.
@@ -125,6 +148,11 @@ Return the subject and draft text only.
 Do not send, invoke a sending tool, add recipients, add attachments, or invent facts.
 ```
 
+At slide 4, paste the prompt into the approved UI and submit through the chat control
+identified during admin preflight. Expect draft text only. Check the 60-80-word body,
+facts, subject, and lack of attachments/extra sources. In review mode, read the example
+below instead of submitting anything.
+
 Compare the output with the brief. If an unrequested action happens, stop and record
 it; do not silently treat it as successful completion.
 
@@ -146,6 +174,24 @@ Proceed only in the later approved test environment:
 4. Record the response and inspect the recipient mailbox for actual receipt.
 5. Verify sender, subject, content, and time.
 
+At slide 5, use this proposed instruction only after all placeholders are replaced
+with privately approved real values and the draft is reviewed:
+
+```text
+Send only the reviewed message below to the single approved internal test recipient.
+To: <approved-internal-recipient>
+Subject: [A365 TRAINING] Project Beacon status
+Body:
+<paste-the-reviewed-draft>
+
+Do not add recipients, attachments, sources, or facts.
+```
+
+These are instructions, not a proven technical allowlist/approval control. Record the
+tool's actual result. The facilitator checks the controlled recipient mailbox and
+confirms actual receipt; do not request access to another person's mailbox yourself.
+If the UI cannot perform the task as documented, stop and record the blocker.
+
 If delivery is uncertain, check for receipt before retrying to avoid duplicate messages.
 If tool/authentication access fails, stop and follow approved facilitator recovery.
 Never widen permissions or bypass policy to make a learner check turn green.
@@ -154,6 +200,10 @@ Never widen permissions or bypass policy to make a learner check turn green.
 that the intended email arrived.
 
 ### Step 4: Inspect evidence with provenance
+
+At slide 6, ask the facilitator to show the authorized evidence for the actual target
+and explain the source/time/mode. You do not need admin portals or raw prompt access
+to observe the explanation. Record missing fields explicitly.
 
 | Evidence class | Record | Limit |
 |---|---|---|
@@ -177,6 +227,8 @@ as though it were the same runtime.
 
 ### Step 5: Complete the passport
 
+Use slide 7. Fill each field from observed/admin-verified records, not sample names.
+
 | Field | Learner record after preparation |
 |---|---|
 | Purpose | |
@@ -197,6 +249,9 @@ use placeholders. Never record/publish credentials, TAPs, tokens, real attendee
 information, production messages, or unnecessary sensitive prompt content.
 
 ### Step 6: Explain the result
+
+Use slide 8. In content review, explain what a future result would prove; do not claim
+that a send or security check has already occurred.
 
 Answer:
 

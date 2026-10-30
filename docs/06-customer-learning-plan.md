@@ -1,6 +1,6 @@
 # A365 Hub: Secure AI Adoption Master Plan
 
-**Updated:** October 29, 2026.
+**Updated:** October 30, 2026.
 **Status:** Published Module 1-2 content drafts and full curriculum plan; not a completed or tenant-validated workshop.
 **Priority:** Finish Modules 1-2 first; keep the complete customer story planned.
 
@@ -11,6 +11,17 @@ and multiple-build proposals. [Module 1](../slides/module-01/README.md) and
 - [Module 1 slides](https://cyberlorians.github.io/a365-hub/#slide-6)
 - [Module 2 slides](https://cyberlorians.github.io/a365-hub/module-02/#slide-1)
 - [Module 2 learner guide](../labs/module-02-business-agent.md)
+
+### Step-by-step delivery guides
+
+| Module | Learner walkthrough | Admin walkthrough |
+|---|---|---|
+| 1 | [Slide-by-slide guide and worksheet](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
+| 2 | [Task, prompts, evidence and passport](../labs/module-02-business-agent.md) | [Preparation/proof/rehearsal runbook](08-module-02-admin-runbook.md) |
+
+Guide authoring and browser checks do not constitute live tenant or independent
+facilitator validation. No test accounts, deployments, model calls, mail, or fake
+security telemetry were created to produce these guides.
 
 **Review-first gate:** Publication is for content review, not hands-on readiness.
 No test users, tenant fixtures, GBB scenarios, or automation were created/executed.

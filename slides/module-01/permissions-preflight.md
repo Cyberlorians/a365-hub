@@ -3,6 +3,10 @@
 The draft presentation calls no tenant APIs and has no active signup endpoint.
 Content review needs only a browser. Learners do not need admin roles.
 
+For the ordered operator process, use the
+[Module 1 admin runbook](../../docs/07-module-01-admin-runbook.md); the audience uses
+the [learner walkthrough](../../labs/module-01-security-foundation.md).
+
 | Later presentation mode | Required preparation |
 |---|---|
 | Slides only | Browser/navigation/notes/print checks; fictional cards remain labeled |

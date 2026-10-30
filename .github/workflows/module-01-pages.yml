@@ -7,6 +7,7 @@ on:
       - "slides/module-01/**"
       - "slides/module-02/**"
       - "slides/module-01-what-is-agent-id.md"
+      - "labs/module-01-security-foundation.md"
       - "labs/module-02-business-agent.md"
       - "docs/**"
       - "grounding/**"

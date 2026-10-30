@@ -1,5 +1,13 @@
 # 05 — Onboarding Deployment Runbook & Permission Tracking
 
+> Historical deployment reference, not current-event validation. Start with the
+> [Module 1 admin runbook](07-module-01-admin-runbook.md) or
+> [Module 2 admin runbook](08-module-02-admin-runbook.md) for the approved preparation
+> sequence. Local operational notes report cleanup disabled. Do not enable the
+> age-based cleanup template or run bulk teardown from older guidance without an
+> explicit run-owned manifest and separate approval; account age is not TAP expiry.
+> Actual authentication, entitlement, roles, access, and cleanup must be verified.
+
 Authoritative, end-to-end record of the **secret-less attendee onboarding pipeline**:
 every component, every permission *needed to deploy it*, and every permission
 *granted to it at runtime*. Use this to deploy into a new tenant and to audit/revoke.

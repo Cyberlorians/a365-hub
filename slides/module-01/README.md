@@ -28,6 +28,8 @@ E7 fit follows the customer gap, not an unsupported exclusivity claim.
 | [permissions-preflight.md](permissions-preflight.md) | Presenter versus learner access |
 | [interactive-guide.md](interactive-guide.md) | Navigation, offline/print, and authoring rules |
 | [sources.md](sources.md) | Source roles and claim boundaries |
+| [Learner step-by-step guide](../../labs/module-01-security-foundation.md) | Slide-by-slide actions, expected results, worksheet, check, recovery |
+| [Admin runbook](../../docs/07-module-01-admin-runbook.md) | Mode selection, private preparation, presenter preflight, optional onboarding gate, delivery and reset |
 
 ## Core flow
 

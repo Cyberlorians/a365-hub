@@ -3,6 +3,10 @@
 **Rough draft, not a tested runbook.** Use the [per-slide notes](speaker-notes.md)
 and [learner guide](../../labs/module-02-business-agent.md) together.
 
+Follow the [ordered admin runbook](../../docs/08-module-02-admin-runbook.md) for
+preparation, proof, fresh-user rehearsal, and reset. In particular, review the upstream
+deployment script's documented default resource-group deletion before any execution.
+
 ## Content review before preparation
 
 Confirm useful scope and understandable actor/evidence boundaries. Then approve the
