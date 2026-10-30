@@ -226,7 +226,7 @@ function slidesFor({ module, role }) {
     const steps = labSlides(module).filter(item => item.lab === lab.n);
     steps.forEach((item, index) => {
       const links = [];
-      if (item.link) links.push(item.link);
+      if (item.link) links.push(item.link, ...(item.moreLinks ?? []));
       if (index === steps.length - 1) links.push({ label: `Lab ${lab.n} done. Back to the slides (continue at slide ${lab.back})`, href: `./#slide-${lab.back}`, primary: true });
       out.push({ ...item, number: index + 1, total: steps.length, links, eyebrow: `Lab ${lab.n}: ${lab.title} / Step ${index + 1} of ${steps.length}`, shortTitle: `Lab ${lab.n} - ${index + 1}. ${item.title}` });
     });
