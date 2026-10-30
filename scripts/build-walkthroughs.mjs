@@ -317,6 +317,11 @@ export function buildModule(module) {
     .replace("Reworked review draft", "Slides and labs")
     .replace("Rough draft / 35 proposed minutes", "35 minutes")
     .replace(/ \/ Planned<\/p>/g, "</p>")
+    .replace('<a id="coreLink" href="#slide-6">', '<a id="coreLink" style="display:none" href="#slide-6">')
+    .replace(/<a class="button primary" href="([^"]+\?view=lab)">Labs<\/a>/, '<a hidden class="button primary" href="$1">Labs</a>')
+    .split('href="https://cyberlorians.github.io/a365-hub/#slide-6"').join('href="https://cyberlorians.github.io/a365-hub/#slide-1"');
+  assert(student.includes('style="display:none" href="#slide-6"') && student.includes('<a hidden class="button primary"'), "Student shortcuts must be hidden");
+  student = student
     .replace("| A365 Hub draft", "| A365 Hub");
   const navigation = [...student.matchAll(/<script>([\s\S]*?)<\/script>/g)][1];
   const navigationScript = navigation[1]
