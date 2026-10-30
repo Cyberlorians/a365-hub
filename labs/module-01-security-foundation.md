@@ -1,5 +1,10 @@
 # Module 1: Follow Along Step by Step
 
+<!-- source-only -->
+[Open the visual student lab inside Module 1](https://cyberlorians.github.io/a365-hub/?view=lab).
+This Markdown file is the editable source; the presentation includes lesson visuals and the answer key.
+<!-- /source-only -->
+
 **What you will do:** Learn how to review one agent and write four short answers.
 **You need:** A browser, somewhere to take notes, and your lab sign-in details from the admin.
 **Allow:** 25 core minutes, plus sign-in time. No learner admin access is needed.

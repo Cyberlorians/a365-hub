@@ -1,5 +1,11 @@
 # Module 1: Admin - Start Here
 
+<!-- source-only -->
+[Open this as a visual instructor presentation](https://cyberlorians.github.io/a365-hub/?view=admin).
+Use [instructor lab notes](https://cyberlorians.github.io/a365-hub/?view=lab&instructor=1)
+for teaching cues alongside the student steps. This Markdown file is the editable source.
+<!-- /source-only -->
+
 **Goal:** Prepare the lab accounts, test sign-in, then deliver Module 1.
 Complete this guide **and the Module 2 admin steps before class**.
 The new scripts are a deployable package, not a claim that your tenant has been tested.

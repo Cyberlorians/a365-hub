@@ -5,6 +5,9 @@
 15 proposed minutes. Presenter-led; no learner admin roles.
 
 [Open Module 1 core](https://cyberlorians.github.io/a365-hub/#slide-6) |
+[Student lab](https://cyberlorians.github.io/a365-hub/?view=lab) |
+[Instructor setup](https://cyberlorians.github.io/a365-hub/?view=admin) |
+[Instructor lab notes](https://cyberlorians.github.io/a365-hub/?view=lab&instructor=1) |
 [Open onboarding](https://cyberlorians.github.io/a365-hub/#slide-1) |
 [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1)
 
@@ -16,6 +19,10 @@ The Agent Identities chapter anchors risk -> control -> evidence -> decision.
 E7 fit follows the customer gap, not an unsupported exclusivity claim.
 
 ## Package
+
+The published module includes visual student lab and instructor sections. Build with
+`node scripts/build-walkthroughs.mjs` from the repository root before local preview.
+The Markdown guides are the step source, not the primary classroom experience.
 
 | File | Use |
 |---|---|

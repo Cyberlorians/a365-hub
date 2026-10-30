@@ -13,7 +13,7 @@ Define normal.
 
 A useful task first. Then actor, authority, data, tools, and evidence.
 
-**Planned lab, not a working demo.** No account, mailbox, agent run, email, or downstream event has been created for this draft.
+**Visual lab included; live environment not yet verified.** Open Student lab for the steps after the authorized instructor completes Instructor setup and proves the real task.
 
 Playbook focus: understand legitimate tool use before investigating living off the agent's tools (LOAT).
 

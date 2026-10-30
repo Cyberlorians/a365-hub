@@ -1,5 +1,10 @@
 # Module 2: Follow Along Step by Step
 
+<!-- source-only -->
+[Open the visual student lab inside Module 2](https://cyberlorians.github.io/a365-hub/module-02/?view=lab).
+This Markdown file is the editable source; the presentation includes chat, email and evidence illustrations.
+<!-- /source-only -->
+
 **What you will do:** Use the lab agent to draft an email, review it, explicitly request
 sending, and check the real result.
 **You need:** Your tested lab account, the deployed agent URL, one approved internal

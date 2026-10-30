@@ -24,3 +24,4 @@ Thumbs.db
 # local scratch scripts
 .tmp/
 .workshop/
+_site/

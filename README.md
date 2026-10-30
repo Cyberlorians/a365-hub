@@ -14,7 +14,7 @@ in the Cloud-Architekt Agent Identities chapter and grounded in Microsoft Learn.
 | Module | Public presentation | Supporting material | Status |
 |---|---|---|---|
 | 1. See It. Control It. Protect It. | [Open Module 1](https://cyberlorians.github.io/a365-hub/#slide-6) | [Package and notes](slides/module-01/README.md) | Reworked content draft: 25-minute core; five separate onboarding slides |
-| 2. Establish the Approved Agent Baseline | [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | [Package and notes](slides/module-02/README.md), [learner guide](labs/module-02-business-agent.md) | Eight-slide rough draft: 35 proposed minutes; runtime not yet validated |
+| 2. Establish the Approved Agent Baseline | [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1) | [Package and notes](slides/module-02/README.md), [student lab](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | Eight teaching slides plus visual lab/instructor sections; runtime not yet validated |
 
 These are **separate, independently addressable slide decks**, not a combined local
 review file. Press **N** for per-slide presenter notes. Use the module links in either
@@ -27,11 +27,14 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 
 ## Deploy and run Modules 1-2
 
-Follow these in order; the guides contain copy/paste commands and expected results:
+Each module includes **Teaching deck -> Student lab -> Instructor setup**, with
+instructor-only facilitation notes alongside every student step. All use the original
+blue presentation style. Commands, expected checks, prompts, and cleanup are inside
+the slides, with Copy buttons:
 
-1. **Admin:** [Create the lab group, licensed users, TAPs, and test mailboxes](docs/07-module-01-admin-runbook.md).
-2. **Admin:** [Register the agent, deploy its API and website, and prove a real email task](docs/08-module-02-admin-runbook.md).
-3. **Everyone:** Follow the numbered learner guides below, using the admin-provided
+1. **Admin:** [Create the lab group, licensed users, TAPs, and test mailboxes](https://cyberlorians.github.io/a365-hub/?view=admin).
+2. **Admin:** [Register the agent, deploy its API and website, and prove a real email task](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
+3. **Everyone:** Follow the learner presentations below, using the admin-provided
    account, deployed UI URL, and approved internal recipient.
 
 This route does not require the old Forms/Logic App pipeline. It uses run-owned
@@ -42,15 +45,34 @@ Module 2 admin guide. [Deployment files](labs/workshop/) and [scripts](scripts/)
 
 ## Step-by-step walkthroughs
 
-| Module | Learner guide | Admin / presenter runbook |
+| Module | Learner presentation | Admin presentation |
 |---|---|---|
-| 1 | [Slide-by-slide steps, worksheet and check](labs/module-01-security-foundation.md) | [Preflight, optional onboarding, delivery and reset](docs/07-module-01-admin-runbook.md) |
-| 2 | [Draft/review/send/evidence/passport steps](labs/module-02-business-agent.md) | [Access/runtime/evidence preparation and rehearsal](docs/08-module-02-admin-runbook.md) |
+| 1 | [Start Module 1 student lab](https://cyberlorians.github.io/a365-hub/?view=lab) | [Start Module 1 instructor setup](https://cyberlorians.github.io/a365-hub/?view=admin) |
+| 2 | [Start Module 2 student lab](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | [Start Module 2 instructor setup](https://cyberlorians.github.io/a365-hub/module-02/?view=admin) |
 
-Both decks also link to their learner guide and admin runbook in the toolbar.
-They give a short **Do -> Check -> Next** path first, with optional technical reference
-collapsed below. Live tenant proof remains unverified until actual deployment and tests
-are recorded.
+Both teaching decks have **Student lab**, **Instructor lab notes**, and
+**Instructor setup** buttons. Each module is one self-contained presentation with
+these sections, not a document handoff. Labs have explanatory diagrams and illustrative
+chat/mail/agent cards, Next/Previous, a step selector, fullscreen, print and Copy.
+Teaching slides and the answer key open inside the lab; optional detail stays there.
+Instructor lab notes add preparation, any data/script needs, student cues and cleanup.
+Instructor view is a display mode, **not an authorization boundary**: notes are public,
+and must never contain credentials or private tenant/attendee information.
+No Copy button executes code or stores attendee data. Live tenant proof remains
+unverified until actual deployment and tests are recorded.
+
+The Markdown guides remain the editable source:
+[Module 1 learner](labs/module-01-security-foundation.md),
+[Module 2 learner](labs/module-02-business-agent.md),
+[Module 1 admin](docs/07-module-01-admin-runbook.md),
+[Module 2 admin](docs/08-module-02-admin-runbook.md).
+Build the two integrated presentations locally with
+`node scripts/build-walkthroughs.mjs`; output is in ignored `_site/index.html` and
+`_site/module-02/index.html`. Edit lesson sources in `slides/module-01/index.html`
+and `slides/module-02/index.html`, step sources in the Markdown guides, and original
+visuals/facilitation cues in `scripts/workshop-lab-visuals.mjs`. Build before previewing:
+the lesson source alone does not include generated labs. Use this same
+explain -> visual student lab -> instructor preparation/notes pattern for future modules.
 
 ## Complete eight-module story
 

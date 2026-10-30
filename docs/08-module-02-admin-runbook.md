@@ -1,5 +1,11 @@
 # Module 2: Admin - Deploy, Test, Then Teach
 
+<!-- source-only -->
+[Open this as a visual instructor presentation](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
+Use [instructor lab notes](https://cyberlorians.github.io/a365-hub/module-02/?view=lab&instructor=1)
+for teaching cues alongside the student steps. This Markdown file is the editable source.
+<!-- /source-only -->
+
 **Goal:** Deploy a real Mail agent and its sign-in/chat website, then run the learner
 steps. Start with the [Module 1 admin guide](07-module-01-admin-runbook.md) for accounts.
 

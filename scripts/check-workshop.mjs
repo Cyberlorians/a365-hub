@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { buildWalkthrough, buildModule, walkthroughs, urlFor } from "./build-walkthroughs.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
@@ -29,10 +30,8 @@ for (const id of [1, 2]) {
     new vm.Script(script[1], { filename: `module-${id}-inline-${index + 1}.js` });
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
-  const learner = id === 1 ? "labs/module-01-security-foundation.md" : "labs/module-02-business-agent.md";
-  const admin = `docs/0${id + 6}-module-0${id}-admin-runbook.md`;
-  assert(html.includes(`href="https://github.com/Cyberlorians/a365-hub/blob/main/${learner}">Learner guide</a>`), "Each deck needs its learner guide");
-  assert(html.includes(`href="https://github.com/Cyberlorians/a365-hub/blob/main/${admin}">Admin runbook</a>`), "Each deck needs its admin runbook");
+  for (const [role, label] of [["learner", "Student lab"], ["admin", "Instructor setup"]])
+    assert(html.includes(`href="${urlFor({ module: id, role })}">${label}</a>`), "Each teaching deck must open its integrated lab and instructor presentation");
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
   assert(html.includes('<html lang="en" data-brand="a365">'), "A365 branding must be active");
   const palette = html.match(/html\[data-brand="a365"\] \{([\s\S]*?)\n    \}/)?.[1];
@@ -109,6 +108,36 @@ const deploy = read("scripts/Deploy-Workshop.ps1");
 assert(!deploy.includes("deploy-aca.ps1") && !deploy.includes("'group', 'delete'"), "Deployment must not call the destructive upstream script or delete a group");
 assert(deploy.includes("git") && deploy.includes("archive") && deploy.includes("ZeroFreeBSTR"), "Build tracked source only and clear the marshalled secret");
 const workflow = read(".github/workflows/module-01-pages.yml");
+assert(workflow.includes("node scripts/build-walkthroughs.mjs"), "Pages must build the four walkthrough presentations");
+assert(!workflow.includes("cp slides/module-01/index.html") && !workflow.includes("cp slides/module-02/index.html"), "Do not overwrite the built modules with the teaching-only source");
+for (const module of [1, 2]) {
+  const html = buildModule(module);
+  for (const view of ["lab", "admin"])
+    assert(html.includes(`id="view-${view}"`), "Each module must include both lab and instructor views");
+  for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
+}
+for (const config of walkthroughs) {
+  const { html, pages } = buildWalkthrough(config);
+  const steps = [...new Set(pages.map(page => page.step).filter(Boolean))];
+  assert.deepEqual(steps, Array.from({ length: config.steps }, (_, index) => index + 1));
+  assert(html.includes(brandPalette), "Walkthroughs must preserve the original blue branding");
+  assert(!html.includes("<script src=") && !/fetch\(|localStorage|sendBeacon/.test(html), "Presentations must remain self-contained and cannot call tenant APIs");
+  for (const [index, script] of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].entries())
+    new vm.Script(script[1], { filename: `${config.role}-${config.module}-inline-${index}.js` });
+  const quick = read(config.file).split(/<details>\s*<summary>Optional (?:admin reference|technical reference|reference):/)[0];
+  const decode = text => text.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
+  const rendered = [...pages.map(page => page.html).join("\n").matchAll(/<pre[^>]*><code>([\s\S]*?)<\/code><\/pre>/g)].map(match => decode(match[1]));
+  const snippets = [...quick.matchAll(/```[^\n]*\n([\s\S]*?)\n```/g)].map(match => match[1]);
+  assert.deepEqual(rendered, snippets, "Every copyable snippet must exactly preserve its source and order");
+  for (const match of html.matchAll(/data-lesson="(\d+)"/g))
+    assert(html.includes(`id="lesson-${match[1]}"`), "Every lesson button needs an embedded slide");
+  assert(html.includes('id="answers"'), "Readiness answer key must be available inside the presentation");
+  assert(html.includes('data-copy') && html.includes('id="next"') && html.includes('id="jump"'));
+  pages.forEach(page => assert(page.html.length > 0));
+  assert.equal((html.match(/<figure class="lab-visual">/g) ?? []).length, pages.length, "Every lab/admin slide needs a visual");
+  if (config.role === "learner")
+    assert.equal((html.match(/<aside class="facilitator-note" data-instructor-only hidden/g) ?? []).length, pages.filter(page => page.step).length, "Every student step needs separate instructor notes, hidden by default");
+}
 assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
   workflow.includes("artifact_name: github-pages-${{ github.run_attempt }}"), "Pages upload/deploy must select the same retry-specific artifact");
 for (const name of markdownFiles) {
@@ -123,4 +152,4 @@ for (const name of markdownFiles) {
   for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
     assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 18), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two blue standalone decks, 18/8 slides, 15/25/35 timing, source/notes parity, eight-module plan, 39 sources, slide-linked learner/admin walkthroughs, preparation boundaries and documentation links.");
+console.log("PASS: Two blue modules with 18/8 teaching slides, visual student labs, instructor setup/notes, exact copyable snippets, 15/25/35 timing, source alignment, eight-module plan, 39 sources and documentation links.");
