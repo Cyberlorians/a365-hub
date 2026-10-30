@@ -108,6 +108,9 @@ templates.forEach(file => assert(fs.existsSync(path.join(root, "labs/workshop", 
 const deploy = read("scripts/Deploy-Workshop.ps1");
 assert(!deploy.includes("deploy-aca.ps1") && !deploy.includes("'group', 'delete'"), "Deployment must not call the destructive upstream script or delete a group");
 assert(deploy.includes("git") && deploy.includes("archive") && deploy.includes("ZeroFreeBSTR"), "Build tracked source only and clear the marshalled secret");
+const workflow = read(".github/workflows/module-01-pages.yml");
+assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
+  workflow.includes("artifact_name: github-pages-${{ github.run_attempt }}"), "Pages upload/deploy must select the same retry-specific artifact");
 for (const name of markdownFiles) {
   const content = read(name);
   assert(!/[A-Za-z]:[\\/](?:Users|tools)[\\/]|file:\/\/\/|session-state[\\/]/i.test(content), `Private machine path in ${name}`);
