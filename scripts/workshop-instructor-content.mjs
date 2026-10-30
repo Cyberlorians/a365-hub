@@ -25,7 +25,7 @@ export function teachingSlides(module) {
 
 const plan = {
   1: {
-    prep: ["a-route", "a-formcheck", "a-cloud", "a-start", "a-files", "a-prepare", "a-group", "a-tap", "a-skus", "a-users", "a-signin", "a-renew"],
+    prep: ["a-route", "a-formcheck", "a-cloud", "a-start", "a-files", "a-prepare", "a-group", "a-tap", "a-skus", "a-users", "a-signin", "a-renew", "a-seed"],
     rhythm: "a-teach", recovery: { 2: ["a-l1"], 3: ["a-l2"] }, after: ["a-close"]
   },
   2: {
