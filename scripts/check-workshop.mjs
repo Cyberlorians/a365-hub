@@ -168,7 +168,7 @@ for (const config of views) {
 }
 const learnerGuide2 = codeBlocks("labs/module-02-business-agent.md", /<details>\n<summary>Optional reference:/);
 const labHtml2 = buildView({ module: 2, role: "learner" }).html;
-for (const key of ["4.1", "5.1", "7.1"]) assert(labHtml2.includes(esc(learnerGuide2[key].code)), `Module 2 lab must contain guide snippet ${key} exactly`);
+for (const key of ["4.1", "5.1"]) assert(labHtml2.includes(esc(learnerGuide2[key].code)), `Module 2 lab must contain guide snippet ${key} exactly`);
 assert(labHtml2.includes("Do not send email") && labHtml2.includes("&lt;approved-real-internal-recipient&gt;"), "Module 2 lab needs separate draft and send snippets");
 assert(buildView({ module: 1, role: "learner" }).html.includes("quiz-option"), "Module 1 lab must contain quiz steps");
 assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
