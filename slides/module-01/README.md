@@ -6,7 +6,7 @@
 
 [Open Module 1 core](https://cyberlorians.github.io/a365-hub/#slide-6) |
 [Labs](https://cyberlorians.github.io/a365-hub/?view=lab) |
-[Instructor guide](https://cyberlorians.github.io/a365-hub/?view=admin) |
+[Instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) |
 [Open onboarding](https://cyberlorians.github.io/a365-hub/#slide-1) |
 [Open Module 2](https://cyberlorians.github.io/a365-hub/module-02/#slide-1)
 
@@ -19,11 +19,11 @@ E7 fit follows the customer gap, not an unsupported exclusivity claim.
 
 ## Package
 
-The published module includes visual student lab and instructor sections. Build with
+The published module has a student deck (slides and numbered labs) and a separate
+instructor deck. Build with
 `node scripts/build-walkthroughs.mjs` from the repository root before local preview.
-The Markdown guides are the plain-text reference; the classroom experience is the
-presentation's numbered Labs and Instructor guide. Their copy-and-run snippets come from
-those guides.
+The Markdown guides are the plain-text reference; their copy-and-run snippets are used
+in the labs and the instructor deck.
 
 | File | Use |
 |---|---|

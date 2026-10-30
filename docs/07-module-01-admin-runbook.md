@@ -1,9 +1,9 @@
 # Module 1: Admin - Start Here
 
 <!-- source-only -->
-[Open this as a visual instructor presentation](https://cyberlorians.github.io/a365-hub/?view=admin).
-In the student lab, switch on **Instructor notes** for teaching cues beside each student
-step. This Markdown file is the plain-text reference.
+[Open this as the instructor deck](https://cyberlorians.github.io/a365-hub/instructor/).
+It adds what to show and say for every slide, and lab launch and recovery steps.
+This Markdown file is the plain-text reference.
 <!-- /source-only -->
 
 **Goal:** Prepare the lab accounts, test sign-in, then deliver Module 1.

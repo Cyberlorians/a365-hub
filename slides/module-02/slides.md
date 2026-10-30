@@ -13,7 +13,7 @@ Define normal.
 
 A useful task first. Then actor, authority, data, tools, and evidence.
 
-**Four step-by-step labs, placed after the lessons they practice.** The instructor must complete the Instructor guide and prove the real task before learners start.
+**Four step-by-step labs, placed after the lessons they practice.** Your instructor gives you the agent link and your approved recipient before Lab 1.
 
 Playbook focus: understand legitimate tool use before investigating living off the agent's tools (LOAT).
 
@@ -169,4 +169,4 @@ Debrief / Review gate
 
 Module 3 maps the actual authority. Later modules govern access, test data controls, and investigate misuse.
 
-**Next step:** review this content first. Then approve the test user, fake-data fixtures, runtime preparation, and any scoped automation.
+**Next:** Module 3 maps the actual authority behind what the agent did.

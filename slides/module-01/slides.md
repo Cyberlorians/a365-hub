@@ -54,7 +54,7 @@ Onboarding 3 of 5 / Planned
 
 - Approved sign-in instructions
 
-- A Temporary Access Pass, if configured
+- A Temporary Access Pass (valid for 8 hours)
 
 - Event support and expiry guidance
 
@@ -66,7 +66,7 @@ Onboarding 3 of 5 / Planned
 
 - Do not repeatedly submit the form.
 
-TAP lifetime and reuse are deployment settings. Do not assume an eight-hour window or infer expiry from account age.
+Your pass is a credential. Never share it, and ask your instructor for a new one if it expires.
 
 ## Slide 4 - Sign in using the approved method
 
@@ -158,7 +158,7 @@ Which tools, permissions, and data?
 
 Which evidence and response?
 
-Today: review this story. Later, after approval: provision an isolated test account and verify the actual task.
+In Module 2 you run this task for real with an approved agent and check what actually happened.
 
 ## Slide 8 - An agent can act, not just answer
 
@@ -397,4 +397,4 @@ Next: define a useful approved task, identify who actually acts, and record the 
 
 Then map authority, govern access, protect data, investigate misuse, and plan adoption.
 
-Module 2 is a rough draft. Original identity-anatomy content becomes Module 3; it has not been discarded.
+Next is Module 2, where you run an approved task with a real agent. The identity-anatomy deep dive follows in Module 3.

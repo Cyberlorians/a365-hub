@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { buildView, buildModule, views, urlFor } from "./build-walkthroughs.mjs";
 import { codeBlocks, esc, labMeta, labSlides } from "./workshop-lab-content.mjs";
+import { teachingSlides } from "./workshop-instructor-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
@@ -31,9 +32,8 @@ for (const id of [1, 2]) {
     new vm.Script(script[1], { filename: `module-${id}-inline-${index + 1}.js` });
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
-  for (const [role, label] of [["learner", "Labs"], ["admin", "Instructor guide"]])
-    assert(html.includes(`href="${urlFor({ module: id, role })}">${label}</a>`), "Each teaching deck must open its integrated lab and instructor presentation");
-  assert(!html.includes("Instructor lab notes"), "Teaching decks should not add a third, confusing lab link");
+  assert(html.includes(`href="${urlFor({ module: id, role: "learner" })}">Labs</a>`), "Each teaching deck must open its labs");
+  assert(!html.includes("Instructor guide") && !html.includes("view=admin"), "The student deck must not link to instructor material");
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
   assert(html.includes('<html lang="en" data-brand="a365">'), "A365 branding must be active");
   const palette = html.match(/html\[data-brand="a365"\] \{([\s\S]*?)\n    \}/)?.[1];
@@ -114,8 +114,9 @@ assert(workflow.includes("node scripts/build-walkthroughs.mjs"), "Pages must bui
 assert(!workflow.includes("cp slides/module-01/index.html") && !workflow.includes("cp slides/module-02/index.html"), "Do not overwrite the built modules with the teaching-only source");
 for (const module of [1, 2]) {
   const html = buildModule(module);
-  for (const view of ["lab", "admin"])
-    assert(html.includes(`id="view-${view}"`), "Each module must include both lab and instructor views");
+  assert(html.includes('id="view-lab"') && !html.includes('id="view-admin"'), "The student page contains only the labs view");
+  assert(html.includes('<button hidden type="button" id="notesToggle"') && html.includes("Slides with a hands-on lab after each lesson"), "Presenter tools must be hidden from students");
+  assert(!html.includes("Instructor guide") && !html.includes("facilitator-note") && !html.includes('=== "n"'), "No instructor material or presenter shortcuts on the student page");
   for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
   for (const lab of labMeta(module))
     assert.equal((html.match(new RegExp(`>Start Lab ${lab.n}</a>`, "g")) ?? []).length, 1, `Module ${module} lessons must start Lab ${lab.n} exactly once`);
@@ -129,7 +130,8 @@ for (const config of views) {
   for (const [index, script] of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].entries())
     new vm.Script(script[1], { filename: `${config.role}-${config.module}-inline-${index}.js` });
   assert(!/data-lesson|data-reference|Open Slide|\[Slide \d/.test(html), `${label} must not send learners off to other slides`);
-  assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"') && html.includes("1. Learn") && html.includes("2. Labs") && html.includes("3. Instructor guide"));
+  assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"'));
+  assert(config.role === "learner" ? html.includes("1. Slides") && html.includes("2. Labs") : html.includes("Student slides") && html.includes("Student labs"), `${label} navigation`);
   for (const match of html.matchAll(/src="(assets\/[^"]+)"/g))
     assert(fs.existsSync(path.join(root, "slides", match[1])), `${label}: missing screenshot ${match[1]}`);
   assert.equal(new Set(slides.map(slide => slide.key)).size, slides.length, `${label} slide keys must be unique`);
@@ -145,13 +147,23 @@ for (const config of views) {
       assert(inLab.length >= 3 && inLab.length <= 6, `${label} Lab ${lab.n} should have three to six small steps`);
       assert(inLab.at(-1).links.some(link => link.href === `./#slide-${lab.back}`), `${label} Lab ${lab.n} must lead back to its lesson`);
     }
-    assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and instructor notes`);
-    assert.equal((html.match(/<aside class="facilitator-note" data-instructor-only hidden/g) ?? []).length, steps.length, "Instructor notes must be hidden by default");
-    assert(html.includes('id="notesMode"'), "Student lab needs the instructor-notes toggle");
+    assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and a cue for the instructor deck`);
+    assert(!/facilitator-note|Instructor only|Instructor notes|data-instructor-only|Instructor guide/.test(html), "Student labs must not contain instructor material");
+    assert(!html.includes('id="notesMode"'), "Student labs must not offer an instructor toggle");
   } else {
     const [file, marker] = adminGuides[config.module];
     for (const [key, block] of Object.entries(codeBlocks(file, marker)))
-      assert(html.includes(esc(block.code)), `${label}: guide snippet ${key} is missing from the setup slides`);
+      assert(html.includes(esc(block.code)), `${label}: guide snippet ${key} is missing from the instructor deck`);
+    const teaching = teachingSlides(config.module);
+    for (const slide of teaching)
+      assert(slides.some(item => item.key === `t${slide.n}`), `${label}: missing run-of-show slide for teaching slide ${slide.n}`);
+    for (const lab of labMeta(config.module)) {
+      assert(slides.some(item => item.key === `lab${lab.n}-run`) && slides.some(item => item.key === `lab${lab.n}-cues`), `${label}: Lab ${lab.n} needs launch and cue slides`);
+      const cues = slides.find(item => item.key === `lab${lab.n}-cues`);
+      for (const step of labSlides(config.module).filter(item => item.lab === lab.n && item.snippet))
+        assert(cues.snippet.code.includes(step.snippet.code), `${label}: Lab ${lab.n} snippet bundle is missing "${step.title}"`);
+    }
+    assert(html.includes("Show") && html.includes("Say") && !html.includes('id="notesMode"'));
   }
 }
 const learnerGuide2 = codeBlocks("labs/module-02-business-agent.md", /<details>\n<summary>Optional reference:/);

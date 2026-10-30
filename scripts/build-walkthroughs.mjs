@@ -2,16 +2,17 @@ import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { esc, rich, labSlides, labMeta, setupSlides, labIntro, fig, grid } from "./workshop-lab-content.mjs";
+import { esc, rich, labSlides, labMeta, labIntro, fig, grid } from "./workshop-lab-content.mjs";
+import { instructorSlides } from "./workshop-instructor-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = file => fs.readFileSync(path.join(root, file), "utf8").replace(/\r\n/g, "\n");
 const site = "https://cyberlorians.github.io/a365-hub";
-export const views = [1, 2].flatMap(module => ["learner", "admin"].map(role => ({ module, role })));
-export const urlFor = ({ module, role }) => `${site}/${module === 2 ? "module-02/" : ""}?view=${role === "admin" ? "admin" : "lab"}`;
-const viewName = role => (role === "admin" ? "admin" : "lab");
-// Pages are published at different depths, so in-page navigation uses relative links.
-const relative = (from, module, role) => `${from === module ? "./" : module === 2 ? "module-02/" : "../"}?view=${viewName(role)}`;
+export const views = [1, 2].flatMap(module => ["learner", "instructor"].map(role => ({ module, role })));
+export const urlFor = ({ module, role }) => `${site}/${module === 2 ? "module-02/" : ""}${role === "instructor" ? "instructor/" : "?view=lab"}`;
+// Student pages sit at the site root and /module-02/; instructor decks one level deeper, so links are relative.
+const studentLab = (from, to) => `${from === to ? "./" : to === 2 ? "module-02/" : "../"}?view=lab`;
+const instructorDeck = (from, to) => (from === to ? "./" : to === 2 ? "../module-02/instructor/" : "../../instructor/");
 
 const css = `
   header { padding: 12px 24px; }
@@ -89,10 +90,6 @@ const css = `
   .check-list.numbered { counter-reset: row; }
   .check-list.numbered li { counter-increment: row; }
   .check-list.numbered li::before { content: counter(row) ".\\00a0"; color: var(--cp-accent); font-weight: 700; }
-  .facilitator-note { margin: 16px 0 0; padding: 14px 18px; border: 1px solid var(--cp-warning); border-radius: 10px; background: var(--cp-bg-elevated); font-size: 15px; }
-  .facilitator-note p { margin: 6px 0; }
-  .facilitator-note .eyebrow { color: var(--cp-warning); }
-  .facilitator-note ul { margin: 6px 0; padding-left: 20px; }
   .walk-footer { position: sticky; bottom: 0; background: var(--cp-bg-elevated); border-top: 1px solid var(--cp-border); padding: 12px 24px; }
   .walk-footer .row { max-width: 1232px; margin: auto; justify-content: space-between; }
   #jump { max-width: min(520px, 46vw); }
@@ -124,17 +121,8 @@ const runtime = `
     const slides = [...document.querySelectorAll("main > .slide")];
     const jump = document.getElementById("jump");
     const status = document.getElementById("status");
-    const mode = document.getElementById("notesMode");
-    let instructor = new URLSearchParams(location.search).get("instructor") === "1";
     let current = 0;
     const report = message => { status.textContent = message; };
-    function applyMode() {
-      document.querySelectorAll("[data-instructor-only]").forEach(note => { note.hidden = !instructor; });
-      if (mode) {
-        mode.setAttribute("aria-pressed", String(instructor));
-        mode.textContent = "Instructor notes: " + (instructor ? "On" : "Off");
-      }
-    }
     const route = () => {
       const match = /^#slide-(\\d+)$/.exec(location.hash);
       return match ? Number(match[1]) - 1 : 0;
@@ -161,13 +149,6 @@ const runtime = `
     document.getElementById("next").addEventListener("click", () => show(current + 1));
     jump.addEventListener("change", () => show(Number(jump.value)));
     window.addEventListener("hashchange", () => show(route()));
-    mode?.addEventListener("click", () => {
-      instructor = !instructor;
-      const query = new URLSearchParams(location.search);
-      if (instructor) query.set("instructor", "1"); else query.delete("instructor");
-      history.replaceState(null, "", "?" + query + location.hash);
-      applyMode();
-    });
     document.querySelectorAll("[data-copy]").forEach(button => button.addEventListener("click", async () => {
       const code = button.closest(".snippet").querySelector("code");
       try {
@@ -202,7 +183,6 @@ const runtime = `
       else if (event.key === "End") { event.preventDefault(); show(slides.length - 1); }
       else if (event.key.toLowerCase() === "f") fullscreen.click();
     });
-    applyMode();
     show(route());
   })();
 `;
@@ -211,10 +191,7 @@ const tracker = (total, current) => `<ol class="tracker" aria-label="${current ?
 const snippetHtml = snippet => `<div class="snippet"><div class="snippet-bar"><span>${esc(snippet.language)}</span><button type="button" data-copy>Copy</button></div><pre tabindex="0"><code>${esc(snippet.code)}</code></pre></div>`;
 
 function slidesFor({ module, role }) {
-  if (role === "admin") {
-    const items = setupSlides(module);
-    return items.map((item, index) => ({ ...item, number: index + 1, total: items.length, eyebrow: `Module ${module} / Instructor guide / Step ${index + 1} of ${items.length}` }));
-  }
+  if (role === "instructor") return instructorSlides(module);
   const meta = labMeta(module);
   const intro = labIntro(module);
   const first = {
@@ -238,34 +215,35 @@ function slidesFor({ module, role }) {
 export function buildView(config) {
   const { module, role } = config;
   const base = read(`slides/module-0${module}/index.html`);
-  const label = `Module ${module} / ${role === "admin" ? "Instructor guide" : "Labs"}`;
+  const label = `Module ${module} / ${role === "instructor" ? "Instructor deck" : "Labs"}`;
   const head = base.slice(0, base.indexOf("</head>"))
     .replace(/<title>.*?<\/title>/, `<title>A365 Hub | ${label}</title>`)
-    .replace(/<meta name="description"[^>]+>/, `<meta name="description" content="Blue step-by-step ${esc(label)} with copyable snippets and pictures of what you should see.">`);
-  const adminKeys = setupSlides(module).map(item => item.key);
+    .replace(/<meta name="description"[^>]+>/, `<meta name="description" content="${esc(label)}: step-by-step slides with copyable snippets.">`);
   const slides = slidesFor(config);
-  const adminLink = key => `${relative(module, module, "admin")}#slide-${adminKeys.indexOf(key) + 1}`;
-  const tab = (name, href, current) => `<a class="button${current ? " primary" : ""}"${current ? ' aria-current="page"' : ""} href="${href}">${name}</a>`;
-  const moduleLink = target => `<a class="button${target === module ? " primary" : ""}" href="${relative(module, target, role)}">Module ${target}</a>`;
+  const tab = (name, href, current, newTab = false) => `<a class="button${current ? " primary" : ""}"${current ? ' aria-current="page"' : ""} href="${href}"${newTab ? ' target="_blank" rel="noopener noreferrer"' : ""}>${name}</a>`;
+  const moduleLink = target => `<a class="button${target === module ? " primary" : ""}" href="${role === "instructor" ? instructorDeck(module, target) : studentLab(module, target)}">Module ${target}</a>`;
+  const nav = role === "instructor"
+    ? `${tab("Student slides", "../#slide-1", false, true)}${tab("Student labs", "../?view=lab", false, true)}`
+    : `${tab("1. Slides", "./#slide-1", false)}${tab("2. Labs", "./?view=lab", true)}`;
+  const boundary = role === "instructor"
+    ? "Instructor only. Keep this deck off the learners' screens: it holds your talk track and recovery steps."
+    : "Use only the lab account you are given. Never use a personal or production account.";
   const body = `
   <a class="skip" href="#deck">Skip to current slide</a>
   <header><div class="walk-top">
     <div class="top"><div class="brand">A365 Hub <span>/ ${label}</span></div>
     <nav class="row" aria-label="Choose module">${moduleLink(1)}${moduleLink(2)}</nav></div>
-    <nav class="row mode-nav" aria-label="Choose section">
-      ${tab("1. Learn", `./#slide-${module === 1 ? 6 : 1}`, false)}${tab("2. Labs", relative(module, module, "learner"), role === "learner")}${tab("3. Instructor guide", relative(module, module, "admin"), role === "admin")}
-      ${role === "learner" ? '<button type="button" id="notesMode" aria-pressed="false">Instructor notes: Off</button>' : ""}
+    <nav class="row mode-nav" aria-label="Navigation">
+      ${nav}
       <button type="button" id="fullscreen">Fullscreen (F)</button><button type="button" id="print">Print</button>
     </nav>
-    <p class="boundary">Dedicated lab only. These slides do not deploy anything; the authorized instructor runs setup. Live tenant deployment and mail proof must be verified separately.</p>
+    <p class="boundary">${boundary}</p>
   </div></header>
   <progress id="progress" max="${slides.length}" value="1" aria-label="Presentation progress"></progress>
   <main id="deck" class="walk-stage" tabindex="-1">
     <noscript><p class="callout">JavaScript is required for slide navigation and Copy buttons.</p></noscript>
     ${slides.map(item => {
       const side = [item.visual, item.snippet ? snippetHtml(item.snippet) : ""].filter(Boolean).join("\n");
-      const noteBlock = item.note ? `<aside class="facilitator-note" data-instructor-only hidden><p class="eyebrow">Instructor only / ${esc(item.note[0])}</p><p><strong>You:</strong> ${rich(item.note[1])}</p><p><strong>Students:</strong> ${rich(item.note[2])}</p>${item.answers ? `<p><strong>Answer key:</strong></p><ul>${item.answers.map(answer => `<li>${rich(answer)}</li>`).join("")}</ul>` : ""}<a href="${adminLink(item.note[3])}">Open the matching setup step</a></aside>` : "";
-      const counter = item.number ? `Step ${item.number} of ${item.total}` : "Start here";
       return `<section class="slide" data-key="${item.key}" data-title="${esc(item.shortTitle ?? (item.number ? `${item.number}. ${item.title}` : item.title))}" hidden>
         <div class="walk-heading"><div class="step-number" aria-hidden="true">${item.number || "GO"}</div><div>
           <p class="eyebrow">${esc(item.eyebrow)}</p><h1>${esc(item.title)}</h1></div></div>
@@ -275,9 +253,8 @@ export function buildView(config) {
             ${item.lead ? `<p class="lede">${rich(item.lead)}</p>` : ""}
             <h2 class="do-heading">${item.heading ?? "Do this"}</h2>
             <ol class="micro">${item.doItems.map(entry => `<li>${rich(entry)}</li>`).join("")}</ol>
-            ${(item.links ?? (item.link ? [item.link] : [])).map(link => `<p><a class="button${link.primary ? " primary" : ""}" href="${esc(link.href)}"${link.href.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(link.label)}</a></p>`).join("")}
+            ${(item.links ?? (item.link ? [item.link] : [])).map(link => `<p><a class="button${link.primary ? " primary" : ""}" href="${esc(link.href)}"${link.newTab || link.href.startsWith("http") ? ' target="_blank" rel="noopener noreferrer"' : ""}>${esc(link.label)}</a></p>`).join("")}
             <p class="done"><strong>${item.number ? "You are done when:" : "Good to know:"}</strong> ${rich(item.doneWhen)}</p>
-            ${noteBlock}
           </div>
           ${side ? `<div class="lab-side">${side}</div>` : ""}
         </div>
@@ -316,14 +293,44 @@ export function buildModule(module) {
     .lab-callout .button { margin-left: auto; }
   </style>`;
   const shifted = withCallouts.replace("</head>", `${style}</head>`);
-  const navigation = [...shifted.matchAll(/<script>([\s\S]*?)<\/script>/g)][1];
-  let html = shifted.slice(0, navigation.index);
-  for (const role of ["learner", "admin"])
-    html += `<template id="view-${viewName(role)}"><style>${css}</style>${buildView({ module, role }).body}</template>\n`;
+  // Student page: keep only slides and labs. Presenter tools move to the separate instructor deck.
+  const hide = [
+    ['<button type="button" id="notesToggle"', '<button hidden type="button" id="notesToggle"'],
+    ['<button type="button" data-dialog="dataDialog">', '<button hidden type="button" data-dialog="dataDialog">'],
+    ['<button type="button" data-dialog="sourcesDialog">', '<button hidden type="button" data-dialog="sourcesDialog">'],
+    ['<button type="button" data-dialog="readinessDialog">', '<button hidden type="button" data-dialog="readinessDialog">'],
+    ['<a href="https://github.com/Cyberlorians/a365-hub/blob/main/docs/06-customer-learning-plan.md">', '<a hidden href="https://github.com/Cyberlorians/a365-hub/blob/main/docs/06-customer-learning-plan.md">']
+  ];
+  let student = shifted;
+  for (const [from, to] of hide) {
+    assert(student.includes(from), `Teaching deck is missing a toolbar item to hide: ${from}`);
+    student = student.split(from).join(to);
+  }
+  student = student
+    .replace(/<p class="draft">[\s\S]*?<\/p>/, '<p class="draft">Slides with a hands-on lab after each lesson. Use only the lab account you are given.</p>')
+    .replace("<kbd>N</kbd>: presenter notes; <kbd>R</kbd>: preflight; ", "")
+    .replace(/<p><strong>Review focus:<\/strong>[\s\S]*?<\/p>/, "")
+    .replace(/Module (\d) content draft/, "Module $1")
+    .replace(/\/ Module (\d) draft<\/span>/, "/ Module $1</span>")
+    .replace(">Module 1 - Reworked</a>", ">Module 1</a>")
+    .replace(">Module 2 - Rough draft</a>", ">Module 2</a>")
+    .replace("Reworked review draft", "Slides and labs")
+    .replace("Rough draft / 35 proposed minutes", "35 minutes")
+    .replace(/ \/ Planned<\/p>/g, "</p>")
+    .replace("| A365 Hub draft", "| A365 Hub");
+  const navigation = [...student.matchAll(/<script>([\s\S]*?)<\/script>/g)][1];
+  const navigationScript = navigation[1]
+    .replace('else if (event.key.toLowerCase() === "n") toggleNotes();', "")
+    .replace('else if (event.key.toLowerCase() === "r") document.getElementById("readinessDialog").showModal();', "");
+  assert(!navigationScript.includes('=== "n"') && !navigationScript.includes('=== "r"'), "Presenter shortcuts must not remain in the student deck");
+  let html = student.slice(0, navigation.index);
+  html += `<template id="view-lab"><style>${css}</style>${buildView({ module, role: "learner" }).body}</template>\n`;
   html += `<script>
     const selectedView = new URLSearchParams(location.search).get("view");
-    if (selectedView === "lab" || selectedView === "admin") {
-      const selected = document.getElementById("view-" + selectedView).content.cloneNode(true);
+    if (selectedView === "admin") {
+      location.replace("instructor/");
+    } else if (selectedView === "lab") {
+      const selected = document.getElementById("view-lab").content.cloneNode(true);
       document.body.replaceChildren(selected);
       // Images cloned from a template can stay unloaded, so recreate them as fresh elements.
       document.querySelectorAll("img.shot").forEach(old => {
@@ -333,10 +340,10 @@ export function buildModule(module) {
         fresh.src = old.getAttribute("src");
         old.replaceWith(fresh);
       });
-      document.body.dataset.deck = "Module ${module} / " + (selectedView === "admin" ? "Instructor guide" : "Labs");
+      document.body.dataset.deck = "Module ${module} / Labs";
       ${runtime}
     } else {
-      ${navigation[1]}
+      ${navigationScript}
     }
   </script></body></html>\n`;
   return html;
@@ -345,9 +352,10 @@ export function buildModule(module) {
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   for (const module of [1, 2]) {
     const directory = path.join(root, "_site", ...(module === 2 ? ["module-02"] : []));
-    fs.mkdirSync(directory, { recursive: true });
+    fs.mkdirSync(path.join(directory, "instructor"), { recursive: true });
     fs.writeFileSync(path.join(directory, "index.html"), buildModule(module));
-    for (const role of ["learner", "admin"])
+    fs.writeFileSync(path.join(directory, "instructor", "index.html"), buildView({ module, role: "instructor" }).html);
+    for (const role of ["learner", "instructor"])
       console.log(`Built Module ${module} ${role}: ${buildView({ module, role }).slides.length} slides`);
   }
   const assets = path.join(root, "slides", "assets");

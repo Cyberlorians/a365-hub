@@ -16,7 +16,7 @@ on:
       - "README.md"
       - "scripts/check-workshop.mjs"
       - "scripts/build-walkthroughs.mjs"
-      - "scripts/workshop-lab-visuals.mjs"
+      - "scripts/workshop-*.mjs"
       - "scripts/*Workshop*.ps1"
       - "scripts/*workshop*.ps1"
       - ".github/workflows/module-01-pages.yml"
