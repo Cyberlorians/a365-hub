@@ -25,6 +25,7 @@ The [integration map](integration-map.md) explains exactly what we reuse, adapt,
 - [Compass ownership/consent research](compass-agent-id-security.md)
 - [Object-scoped disable research](ms-learn-disable-agent-identities.md)
 - [Reference-image notes](reference-images.md)
+- [Module 1 direction, registry and admin seeding](module-1-direction-and-registry.md)
 
 Historical notes can contain obsolete portal, table, integration, or licensing statements.
 Use current Microsoft Learn and actual tenant validation before delivery. No raw GBB
