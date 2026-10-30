@@ -37,7 +37,7 @@ const plan = {
 // What the instructor says, slide by slide, in plain first-person language.
 const say = {
   "1.1": "Welcome. Before the content, each of you needs your own lab account. You will request it with a short form, and the first lab shows every click. Use only the account the form gives you, never a personal or production one.",
-  "1.2": "I am posting the form link in chat. It needs your name and an email you can open right now; company is optional. Tick I agree and submit once. If you submit twice you can end up with two accounts.",
+  "1.2": "I am posting the form link in chat. It needs your name and an email you can open right now; company is optional. Tick I agree and submit once. If you submit twice you can end up with two accounts. Now run Lab 1.",
   "1.3": "In two to three minutes an email arrives with your username and a one-time pass, valid for eight hours. If you do not see it, check Junk. Treat the pass like a password: do not paste it into chat.",
   "1.4": "Now sign in. Use a private window and the lab username, not your own account. Follow the prompts. If anything asks you to weaken a security setting or add a sign-in method, stop and tell me.",
   "1.5": "Nobody here needs admin rights. You have an isolated account, access only to what the exercise needs, and someone to ask for help. Please confirm you have an open inbox, then we start the content.",

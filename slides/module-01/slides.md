@@ -10,13 +10,13 @@ Onboarding 1 of 5 / Outside the 25-minute core
 
 ### Get your lab account
 
-Request your own lab account with the access form. It creates your account and emails you a one-time pass.
+Today you learn, then you practice. First, request your own lab account.
 
-**The access form is live.** Lab 1 shows every click, from the form to the email you receive. Use only the lab account it gives you.
+**How this works:** read each slide. When you see a blue **LAB** box, click **Start Lab** and follow the steps. When the lab ends, click the green button to come back to the slides.
 
-- Open the access form (aka.ms/a365hub) when the facilitator releases it.
+- Your first lab starts on slide 2.
 
-- Learners use only their assigned lab account.
+- Use only the lab account the access form gives you.
 
 - Your access email arrives in about two to three minutes.
 
@@ -48,23 +48,21 @@ Onboarding 3 of 5 / Planned
 
 ### Check the lab-access email
 
-### Expect from the approved flow
+### Your email has
 
-- Assigned lab username
+- Your lab username
 
-- Approved sign-in instructions
+- Your Temporary Access Pass (valid for 8 hours)
 
-- A Temporary Access Pass (valid for 8 hours)
+- Where to sign in
 
-- Event support and expiry guidance
-
-### If access does not arrive
+### If it has not arrived
 
 - Check Junk.
 
-- Confirm the submitted address with the facilitator.
+- Wait up to five minutes.
 
-- Do not repeatedly submit the form.
+- Tell your instructor. Do not submit the form again.
 
 Your pass is a credential. Never share it, and ask your instructor for a new one if it expires.
 
@@ -76,15 +74,15 @@ Onboarding 4 of 5 / Planned
 
 ### Sign in using the approved method
 
-- Open the approved sign-in link after the event setup is ready.
+- Open a private browser window and go to outlook.office.com.
 
-- Use the lab username, not your personal or production account.
+- Type your lab username, not your own account.
 
-- Follow the configured authentication prompts.
+- Enter your Temporary Access Pass.
 
-- Ask for help if policy, account, or mailbox access fails.
+- Answer **No** to "Stay signed in?".
 
-Do not bypass Conditional Access, device compliance, or MFA requirements. A TAP is a credential; never share it.
+If anything asks you to add a sign-in method or skip a security step, stop and ask your instructor. Never share your pass.
 
 ## Slide 5 - Confirm readiness without extra privileges
 
@@ -96,17 +94,17 @@ Onboarding 5 of 5 / Planned
 
 ### Identity
 
-Correct isolated lab account and tenant.
+You are signed in to the lab account, not your own.
 
 ### Access
 
-Only the apps/mailbox required by the approved activity.
+You can open your lab inbox. That is all you need.
 
 ### Support
 
-Known owner for access issues and eventual cleanup.
+You know who to ask for help.
 
-Module 1 is presenter-led. Learners do not need admin portals or tenant-wide roles.
+You do not need admin rights for any lab.
 
 ## Slide 6 - See It. Control It. Protect It.
 

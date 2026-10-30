@@ -51,7 +51,7 @@ const shot = (file, caption, alt) => `<figure class="lab-visual"><figcaption>${e
 
 const labs = {
   1: [
-    { n: 1, title: "Request your lab access", minutes: 5, after: 3, back: 4 },
+    { n: 1, title: "Request your lab access", minutes: 5, after: 2, back: 3 },
     { n: 2, title: "Sign in to your lab mailbox", minutes: 8, after: 4, back: 5 },
     { n: 3, title: "Four questions and two risks", minutes: 6, after: 9, back: 10 },
     { n: 4, title: "Review one agent", minutes: 5, after: 11, back: 12 },

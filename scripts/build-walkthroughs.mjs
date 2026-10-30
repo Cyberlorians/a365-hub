@@ -280,15 +280,15 @@ export function buildModule(module) {
   // Each lab is announced on the lesson it practices, and links to its first lab slide.
   const labSlideIndex = lab => slidesFor({ module, role: "learner" }).findIndex(item => item.lab === lab) + 1;
   let slideNumber = 0;
-  const withCallouts = original.replace(/(<section class="slide"[\s\S]*?)(<template class="speaker-notes">)/g, (whole, before, template) => {
+  const withCallouts = original.replace(/(<section class="slide"[^>]*>\s*<p class="eyebrow">[\s\S]*?<\/p>)/g, (whole, opening) => {
     slideNumber++;
     const lab = labMeta(module).find(item => item.after === slideNumber);
     if (!lab) return whole;
-    return `${before}<p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minutes. Step by step, with copy boxes.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>\n        ${template}`;
+    return `${opening}\n        <p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>Do this now: ${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minutes.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>`;
   });
   assert.equal(slideNumber, module === 1 ? 18 : 8, "Every teaching slide must be considered for a lab callout");
   const style = `<style>
-    .lab-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0 0; padding: 14px 18px; border: 1px solid var(--cp-accent); border-radius: 16px; background: var(--cp-accent-soft); }
+    .lab-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 8px 0 20px; padding: 16px 20px; border: 2px solid var(--cp-accent); border-radius: 16px; background: var(--cp-accent-soft); font-size: 20px; }
     .lab-badge { padding: 4px 10px; border-radius: 8px; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 750; letter-spacing: 1px; font-size: 14px; }
     .lab-callout .button { margin-left: auto; }
   </style>`;

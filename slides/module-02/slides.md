@@ -13,7 +13,7 @@ Define normal.
 
 A useful task first. Then actor, authority, data, tools, and evidence.
 
-**Four step-by-step labs, placed after the lessons they practice.** Your instructor gives you the agent link and your approved recipient before Lab 1.
+**How this works:** read each slide. When you see a blue **LAB** box, click **Start Lab** and follow the steps. When the lab ends, click the green button to come back. Your instructor gives you the agent link and your approved recipient before Lab 1.
 
 Playbook focus: understand legitimate tool use before investigating living off the agent's tools (LOAT).
 
