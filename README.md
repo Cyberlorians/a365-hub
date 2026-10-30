@@ -30,7 +30,7 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 Each module is **one presentation with three parts**, all in the original blue style:
 
 1. **Learn** - the teaching slides. After the lessons that need practice, a
-   **LAB 1, LAB 2...** button appears (Module 1 has five labs, Module 2 has four).
+   **LAB 1, LAB 2...** button appears (Module 1 has six labs, Module 2 has four).
 2. **Labs** - each lab is a handful of tiny steps: numbered "Do this" actions, a picture
    of what you should see, Copy boxes, and a "You are done when" line. The last step
    of each lab sends you back to the next slide. A toggle shows instructor-only notes
@@ -67,10 +67,12 @@ Instructor view is a display mode, **not an authorization boundary**: notes are 
 and must never contain credentials or private tenant/attendee information.
 No Copy button executes code or stores attendee data.
 
-> **Not yet done:** nobody has run the labs end to end as a real fake user in a live
-> tenant, so the pictures are schematic (not captured screenshots), and the access-form
-> step needs an instructor-provided link. Live tenant proof remains unverified until
-> actual deployment and tests are recorded.
+> **Verified so far (Module 1, Labs 1-2):** a test learner submitted the live access form
+> (https://aka.ms/a365hub), the provisioner Logic App created the account and emailed the
+> access details about two minutes later, and that test user signed in to Outlook with the
+> Temporary Access Pass. The Lab 2 screenshots are from that run. Labs 3-6 are note-taking
+> steps; Module 2 (agent deployment, mail send) and the pictures in the other labs are not
+> yet verified in a live tenant.
 
 The Markdown guides remain a plain-text reference and the source of every copy-and-run
 snippet used in the slides (a check fails if they drift):

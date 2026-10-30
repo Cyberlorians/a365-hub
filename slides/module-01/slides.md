@@ -2,7 +2,7 @@
 
 Published content draft, not a validated hands-on lab. HTML and Markdown must remain aligned.
 
-## Slide 1 - Get your lab account - planned
+## Slide 1 - Get your lab account
 
 **Planned time:** 2 minutes (onboarding).
 
@@ -10,17 +10,17 @@ Onboarding 1 of 5 / Outside the 25-minute core
 
 ### Get your lab account
 
-For the eventual lab, use only the event-specific access process approved by the facilitator.
+Request your own lab account with the access form. It creates your account and emails you a one-time pass.
 
-**Not active in this review draft.** No form, QR code, test account, or provisioning endpoint is connected.
+**The access form is live.** Lab 1 shows every click, from the form to the email you receive. Use only the lab account it gives you.
 
-- The facilitator confirms the event's tested access route.
+- Open the access form (aka.ms/a365hub) when the facilitator releases it.
 
-- Learners use only their assigned lab tenant and account.
+- Learners use only their assigned lab account.
 
-- Account creation happens after content review and an approved preparation plan.
+- Your access email arrives in about two to three minutes.
 
-Review the wording now. Do not enroll or provision accounts yet.
+Do not use a personal or production account for the labs.
 
 ## Slide 2 - Use the approved access process
 
@@ -30,11 +30,11 @@ Onboarding 2 of 5 / Planned
 
 ### Use the approved access process
 
-- Use the correct event link after the facilitator releases it.
+- Use the correct event link (aka.ms/a365hub) after the facilitator releases it.
 
-- Supply only the minimum details the event needs.
+- Supply only the minimum details the form asks for: name, the email to receive your access, and an optional company.
 
-- Read and accept the lab terms.
+- Read and accept the lab terms ("I agree").
 
 - Submit once; ask for help rather than repeat submissions.
 

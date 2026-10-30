@@ -39,6 +39,7 @@ const css = `
   .lab-side { display: grid; gap: 16px; min-width: 0; }
   .lab-visual { margin: 0; padding: 14px; border: 1px solid var(--cp-border-strong); border-radius: 16px; background: var(--cp-bg); }
   .lab-visual figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; color: var(--cp-accent); font-weight: 700; font-size: 15px; margin-bottom: 12px; }
+  .shot { display: block; width: 100%; height: auto; border: 1px solid var(--cp-border); border-radius: 10px; background: #fff; }
   .lab-visual figcaption span { font-size: 12px; color: var(--cp-text-muted); font-weight: 400; }
   .snippet { min-width: 0; border: 1px solid var(--cp-border-strong); border-radius: 16px; overflow: hidden; background: var(--cp-bg); }
   .snippet-bar { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: var(--cp-bg-elevated); color: var(--cp-accent); font-size: 14px; font-weight: 700; }
@@ -324,6 +325,14 @@ export function buildModule(module) {
     if (selectedView === "lab" || selectedView === "admin") {
       const selected = document.getElementById("view-" + selectedView).content.cloneNode(true);
       document.body.replaceChildren(selected);
+      // Images cloned from a template can stay unloaded, so recreate them as fresh elements.
+      document.querySelectorAll("img.shot").forEach(old => {
+        const fresh = document.createElement("img");
+        fresh.className = old.className;
+        fresh.alt = old.alt;
+        fresh.src = old.getAttribute("src");
+        old.replaceWith(fresh);
+      });
       document.body.dataset.deck = "Module ${module} / " + (selectedView === "admin" ? "Instructor guide" : "Labs");
       ${runtime}
     } else {
@@ -341,4 +350,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     for (const role of ["learner", "admin"])
       console.log(`Built Module ${module} ${role}: ${buildView({ module, role }).slides.length} slides`);
   }
+  const assets = path.join(root, "slides", "assets");
+  if (fs.existsSync(assets)) fs.cpSync(assets, path.join(root, "_site", "assets"), { recursive: true });
 }

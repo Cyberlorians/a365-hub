@@ -130,6 +130,8 @@ for (const config of views) {
     new vm.Script(script[1], { filename: `${config.role}-${config.module}-inline-${index}.js` });
   assert(!/data-lesson|data-reference|Open Slide|\[Slide \d/.test(html), `${label} must not send learners off to other slides`);
   assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"') && html.includes("1. Learn") && html.includes("2. Labs") && html.includes("3. Instructor guide"));
+  for (const match of html.matchAll(/src="(assets\/[^"]+)"/g))
+    assert(fs.existsSync(path.join(root, "slides", match[1])), `${label}: missing screenshot ${match[1]}`);
   assert.equal(new Set(slides.map(slide => slide.key)).size, slides.length, `${label} slide keys must be unique`);
   for (const slide of slides) {
     assert(slide.doItems.length >= 1 && slide.doItems.length <= 5, `${label} / ${slide.key}: use one to five short actions`);

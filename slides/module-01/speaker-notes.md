@@ -2,13 +2,13 @@
 
 Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No independent rehearsal or runtime validation is claimed.
 
-## Slide 1 - Get your lab account - planned
+## Slide 1 - Get your lab account
 
-**Planned time: 2 minutes; onboarding only.** Preserve the existing five-slide access sequence, but keep signup inactive during review. Before an event, independently test the real form-to-onboarding flow. Do not activate automation or change cleanup to make this draft appear ready.
+**Planned time: 2 minutes; onboarding only.** The form-to-account flow worked end to end in a test run: about two to three minutes from Submit to the access email. Confirm the form, the provisioner and the sender mailbox are healthy before each event, and do not enable account-age deletion as a shortcut.
 
 ## Slide 2 - Use the approved access process
 
-**Planned time: 3 minutes.** There is intentionally no live form here. Finalize privacy/terms, approved collection, retention, and support arrangements before enabling the real event route. Submission success is not proof that account creation, licensing, or email delivery completed.
+**Planned time: 3 minutes.** The form is live; Lab 1 walks through it. Finalize privacy/terms, approved collection, retention, and support arrangements before a real event. Submission success is not proof of account creation: verify the email arrives, and check Junk.
 
 ## Slide 3 - Check the lab-access email
 
