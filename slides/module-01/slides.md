@@ -158,7 +158,7 @@ Which evidence and response?
 
 In Module 2 you run this task for real with an approved agent and check what actually happened.
 
-## Slide 8 - An agent can act, not just answer
+## Slide 8 - An agent has four parts
 
 **Planned time:** 1 minutes (core).
 

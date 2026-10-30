@@ -32,7 +32,7 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 **2 minutes.** Project Beacon is a fictional training case. The candidate is Stefano's documented Mail MCP task from the signed-in user's mailbox. Do not claim a working deployment or specific identity objects exist yet. Keep using these four questions in every later module. The eventual mailbox, recipient, actual authority, and evidence must be verified.
 
-## Slide 8 - An agent can act, not just answer
+## Slide 8 - An agent has four parts
 
 **1 minute.** Contrast answering a question with invoking a tool. For this case, sending mail is a write action, not read-only access. Avoid token-flow detail here; Module 3 maps actual authority. Teach the difference between task instructions, effective permissions, and independently enforced controls.
 
