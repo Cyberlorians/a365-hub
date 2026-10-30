@@ -170,7 +170,7 @@ const learnerGuide2 = codeBlocks("labs/module-02-business-agent.md", /<details>\
 const labHtml2 = buildView({ module: 2, role: "learner" }).html;
 for (const key of ["4.1", "5.1"]) assert(labHtml2.includes(esc(learnerGuide2[key].code)), `Module 2 lab must contain guide snippet ${key} exactly`);
 assert(labHtml2.includes("Do not send email") && labHtml2.includes("&lt;approved-real-internal-recipient&gt;"), "Module 2 lab needs separate draft and send snippets");
-assert(buildView({ module: 1, role: "learner" }).html.includes("Open the Entra admin center"), "Module 1 lab must contain the portal steps");
+assert(buildView({ module: 1, role: "learner" }).html.includes("Open the Microsoft 365 admin center"), "Module 1 lab must contain the registry steps");
 assert(!buildView({ module: 1, role: "learner" }).html.includes('class="quiz"') && !buildView({ module: 2, role: "learner" }).html.includes('class="quiz"'), "Labs must be real actions, not quizzes");
 assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
   workflow.includes("artifact_name: github-pages-${{ github.run_attempt }}"), "Pages upload/deploy must select the same retry-specific artifact");
