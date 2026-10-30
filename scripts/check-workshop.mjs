@@ -3,7 +3,8 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { buildWalkthrough, buildModule, walkthroughs, urlFor } from "./build-walkthroughs.mjs";
+import { buildView, buildModule, views, urlFor } from "./build-walkthroughs.mjs";
+import { codeBlocks, esc } from "./workshop-lab-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
@@ -32,6 +33,7 @@ for (const id of [1, 2]) {
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1"'));
   for (const [role, label] of [["learner", "Student lab"], ["admin", "Instructor setup"]])
     assert(html.includes(`href="${urlFor({ module: id, role })}">${label}</a>`), "Each teaching deck must open its integrated lab and instructor presentation");
+  assert(!html.includes("Instructor lab notes"), "Teaching decks should not add a third, confusing lab link");
   assert(html.includes("Published content draft") && html.includes("--cp-bg: #f7f4ef;"));
   assert(html.includes('<html lang="en" data-brand="a365">'), "A365 branding must be active");
   const palette = html.match(/html\[data-brand="a365"\] \{([\s\S]*?)\n    \}/)?.[1];
@@ -116,28 +118,38 @@ for (const module of [1, 2]) {
     assert(html.includes(`id="view-${view}"`), "Each module must include both lab and instructor views");
   for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
 }
-for (const config of walkthroughs) {
-  const { html, pages } = buildWalkthrough(config);
-  const steps = [...new Set(pages.map(page => page.step).filter(Boolean))];
-  assert.deepEqual(steps, Array.from({ length: config.steps }, (_, index) => index + 1));
-  assert(html.includes(brandPalette), "Walkthroughs must preserve the original blue branding");
-  assert(!html.includes("<script src=") && !/fetch\(|localStorage|sendBeacon/.test(html), "Presentations must remain self-contained and cannot call tenant APIs");
+const adminGuides = { 1: ["docs/07-module-01-admin-runbook.md", /<details>\n<summary>Optional admin reference:/], 2: ["docs/08-module-02-admin-runbook.md", /<details>\n<summary>Optional technical reference:/] };
+for (const config of views) {
+  const { html, slides } = buildView(config);
+  const label = `Module ${config.module} ${config.role}`;
+  assert(html.includes(brandPalette), `${label} must preserve the original blue branding`);
+  assert(!html.includes("<script src=") && !/fetch\(|localStorage|sendBeacon/.test(html), `${label} must remain self-contained and cannot call tenant APIs`);
   for (const [index, script] of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].entries())
     new vm.Script(script[1], { filename: `${config.role}-${config.module}-inline-${index}.js` });
-  const quick = read(config.file).split(/<details>\s*<summary>Optional (?:admin reference|technical reference|reference):/)[0];
-  const decode = text => text.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&amp;/g, "&");
-  const rendered = [...pages.map(page => page.html).join("\n").matchAll(/<pre[^>]*><code>([\s\S]*?)<\/code><\/pre>/g)].map(match => decode(match[1]));
-  const snippets = [...quick.matchAll(/```[^\n]*\n([\s\S]*?)\n```/g)].map(match => match[1]);
-  assert.deepEqual(rendered, snippets, "Every copyable snippet must exactly preserve its source and order");
-  for (const match of html.matchAll(/data-lesson="(\d+)"/g))
-    assert(html.includes(`id="lesson-${match[1]}"`), "Every lesson button needs an embedded slide");
-  assert(html.includes('id="answers"'), "Readiness answer key must be available inside the presentation");
-  assert(html.includes('data-copy') && html.includes('id="next"') && html.includes('id="jump"'));
-  pages.forEach(page => assert(page.html.length > 0));
-  assert.equal((html.match(/<figure class="lab-visual">/g) ?? []).length, pages.length, "Every lab/admin slide needs a visual");
-  if (config.role === "learner")
-    assert.equal((html.match(/<aside class="facilitator-note" data-instructor-only hidden/g) ?? []).length, pages.filter(page => page.step).length, "Every student step needs separate instructor notes, hidden by default");
+  assert(!/data-lesson|data-reference|Open Slide|\[Slide \d/.test(html), `${label} must not send learners off to other slides`);
+  assert(html.includes("data-copy") && html.includes('id="next"') && html.includes('id="jump"') && html.includes("1. Learn") && html.includes("3. Instructor setup"));
+  assert.equal(new Set(slides.map(slide => slide.key)).size, slides.length, `${label} slide keys must be unique`);
+  for (const slide of slides) {
+    assert(slide.doItems.length >= 1 && slide.doItems.length <= 5, `${label} / ${slide.key}: use one to five short actions`);
+    assert(slide.doneWhen && (slide.visual || slide.snippet), `${label} / ${slide.key}: needs a done-when line and a visual or copy box`);
+  }
+  if (config.role === "learner") {
+    const steps = slides.filter(slide => slide.number);
+    assert.equal(steps.length, config.module === 1 ? 9 : 9, `${label} step count`);
+    assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and instructor notes`);
+    assert.equal((html.match(/<aside class="facilitator-note" data-instructor-only hidden/g) ?? []).length, steps.length, "Instructor notes must be hidden by default");
+    assert(html.includes('id="notesMode"'), "Student lab needs the instructor-notes toggle");
+  } else {
+    const [file, marker] = adminGuides[config.module];
+    for (const [key, block] of Object.entries(codeBlocks(file, marker)))
+      assert(html.includes(esc(block.code)), `${label}: guide snippet ${key} is missing from the setup slides`);
+  }
 }
+const learnerGuide2 = codeBlocks("labs/module-02-business-agent.md", /<details>\n<summary>Optional reference:/);
+const labHtml2 = buildView({ module: 2, role: "learner" }).html;
+for (const key of ["4.1", "5.1", "7.1"]) assert(labHtml2.includes(esc(learnerGuide2[key].code)), `Module 2 lab must contain guide snippet ${key} exactly`);
+assert(labHtml2.includes("Do not send email") && labHtml2.includes("&lt;approved-real-internal-recipient&gt;"), "Module 2 lab needs separate draft and send snippets");
+assert(buildView({ module: 1, role: "learner" }).html.includes(esc(codeBlocks("labs/module-01-security-foundation.md", /<details>\n<summary>Optional reference:/)["0.1"].code)), "Module 1 lab must contain the four questions");
 assert(workflow.includes("name: github-pages-${{ github.run_attempt }}") &&
   workflow.includes("artifact_name: github-pages-${{ github.run_attempt }}"), "Pages upload/deploy must select the same retry-specific artifact");
 for (const name of markdownFiles) {

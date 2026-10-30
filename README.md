@@ -27,15 +27,21 @@ deck to switch presentations. Each HTML file also works offline for its own slid
 
 ## Deploy and run Modules 1-2
 
-Each module includes **Teaching deck -> Student lab -> Instructor setup**, with
-instructor-only facilitation notes alongside every student step. All use the original
-blue presentation style. Commands, expected checks, prompts, and cleanup are inside
-the slides, with Copy buttons:
+Each module is **one presentation with three parts**, all in the original blue style:
 
-1. **Admin:** [Create the lab group, licensed users, TAPs, and test mailboxes](https://cyberlorians.github.io/a365-hub/?view=admin).
-2. **Admin:** [Register the agent, deploy its API and website, and prove a real email task](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
-3. **Everyone:** Follow the learner presentations below, using the admin-provided
-   account, deployed UI URL, and approved internal recipient.
+1. **Learn** - the teaching slides.
+2. **Student lab** - one short action per slide: numbered "Do this" steps, a picture of
+   what you should see, a Copy box, and a "You are done when" line. Nothing says "go
+   open another slide". A toggle shows instructor-only notes for each step.
+3. **Instructor setup** - the same format for the person preparing the lab: portal
+   steps, copy-and-run scripts, expected output, rehearsal and cleanup.
+
+Start here:
+
+1. **Instructor:** [Module 1 setup - accounts, licenses, TAPs, mailbox test](https://cyberlorians.github.io/a365-hub/?view=admin).
+2. **Instructor:** [Module 2 setup - deploy the agent and website, prove a real email task](https://cyberlorians.github.io/a365-hub/module-02/?view=admin).
+3. **Everyone:** the student labs below, using the instructor-provided account, agent
+   link, and approved internal recipient.
 
 This route does not require the old Forms/Logic App pipeline. It uses run-owned
 manifests, does not alter CA/DLP, and never invokes the upstream destructive deployment
@@ -50,29 +56,27 @@ Module 2 admin guide. [Deployment files](labs/workshop/) and [scripts](scripts/)
 | 1 | [Start Module 1 student lab](https://cyberlorians.github.io/a365-hub/?view=lab) | [Start Module 1 instructor setup](https://cyberlorians.github.io/a365-hub/?view=admin) |
 | 2 | [Start Module 2 student lab](https://cyberlorians.github.io/a365-hub/module-02/?view=lab) | [Start Module 2 instructor setup](https://cyberlorians.github.io/a365-hub/module-02/?view=admin) |
 
-Both teaching decks have **Student lab**, **Instructor lab notes**, and
-**Instructor setup** buttons. Each module is one self-contained presentation with
-these sections, not a document handoff. Labs have explanatory diagrams and illustrative
-chat/mail/agent cards, Next/Previous, a step selector, fullscreen, print and Copy.
-Teaching slides and the answer key open inside the lab; optional detail stays there.
-Instructor lab notes add preparation, any data/script needs, student cues and cleanup.
+Both teaching decks have **Student lab** and **Instructor setup** buttons. Labs have
+illustrative pictures (not live screens or evidence), a progress tracker, Next/Previous,
+a step selector, fullscreen, print and Copy. The **Instructor notes** toggle adds
+preparation, script/data needs, student cues and cleanup to each lab step.
 Instructor view is a display mode, **not an authorization boundary**: notes are public,
 and must never contain credentials or private tenant/attendee information.
 No Copy button executes code or stores attendee data. Live tenant proof remains
 unverified until actual deployment and tests are recorded.
 
-The Markdown guides remain the editable source:
+The Markdown guides remain a plain-text reference and the source of every copy-and-run
+snippet used in the slides (a check fails if they drift):
 [Module 1 learner](labs/module-01-security-foundation.md),
 [Module 2 learner](labs/module-02-business-agent.md),
 [Module 1 admin](docs/07-module-01-admin-runbook.md),
 [Module 2 admin](docs/08-module-02-admin-runbook.md).
 Build the two integrated presentations locally with
 `node scripts/build-walkthroughs.mjs`; output is in ignored `_site/index.html` and
-`_site/module-02/index.html`. Edit lesson sources in `slides/module-01/index.html`
-and `slides/module-02/index.html`, step sources in the Markdown guides, and original
-visuals/facilitation cues in `scripts/workshop-lab-visuals.mjs`. Build before previewing:
-the lesson source alone does not include generated labs. Use this same
-explain -> visual student lab -> instructor preparation/notes pattern for future modules.
+`_site/module-02/index.html`. Edit teaching slides in `slides/module-01/index.html` and
+`slides/module-02/index.html`; edit lab/setup steps, pictures and instructor notes in
+`scripts/workshop-lab-content.mjs`; page layout is in `scripts/build-walkthroughs.mjs`.
+Use this same learn -> visual student lab -> instructor setup pattern for future modules.
 
 ## Complete eight-module story
 
