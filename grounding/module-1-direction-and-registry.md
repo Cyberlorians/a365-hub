@@ -74,6 +74,28 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
 
 ## Next work
 
+0. **Blue16 Secure AI explainer, mapped to our modules** (inspiration only: redraw in our own
+   words, never copy text, code or artwork; preview features, not GA claims):
+   - M1 slides 6/10: "Agents are the new insider risk." Three needs map to See / Control /
+     Protect: *observe everything* (which agents, who owns them, what they reach), *contain what
+     the agent can do*, *operate at machine speed*. Line: "Contain the agent, not the employee."
+   - M1 slide 9 / M3: "Don't ask a model to be its own security authority. Keep controls over
+     access, actions and whether it may keep running outside the model."
+   - M3: identity is the foundation. Natively integrated agents (Copilot Studio, Foundry, Agent
+     365 SDK) get an Agent ID from the platform; discovered agents (Defender + Entra GSA signals)
+     get one from Entra. Ties to shadow-AI discovery.
+   - M4: Dynamic Permissions (agent starts at zero; task-specific, time-bound grants) versus
+     Dynamic Conditional Access (graduated: allow, constrain, human approval, restrict data,
+     block). Good comparison table.
+   - M6: containment layers for local agents: endpoint (Defender), runtime, network (Entra GSA),
+     data (Purview DLP). Caveat from the source: attribution is best effort; do not promise
+     perfect isolation.
+   - M7: one dynamic risk level per agent fusing runtime signals, exposure and blast radius.
+     Source says its algorithm is unpublished and its demo is illustrative.
+   - M8: ME5 + Agent 365 + Entra Suite coverage, red/blue/green "Guardian agent" teams, roadmap.
+     Everything announced was limited private preview on Oct 19, 2026. Use as outcome language,
+     never as a pricing or availability authority.
+   - Format idea: a clickable layer diagram as an instructor-led visual. No student quizzes.
 1. Admin seed script for the incident: credential-add audit entry, first-seen sign-in,
    ownerless agent, using the Cloud-Architekt queries and GBB scenarios.
 2. Rewrite slides 12-15, 17-18 in plain language; add Blue16 ISOC points
