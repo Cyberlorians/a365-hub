@@ -64,6 +64,14 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
 - Lab 1-2 flow run live with a test lab user (form -> Logic App -> 8-hour TAP -> Outlook).
 - Student and instructor decks build and pass `node scripts/check-workshop.mjs`.
 
+## Reuse warning: playbook images
+
+Do **not** embed images from Cloud-Architekt `media/ai-agent-identities/`. Its
+`THIRD_PARTY_NOTICES.md` says that folder includes MITRE ATT&CK material and Microsoft
+diagrams or screenshots that the repository's MIT license does not cover. Module 1 slides 8
+and 9 use **original inline SVG** drawings instead, with the playbook cited as the source.
+Text and concepts can be cited and re-expressed; link to the figures, do not copy them.
+
 ## Not verified
 
 - Whether the Project Beacon (ACA-OBO) agent appears in the registry.
