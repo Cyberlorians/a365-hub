@@ -313,7 +313,6 @@
           <desc id="fig8d">A blueprint holds the credentials. Its principal is the stand-in inside your company and can create agent identities. Agent identities hold the permissions and the audit trail. An optional agent user acts like a person. One stolen blueprint secret reaches every agent identity under it.</desc>
           <defs>
             <marker id="ar8" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-accent)"/></marker>
-            <marker id="ar8d" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-danger)"/></marker>
           </defs>
           <text x="30" y="26" font-size="14" font-weight="700" letter-spacing="1" style="fill: var(--cp-text-muted)">WHERE IT IS BUILT</text>
           <line x1="30" y1="36" x2="230" y2="36" stroke-width="2" style="stroke: var(--cp-text-muted)"/>
@@ -340,8 +339,9 @@
           <rect x="800" y="56" width="130" height="200" rx="14" stroke-width="2" stroke-dasharray="7 5" style="fill: var(--cp-bg-elevated); stroke: var(--cp-text-muted)"/>
           <text x="814" y="88" font-size="17" font-weight="700" style="fill: var(--cp-text)">4. Agent user</text>
           <text font-size="15" style="fill: var(--cp-text)"><tspan x="814" y="116">Optional.</tspan><tspan x="814" y="138">Acts like a</tspan><tspan x="814" y="160">person, with a</tspan><tspan x="814" y="182">mailbox or</tspan><tspan x="814" y="204">Teams.</tspan></text>
-          <path d="M130 258C130 350 635 350 635 262" fill="none" stroke-width="3" stroke-dasharray="8 6" marker-end="url(#ar8d)" style="stroke: var(--cp-danger)"/>
-          <text x="382" y="372" font-size="17" font-weight="700" text-anchor="middle" style="fill: var(--cp-danger)">One stolen blueprint secret reaches every agent identity under it</text>
+          <path d="M130 258C130 336 635 336 635 280" fill="none" stroke-width="3.5" stroke-linecap="round" style="stroke: var(--cp-danger)"/>
+          <path d="M635 258L626 280H644Z" style="fill: var(--cp-danger)"/>
+          <text x="382" y="368" font-size="17" font-weight="700" text-anchor="middle" style="fill: var(--cp-danger)">One stolen blueprint secret reaches every agent identity under it</text>
         </svg></div>
         <p class="quote">Credentials live on the blueprint. Permissions live on the identity.</p>
         <template class="speaker-notes"><p><strong>1 minute.</strong> Use an everyday analogy: the blueprint is the master key and the keyring; the agent identity is the employee carrying a badge. One stolen blueprint secret reaches every identity under it, in every tenant the blueprint is used in. The playbook says the blueprint is 'less a simple template, more an architectural drawing': it declares API permissions and app roles and holds the credential methods (federated credentials, certificates or secrets). The blueprint principal is the runtime representative in each tenant; adding it is the consent gate, and its actions are audited as the principal. The agent identity is a single-tenant service principal that holds the permissions and the audit trail; agent identities hold no credentials of their own. The agent user is optional. Datadog notes up to 250 agent identities per blueprint per tenant. This is the Datadog blast-radius lesson and the Cloud-Architekt object model. Credentials cannot be added to the principal, identity or agent user, only the blueprint. Keep token-flow detail for Module 3.</p><p><strong>Source:</strong> Cloud-Architekt Agent Identities; Datadog Security Labs Part 1; Compass Security research.</p></template>
