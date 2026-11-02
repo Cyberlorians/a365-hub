@@ -64,6 +64,32 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
 - Lab 1-2 flow run live with a test lab user (form -> Logic App -> 8-hour TAP -> Outlook).
 - Student and instructor decks build and pass `node scripts/check-workshop.mjs`.
 
+## Microsoft Learn: Agent 365 learning (read before changing slides 10-11, 17)
+
+- Overview: `learn.microsoft.com/microsoft-agent-365/overview`. Agent 365 = **observe, govern, secure**.
+  Observe = the single registry (plus agent map); Govern = lifecycle, access control and compliance
+  through the registry, Entra and Purview; Secure = Entra risk-based access, Purview DLP and data risk,
+  Defender threat detection.
+- Availability: generally available for the **Commercial** segment since **May 1, 2026**, licensed **per
+  user**. Works best with **Microsoft E5**. At least one user needs a qualifying Agent 365 license.
+  Check plans and pricing on Learn before quoting.
+- More: `/microsoft-agent-365/get-started`, `/microsoft-agent-365/admin/agent-registry-overview`,
+  `/microsoft-agent-365/guidance/govern-agents-support-innovation`,
+  `/microsoft-365/copilot/agent-essentials/agent-essentials-overview`.
+
+## Live run, November 2, 2026 (new test user "Walkthrough Tester Two")
+
+- Form `aka.ms/a365hub` submitted: account `walkthrough.tester.two@DibSecurity.onmicrosoft.com` and an
+  8-hour pass arrived by email in about 2 minutes. Lab 1 works.
+- Signed in with the pass and the mailbox opened. Lab 2 works.
+- Lab 3 not runnable: the admin center returned an empty page (HTTP 401) for the lab user, so a read-only
+  role (AI Reader) must be assigned first. Roles cannot go to a plain group; assign to users.
+- The access email's "Step 2" says to build agents in Copilot Studio and open Entra and Defender. Our labs do
+  not. Ignore it or edit the Logic App email.
+- Registry name bug fixed: the runbook registered the agent as `A365 Hub <run>`, so Lab 3's
+  "find Project Beacon" would not match. Use `Project Beacon Mail Agent`.
+- Delete the test users `module.one.tester` and `walkthrough.tester.two` if the cleanup Logic App does not.
+
 ## Reuse warning: playbook images
 
 Do **not** embed images from Cloud-Architekt `media/ai-agent-identities/`. Its

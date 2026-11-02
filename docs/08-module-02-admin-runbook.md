@@ -180,7 +180,9 @@ Errors are blockers, not a reason to grant learners admin roles.
 
 ```powershell
 Set-Location (Join-Path $hub '.workshop\toolkit\aca\obo')
-$agentName = "A365 Hub $($c.runName)"
+# This is the name learners see in the Agent 365 registry (Module 1, Lab 3).
+# Keep "Project Beacon" in it so the lab text and the registry row match.
+$agentName = 'Project Beacon Mail Agent'
 a365 setup requirements
 if ($LASTEXITCODE -ne 0) { throw 'Agent 365 requirements failed; stop here' }
 ```

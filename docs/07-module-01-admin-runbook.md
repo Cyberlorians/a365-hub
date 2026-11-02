@@ -1,5 +1,8 @@
 # Module 1: Admin - Start Here
 
+> **Short on time?** Use the [Admin guide, lab by lab](09-admin-lab-by-lab.md): for each lab, what to
+> prepare, what to run, how to check it, and what to do if it fails. This runbook is the detailed reference.
+
 <!-- source-only -->
 [Open this as the instructor deck](https://cyberlorians.github.io/a365-hub/instructor/).
 It adds what to show and say for every slide, and lab launch and recovery steps.

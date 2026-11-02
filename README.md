@@ -86,6 +86,7 @@ snippet used in the slides (a check fails if they drift):
 [Module 2 learner](labs/module-02-business-agent.md),
 [Module 1 admin](docs/07-module-01-admin-runbook.md),
 [Module 2 admin](docs/08-module-02-admin-runbook.md).
+**New for admins:** [Admin guide, lab by lab](docs/09-admin-lab-by-lab.md): for every lab, what to prepare, what to run, how to check it, and what to do if it fails.
 Build the decks locally with `node scripts/build-walkthroughs.mjs`; output is in ignored
 `_site/` (student: `index.html` and `module-02/index.html`; instructor: `instructor/` and
 `module-02/instructor/`). Edit teaching slides in `slides/module-01/index.html` and
