@@ -349,22 +349,20 @@
       <section class="slide" data-title="Two attack surfaces. Two evidence planes." data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">How it was abused / Two ways in</p>
         <h2>Two ways in. Different evidence.</h2>
-        <div class="table-wrap"><svg class="infographic" viewBox="0 0 960 420" role="img" aria-labelledby="fig9t fig9d" xmlns="http://www.w3.org/2000/svg">
+        <div class="table-wrap"><svg class="infographic" viewBox="0 20 960 400" role="img" aria-labelledby="fig9t fig9d" xmlns="http://www.w3.org/2000/svg">
           <title id="fig9t">How an agent is attacked: before, getting in, after</title>
           <desc id="fig9d">Before: the attacker maps your agents, their tools and administrators. Getting in has two lanes. Through the identity: an owner or admin adds a secret to the blueprint, signs in as an agent with a powerful permission, and sets a Temporary Access Pass on an admin. Look in the audit and sign-in logs. Through the content: hidden instructions in an email or document the agent reads, the agent follows them, and no password is stolen. Look at what the agent did. After: the attacker uses the agent's own tools, which looks like normal work.</desc>
           <defs>
             <marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-accent)"/></marker>
           </defs>
-          <text x="115" y="30" font-size="15" font-weight="700" letter-spacing="1" text-anchor="middle" style="fill: var(--cp-text-muted)">1  BEFORE</text>
-          <text x="480" y="30" font-size="15" font-weight="700" letter-spacing="1" text-anchor="middle" style="fill: var(--cp-text-muted)">2  GETTING IN</text>
-          <text x="845" y="30" font-size="15" font-weight="700" letter-spacing="1" text-anchor="middle" style="fill: var(--cp-text-muted)">3  AFTER</text>
           <rect x="20" y="46" width="190" height="350" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
+          <text x="36" y="76" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-accent)">BEFORE</text>
           <text font-size="16" style="fill: var(--cp-text)"><tspan x="36" y="96">The attacker maps</tspan><tspan x="36" y="120">your agents,</tspan><tspan x="36" y="144">their tools and the</tspan><tspan x="36" y="168">people who</tspan><tspan x="36" y="192">administer them.</tspan></text>
           <text font-size="14" style="fill: var(--cp-text-muted)"><tspan x="36" y="262">They may also try</tspan><tspan x="36" y="282">stolen keys or</tspan><tspan x="36" y="302">consent phishing.</tspan></text>
           <line x1="210" y1="140" x2="248" y2="140" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
           <line x1="210" y1="320" x2="248" y2="320" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
           <rect x="250" y="46" width="460" height="170" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="264" y="72" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-accent)">THROUGH THE IDENTITY</text>
+          <text x="264" y="72" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-accent)">GETTING IN: THROUGH THE IDENTITY</text>
           <rect x="262" y="86" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-accent)"/>
           <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="272" y="108">An owner or admin</tspan><tspan x="272" y="128">adds a secret to</tspan><tspan x="272" y="148">the blueprint</tspan></text>
           <line x1="392" y1="124" x2="414" y2="124" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
@@ -375,7 +373,7 @@
           <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="580" y="108">Sets a Temporary</tspan><tspan x="580" y="128">Access Pass on</tspan><tspan x="580" y="148">an administrator</tspan></text>
           <text x="264" y="198" font-size="14" font-weight="700" style="fill: var(--cp-success, #4ade80)">Look in: audit log, sign-in logs, new grants</text>
           <rect x="250" y="236" width="460" height="160" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-warning)"/>
-          <text x="264" y="262" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-warning)">THROUGH THE CONTENT</text>
+          <text x="264" y="262" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-warning)">GETTING IN: THROUGH THE CONTENT</text>
           <rect x="262" y="276" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
           <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="272" y="298">An email or file</tspan><tspan x="272" y="318">the agent may read</tspan><tspan x="272" y="338">hides an order</tspan></text>
           <line x1="392" y1="314" x2="414" y2="314" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-warning)"/>
@@ -388,6 +386,7 @@
           <line x1="710" y1="140" x2="748" y2="140" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
           <line x1="710" y1="320" x2="748" y2="320" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-warning)"/>
           <rect x="750" y="46" width="190" height="350" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-danger)"/>
+          <text x="766" y="76" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-danger)">AFTER</text>
           <text font-size="16" style="fill: var(--cp-text)"><tspan x="766" y="96">The attacker uses</tspan><tspan x="766" y="120">the agent's own</tspan><tspan x="766" y="144">tools: its mail,</tspan><tspan x="766" y="168">its files, its</tspan><tspan x="766" y="192">connections.</tspan></text>
           <text font-size="16" font-weight="700" style="fill: var(--cp-danger)"><tspan x="766" y="244">It looks like</tspan><tspan x="766" y="266">normal work.</tspan></text>
           <text font-size="14" style="fill: var(--cp-text-muted)"><tspan x="766" y="316">Found by behavior,</tspan><tspan x="766" y="336">not by a signature.</tspan></text>
