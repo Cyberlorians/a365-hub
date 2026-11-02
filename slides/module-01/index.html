@@ -399,16 +399,90 @@
       <section class="slide" data-title="Agent 365: observe, govern, secure" data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">The answer / One place to start</p>
         <h2>Observe. Govern. Secure.</h2>
-        <div class="grid three"><div class="card"><h3>Observe</h3><p>The registry lists every agent, who owns it, and how many have <strong>no owner</strong>.</p></div><div class="card"><h3>Govern</h3><p>Decide who owns it, what it can reach, and when access ends.</p></div><div class="card"><h3>Secure</h3><p>Risk signals from Purview, Entra and Defender show up on the agent. These need an E7 or Agent 365 license.</p></div></div>
-        <p class="lede">The registry starts a review. A clean inventory is not proof of safe behavior.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Agent 365 is Microsoft's control plane for agents: observe, govern, secure. In the admin center it is Agents, All agents, Registry. Viewing the inventory needs the AI Reader role and no extra license; the Risks column needs an E7 or Agent 365 license (Microsoft Learn). Tie this to the Monday story: this is how the team would have seen an agent with no owner. Counts can lag up to an hour. Do not infer low risk from a zero count.</p></template>
+        <p class="lede">How do we catch Monday's problem sooner? Start with Agent 365.</p>
+        <div class="table-wrap"><svg class="infographic" viewBox="0 0 960 360" role="img" aria-labelledby="fig10t fig10d" xmlns="http://www.w3.org/2000/svg">
+          <title id="fig10t">Agent 365: observe, govern, secure</title>
+          <desc id="fig10d">Observe is See It: the registry shows every agent and who owns it, and would have shown the agent nobody owned. Govern is Control It: Entra ID Governance gives each agent an owner and a sponsor and limits what it can reach, so the new secret and the powerful permission get reviewed. Secure is Protect It: Purview, Entra and Defender raise risk signals on the agent, which can flag the odd sign-in and the data that moved.</desc>
+          <defs>
+            <marker id="ar10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-accent)"/></marker>
+          </defs>
+          <rect x="20" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
+          <text x="38" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">SEE IT</text>
+          <text x="38" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Observe</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="38" y="112">Find every agent.</tspan><tspan x="38" y="134">Who owns it? What can</tspan><tspan x="38" y="156">it reach?</tspan></text>
+          <line x1="38" y1="176" x2="282" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
+          <text x="38" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
+          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="38" y="220">Shows an agent that</tspan><tspan x="38" y="240">nobody owns.</tspan></text>
+          <line x1="300" y1="147" x2="338" y2="147" stroke-width="3" marker-end="url(#ar10)" style="stroke: var(--cp-accent)"/>
+          <rect x="340" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
+          <text x="358" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">CONTROL IT</text>
+          <text x="358" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Govern</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="358" y="112">Give it an owner and a</tspan><tspan x="358" y="134">sponsor. Limit what it</tspan><tspan x="358" y="156">can reach.</tspan></text>
+          <line x1="358" y1="176" x2="602" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
+          <text x="358" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
+          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="358" y="220">The new secret and the</tspan><tspan x="358" y="240">powerful permission get</tspan><tspan x="358" y="260">reviewed.</tspan></text>
+          <line x1="620" y1="147" x2="658" y2="147" stroke-width="3" marker-end="url(#ar10)" style="stroke: var(--cp-accent)"/>
+          <rect x="660" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
+          <text x="678" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">PROTECT IT</text>
+          <text x="678" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Secure</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="678" y="112">Watch what it does.</tspan><tspan x="678" y="134">Raise a flag on risky</tspan><tspan x="678" y="156">behavior.</tspan></text>
+          <line x1="678" y1="176" x2="922" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
+          <text x="678" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
+          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="678" y="220">Can flag the odd sign-in</tspan><tspan x="678" y="240">and the data that moved.</tspan></text>
+          <rect x="20" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
+          <text x="160" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Agent 365 registry</text>
+          <rect x="340" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
+          <text x="480" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Entra ID Governance</text>
+          <rect x="660" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
+          <text x="800" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Purview · Entra · Defender</text>
+        </svg></div>
+        <p class="small">The registry starts a review. A clean inventory is not proof of safe behavior. Risk signals need an E7 or Agent 365 license.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Bridge from slide 9: how would we have caught Monday's problem sooner? Agent 365 is Microsoft's control plane for agents: observe, govern, secure. It maps to the title of this module: See It, Control It, Protect It. Walk the three boxes and the 'On Monday' line in each, then the product chips: the registry in the Microsoft 365 admin center (Agents, All agents, Registry), Entra ID Governance for ownership and access, and Purview, Entra and Defender for risk signals. Viewing the inventory needs the AI Reader role and no extra license; the Risks column needs an E7 or Agent 365 license (Microsoft Learn). The 'On Monday' lines say what each step could show or flag; they are not guarantees. Counts can lag up to an hour. Do not infer low risk from a zero count. Original drawing, informed by the Agent 365 overview and the Blue16 explainer (inspiration only).</p></template>
       </section>
       <section class="slide" data-title="Review one agent, not three portals" data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">One review / Your tenant's registry</p>
         <h2>Review one agent.</h2>
-        <div class="grid two"><div class="card"><h3>What exists?</h3><p>Total agents, and how many have <strong>no owner</strong> or were built <strong>outside Agent 365</strong>.</p></div><div class="card"><h3>Who is responsible?</h3><p>The owner and sponsor. Blank means nobody is accountable.</p></div><div class="card"><h3>What can it reach?</h3><p>Its tools, data and connected agents.</p></div><div class="card"><h3>What has been flagged?</h3><p>The Risks column: signals from Purview, Entra and Defender.</p></div></div>
-        <p class="small">In the lab you open the real registry in the Microsoft 365 admin center. You only look: you cannot change anything.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> This slide leads straight into Lab 3. The admin prepared the registry before class, so it holds Project Beacon and other agents (see the Lab 3 admin slide). Microsoft 365 admin center, Agents, All agents, Registry. Learners have a read-only role. Do not block, deploy, delete or change policy. Empty or unavailable fields are gaps, not completed checks. The Risks column needs an E7 or Agent 365 license.</p></template>
+        <p class="lede">Here is where the four questions get answered.</p>
+        <div class="table-wrap"><svg class="infographic" viewBox="0 0 960 370" role="img" aria-labelledby="fig11t fig11d" xmlns="http://www.w3.org/2000/svg">
+          <title id="fig11t">Where the four questions are answered in the agent registry</title>
+          <desc id="fig11d">An illustration of the Agent 365 registry. The summary tiles show total agents, agents without owners and unmanaged agents: question 1, what is it. The Owner column answers question 2, who owns it. Clicking a row opens the details pane: question 3, what can it reach. The Risks column answers question 4, what happened. Your own registry will look different.</desc>
+          <text x="20" y="18" font-size="13" style="fill: var(--cp-text-muted)">Illustration only. Your registry will look different.</text>
+          <rect x="20" y="30" width="226" height="74" rx="12" stroke-width="1.5" style="fill: var(--cp-bg-elevated); stroke: var(--cp-border)"/>
+          <text x="38" y="58" font-size="14" style="fill: var(--cp-text-muted)">Total agents</text>
+          <text x="38" y="92" font-size="30" font-weight="700" style="fill: var(--cp-text)">12</text>
+          <rect x="258" y="30" width="226" height="74" rx="12" stroke-width="1.5" style="fill: var(--cp-bg-elevated); stroke: var(--cp-warning)"/>
+          <text x="276" y="58" font-size="14" style="fill: var(--cp-text-muted)">Agents without owners</text>
+          <text x="276" y="92" font-size="30" font-weight="700" style="fill: var(--cp-warning)">3</text>
+          <rect x="496" y="30" width="226" height="74" rx="12" stroke-width="1.5" style="fill: var(--cp-bg-elevated); stroke: var(--cp-border)"/>
+          <text x="514" y="58" font-size="14" style="fill: var(--cp-text-muted)">Unmanaged agents</text>
+          <text x="514" y="92" font-size="30" font-weight="700" style="fill: var(--cp-text)">2</text>
+          <rect x="20" y="122" width="702" height="222" rx="12" stroke-width="1.5" style="fill: var(--cp-bg-elevated); stroke: var(--cp-border)"/>
+          <rect x="21" y="123" width="700" height="36" rx="11" style="fill: var(--cp-bg)"/>
+          <text font-size="13" font-weight="700" letter-spacing="1" style="fill: var(--cp-text-muted)"><tspan x="38" y="146">AGENT</tspan><tspan x="260" y="146">PUBLISHER</tspan><tspan x="440" y="146">OWNER</tspan><tspan x="610" y="146">RISKS</tspan></text>
+          <rect x="28" y="168" width="686" height="50" rx="10" stroke-width="2" style="fill: var(--cp-bg); stroke: var(--cp-accent)"/>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="38" y="199" font-weight="700">Project Beacon</tspan><tspan x="260" y="199">Your org</tspan><tspan x="440" y="199">A. Rivera</tspan></text>
+          <text x="610" y="199" font-size="16" font-weight="700" style="fill: var(--cp-success, #4ade80)">0</text>
+          <text x="690" y="199" font-size="18" text-anchor="middle" style="fill: var(--cp-accent)">&#8250;</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="38" y="252">Finance Helper</tspan><tspan x="260" y="252">Your org</tspan></text>
+          <text x="440" y="252" font-size="16" font-weight="700" style="fill: var(--cp-warning)">(none)</text>
+          <text x="610" y="252" font-size="16" font-weight="700" style="fill: var(--cp-danger)">2</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="38" y="304">Travel Helper</tspan><tspan x="260" y="304">Shared by creator</tspan><tspan x="440" y="304">J. Kim</tspan></text>
+          <text x="610" y="304" font-size="16" font-weight="700" style="fill: var(--cp-success, #4ade80)">0</text>
+          <circle cx="232" cy="38" r="13" style="fill: var(--cp-accent)"/><text x="232" y="44" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">1</text>
+          <circle cx="528" cy="142" r="13" style="fill: var(--cp-accent)"/><text x="528" y="148" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">2</text>
+          <circle cx="706" cy="170" r="13" style="fill: var(--cp-accent)"/><text x="706" y="176" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">3</text>
+          <circle cx="672" cy="142" r="13" style="fill: var(--cp-accent)"/><text x="672" y="148" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">4</text>
+          <circle cx="758" cy="52" r="13" style="fill: var(--cp-accent)"/><text x="758" y="58" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">1</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="782" y="46" font-weight="700">What is it?</tspan><tspan x="782" y="66" font-size="14" style="fill: var(--cp-text-muted)">The tiles and the</tspan><tspan x="782" y="84" font-size="14" style="fill: var(--cp-text-muted)">agent list.</tspan></text>
+          <circle cx="758" cy="132" r="13" style="fill: var(--cp-accent)"/><text x="758" y="138" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">2</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="782" y="126" font-weight="700">Who owns it?</tspan><tspan x="782" y="146" font-size="14" style="fill: var(--cp-text-muted)">The Owner column.</tspan><tspan x="782" y="164" font-size="14" style="fill: var(--cp-text-muted)">Blank = nobody.</tspan></text>
+          <circle cx="758" cy="212" r="13" style="fill: var(--cp-accent)"/><text x="758" y="218" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">3</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="782" y="206" font-weight="700">What can it reach?</tspan><tspan x="782" y="226" font-size="14" style="fill: var(--cp-text-muted)">Click a row to open</tspan><tspan x="782" y="244" font-size="14" style="fill: var(--cp-text-muted)">the Details pane.</tspan></text>
+          <circle cx="758" cy="292" r="13" style="fill: var(--cp-accent)"/><text x="758" y="298" font-size="15" font-weight="700" text-anchor="middle" style="fill: var(--cp-bg)">4</text>
+          <text font-size="16" style="fill: var(--cp-text)"><tspan x="782" y="286" font-weight="700">What happened?</tspan><tspan x="782" y="306" font-size="14" style="fill: var(--cp-text-muted)">The Risks column</tspan><tspan x="782" y="324" font-size="14" style="fill: var(--cp-text-muted)">flags it.</tspan></text>
+        </svg></div>
+        <p class="small">In the lab you open your real registry in the Microsoft 365 admin center. You only look: you cannot change anything.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> This slide leads straight into Lab 3. The drawing is an illustration, not a screenshot: do not present its numbers or names as real. It maps the four questions from slide 7 onto the registry: the summary tiles (Total agents, Agents without owners, Unmanaged agents) answer what exists; the Owner column answers who owns it; clicking a row opens the Details pane for what it can reach; the Risks column flags what happened. The admin prepared the real registry before class, so it holds Project Beacon and other agents (see the Lab 3 admin slide). Path: Microsoft 365 admin center, Agents, All agents, Registry. Learners have a read-only role. Do not block, deploy, delete or change policy. Empty or unavailable fields are gaps, not completed checks. The Risks column needs an E7 or Agent 365 license; counts can lag up to an hour.</p></template>
       </section>
       <section class="slide" data-title="Five Entra pillars, one control map" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Entra foundation / Controls depend on flow and support</p>
