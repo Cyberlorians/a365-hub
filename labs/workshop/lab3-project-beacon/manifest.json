@@ -14,8 +14,8 @@
     "color": "color.png"
   },
   "name": {
-    "short": "Project Beacon",
-    "full": "Project Beacon (A365 workshop practice agent)"
+    "short": "Project Beacon Mail Agent",
+    "full": "Project Beacon Mail Agent (A365 workshop practice agent)"
   },
   "description": {
     "short": "Practice agent for the A365 workshop. Drafts status updates.",

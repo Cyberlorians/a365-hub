@@ -86,21 +86,32 @@ A brand-new mailbox can take a few minutes. An empty inbox is correct.
 
 ### Lab 3: See your agents in the Agent 365 registry
 
-**Learner does:** opens the Microsoft 365 admin center, goes to **Agents > All agents > Registry**,
-reads the three numbers, finds **Project Beacon** and its owner, and opens the **Risks** column.
-They only look.
+**Learner does:** opens the Microsoft 365 admin center, goes to **Agents > All agents > Registry**, reads the
+three numbers, clicks **Agents at risk**, opens the **Risks** number on the flagged **Project Beacon Relay
+Agent**, then opens **Project Beacon Mail Agent** and reads every part of its profile: the **Install** and
+**Block** buttons, **About this agent**, the **Details** tab (Overview, Instructions, Identity,
+Environment), **Data & tools**, **Permissions**, **Security**, **Users** and **Activity**. They only look.
 
-> **If learners do not see Project Beacon (found November 5, 2026):** nothing in Module 1 creates it.
+> **If learners do not see the agents (found November 5, 2026):** nothing in Module 1 creates them.
 > A new tenant has no agent with that name, and the registry shows only what has been added to it. I checked
 > the real registry (401 agents) and searching **Beacon** returned nothing. Do **Populate Lab 3** below,
 > once, before class.
 
 #### Populate Lab 3
 
-Pick one route. **Route A is the default: it takes about 5 minutes and was run end to end in a live tenant
-on November 5, 2026.** Route B is the full toolkit route; use it when you also deploy Module 2.
+The finished lab needs **two registered agents and one staged flag**, all made before class:
 
-**Route A (default): publish the practice agent from the admin center**
+| Agent | Made how | Why |
+|---|---|---|
+| **Project Beacon Relay Agent** | `a365 setup all --agent-name` (Route B, step 3), then flagged compromised in Entra ID Protection | The lab-only agent that makes **Agents at risk** show **1** and gives learners Risk details to read |
+| **Project Beacon Mail Agent** | Route B, step 4 (the real Module 2 agent) | Has an Entra agent ID, an owner (sponsor), a mail tool and permissions, so Data & tools and Permissions have rows |
+
+**Route B is the recommended route.** It is the only one that fills Data & tools, Permissions and the Entra
+agent ID, and the only one that gives an agent that can be flagged. **Route A** (upload a stand-in from the
+admin center) was run end to end on November 5, 2026 and is the fallback: it registers an agent with
+**empty** Data & tools, Permissions and Entra agent ID, and it cannot be flagged.
+
+**Route A (fallback): publish a stand-in from the admin center**
 
 You need a Microsoft 365 admin (the one who runs the lab) and PowerShell. Nothing else: no Azure, no `a365`
 CLI, no consent pages.
@@ -118,23 +129,30 @@ CLI, no consent pages.
    **None**. Nothing is pushed to the rest of the company.
 4. **Security policy:** keep the default template. **Accept permissions** will say no permissions are
    required. Click **Next**, then **Publish**. It finishes in under a minute.
-5. **Check:** back on the Registry, search for **Beacon**. You should see **Project Beacon** (Publisher
-   type: Your org). The numbers at the top can take a while to update; the list is immediate.
+5. **Check:** back on the Registry, search for **Beacon**. You should see **Project Beacon Mail Agent**
+   (Publisher type: Your org). The numbers at the top can take a while to update; the list is immediate.
+   If you uploaded the older package named **Project Beacon**, remove it first.
 
 This is a small declarative agent with no actions: it cannot send email. In the Details pane it shows
 **Owner: a dash**, **Entra agent ID: a dash**, **Data and tools: unavailable** and **Permissions: none from
-Entra ID**. That is deliberate and honest: the learner finds an agent nobody owns and nothing governs.
-To remove it later: Registry > Project Beacon > delete or remove the agent.
+Entra ID**. Lab 3 expects populated tabs, so with Route A tell learners these are the findings (an agent
+nobody owns and nothing governs) and skip the Relay Agent steps.
+To remove it later: Registry > Project Beacon Mail Agent > delete or remove the agent.
 
-**Route B (full): register the Module 2 agent with the Agent 365 CLI**
+**Route B (recommended): register the agents with the Agent 365 CLI**
 
 You need: PowerShell 7, Git, Azure CLI, the .NET SDK and the `a365` CLI
 ([install steps](08-module-02-admin-runbook.md)), an Azure subscription in the lab tenant, and an
-Entra admin who can approve the consent pages. **Not tested in a live tenant: rehearse it.** This is the
-same agent Module 2 uses, with a real blueprint and agent identity.
-The Route A practice agent is only a stand-in so Module 1 has something to look at. When you do Route B, the
-real Module 2 agent is also named Project Beacon, so **remove the Route A stand-in first** (Registry >
-Project Beacon > remove). Then learners see one **Project Beacon**, the real one.
+Entra admin who can approve the consent pages. **The full route is not tested end to end: rehearse it.**
+What was checked on November 5, 2026 with CLI 2.0.1: `a365 setup all --agent-name '<name>' --dry-run` needs
+no config file, detects the tenant from `az login`, and lists the steps it would run (create the blueprint,
+secret, federated credential and managed identity, configure permissions, create the agent identity,
+register the agent). The real run was started but stopped at sign-in: **on native Windows the CLI signs in
+through Windows Account Manager, which offers your Windows account, not necessarily the lab admin**. Run it
+from your own PowerShell window, watch for the sign-in prompt, and choose the lab tenant's admin account.
+Do not run it from a session you cannot see.
+When you do Route B, the real Module 2 agent is named **Project Beacon Mail Agent**, so **remove the Route A
+stand-in first** (Registry > Project Beacon Mail Agent > remove). Then learners see one, the real one.
 
 **1. Config.** Create `.workshop\config.json` (Module 1 admin Step 1 creates it; Module 2 admin Step 1 lists
 every field). For registration only, `tenantId`, `subscriptionId`, `runName` and `location` matter.
@@ -159,22 +177,21 @@ Get-Content .\a365.config.json | Select-String 'DisplayName'
 **Check:** both display names start with **Project Beacon**. If `a365.config.json` already existed from an
 earlier run it keeps its old names (for example "A365 Hub beacon01 ..."): edit both lines by hand.
 
-**3. Optional extra agents FIRST.** These make the registry worth reading (more than one row, and one
-you can call out as not yours). Skip this step for a minimal lab. Run one command at a time:
+**3. The lab-only Relay Agent FIRST.** It is the agent you flag in the next section, so it must have an
+Entra agent identity. Do not deploy it and do not use it in Module 2. Run one command at a time:
 
 ```powershell
 a365 setup requirements
-a365 setup all --m365 --agent-name 'Beacon Finance Helper'
-a365 setup all --m365 --agent-name 'Beacon Travel Helper'
+a365 setup all --agent-name 'Project Beacon Relay Agent'
 ```
 
 > **Order matters.** Every `a365 setup all` writes `a365.generated.config.json` and `.env` in this
 > same folder, so each run replaces the last one. Module 2's `Deploy-Workshop.ps1` reads that file.
-> Register the extras **first** and **Project Beacon last**, so the saved IDs are Project Beacon's. For
-> the extras ignore the blueprint secret it prints and do not deploy them. (Edit the display names in
-> `a365.config.json` first if you want them to differ.)
+> Register the Relay Agent **first** and the **Mail Agent last**, so the saved IDs are the Mail Agent's.
+> Ignore the blueprint secret the Relay Agent run prints. Note the Relay Agent's **agent identity object ID**
+> (Entra admin center > Agents > the agent) for the flag step.
 
-**4. Project Beacon, last.** The same commands as Module 2 admin Step 4:
+**4. The Mail Agent, last.** The same commands as Module 2 admin Step 4:
 
 ```powershell
 $agentName = 'Project Beacon Mail Agent'
@@ -189,8 +206,8 @@ blank. Store the blueprint secret privately; you need it for the Module 2 deploy
 root: `Set-Location $hub`.
 
 **5. Verify as the admin.** Open `admin.microsoft.com`, then **Agents > All agents > Registry**. Allow a
-few minutes, refresh, and clear any filter. You should see **Project Beacon Mail Agent** (and the two extras
-if you ran step 3). Optional check from PowerShell (**beta Graph, untested**; if it errors, use the
+few minutes, refresh, and clear any filter. You should see **Project Beacon Mail Agent** and **Project Beacon
+Relay Agent**. Optional check from PowerShell (**beta Graph, untested**; if it errors, use the
 Entra admin center, **Entra ID > Agents**):
 
 ```powershell
@@ -204,43 +221,46 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
 
 **What the learner should find, and why** (so you can explain it in class).
 
+- **Agents at risk = 1.** The Relay Agent, flagged by you (next section). Learners click the number, open the
+  **Risks** number on the Relay Agent and read **Risk details**: severity group, description, source
+  (Microsoft Entra). Tell them it is staged. The numbers can lag up to an hour, so stage it early.
+- **Project Beacon Mail Agent (Route B).** Per Microsoft Learn a blueprint **must have a sponsor** and should
+  have an owner, so **Owner** should show whoever was signed in when you ran `a365 setup all`, and **Entra
+  agent ID** should have a value. After the Mail MCP and bot permission steps, **Permissions** and the
+  **Tools** list in **Data & tools** should show the mail permission and tool. **These rows were not observed
+  by us: open every tab yourself, including Instructions, Identity and Environment on the Details tab, and
+  write down what you see before class.** Lab 3 describes them in general terms for that reason.
 - **Route A (observed in a live tenant, November 5, 2026):** Project Beacon is in the Registry with
-  Publisher type **Your org**. On the **Details** tab the Overview shows **Owner** and **Created by** as a
-  dash, and **Entra agent ID** as a dash. **Data & tools** says "Data and tools are unavailable".
-  **Permissions** says "This agent doesn't have permissions from Microsoft Entra ID". The **Risks** column
-  shows 0, and the **Security** tab lists enabled policies and protections (Microsoft Purview and others).
-  The honest message: this agent has no named owner and no governed identity. That is the finding.
-  The numbers at the top (Total agents, Agents at risk, Agents without owners) can lag behind the list.
-- **Route B:** per Microsoft Learn an agent identity blueprint **must have a sponsor** and should have an
-  owner, so the agent will show whoever was signed in when you ran `a365 setup all`, and it has an Entra
-  agent ID and permissions.
-- The **Risks** column needs an E7 or Agent 365 license to appear. If you want learners to also find an
-  agent with **no owner** in the count, use a different agent (for example a Copilot Studio agent whose
+  Publisher type **Your org**. **Owner**, **Created by** and **Entra agent ID** are a dash. **Data & tools**
+  says "Data and tools are unavailable". **Permissions** says "This agent doesn't have permissions from
+  Microsoft Entra ID". **Risks** shows 0 and the **Security** tab lists enabled policies and protections
+  (Microsoft Purview and others). The honest message: no named owner, no governed identity.
+- The **Risks** column and Security tab need an E7 or Agent 365 license to appear. If you also want learners
+  to find an agent with **no owner** in the count, use another agent (for example a Copilot Studio agent whose
   creator was deleted).
 - **Search matters.** The Registry lists hundreds of agents (401 in the test tenant), so learners search
   for **Beacon**.
-- **Data & tools is empty for Route A, by design.** Per Microsoft Learn it lists an agent's capabilities
-  (public sites, files, email, calendar), knowledge sources and tools (connectors, MCP servers, actions), and
-  stays empty when none are configured, when the agent type does not report them, or before the first sync.
-  Learn says AI Administrator or Global Administrator see it for all agents; confirm what an AI Reader
-  learner sees before class. To show it populated, use Route B or a Copilot Studio agent with a knowledge
-  source and a tool, and update Lab 3 to match.
-- **Panel tour step.** Lab 3 has learners open the **Instructions**, **Identity** and **Environment**
-  sections on the Details tab and read the tabs and the Install and Block buttons. Open all three sections
-  yourself before class and note what they show for your agent; their contents were not recorded. Learners
-  must not click Install or Block (both act on the whole tenant).
+- **Data & tools.** Per Microsoft Learn it lists capabilities (public sites, files, email, calendar), knowledge
+  sources and tools (connectors, MCP servers, actions), and stays empty when none are configured, when the
+  agent type does not report them, or before the first sync. Learn says AI Administrator or Global
+  Administrator see it for all agents; confirm what an AI Reader learner sees before class.
+- **Why not have every learner build an agent in Module 2?** Learners have a read-only role, a build needs
+  Copilot Studio licensing and an environment per person, and it would crowd the 35-minute Module 2 core
+  (the README keeps the maker path as an optional extension). Instead the admin builds it once and learners
+  review it in Lab 3, then use it in Module 2. A build-and-install lab belongs in an optional later module.
+- Learners must not click **Install** or **Block** (both act on the whole tenant).
 
-**Optional: make "Agents at risk" show a number (staged signal)**
+**Stage the flag: make "Agents at risk" show 1 (required for the finished Lab 3)**
 
-Today that number is a dash, because nothing is flagged. That is normal, and the lab works either way.
-If you want learners to see a flagged agent, you can flag one **on purpose** in the lab tenant. Rules:
+Flag the **Project Beacon Relay Agent** on purpose, in the lab tenant only. Rules:
 
 - **Only an Entra agent identity can be flagged.** The Route A stand-in has no Entra identity, so it cannot be
-  flagged. Use an extra agent registered with the Agent 365 CLI (Route B, step 3, for example
-  **Beacon Finance Helper**).
-- **Never flag the real Module 2 agent.** A High risk level can be blocked by a Conditional Access policy and
+  flagged. Use the Relay Agent registered in Route B, step 3.
+- **Never flag the Mail Agent.** A High risk level can be blocked by a Conditional Access policy and
   would break Module 2.
-- **Tell learners it was staged.** It is a deliberate flag for the exercise, not a real attack.
+- **Tell learners it was staged.** It is a deliberate flag for the exercise, not a real attack. How it
+  happened, in one sentence for the room: you marked it compromised in Entra ID Protection, which is the
+  same action a security analyst takes after a real detection such as a stolen secret (slide 9).
 - **Needs** Microsoft Entra ID P2 during preview, and soon a Microsoft Agent 365 license (Microsoft Learn,
   Identity Protection for agents). Only for a lab tenant. Never do this in production.
 
@@ -278,25 +298,28 @@ foreach ($u in $users) {
    Run it **after** learners have their accounts, right before Lab 3. The same pass can also be
    done by hand: Entra admin center > Roles & admins > **AI Reader** > Add assignments.
 
-2. **Make sure Project Beacon is in the registry.** Do **Populate Lab 3**, Route A. Searching the
-   Registry for **Beacon** must return **Project Beacon**.
-3. **Extra agents (optional).** Route B step 3 registers two extra agents (extras first, Project Beacon
-   last). Another option: a **Copilot Studio** agent created and shared by a throwaway user appears in the
-   registry on its own, and hard deleting that user makes it an ownerless agent (the **Agents without
-   owners** count goes up). Untested.
+2. **Make sure both agents are in the registry and the flag is staged.** Do **Populate Lab 3**, Route B
+   (Route A only as a fallback), then stage the flag. Searching the Registry for **Beacon** must return
+   **Project Beacon Mail Agent** and **Project Beacon Relay Agent**, and **Agents at risk** must show **1**.
+   Do this at least two hours before class.
+3. **Other agents (optional).** Another option: a **Copilot Studio** agent created and shared by a throwaway
+   user appears in the registry on its own, and hard deleting that user makes it an ownerless agent (the
+   **Agents without owners** count goes up). Untested.
 4. **Risks column.** It needs an **E7 or Agent 365 license** in the tenant. If it is missing, tell
    learners: that is what an unlicensed tenant sees. Counts can lag up to an hour.
 
 **Check:** sign in as a lab user in a separate profile, open `admin.microsoft.com`, go to
-**Agents > All agents > Registry**. You should see the summary tiles and at least Project Beacon.
+**Agents > All agents > Registry**. You should see the summary tiles with **Agents at risk = 1**, the Relay
+Agent's Risk details, and every tab of **Project Beacon Mail Agent**.
 
 **If it fails**
 
 | Symptom | Fix |
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
-| Registry empty | Add the agent: **Populate Lab 3**, Route A. Check no filter is set. |
-| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**, Route A, then search the Registry for **Beacon**. On Route B check the registered name starts with **Project Beacon** (`a365.config.json`); if it exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
+| Registry empty | Add the agents: **Populate Lab 3**. Check no filter is set. |
+| Agents at risk shows a dash | The flag is not staged yet, or the counts have not caught up (up to an hour). Check the Relay Agent in Entra ID Protection, Risky agents. A Route A stand-in cannot be flagged. |
+| Project Beacon missing | Nothing in Module 1 creates the agents. Run **Populate Lab 3**, then search the Registry for **Beacon**. On Route B check the registered names start with **Project Beacon**; if the agent exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
 

@@ -111,6 +111,27 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   out); the Microsoft 365 admin center worked.
 - NOT yet verified: what a non-admin learner (AI Reader) sees; the `a365 setup all` route (Route B).
 
+## Lab 3 redesign, November 5, 2026 (owner: "cover each piece inside and out; Agents at risk must light up")
+
+- Lab 3 is six steps: open and read the numbers; Agents at risk and Risk details on the flagged Relay Agent;
+  open Project Beacon Mail Agent (Install, Block, About); Details tab (Owner, Entra agent ID, Instructions,
+  Identity, Environment); Data & tools and Permissions; Security, Users, Activity.
+- Two registered agents plus one staged flag are required. Relay Agent flagged compromised in Entra ID
+  Protection; Mail Agent is the real Module 2 agent (owner, Entra agent ID, mail tool). Route A stand-in is a
+  fallback with empty tabs and cannot be flagged.
+- Learn (agent-details): Data & tools = Capabilities (Can read), Knowledge sources, Tools (connectors, MCP
+  servers, Work IQ tools, actions); empty if nothing configured, agent type does not report it, or not synced;
+  AI Administrator or Global Administrator see it for all agents. Learn (agent-registry-overview): Agents at
+  risk tile = agents with one or more risk signals; Risks opens Risk details (High/Medium/Low, description,
+  occurrences, sources Entra, Defender, Purview); counts can lag up to an hour; needs E7 or Agent 365.
+- a365 CLI 2.0.1 checked: `a365 setup all --agent-name '<name>' --dry-run` needs no config file and detects
+  the tenant from `az login`. A real run on native Windows signs in through WAM (Windows account), and there
+  was no WSL for device code, so it was stopped before creating anything. Nothing was created in the tenant.
+- Not verified: contents of Instructions, Identity, Environment; the Mail Agent's Data & tools rows; the
+  Agents at risk click filter; the Relay Agent flow end to end; AI Reader view of Data & tools.
+- Not done on purpose: per-learner agent build in Module 2 (read-only role, per-person Copilot Studio
+  licensing and environment, 35-minute core). README keeps the maker path as an optional extension.
+
 ## Lab 3 finding, November 5, 2026 (learner could not see Project Beacon)
 
 - Learn (entra/agent-id/create-blueprint, "Register agents in the Agent 365 registry"): registration paths are the
