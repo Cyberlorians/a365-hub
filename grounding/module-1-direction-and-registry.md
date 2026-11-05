@@ -79,6 +79,16 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
 
 ## Lab 3 finding, November 5, 2026 (learner could not see Project Beacon)
 
+- Learn (entra/agent-id/create-blueprint, "Register agents in the Agent 365 registry"): registration paths are the
+  M365 Agents SDK (automatic), the Agent 365 CLI `a365 setup all`, or the Graph API followed by an explicit
+  Agent Registry API call that posts the agent card. If registration fails, re-run only that step with
+  `a365 setup all --agent-registration-only`. A blueprint MUST have a sponsor (owner recommended).
+  Graph blueprint creation is v1.0: POST /applications with @odata.type Microsoft.Graph.AgentIdentityBlueprint.
+- Admin sign-in blocker: the shared browser only holds the two test users; the Azure CLI is signed in to a US
+  Gov tenant; no .NET or a365 CLI is installed on this machine. Lab tenant id (public metadata):
+  b22dee98-83da-4207-b9ab-5ba931866f44. A tenant-side fix needs the admin to sign in at admin.microsoft.com in
+  the shared browser, or to run Populate Lab 3 from `docs/09-admin-lab-by-lab.md`.
+
 - Root cause: nothing in Module 1 registers an agent. The agent appears in the registry only after
   `a365 setup all` (toolkit setup section 4: it "registers the agent (appears in All agents / Registry)",
   endpoint deferred). Our runbook first ran it in Module 2 Step 4, after Lab 3.

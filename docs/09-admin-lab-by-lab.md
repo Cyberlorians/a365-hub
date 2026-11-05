@@ -170,6 +170,14 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
 
 **6. Give learners the AI Reader role** (next section) and test as a lab user.
 
+**What the learner should find, and why** (so you can explain it in class). Per Microsoft Learn, an agent
+identity blueprint **must have a sponsor** and should have an owner, so Project Beacon will show whoever
+was signed in when you ran `a365 setup all`. That is the "who owns it" answer. The registry then shows it
+as one of the **Total agents**. The **Risks** column is empty or zero until a security product flags
+something, and it needs an E7 or Agent 365 license to appear. If you want a learner to find an agent with
+**no owner**, that has to be a different agent (for example a Copilot Studio agent whose creator was
+deleted); do not remove Project Beacon's owner, because Module 2 depends on it.
+
 **You do before class (checklist)**
 
 1. **Give every learner a read-only role.** Microsoft Learn names **AI Reader** as the least-privilege
@@ -209,7 +217,7 @@ foreach ($u in $users) {
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
 | Registry empty | Register the agent: **Populate Lab 3** above. Check no filter is set. |
-| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**. Check the registered name starts with **Project Beacon** (`a365.config.json`). Registration can take a few minutes to appear. |
+| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**. Check the registered name starts with **Project Beacon** (`a365.config.json`). Registration can take a few minutes to appear. If it exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
 
@@ -313,3 +321,4 @@ and signs out.
 - [How do we start governing agents without slowing innovation?](https://learn.microsoft.com/microsoft-agent-365/guidance/govern-agents-support-innovation)
 - [Agent management essentials for Microsoft 365](https://learn.microsoft.com/microsoft-365/copilot/agent-essentials/agent-essentials-overview)
 - [Protect agent identities with Microsoft Entra](https://learn.microsoft.com/entra/agent-id/)
+- [Create an agent identity blueprint, and register it in the Agent 365 registry](https://learn.microsoft.com/entra/agent-id/create-blueprint)
