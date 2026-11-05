@@ -140,6 +140,18 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   ("Ownerless, Risky and Unmanaged agents aren't reflecting in Agent 365 in admin center", discussion 4542834)
   reports the same gap with no posted fix, so the registry tile may not reflect manual flags. Data & tools needs
   the agent platform to report knowledge sources and tools (Copilot Studio, Foundry).
+- Risk triggers (Learn, concept-risky-agents): adminConfirmedAgentCompromised (immediate), earlyLifeMaliciousActivity,
+  entraDirectoryReconnaissance, failedAccessAttempt, threatIntelligenceAccount, signInSpike,
+  suspiciousCredentialUsage (new secret added to a blueprint, then used; matches the Monday story),
+  unfamiliarResourceAccess. All detections except admin-confirm are offline. In OBO flows risk is attributed to the
+  user, not the agent. Entra Graph collections: riskyAgents and agentRiskDetections.
+- Result at 3+ hours: Entra riskyAgents shows the Relay Agent High and confirmedCompromised; the Agent 365 registry
+  tile and Risks column still show a dash and 0. The copilotPackageDetail Graph resource (registry details API)
+  has no risk property, so the registry risk column comes from a separate, gradually rolling-out pipeline.
+  Not yet tried: trigger suspiciousCredentialUsage on the Relay Agent (add a new blueprint secret, then use it)
+  or signInSpike, to see whether a detection-based signal reaches the registry when a manual flag does not.
+- Recommendation for class: show the flag in Entra ID Protection, Risky agents, and call the registry tile a
+  preview feature with a known sync gap.
 
 ## Lab 3 redesign, November 5, 2026 (owner: "cover each piece inside and out; Agents at risk must light up")
 
