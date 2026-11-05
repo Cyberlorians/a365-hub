@@ -219,6 +219,10 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
   creator was deleted).
 - **Search matters.** The Registry lists hundreds of agents (401 in the test tenant), so learners search
   for **Beacon**.
+- **Panel tour step.** Lab 3 has learners open the **Instructions**, **Identity** and **Environment**
+  sections on the Details tab and read the tabs and the Install and Block buttons. Open all three sections
+  yourself before class and note what they show for your agent; their contents were not recorded. Learners
+  must not click Install or Block (both act on the whole tenant).
 
 **Optional: make "Agents at risk" show a number (staged signal)**
 
