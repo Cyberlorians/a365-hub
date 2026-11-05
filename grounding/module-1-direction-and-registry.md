@@ -132,6 +132,14 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   browser could not render Copilot Studio.
 - Open: stand-in "Project Beacon" (uploaded package) is still a third registry row; the Agents page row menu has
   Block, Install and View in map only, no delete. The Mail Agent broad consent URL was not granted.
+- Research (Nov 5, after the above): Learn "Governance and lifecycle actions" says delete is Agents > All agents >
+  select the agent > "Delete agent" in the details pane > Delete (30-day soft delete), then All agents > Deleted >
+  "Permanently delete". Open the stand-in's own details pane and look for "Delete agent"; the row menu does not
+  have it. Entra ID Protection docs: the only direct trigger for a test agent is admin "confirm compromised";
+  other agent detections are behavioural and offline (can take hours). A Tech Community thread
+  ("Ownerless, Risky and Unmanaged agents aren't reflecting in Agent 365 in admin center", discussion 4542834)
+  reports the same gap with no posted fix, so the registry tile may not reflect manual flags. Data & tools needs
+  the agent platform to report knowledge sources and tools (Copilot Studio, Foundry).
 
 ## Lab 3 redesign, November 5, 2026 (owner: "cover each piece inside and out; Agents at risk must light up")
 
