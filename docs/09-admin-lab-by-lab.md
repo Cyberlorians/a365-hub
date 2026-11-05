@@ -342,7 +342,7 @@ Agent's Risk details, and every tab of **Project Beacon Mail Agent**.
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
 | Registry empty | Add the agents: **Populate Lab 3**. Check no filter is set. |
-| Agents at risk shows a dash | The flag is not staged yet, or the counts have not caught up (up to an hour). Check the Relay Agent in Entra ID Protection, Risky agents. A Route A stand-in cannot be flagged. |
+| Agents at risk shows a dash | The flag is not staged yet, or the registry has not picked it up. On November 5, 2026 the tile was still a dash about 50 minutes after the Graph flag, while the Risky agents report already showed the Relay Agent as High and confirmedCompromised, so we have not seen it light up. Check the Relay Agent in Entra ID Protection, Risky agents, recheck the tile before class, and if it stays a dash show the Entra report on your screen and tell learners the registry number follows. A Route A stand-in cannot be flagged. |
 | Project Beacon missing | Nothing in Module 1 creates the agents. Run **Populate Lab 3**, then search the Registry for **Beacon**. On Route B check the registered names start with **Project Beacon**; if the agent exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
