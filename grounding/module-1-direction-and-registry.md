@@ -111,6 +111,28 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   out); the Microsoft 365 admin center worked.
 - NOT yet verified: what a non-admin learner (AI Reader) sees; the `a365 setup all` route (Route B).
 
+## Live staging results, November 5, 2026 afternoon (CLI 2.0.1, commercial lab tenant)
+
+- Registered with `a365 setup all`: Project Beacon Relay Agent (lab-only, flagged) and Project Beacon Mail Agent
+  (real Module 2 agent). The CLI adds " Agent" to the registry name, so pass "Project Beacon Relay" and
+  "Project Beacon Mail". `a365 cleanup --agent-name '<base>' --yes` removes registration, blueprint and identity.
+- Flag: `POST /beta/identityProtection/riskyAgents/confirmCompromised` with `{agentIds:[<identity id>]}` worked
+  (device-code Connect-MgGraph, scope IdentityRiskyAgent.ReadWrite.All). The riskyAgents list showed High and
+  confirmedCompromised after about 10 minutes. The Agent 365 registry still showed Agents at risk = dash and
+  Relay Agent Risks = 0 about 60 minutes later. Cause unknown (not licensing: tenant has an Agent 365 trial, 13 of
+  25 assigned). Existing Security Copilot risky agents in Entra are not in the registry at all.
+- Observed Mail Agent profile: buttons Block and View in map (no Install); Owner and Created by = the admin;
+  Entra agent ID set; Instructions "No instructions provided"; Identity has Entra agent ID, Blueprint ID, Source
+  agent ID, Bot ID; Environment "This agent doesn't have an environment"; Permissions lists Entra permissions
+  (for example AgentIdentity.CreateAsManager); Data & tools "unavailable"; Security shows Entra and Purview
+  protections; Users has Installed for, Available to, Shared with; Activity No data.
+- Data & tools is reported by the agent platform (Copilot Studio, Foundry and similar). The agentRegistration
+  Graph resource only takes displayName, createdBy and timestamps plus endpoint and card data, so it cannot
+  inject tools. A Copilot Studio agent with a knowledge source and a tool is the way to populate it. The shared
+  browser could not render Copilot Studio.
+- Open: stand-in "Project Beacon" (uploaded package) is still a third registry row; the Agents page row menu has
+  Block, Install and View in map only, no delete. The Mail Agent broad consent URL was not granted.
+
 ## Lab 3 redesign, November 5, 2026 (owner: "cover each piece inside and out; Agents at risk must light up")
 
 - Lab 3 is six steps: open and read the numbers; Agents at risk and Risk details on the flagged Relay Agent;
