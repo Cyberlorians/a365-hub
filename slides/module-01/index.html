@@ -451,13 +451,13 @@
       <section class="slide" data-title="Five Entra pillars, one control map" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Entra foundation / Controls depend on flow and support</p>
         <h2>Five controls that keep an agent accountable.</h2>
-        <p class="lede">Microsoft Entra is the identity part of the story. These are its five controls. For each one, ask the question on the right.</p>
-        <div class="table-wrap"><table><thead><tr><th>What you control</th><th>Microsoft Entra feature</th><th>Question to ask</th></tr></thead><tbody>
-          <tr><td>Who the agent is</td><td>Entra Agent ID</td><td>Does it have its own identity, and who manages it over time?</td></tr>
-          <tr><td>Who can create and manage it</td><td>Identity Governance</td><td>Who can create it, own it and control it?</td></tr>
-          <tr><td>What it can access</td><td>Entitlement management</td><td>Why this access, for how long, approved by whom?</td></tr>
-          <tr><td>When it can sign in</td><td>Conditional Access and ID Protection</td><td>Which rules and risk checks apply when it signs in?</td></tr>
-          <tr><td>Where its traffic goes</td><td>Global Secure Access</td><td>Does its traffic pass through a route we can inspect?</td></tr>
+        <p class="lede">Microsoft Entra is the identity part of the story. Agent 365 is where you see the result. For each control, ask the question, then find it in the Agent 365 registry you used in Lab 3.</p>
+        <div class="table-wrap"><table><thead><tr><th>What you control</th><th>Microsoft Entra feature</th><th>Question to ask</th><th>Where you saw it in Agent 365</th></tr></thead><tbody>
+          <tr><td>Who the agent is</td><td>Entra Agent ID</td><td>Does it have its own identity, and who manages it over time?</td><td>Details tab: <strong>Entra agent ID</strong> and Identity</td></tr>
+          <tr><td>Who can create and manage it</td><td>Identity Governance</td><td>Who can create it, own it and control it?</td><td>Details tab: <strong>Owner</strong> and <strong>Created by</strong></td></tr>
+          <tr><td>What it can access</td><td>Entitlement management</td><td>Why this access, for how long, approved by whom?</td><td><strong>Permissions</strong> tab</td></tr>
+          <tr><td>When it can sign in</td><td>Conditional Access and ID Protection</td><td>Which rules and risk checks apply when it signs in?</td><td><strong>Agents at risk</strong> and the <strong>Risks</strong> number</td></tr>
+          <tr><td>Where its traffic goes</td><td>Global Secure Access</td><td>Does its traffic pass through a route we can inspect?</td><td>Not shown in the registry. A later module covers it.</td></tr>
         </tbody></table></div>
         <p class="small">Today we only map these. Later modules set them up. Not every control covers every agent.</p>
         <template class="speaker-notes"><p><strong>5 minutes.</strong> Introduce the control structure without five demos. Not every token exchange is evaluated identically, and Copilot Studio gateway documentation does not prove coverage of the ACA-hosted Mail path. A sponsor is not automatically a technical owner or privileged manager. Explain that agent identity, agent user, delegated user, and blueprint are distinct concepts; map the selected route later. CA has documented exceptions and user/agent targeting differences. GSA integration/discovery/GenAI Insights require supported routes and prerequisites; do not promise they protect the candidate Mail task today.</p><p><strong>Sources:</strong> Agent Identities chapter; Microsoft Learn Agent ID, governance, Conditional Access for agents, ID Protection for agents, and gateway guidance.</p></template>
