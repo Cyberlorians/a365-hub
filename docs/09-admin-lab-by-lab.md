@@ -15,7 +15,7 @@ and look.
 |---|---|
 | M1 Lab 1: Request your lab access | **Works.** A new test user submitted the form and received the account and an 8-hour pass by email in about 2 minutes. |
 | M1 Lab 2: Sign in to your lab mailbox | **Works.** The new test user signed in with the pass and the mailbox opened. |
-| M1 Lab 3: See your agents in the Agent 365 registry | **Blocked until you assign a read-only role.** As provisioned, the lab user got an empty page (HTTP 401) at the Microsoft 365 admin center. That strongly suggests a missing role, but it was tested through the lab tenant's sign-in endpoint, so confirm with a normal browser profile after you assign the role. |
+| M1 Lab 3: See your agents in the Agent 365 registry | **Needs two admin steps first: register Project Beacon, and give learners AI Reader.** On Nov 2 the lab user got an empty page (HTTP 401) without a role. On Nov 5 a learner who could open the registry did not see Project Beacon, because nothing in Module 1 registers it. See **Populate Lab 3**. Still untested end to end in a live tenant. |
 | M2 Labs 1-4 | **Not run live.** Written from the runbook; rehearse them first. |
 
 ## Before any lab (once)
@@ -90,7 +90,87 @@ A brand-new mailbox can take a few minutes. An empty inbox is correct.
 reads the three numbers, finds **Project Beacon** and its owner, and opens the **Risks** column.
 They only look.
 
-**You do before class**
+> **If learners do not see Project Beacon (reported November 5, 2026):** nothing in Module 1 creates
+> it. The registry only shows an agent after `a365 setup all` registers it, and that is first run in
+> Module 2 admin Step 4. Do **Populate Lab 3** below, once, before class. You do **not** need to deploy
+> Module 2 for it: registration needs no container, no Azure OpenAI model and no website.
+> Also, before this fix `Initialize-Workshop.ps1` named the agent "A365 Hub beacon01 ...", so even
+> a registered agent would not have matched the text "Project Beacon". It now writes
+> **Project Beacon Mail Agent**.
+
+#### Populate Lab 3 (once, about 30 to 45 minutes, in this order)
+
+You need: PowerShell 7, Git, Azure CLI, the .NET SDK and the `a365` CLI
+([install steps](08-module-02-admin-runbook.md)), an Azure subscription in the lab tenant, and an
+Entra admin who can approve the consent pages. **Not tested in a live tenant: rehearse it.**
+
+**1. Config.** Create `.workshop\config.json` (Module 1 admin Step 1 creates it; Module 2 admin Step 1 lists
+every field). For registration only, `tenantId`, `subscriptionId`, `runName` and `location` matter.
+The Azure OpenAI and resource-group fields must still be filled in with valid-looking names, because the
+script only checks their format (for example `unused`). Replace them with real values before you
+deploy Module 2.
+
+**2. Sign in and prepare the toolkit.**
+
+```powershell
+$ErrorActionPreference = 'Stop'
+$hub = (Get-Location).Path
+$c = Get-Content .\.workshop\config.json -Raw | ConvertFrom-Json
+az login --tenant $c.tenantId
+az account set --subscription $c.subscriptionId
+.\scripts\Initialize-Workshop.ps1 -ConfigPath .\.workshop\config.json -RegisterApps
+Set-Location (Join-Path $hub '.workshop\toolkit\aca\obo')
+# Check the names the registry will show. Edit them now if they are not right:
+Get-Content .\a365.config.json | Select-String 'DisplayName'
+```
+
+**Check:** both display names start with **Project Beacon**. If `a365.config.json` already existed from an
+earlier run it keeps its old names (for example "A365 Hub beacon01 ..."): edit both lines by hand.
+
+**3. Optional extra agents FIRST.** These make the registry worth reading (more than one row, and one
+you can call out as not yours). Skip this step for a minimal lab. Run one command at a time:
+
+```powershell
+a365 setup requirements
+a365 setup all --m365 --agent-name 'Beacon Finance Helper'
+a365 setup all --m365 --agent-name 'Beacon Travel Helper'
+```
+
+> **Order matters.** Every `a365 setup all` writes `a365.generated.config.json` and `.env` in this
+> same folder, so each run replaces the last one. Module 2's `Deploy-Workshop.ps1` reads that file.
+> Register the extras **first** and **Project Beacon last**, so the saved IDs are Project Beacon's. For
+> the extras ignore the blueprint secret it prints and do not deploy them. (Edit the display names in
+> `a365.config.json` first if you want them to differ.)
+
+**4. Project Beacon, last.** The same commands as Module 2 admin Step 4:
+
+```powershell
+$agentName = 'Project Beacon Mail Agent'
+a365 setup requirements
+a365 setup all --m365 --agent-name $agentName
+a365 setup permissions mcp --agent-name $agentName
+a365 setup permissions bot --agent-name $agentName
+```
+
+Approve each consent page and answer `y` to the Observability prompt. Leave the messaging endpoint
+blank. Store the blueprint secret privately; you need it for the Module 2 deploy. Then return to the hub
+root: `Set-Location $hub`.
+
+**5. Verify as the admin.** Open `admin.microsoft.com`, then **Agents > All agents > Registry**. Allow a
+few minutes, refresh, and clear any filter. You should see **Project Beacon Mail Agent** (and the two extras
+if you ran step 3). Optional check from PowerShell (**beta Graph, untested**; if it errors, use the
+Entra admin center, **Entra ID > Agents**):
+
+```powershell
+Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
+(Invoke-MgGraphRequest -Method GET `
+  -Uri 'https://graph.microsoft.com/beta/applications/microsoft.graph.agentIdentityBlueprint').value |
+  Select-Object displayName, appId
+```
+
+**6. Give learners the AI Reader role** (next section) and test as a lab user.
+
+**You do before class (checklist)**
 
 1. **Give every learner a read-only role.** Microsoft Learn names **AI Reader** as the least-privilege
    role to view the registry (no extra license for the inventory). Without it, the admin center
@@ -111,21 +191,12 @@ foreach ($u in $users) {
    Run it **after** learners have their accounts, right before Lab 3. The same pass can also be
    done by hand: Entra admin center > Roles & admins > **AI Reader** > Add assignments.
 
-2. **Make sure Project Beacon is in the registry.** It is created in the Module 2 admin steps.
-   Register it as **Project Beacon Mail Agent** so the row matches the lab text:
-   `$agentName = 'Project Beacon Mail Agent'` in [Module 2 admin Step 4](08-module-02-admin-runbook.md).
-3. **Fill the registry so there is something to compare (recommended).** Run one command at a time
-   (each opens its own sign-in window):
-
-```powershell
-a365 setup requirements
-a365 setup all --m365 --agent-name "Beacon Finance Helper"
-a365 setup all --m365 --agent-name "Beacon Travel Helper"
-```
-
-   These need no deployment. Optional: a **Copilot Studio** agent created and shared by a throwaway
-   user appears in the registry on its own; hard deleting that user makes it an ownerless agent
-   (the **Agents without owners** count goes up). Untested.
+2. **Make sure Project Beacon is in the registry.** Do **Populate Lab 3** above. The name must be
+   **Project Beacon Mail Agent** so the row matches the lab text.
+3. **Extra agents (optional).** Covered in step 3 of Populate Lab 3. Remember: extras first, Project
+   Beacon last. Another option: a **Copilot Studio** agent created and shared by a throwaway user
+   appears in the registry on its own, and hard deleting that user makes it an ownerless agent (the
+   **Agents without owners** count goes up). Untested.
 4. **Risks column.** It needs an **E7 or Agent 365 license** in the tenant. If it is missing, tell
    learners: that is what an unlicensed tenant sees. Counts can lag up to an hour.
 
@@ -137,8 +208,8 @@ a365 setup all --m365 --agent-name "Beacon Travel Helper"
 | Symptom | Fix |
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
-| Registry empty | Register the agent: Module 2 admin Step 4. Check no filter is set. |
-| Project Beacon missing | Blueprint agents must be registered to appear. Re-run `a365 setup all`. |
+| Registry empty | Register the agent: **Populate Lab 3** above. Check no filter is set. |
+| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**. Check the registered name starts with **Project Beacon** (`a365.config.json`). Registration can take a few minutes to appear. |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
 

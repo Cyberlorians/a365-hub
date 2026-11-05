@@ -66,8 +66,9 @@ if (-not (Test-Path -LiteralPath $agentConfigPath)) {
     $agentConfig = Get-Content (Join-Path $agentPath 'a365.config.json.example') -Raw | ConvertFrom-Json -AsHashtable
     $agentConfig.tenantId = $config.tenantId
     $agentConfig.clientAppId = $config.cliAppId
-    $agentConfig.agentIdentityDisplayName = "A365 Hub $($config.runName) Identity"
-    $agentConfig.agentBlueprintDisplayName = "A365 Hub $($config.runName) Blueprint"
+    # The registry shows these names. Module 1 Lab 3 tells learners to find "Project Beacon".
+    $agentConfig.agentIdentityDisplayName = 'Project Beacon Mail Agent'
+    $agentConfig.agentBlueprintDisplayName = 'Project Beacon Mail Agent Blueprint'
     Write-WorkshopJson $agentConfigPath $agentConfig
 } else {
     $agentConfig = Get-Content -LiteralPath $agentConfigPath -Raw | ConvertFrom-Json -AsHashtable

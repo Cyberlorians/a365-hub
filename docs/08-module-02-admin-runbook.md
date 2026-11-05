@@ -182,6 +182,8 @@ Errors are blockers, not a reason to grant learners admin roles.
 Set-Location (Join-Path $hub '.workshop\toolkit\aca\obo')
 # This is the name learners see in the Agent 365 registry (Module 1, Lab 3).
 # Keep "Project Beacon" in it so the lab text and the registry row match.
+# If you registered extra agents for Lab 3, do that BEFORE this step: every
+# `a365 setup all` overwrites a365.generated.config.json, and the deploy reads it.
 $agentName = 'Project Beacon Mail Agent'
 a365 setup requirements
 if ($LASTEXITCODE -ne 0) { throw 'Agent 365 requirements failed; stop here' }

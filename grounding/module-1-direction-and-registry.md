@@ -77,6 +77,24 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   `/microsoft-agent-365/guidance/govern-agents-support-innovation`,
   `/microsoft-365/copilot/agent-essentials/agent-essentials-overview`.
 
+## Lab 3 finding, November 5, 2026 (learner could not see Project Beacon)
+
+- Root cause: nothing in Module 1 registers an agent. The agent appears in the registry only after
+  `a365 setup all` (toolkit setup section 4: it "registers the agent (appears in All agents / Registry)",
+  endpoint deferred). Our runbook first ran it in Module 2 Step 4, after Lab 3.
+- Name mismatch: `Initialize-Workshop.ps1` wrote the registry display names as
+  "A365 Hub <run> Identity/Blueprint". Fixed to **Project Beacon Mail Agent** (+ " Blueprint").
+  An existing `a365.config.json` keeps old names: edit by hand.
+- Registration needs no deployment. `Read-WorkshopConfig` only checks the FORMAT of the Azure OpenAI fields,
+  so placeholder names work for Lab 3 only (from the code, not run).
+- Trap: every `a365 setup all` overwrites `a365.generated.config.json` and `.env` in the same folder, and
+  `Deploy-Workshop.ps1` reads them. Register optional extra agents FIRST and Project Beacon LAST.
+- The admin guide `docs/09-admin-lab-by-lab.md` now has "Populate Lab 3" with the ordered commands. The
+  instructor deck slide "Lab 3: register Project Beacon before class" matches.
+- Still unverified in a live tenant: the registry showing the agent, how long it takes, the AI Reader
+  assignment snippet and the beta Graph check. My CLI session was a different (US Gov) tenant, so I could
+  not run `a365` there.
+
 ## Live run, November 2, 2026 (new test user "Walkthrough Tester Two")
 
 - Form `aka.ms/a365hub` submitted: account `walkthrough.tester.two@DibSecurity.onmicrosoft.com` and an
