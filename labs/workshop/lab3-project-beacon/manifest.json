@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/teams/v1.19/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.19",
+  "version": "1.0.0",
+  "id": "9f62b8d1-7ffb-45b7-81e0-5d0d47dcfc5d",
+  "developer": {
+    "name": "A365 Hub workshop",
+    "websiteUrl": "https://aka.ms/a365hub",
+    "privacyUrl": "https://aka.ms/a365hub",
+    "termsOfUseUrl": "https://aka.ms/a365hub"
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "name": {
+    "short": "Project Beacon",
+    "full": "Project Beacon (A365 workshop practice agent)"
+  },
+  "description": {
+    "short": "Practice agent for the A365 workshop. Drafts status updates.",
+    "full": "A practice agent used in the A365 Hub security workshop so learners can find, review and see the owner of an agent in the Agent 365 registry. It only helps draft a short internal project status update from facts you give it. It has no actions and cannot send email."
+  },
+  "accentColor": "#0F2A4A",
+  "copilotAgents": {
+    "declarativeAgents": [
+      {
+        "id": "projectBeacon",
+        "file": "declarativeAgent.json"
+      }
+    ]
+  },
+  "permissions": [
+    "identity",
+    "messageTeamMembers"
+  ],
+  "validDomains": []
+}

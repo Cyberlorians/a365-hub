@@ -77,6 +77,29 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   `/microsoft-agent-365/guidance/govern-agents-support-innovation`,
   `/microsoft-365/copilot/agent-essentials/agent-essentials-overview`.
 
+## Verified in the live commercial lab tenant, November 5, 2026 (admin signed in to the shared browser)
+
+- Tenant: "DIB Security Commercial" (id b22dee98-83da-4207-b9ab-5ba931866f44). Admin center menu: Agents >
+  Overview, All agents, Agent map, Deleted agents, Shadow AI, Tools, Settings. **All agents** opens the
+  **Registry** tab (also Requests and Local agents tabs).
+- Registry had **401 agents** (mostly Microsoft and partner catalog), so learners must use the **Search**
+  box. Summary boxes are **Total agents / Agents at risk / Agents without owners** (NOT "Unmanaged agents").
+  Filters: Status, Publisher type, Platform, Channel. Columns: Name, Status, Platform, Risks, Active users,
+  Total sessions, Shared with, Last updated, Last used. **Owner is NOT a list column.** The boxes lagged
+  behind the list after a new agent was added.
+- Searching "Beacon" returned "No agents found": Project Beacon had never been registered.
+- Fix that worked: **Add agent** opens an Upload agent wizard (zip manifest > Publish to users > Security
+  policy > Accept permissions > Review & finish). Uploaded `labs/workshop/lab3-project-beacon` (a minimal
+  declarative agent with no actions), published to **one specific user**, Install: None, default policy
+  template, "No required permissions". The agent appeared in the list immediately.
+- Details pane for the uploaded agent: tabs **Details, Users, Data & tools, Security, Permissions, Activity**;
+  buttons Install and Block. Overview: Publisher type "Your org", **Owner and Created by and Entra agent ID
+  all a dash**. Data & tools: "Data and tools are unavailable". Permissions: "This agent doesn't have
+  permissions from Microsoft Entra ID". Security: "Enabled policies and protections", Purview listed.
+- The Entra admin center (entra.microsoft.com) would not load in the shared browser (sign-in request timed
+  out); the Microsoft 365 admin center worked.
+- NOT yet verified: what a non-admin learner (AI Reader) sees; the `a365 setup all` route (Route B).
+
 ## Lab 3 finding, November 5, 2026 (learner could not see Project Beacon)
 
 - Learn (entra/agent-id/create-blueprint, "Register agents in the Agent 365 registry"): registration paths are the

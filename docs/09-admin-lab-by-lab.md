@@ -15,7 +15,7 @@ and look.
 |---|---|
 | M1 Lab 1: Request your lab access | **Works.** A new test user submitted the form and received the account and an 8-hour pass by email in about 2 minutes. |
 | M1 Lab 2: Sign in to your lab mailbox | **Works.** The new test user signed in with the pass and the mailbox opened. |
-| M1 Lab 3: See your agents in the Agent 365 registry | **Needs two admin steps first: register Project Beacon, and give learners AI Reader.** On Nov 2 the lab user got an empty page (HTTP 401) without a role. On Nov 5 a learner who could open the registry did not see Project Beacon, because nothing in Module 1 registers it. See **Populate Lab 3**. Still untested end to end in a live tenant. |
+| M1 Lab 3: See your agents in the Agent 365 registry | **Fixed in the admin's tenant on Nov 5.** Project Beacon was missing because nothing registered it. I published it from the admin center (Route A in **Populate Lab 3**) and confirmed it appears in the Registry. **Still to confirm:** that a learner with the AI Reader role (not an admin) can see it, and the first-time role assignment. |
 | M2 Labs 1-4 | **Not run live.** Written from the runbook; rehearse them first. |
 
 ## Before any lab (once)
@@ -90,19 +90,50 @@ A brand-new mailbox can take a few minutes. An empty inbox is correct.
 reads the three numbers, finds **Project Beacon** and its owner, and opens the **Risks** column.
 They only look.
 
-> **If learners do not see Project Beacon (reported November 5, 2026):** nothing in Module 1 creates
-> it. The registry only shows an agent after `a365 setup all` registers it, and that is first run in
-> Module 2 admin Step 4. Do **Populate Lab 3** below, once, before class. You do **not** need to deploy
-> Module 2 for it: registration needs no container, no Azure OpenAI model and no website.
-> Also, before this fix `Initialize-Workshop.ps1` named the agent "A365 Hub beacon01 ...", so even
-> a registered agent would not have matched the text "Project Beacon". It now writes
-> **Project Beacon Mail Agent**.
+> **If learners do not see Project Beacon (found November 5, 2026):** nothing in Module 1 creates it.
+> A new tenant has no agent with that name, and the registry shows only what has been added to it. I checked
+> the real registry (401 agents) and searching **Beacon** returned nothing. Do **Populate Lab 3** below,
+> once, before class.
 
-#### Populate Lab 3 (once, about 30 to 45 minutes, in this order)
+#### Populate Lab 3
+
+Pick one route. **Route A is the default: it takes about 5 minutes and was run end to end in a live tenant
+on November 5, 2026.** Route B is the full toolkit route; use it when you also deploy Module 2.
+
+**Route A (default): publish the practice agent from the admin center**
+
+You need a Microsoft 365 admin (the one who runs the lab) and PowerShell. Nothing else: no Azure, no `a365`
+CLI, no consent pages.
+
+1. Build the package. It is a local file only and changes nothing in your tenant:
+
+```powershell
+.\scripts\New-Lab3AgentPackage.ps1
+# Creates .workshop\lab3\ProjectBeacon.zip from labs\workshop\lab3-project-beacon
+```
+
+2. Open the [Microsoft 365 admin center](https://admin.microsoft.com), then **Agents > All agents**
+   (the **Registry** tab). Click **Add agent** and choose the file `ProjectBeacon.zip`. Click **Next**.
+3. **Publish to users:** choose **Specific users/groups** and add **only yourself**. Set **Install** to
+   **None**. Nothing is pushed to the rest of the company.
+4. **Security policy:** keep the default template. **Accept permissions** will say no permissions are
+   required. Click **Next**, then **Publish**. It finishes in under a minute.
+5. **Check:** back on the Registry, search for **Beacon**. You should see **Project Beacon** (Publisher
+   type: Your org). The summary boxes can take a while to update; the list is immediate.
+
+This is a small declarative agent with no actions: it cannot send email. In the Details pane it shows
+**Owner: a dash**, **Entra agent ID: a dash**, **Data and tools: unavailable** and **Permissions: none from
+Entra ID**. That is deliberate and honest: the learner finds an agent nobody owns and nothing governs.
+To remove it later: Registry > Project Beacon > delete or remove the agent.
+
+**Route B (full): register the Module 2 agent with the Agent 365 CLI**
 
 You need: PowerShell 7, Git, Azure CLI, the .NET SDK and the `a365` CLI
 ([install steps](08-module-02-admin-runbook.md)), an Azure subscription in the lab tenant, and an
-Entra admin who can approve the consent pages. **Not tested in a live tenant: rehearse it.**
+Entra admin who can approve the consent pages. **Not tested in a live tenant: rehearse it.** This is the
+same agent Module 2 uses, with a real blueprint and agent identity.
+If you do both routes, learners will find two rows for "Beacon". Tell them to open the one named exactly
+**Project Beacon**.
 
 **1. Config.** Create `.workshop\config.json` (Module 1 admin Step 1 creates it; Module 2 admin Step 1 lists
 every field). For registration only, `tenantId`, `subscriptionId`, `runName` and `location` matter.
@@ -170,13 +201,23 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
 
 **6. Give learners the AI Reader role** (next section) and test as a lab user.
 
-**What the learner should find, and why** (so you can explain it in class). Per Microsoft Learn, an agent
-identity blueprint **must have a sponsor** and should have an owner, so Project Beacon will show whoever
-was signed in when you ran `a365 setup all`. That is the "who owns it" answer. The registry then shows it
-as one of the **Total agents**. The **Risks** column is empty or zero until a security product flags
-something, and it needs an E7 or Agent 365 license to appear. If you want a learner to find an agent with
-**no owner**, that has to be a different agent (for example a Copilot Studio agent whose creator was
-deleted); do not remove Project Beacon's owner, because Module 2 depends on it.
+**What the learner should find, and why** (so you can explain it in class).
+
+- **Route A (observed in a live tenant, November 5, 2026):** Project Beacon is in the Registry with
+  Publisher type **Your org**. On the **Details** tab the Overview shows **Owner** and **Created by** as a
+  dash, and **Entra agent ID** as a dash. **Data & tools** says "Data and tools are unavailable".
+  **Permissions** says "This agent doesn't have permissions from Microsoft Entra ID". The **Risks** column
+  shows 0, and the **Security** tab lists enabled policies and protections (Microsoft Purview and others).
+  The honest message: this agent has no named owner and no governed identity. That is the finding.
+  The three boxes at the top (Total agents, Agents at risk, Agents without owners) can lag behind the list.
+- **Route B:** per Microsoft Learn an agent identity blueprint **must have a sponsor** and should have an
+  owner, so the agent will show whoever was signed in when you ran `a365 setup all`, and it has an Entra
+  agent ID and permissions.
+- The **Risks** column needs an E7 or Agent 365 license to appear. If you want learners to also find an
+  agent with **no owner** in the count, use a different agent (for example a Copilot Studio agent whose
+  creator was deleted).
+- **Search matters.** The Registry lists hundreds of agents (401 in the test tenant), so learners search
+  for **Beacon**.
 
 **You do before class (checklist)**
 
@@ -199,12 +240,12 @@ foreach ($u in $users) {
    Run it **after** learners have their accounts, right before Lab 3. The same pass can also be
    done by hand: Entra admin center > Roles & admins > **AI Reader** > Add assignments.
 
-2. **Make sure Project Beacon is in the registry.** Do **Populate Lab 3** above. The name must be
-   **Project Beacon Mail Agent** so the row matches the lab text.
-3. **Extra agents (optional).** Covered in step 3 of Populate Lab 3. Remember: extras first, Project
-   Beacon last. Another option: a **Copilot Studio** agent created and shared by a throwaway user
-   appears in the registry on its own, and hard deleting that user makes it an ownerless agent (the
-   **Agents without owners** count goes up). Untested.
+2. **Make sure Project Beacon is in the registry.** Do **Populate Lab 3**, Route A. Searching the
+   Registry for **Beacon** must return **Project Beacon**.
+3. **Extra agents (optional).** Route B step 3 registers two extra agents (extras first, Project Beacon
+   last). Another option: a **Copilot Studio** agent created and shared by a throwaway user appears in the
+   registry on its own, and hard deleting that user makes it an ownerless agent (the **Agents without
+   owners** count goes up). Untested.
 4. **Risks column.** It needs an **E7 or Agent 365 license** in the tenant. If it is missing, tell
    learners: that is what an unlicensed tenant sees. Counts can lag up to an hour.
 
@@ -216,8 +257,8 @@ foreach ($u in $users) {
 | Symptom | Fix |
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
-| Registry empty | Register the agent: **Populate Lab 3** above. Check no filter is set. |
-| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**. Check the registered name starts with **Project Beacon** (`a365.config.json`). Registration can take a few minutes to appear. If it exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
+| Registry empty | Add the agent: **Populate Lab 3**, Route A. Check no filter is set. |
+| Project Beacon missing | Nothing in Module 1 creates it. Run **Populate Lab 3**, Route A, then search the Registry for **Beacon**. On Route B check the registered name starts with **Project Beacon** (`a365.config.json`); if it exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
 
