@@ -219,6 +219,12 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
   creator was deleted).
 - **Search matters.** The Registry lists hundreds of agents (401 in the test tenant), so learners search
   for **Beacon**.
+- **Data & tools is empty for Route A, by design.** Per Microsoft Learn it lists an agent's capabilities
+  (public sites, files, email, calendar), knowledge sources and tools (connectors, MCP servers, actions), and
+  stays empty when none are configured, when the agent type does not report them, or before the first sync.
+  Learn says AI Administrator or Global Administrator see it for all agents; confirm what an AI Reader
+  learner sees before class. To show it populated, use Route B or a Copilot Studio agent with a knowledge
+  source and a tool, and update Lab 3 to match.
 - **Panel tour step.** Lab 3 has learners open the **Instructions**, **Identity** and **Environment**
   sections on the Details tab and read the tabs and the Install and Block buttons. Open all three sections
   yourself before class and note what they show for your agent; their contents were not recorded. Learners
