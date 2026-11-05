@@ -119,7 +119,7 @@ CLI, no consent pages.
 4. **Security policy:** keep the default template. **Accept permissions** will say no permissions are
    required. Click **Next**, then **Publish**. It finishes in under a minute.
 5. **Check:** back on the Registry, search for **Beacon**. You should see **Project Beacon** (Publisher
-   type: Your org). The summary boxes can take a while to update; the list is immediate.
+   type: Your org). The numbers at the top can take a while to update; the list is immediate.
 
 This is a small declarative agent with no actions: it cannot send email. In the Details pane it shows
 **Owner: a dash**, **Entra agent ID: a dash**, **Data and tools: unavailable** and **Permissions: none from
@@ -132,8 +132,9 @@ You need: PowerShell 7, Git, Azure CLI, the .NET SDK and the `a365` CLI
 ([install steps](08-module-02-admin-runbook.md)), an Azure subscription in the lab tenant, and an
 Entra admin who can approve the consent pages. **Not tested in a live tenant: rehearse it.** This is the
 same agent Module 2 uses, with a real blueprint and agent identity.
-If you do both routes, learners will find two rows for "Beacon". Tell them to open the one named exactly
-**Project Beacon**.
+The Route A practice agent is only a stand-in so Module 1 has something to look at. When you do Route B, the
+real Module 2 agent is also named Project Beacon, so **remove the Route A stand-in first** (Registry >
+Project Beacon > remove). Then learners see one **Project Beacon**, the real one.
 
 **1. Config.** Create `.workshop\config.json` (Module 1 admin Step 1 creates it; Module 2 admin Step 1 lists
 every field). For registration only, `tenantId`, `subscriptionId`, `runName` and `location` matter.
@@ -209,7 +210,7 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
   **Permissions** says "This agent doesn't have permissions from Microsoft Entra ID". The **Risks** column
   shows 0, and the **Security** tab lists enabled policies and protections (Microsoft Purview and others).
   The honest message: this agent has no named owner and no governed identity. That is the finding.
-  The three boxes at the top (Total agents, Agents at risk, Agents without owners) can lag behind the list.
+  The numbers at the top (Total agents, Agents at risk, Agents without owners) can lag behind the list.
 - **Route B:** per Microsoft Learn an agent identity blueprint **must have a sponsor** and should have an
   owner, so the agent will show whoever was signed in when you ran `a365 setup all`, and it has an Entra
   agent ID and permissions.
