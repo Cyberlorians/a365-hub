@@ -220,6 +220,33 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
 - **Search matters.** The Registry lists hundreds of agents (401 in the test tenant), so learners search
   for **Beacon**.
 
+**Optional: make "Agents at risk" show a number (staged signal)**
+
+Today that number is a dash, because nothing is flagged. That is normal, and the lab works either way.
+If you want learners to see a flagged agent, you can flag one **on purpose** in the lab tenant. Rules:
+
+- **Only an Entra agent identity can be flagged.** The Route A stand-in has no Entra identity, so it cannot be
+  flagged. Use an extra agent registered with the Agent 365 CLI (Route B, step 3, for example
+  **Beacon Finance Helper**).
+- **Never flag the real Module 2 agent.** A High risk level can be blocked by a Conditional Access policy and
+  would break Module 2.
+- **Tell learners it was staged.** It is a deliberate flag for the exercise, not a real attack.
+- **Needs** Microsoft Entra ID P2 during preview, and soon a Microsoft Agent 365 license (Microsoft Learn,
+  Identity Protection for agents). Only for a lab tenant. Never do this in production.
+
+Per Microsoft Learn, an admin can **confirm an agent as compromised**, which sets its risk level to **High**.
+In the portal this is the **Risky agents** report in Entra ID Protection. From PowerShell
+(**beta, untested: rehearse it**; permission `IdentityRiskyAgent.ReadWrite.All`):
+
+```powershell
+Connect-MgGraph -TenantId $c.tenantId -Scopes IdentityRiskyAgent.ReadWrite.All -NoWelcome
+Confirm-MgBetaRiskyAgentCompromised -AgentIds @('<object-id-of-the-lab-only-agent-identity>')
+```
+
+Afterwards the number at the top of the Registry can take up to an hour to change. Undo it with **Confirm
+safe** or **Dismiss risk** in the same report. If it works, learners can click the **Agents at risk** number
+(it should filter the list to the flagged agents), open that agent, and read its Security tab.
+
 **You do before class (checklist)**
 
 1. **Give every learner a read-only role.** Microsoft Learn names **AI Reader** as the least-privilege

@@ -77,6 +77,17 @@ Sources: Compass "ownership abuse" example, Datadog Part 2 path, Cloud-Architekt
   `/microsoft-agent-365/guidance/govern-agents-support-innovation`,
   `/microsoft-365/copilot/agent-essentials/agent-essentials-overview`.
 
+## Flagging an agent as at risk (Learn, checked November 5, 2026; not run)
+
+- Entra ID Protection for agents has a **Risky agents** report. Response actions: confirm compromised (sets
+  risk level High), confirm safe, dismiss risk, disable the agent. Graph beta:
+  `POST /identityProtection/riskyAgents/confirmCompromised` with `agentIds`, permission
+  `IdentityRiskyAgent.ReadWrite.All`; PowerShell `Confirm-MgBetaRiskyAgentCompromised`.
+- Applies to **Entra agent identities only**. The Route A stand-in (uploaded declarative agent) has no Entra
+  identity, so it cannot be flagged. That is why "Agents at risk" is a dash in the lab tenant.
+- Never flag the real Module 2 agent: a Conditional Access policy can block on High agent risk. Use a lab-only
+  extra agent from Route B. Needs Entra ID P2 (preview) and soon an Agent 365 license. Tell learners it is staged.
+
 ## Verified in the live commercial lab tenant, November 5, 2026 (admin signed in to the shared browser)
 
 - Tenant: "DIB Security Commercial" (id b22dee98-83da-4207-b9ab-5ba931866f44). Admin center menu: Agents >
