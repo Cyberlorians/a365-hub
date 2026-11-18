@@ -74,9 +74,9 @@ version, and redistribution permission have not been established. Preserve this 
 review reference; do not copy it into published decks or customer packages until source
 and reuse permission are confirmed. Labels in the picture are not product validation.
 
-[Saved original PNG](images/agent-id-scenarios.png)
-
-![Agent ID scenarios: Agent 365 customers, Microsoft first-party runtime agents, agents anywhere calling Microsoft APIs, and cross-cloud workflows or federation.](images/agent-id-scenarios.png)
+The original PNG is retained locally for review only and is not distributed with
+the public repository. The published module uses the original-text scenario
+overview below instead.
 
 ### Teaching placement
 
