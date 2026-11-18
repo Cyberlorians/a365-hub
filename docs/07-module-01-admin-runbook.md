@@ -201,11 +201,12 @@ Record one mode before opening any tenant portal:
 
 | Mode | Allowed actions | Required evidence |
 |---|---|---|
-| Content review | Open slides/guide, discuss fictional card, answer check | Record wording/navigation findings; no account or tenant changes |
+| Content review | Open slides/guide, discuss the case/scenario overview and worksheet | Record findings; do not claim live registry access or create accounts |
 | Prepared presentation | Present a preflighted read-only lab view or authorized sanitized prior run | Real target/source/time and limits; never imply prior-run data is current |
 | Event onboarding + presentation | Approved form/account/sign-in flow followed by prepared presentation | Separate tested onboarding plan, support owner, credentials/privacy/expiry handling |
 
-**Current published default:** content review. No event signup is connected.
+**Content-only mode:** skip the connected Lab 1 form and all tenant actions.
+Event delivery uses a separately approved and tested form or private credential route.
 Do not create a user merely to review Module 1.
 
 ## 2. Prepare the operator record
@@ -226,9 +227,11 @@ prior-run mode, not permission escalation or a silent readiness claim.
 
 1. Open [Module 1 slide 6](https://cyberlorians.github.io/a365-hub/#slide-6).
 2. Click Next through slides 6-18; use Jump to return to slide 9.
-3. Open **Notes (N)** and confirm the note matches the current slide.
-4. Open **Learner guide** and **Admin runbook** in the toolbar.
-5. Open **Data & automation** and verify that preparation remains gated by approval.
+3. In the separate instructor deck, confirm each show/say script matches its
+   student slide. The source-only author preview retains Notes (N); students do not.
+4. Open the student Labs view and the separate instructor deck; student pages do not
+   contain instructor notes or an admin toggle.
+5. Check the preparation matrix and confirm tenant actions remain gated by approval.
 6. If printing, preview all eighteen slides; onboarding is outside the core timebox.
 7. Keep the four-question learner worksheet and slide 16 answer key ready.
 
@@ -254,9 +257,13 @@ Skip this section for content review.
 7. Remove credentials, attendee information, unrelated tenant content, and sensitive
    prompts from any shared view.
 
-**Checkpoint:** A legitimate view or explicitly labeled fallback exists. The published
-slide 11 card remains fictional; do not describe it as a Registry export. Zero risk
-counts or empty activity do not prove safety.
+**Checkpoint:** A legitimate view or explicitly labeled fallback exists. Slide 11
+describes the prepared registry review, not a fictional card. Preflight AI Reader
+for the exact run-owned learners as described in the lab-by-lab admin guide; if
+blocked, use the authorized presenter view rather than a write role.
+Zero risk counts, missing metadata or empty activity do not prove safety.
+The optional Relay flag can be shown in labeled Entra presenter evidence; November 5
+registry risk remained a dash/0 after more than three hours. Do not promise sync.
 
 Module 1 does not require opening Purview or Defender live. Slides explain those
 control/evidence planes. No DLP, GSA/TLS, ISOC enrollment, connector, or query deployment
@@ -294,11 +301,11 @@ and [per-slide notes](../slides/module-01/speaker-notes.md).
 | Slides | Operator action | Checkpoint |
 |---|---|---|
 | 6-7 | State secure-adoption outcome and fictional status-mail case | Audience knows four review questions |
-| 8-9 | Contrast tool action and dual attack surfaces | Legitimate authentication is not proof of safe behavior |
-| 10-11 | Use one real/labeled view, or clearly fictional card | Actual versus hypothetical fields are distinguished |
-| 12 | Explain five pillars without five demos | Flow/target/route support caveats remain |
+| 8-9 | Orient to four overlapping scenarios and dual attack surfaces | Hosting is not permission; legitimate authentication is not safe behavior |
+| 10-11 | Start Lab 3 with the prepared record or labeled evidence | Actual versus unknown fields and source/time are distinguished |
+| 12 | Finish Lab 3 and map one gap to a control objective | Eight-minute lab fits slide 11 + 12; no extra time or policy changes |
 | 13-15 | Connect supported data controls, runtime/tool evidence, and operations | Audit/block and event/behavior/alert/incident remain distinct |
-| 16 | Allow two minutes to answer, one to discuss | At least 3/4 including question 3; revisit slide 9 when missed |
+| 16 | Allow two minutes to write, one to discuss | Four worksheet answers, one gap, one owned next action; revisit slide 9 if sign-in is treated as safety |
 | 17-18 | Gap-first E7 fit; handoff | No exclusivity/universal-coverage claim; Module 2 preparation gate retained |
 
 No live attack, containment, tenant policy edit, or production-content demonstration.

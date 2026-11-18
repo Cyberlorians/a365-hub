@@ -10,13 +10,30 @@ walkthrough. They separate content-only rehearsal from authorized tenant prepara
 ## Delivery
 
 - Lead with secure AI adoption, the dual attack surface, and one customer case.
-- Use one preflighted Registry view or clearly labeled verified prior-run screenshot.
-  The published fictional card is neither.
+- Use one preflighted read-only Registry view or authorized sanitized prior-run
+  evidence with source/time. The teaching deck now describes that review, not a
+  fictional card. Registration does not prove a working runtime.
 - Explain the five Entra pillars without five demos. Keep deep flow/authority work
   for Module 3; do not promise CA on every exchange or universal gateway coverage.
+- On slide 8, use the four
+  [Agent ID scenario prompts](../../grounding/reference-images.md#image-3---agent-id-scenarios)
+  for a one-minute orientation: Agent 365 visibility, Microsoft runtimes, external
+  agents calling Microsoft APIs, and cross-cloud federation. These lenses overlap.
+  The student deck uses original text; the supplied picture remains a reference
+  pending provenance/reuse confirmation. Defer authority tracing to Module 3 and
+  credential-abuse mechanics to Module 6. Do not add four deployments.
 - Explain Purview supported data controls, owned improvement evidence, and the
   Defender/ISOC loop. Do not add three live portal transitions.
-- Close with the four-point check on slide 16; target at least 3/4 including question 3.
+- Lab 3 uses eight minutes across slide 11's review and slide 12's control mapping,
+  not eight additional minutes. Match one observed gap to a control as learners
+  finish the registry review. The proposed 25-minute core still needs rehearsal.
+- Close with slide 16's readiness discussion: four answers, one gap and one owned
+  next action. Revisit slide 9 if legitimate sign-in is treated as safe behavior.
+- The Relay Agent risk comparison is optional. November 5 evidence showed High risk
+  in Entra while registry risk remained a dash/0 after more than three hours.
+  Do not promise sync, a count of 1, or populated Risk details.
+- Test AI Reader access with a fresh learner. If unavailable, use the presenter
+  evidence rather than granting write roles. Finish with feedback for the next session.
 - Handoff to the separate [Module 2 draft](../module-02/README.md).
 
 ## Review and preparation gates
@@ -28,10 +45,25 @@ No broad admin roles for attendees, policy bypass, or silent account-age cleanup
 
 ## Recovery
 
+### Presenter preflight observation: November 18
+
+The prepared Mail Agent profile opened through **Agents > All agents > Registry**.
+Its Details, Users, Data & tools, Security, Permissions and Activity tabs were
+present. Data & tools reported unavailable, Permissions displayed
+`AgentIdentity.CreateAsManager`, and Security linked to Entra protections.
+Use these as observed visibility limits, not as evidence of mail authority,
+runtime success or policy enforcement. Do not copy management permissions into
+the learner's intended mail boundary. Activity loading or an empty panel is not
+proof that no activity occurred. Recheck before each event.
+
+This was an authorized presenter session, not a fresh AI Reader learner test.
+No tenant settings were changed. The read-only presenter route is usable for
+content review; independent rehearsal and learner-access validation remain open.
+
 | Problem | Response |
 |---|---|
 | Identity-only interpretation | Revisit slide 9; distinguish injection-time versus later identity evidence |
-| Missing actual agent view | Keep fictional/labeled screenshot mode explicit; do not claim inventory success |
+| Missing actual agent view | Use prepared labeled prior-run evidence or record the activity as blocked; do not claim live inventory success |
 | Empty/late telemetry | State missing/late coverage; do not infer safety |
 | Portal/role unavailable | Use approved prior-run evidence or narrow scope; do not elevate learners |
 | Onboarding trouble | Confirm real event setup with the owner after approval; do not activate signup in the draft |

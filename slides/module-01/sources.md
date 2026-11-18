@@ -11,8 +11,11 @@
 | Runtime/investigation | [Defender agent protection](https://learn.microsoft.com/defender-xdr/security-for-ai/ai-agent-detection-protection), [ISOC](https://learn.microsoft.com/defender-xdr/isoc-overview) | Coverage/integration and preview/workspace eligibility |
 | Gateway/network | [Gateway](https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents), [GenAI Insights](https://learn.microsoft.com/entra/global-secure-access/concept-generative-ai-insights) | Copilot Studio route does not establish ACA Mail coverage; remote MCP is not local MCP |
 | E7 value/fit | [E3/E5/E7 comparison](https://learn.microsoft.com/microsoft-365/copilot/compare-copilot-e3-e5-e7) | Feature-specific entitlement/cost assessment; not every capability is exclusive |
+| Four overlapping scenario lenses | [Supplied Agent ID scenarios reference](../../grounding/reference-images.md#image-3---agent-id-scenarios) | Curriculum orientation in original text, not product authority; image provenance/reuse unresolved |
+| Staged Entra risk versus registry gap | [November 5 run findings](../../grounding/module-1-direction-and-registry.md) | Historical lab observation, not guaranteed current behavior or sync timing |
 
 Blue16 explainers inspire original explanations, not copied code/artwork or product
-claims. The agent-review card is fictional. Product availability and portal paths must
+claims. Review a prepared record or labeled presenter/prior-run evidence; registration
+alone does not prove runtime or control behavior. Product availability and portal paths must
 be rechecked before delivery. Full revisions/39-source register:
 [master plan](../../docs/06-customer-learning-plan.md#14-grounding-and-traceability).

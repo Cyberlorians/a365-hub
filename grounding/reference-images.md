@@ -1,8 +1,8 @@
 # Reference Images (grounding)
 
-Two infographics supplied as visual grounding. The source PNGs were pasted as attachments (not saved
-as files), so their content is transcribed here to preserve it. Re-add the original PNGs to
-`grounding/images/` if/when available.
+Images supplied as visual grounding. The first two source PNGs were pasted as attachments
+(not saved as files), so their content is transcribed here to preserve it. Re-add those
+original PNGs to `grounding/images/` if/when available. Image 3 is saved below.
 
 ---
 
@@ -64,3 +64,78 @@ Author credits: @omsrivastava (LinkedIn) / @beingomkars (Instagram), 2025
 
 **Teaching use:** Image 2 → Module 1 (concepts / taxonomy). Image 1 → Module 4 and cross-cutting
 "secure the agent" guidance (maps well to Agent & Tool Security + Monitoring & Governance).
+
+---
+
+## Image 3 - Agent ID scenarios
+
+**Received:** November 12, 2026, as a user-supplied image. Original author, source URL,
+version, and redistribution permission have not been established. Preserve this as a
+review reference; do not copy it into published decks or customer packages until source
+and reuse permission are confirmed. Labels in the picture are not product validation.
+
+[Saved original PNG](images/agent-id-scenarios.png)
+
+![Agent ID scenarios: Agent 365 customers, Microsoft first-party runtime agents, agents anywhere calling Microsoft APIs, and cross-cloud workflows or federation.](images/agent-id-scenarios.png)
+
+### Teaching placement
+
+- **Module 1:** Use the four scenario headings as a one-minute orientation within the
+  existing agent action-model segment, not four extra demos. Explain that agent
+  hosting, identity, governance visibility, and resource access are different questions.
+  Use the text summary below while image reuse remains unconfirmed.
+- **Module 2:** Classify the actual workshop agent in its passport. Record its observed
+  runtime and authority; do not infer a flow from its platform or sample name.
+- **Module 3:** Use the eight-minute comparison below within the existing 35-minute
+  authority-mapping activity. Keep the actual lab agent as the main evidence source;
+  the other cases are discussion scenarios, not additional deployments.
+- **Modules 4-7:** Reuse the chosen case when asking who owns it, which data/tool
+  boundary applies, where evidence lives, and what a scoped response would affect.
+  These are prompts for validation, not claims that all platforms expose the same controls.
+
+### Four scenario prompts
+
+The four headings are lenses, not mutually exclusive agent types. An agent can run in
+a Microsoft platform, appear in Agent 365, and participate in a federated workflow.
+
+| Lens from the image | Learner question | Evidence to request before concluding |
+|---|---|---|
+| Microsoft Agent 365 customers | What is visible in the registry, who owns the agent, and what controls actually apply? | Registry entry, identity correlation, owner, supported control configuration and observed result |
+| Microsoft first-party runtime agents | What identity does the selected runtime create or use, and what authority does the task exercise? | Runtime configuration, actual identity/object relationships, grants, resource activity |
+| Agents anywhere calling Microsoft APIs | How does an externally hosted agent authenticate and obtain permission for the Microsoft resource? | Actual token-acquisition route, actor, audience, delegated or application permission, API result |
+| Cross-cloud workflows / federation | What trust lets this workload obtain access, and where does that access end? | Issuer/subject/audience trust configuration, token exchange, resource grants, correlated activity |
+
+Do not infer universal Agent 365 discovery, Conditional Access enforcement on every
+exchange, secretless operation, or complete telemetry from the picture. Federation
+does not itself grant resource access. An absent registry field or alert is not proof
+of safety. Check current Microsoft Learn and the actual environment for each claim.
+
+### Module 3 activity: follow the authority (eight minutes)
+
+1. **Choose and classify (one minute):** Place the Module 2 agent under one or more
+   scenario headings. Mark unverified properties as unknown.
+2. **Trace (three minutes):** Draw runtime -> acting identity -> token/trust route ->
+   target API/tool/data. Name the accountable owner separately. Label actual identifier
+   types, delegated versus autonomous authority, and effective grants.
+3. **Compare (two minutes):** Choose one other lens. Identify which trust, permission,
+   evidence, and response assumptions would need rechecking if the runtime moved.
+   Keep this comparison hypothetical; do not create credentials or change trust.
+4. **Decide (two minutes):** Explain one allowed operation and one operation the
+   boundary should deny. Cite observed evidence where available, and distinguish an
+   expected denial from a tested denial. Propose one justified correction or retain
+   the existing boundary with a reason.
+
+**Learner output:** Add the scenario classification and comparison to the existing
+agent passport/authority diagram, with actor, target, grant, evidence, unknowns, and
+one boundary decision.
+
+**Facilitator check (four points):**
+
+- Distinguishes runtime location from identity and registry visibility.
+- Correctly identifies whose authority is used and the applicable grant/trust.
+- Names evidence at both the identity and target/runtime surfaces, recording gaps.
+- Justifies a boundary and a scoped response without assuming every agent is affected.
+
+Target at least 3/4, including the authority point. If evidence is unavailable, accept
+an explicit gap and a concrete validation step, not an invented result. This is a
+content activity draft; actual lab evidence and timed rehearsal remain release gates.

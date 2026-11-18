@@ -27,6 +27,12 @@ The [integration map](integration-map.md) explains exactly what we reuse, adapt,
 - [Reference-image notes](reference-images.md)
 - [Module 1 direction, registry and admin seeding](module-1-direction-and-registry.md)
 
+## Curriculum grounding
+
+- [Customer-ready eight-module outline and Module 1 alignment review](workshop-customer-outline.md)
+  - Brooke's pilot framing plus the supplied Agent ID scenarios; curriculum direction,
+  not product documentation or evidence of live readiness.
+
 Historical notes can contain obsolete portal, table, integration, or licensing statements.
 Use current Microsoft Learn and actual tenant validation before delivery. No raw GBB
 extract or external source-code/screenshot collection is redistributed here.

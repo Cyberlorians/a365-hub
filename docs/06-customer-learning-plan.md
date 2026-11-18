@@ -156,6 +156,12 @@ and defensive-design spine. Its examples still require implementation validation
 
 ## 4. Complete learning journey
 
+The [customer-facing module outlines and pilot format](01-full-day-workshop.md#customer-facing-outline)
+incorporate Brooke's November 12 framing and the four Agent ID scenario lenses.
+Use those outlines for customer discussion and modular remote delivery. The technical
+definitions below retain implementation detail and readiness gates; the scenario
+comparison does not add four deployments or make cross-cloud setup mandatory.
+
 | Module | Minutes | Playbook anchor / customer focus | Activity and output | Planned state |
 |---|---:|---|---|---|
 | 1. See It. Control It. Protect It. | 25 | C1 dual attack surfaces and responsibilities | One customer case, five-pillar control map, one agent review, three-minute readiness check | Reworked content draft published; review and rehearse next |
@@ -198,14 +204,18 @@ data, and operational evidence.
 - **Control:** Agent 365 accountability/visibility, the five Entra pillars, supported
   Purview controls, and Defender/ISOC investigation responsibilities.
 - **Activity:** Follow the synthetic status-mail customer case, inspect one prepared
-  agent record, and complete the short knowledge check.
+  agent record, and complete the readiness worksheet/discussion. Slide 8 introduces
+  the four overlapping Agent ID scenarios in original text; detailed authority and
+  credential-abuse mechanics remain in Modules 3 and 6.
 - **Evidence/output:** Four-question readiness worksheet with an exposure, a relevant
   control/evidence source, and an accountable next action.
 - **Decision:** State the approved operating boundary and what must be verified next.
 - **Sources:** C1, H2, B1-B2, L1, L7, L10, L12, L15, L17, L19, L21, L23.
 
 Keep protocol mechanics, full DLP setup, risk hunts, and live policy changes out of this
-introduction. Detailed completion work is specified in Section 6.
+introduction. Use tested AI Reader access or labeled presenter/prior-run evidence.
+Any staged Relay risk is optional; do not promise registry risk visibility or sync.
+Detailed completion work is specified in Section 6.
 
 ### Module 2: Establish the Approved Agent Baseline - 35 minutes
 
@@ -237,7 +247,12 @@ inherited-versus-direct authority, and blueprint-wide impact.
 - **Control:** Inspect the real object relationships and permission boundaries. Separate
   delegated-user authority from autonomous agent authority.
 - **Activity:** Map the selected runtime's actual identities and one allowed/denied
-  operation; reuse selected classification material moved from Module 1.
+  operation; reuse selected classification material moved from Module 1. Within this
+  timebox, use the eight-minute
+  [Agent ID scenarios comparison](../grounding/reference-images.md#image-3---agent-id-scenarios):
+  classify the Module 2 agent, trace its authority, compare one other hosting/trust
+  scenario, and justify the boundary. The scenarios overlap; no extra deployments
+  or cross-cloud setup are required.
 - **Evidence/output:** An authority diagram with identifier types, grant/resource,
   actor, scope, and blast-radius explanation.
 - **Decision:** Justify the permission boundary or a required correction.
@@ -387,7 +402,7 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 |---|---|
 | 6 | Secure AI adoption: customer value and learning outcome |
 | 7 | The shared status-mail case and four review questions |
-| 8 | What the agent can read, decide, and change |
+| 8 | Four overlapping Agent ID scenarios; hosting, identity, visibility and permission differ |
 | 9 | Two attack surfaces; correct authentication does not establish safe behavior |
 | 10 | Agent 365 observe/govern/secure and the Registry |
 | 11 | Review one actual agent: purpose, accountability, access, activity |
@@ -395,7 +410,7 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 | 13 | Purview data boundary and Compliance Manager evidence follow-through |
 | 14 | Runtime/tool and applicable network evidence: what identity logs cannot show alone |
 | 15 | Defender/ISOC investigation-response-improvement loop |
-| 16 | Three-minute readiness check |
+| 16 | Three-minute worksheet completion and readiness discussion |
 | 17 | E7 fit, existing entitlements, and adoption options |
 | 18 | Recap and handoff to the approved baseline task |
 
@@ -407,7 +422,7 @@ inspired by Blue16, not copied implementation or graphics.
 | Segment | Minutes |
 |---|---:|
 | Customer outcome and shared case | 3 |
-| Dual attack surface | 4 |
+| Four-scenario orientation and dual attack surface | 4 |
 | Four questions and one prepared agent record | 4 |
 | Five Entra pillars | 5 |
 | Data/runtime/SOC loop | 4 |
@@ -417,17 +432,25 @@ inspired by Blue16, not copied implementation or graphics.
 
 ### Readiness check
 
-Use the existing exercise surface for a four-point check:
+Use the existing exercise surface as a discussion answer key:
 identify agent/accountability; state the approved action/data boundary; explain why
 a valid sign-in does not prove safe behavior; name an appropriate control/evidence
 source and next decision.
 
-Target: **at least 3/4, including the dual-plane explanation**. If missed, clarify the
-example before the handoff; do not solve comprehension problems by granting admin roles.
+Target: **four answers, one gap and one owned next action**, including the dual-plane
+explanation. Unknowns with concrete validation steps are valid. Clarify misconceptions
+before handoff; do not grant admin roles or add an interactive quiz.
+
+Lab 3's eight minutes fit within slide 11's three-minute review and slide 12's
+five-minute control mapping. They are not additional core time. Stage risk only as
+an optional presenter comparison; the November 5 registry did not reflect the
+confirmed Entra flag after more than three hours. Fresh-learner access and an
+independent timed rehearsal remain gates.
 
 ### Files to update during implementation
 
-These Module 1 files are aligned in the published content draft; content review and independent rehearsal remain outstanding.
+These Module 1 files are aligned in the November 13 local revision; publication,
+content review, fresh-learner checks and independent rehearsal remain outstanding.
 
 | File in `slides/module-01/` | Required update |
 |---|---|

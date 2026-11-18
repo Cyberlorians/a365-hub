@@ -9,8 +9,12 @@ Download/open either package's `index.html` for offline use of that module.
 Cross-module/source links open public online resources. No external fonts/assets,
 tracking, live API calls, provisioning, or mail actions are embedded in the decks.
 
-Controls: Previous/Next, Jump, arrows/PageUp/PageDown, Home/End, **N** notes,
-**F** fullscreen when supported, **R** preflight, **?** help, Escape close.
+Student controls: Previous/Next, Jump, arrows/PageUp/PageDown, Home/End,
+**F** fullscreen when supported, **?** help, Escape close. The published student
+deck contains no presenter notes or instructor toggle. Use the separate
+[instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) for show/say
+scripts, lab cues and recovery. The source-only author preview retains **N** notes
+and **R** preflight.
 Horizontal touch swipes navigate outside controls/tables. Print includes all slides
 in the opened module. Both modules default to the original Module 1 navy/cyan palette,
 regardless of the system theme. Use `?scoutTheme=light` for a blue-on-white variant or
@@ -29,7 +33,8 @@ Module 1 deep links retain `#slide-N`; Module 2 uses its own `#slide-N`.
 
 HTML is self-contained and includes notes in each slide's template. Markdown source
 and speaker notes must be updated coherently; there is no Markdown-to-HTML compiler.
-Run `node scripts/check-workshop.mjs` from the repository root before publication.
+Run `node scripts/build-walkthroughs.mjs` followed by
+`node scripts/check-workshop.mjs` from the repository root before publication.
 One Pages workflow stages both modules; do not create competing root deployments.
 
 Use [the master plan](../../docs/06-customer-learning-plan.md) for the module story,

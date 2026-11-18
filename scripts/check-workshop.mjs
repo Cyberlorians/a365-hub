@@ -16,6 +16,7 @@ const markdownFiles = [
   "grounding/sources.md", "grounding/integration-map.md", "detections/README.md",
   "slides/module-01-what-is-agent-id.md", "labs/module-02-business-agent.md",
   "labs/module-01-security-foundation.md", "docs/07-module-01-admin-runbook.md",
+  "docs/09-admin-lab-by-lab.md", "grounding/workshop-customer-outline.md", "grounding/reference-images.md",
   "docs/08-module-02-admin-runbook.md", "docs/05-onboarding-deployment-runbook.md"
 ];
 for (const id of [1, 2]) {
@@ -64,6 +65,23 @@ for (const id of [1, 2]) {
   const names = ["README.md", "slides.md", "speaker-notes.md", "facilitator-guide.md", "sources.md"];
   if (id === 1) names.push("exercise.md", "taxonomy-handout.md", "permissions-preflight.md", "interactive-guide.md");
   markdownFiles.push(...names.map(name => `${directory}/${name}`));
+}
+const module1 = read("slides/module-01/index.html");
+const scenarioSlide = module1.match(/<section class="slide" data-title="Four scenarios\. The same four questions\."[\s\S]*?<\/section>/)?.[0];
+assert(scenarioSlide, "Module 1 must introduce the four overlapping Agent ID scenarios");
+for (const label of ["Agent 365 customers", "Microsoft first-party runtimes", "Agents anywhere calling Microsoft APIs", "Cross-cloud workflows / federation"])
+  assert(scenarioSlide.includes(label) && read("slides/module-01/slides.md").includes(label), `Module 1 scenario missing: ${label}`);
+assert(scenarioSlide.includes("These scenarios overlap") && scenarioSlide.includes("Federation alone does not grant resource access"));
+assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
+assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
+const registrySteps = labSlides(1).filter(step => step.lab === 3);
+assert.equal(registrySteps.length, 6, "Keep the registry review to six small steps");
+assert(registrySteps.at(-1).doneWhen.includes("one gap and one owned next action"), "Registry lab must produce the readiness worksheet");
+assert(!registrySteps.at(-1).link, "Lab 3 must return to the remaining Module 1 lessons, not bypass them for Module 2");
+for (const role of ["learner", "instructor"]) {
+  const html = buildView({ module: 1, role }).html;
+  assert(html.includes("more than three hours") && html.includes("optional"), `Module 1 ${role}: retain the known risk gap and optional comparison`);
+  assert(!/Agents at risk (?:shows|is|=) 1|the Monday story|one stolen blueprint secret|Activity starts to fill in|Labs 1 to 6/i.test(html), `Module 1 ${role}: stale attack/sync promises`);
 }
 const plan = read("docs/06-customer-learning-plan.md");
 assert.equal([...plan.matchAll(/^### Module \d+:/gm)].length, 8);
@@ -114,6 +132,8 @@ assert(workflow.includes("node scripts/build-walkthroughs.mjs"), "Pages must bui
 assert(!workflow.includes("cp slides/module-01/index.html") && !workflow.includes("cp slides/module-02/index.html"), "Do not overwrite the built modules with the teaching-only source");
 for (const module of [1, 2]) {
   const html = buildModule(module);
+  assert(!/<title>[^<]*(?:draft|reworked)/i.test(html), "Student page titles must use release-facing names");
+  assert(!/>Module [12] - (?:Reworked|Rough draft)<\/a>/.test(html), "Student navigation must use clean module names");
   assert(html.includes('id="view-lab"') && !html.includes('id="view-admin"'), "The student page contains only the labs view");
   assert(html.includes('<button hidden type="button" id="notesToggle"') && html.includes("Slides with a hands-on lab after each lesson"), "Presenter tools must be hidden from students");
   assert(!html.includes("Instructor guide") && !html.includes("facilitator-note") && !html.includes('=== "n"'), "No instructor material or presenter shortcuts on the student page");

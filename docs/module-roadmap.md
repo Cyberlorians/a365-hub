@@ -5,9 +5,9 @@ the old six-module map. The original anatomy module moves to Module 3.
 
 | Module | Current deliverable | Remaining gate |
 |---|---|---|
-| [1. See It. Control It. Protect It.](../slides/module-01/README.md) | Reworked 18-slide package: five planned onboarding slides + thirteen core slides, notes, check, handout, sources | User content review, actual presentation-mode preparation, independent 25-minute rehearsal |
+| [1. See It. Control It. Protect It.](../slides/module-01/README.md) | November 13 aligned 18-slide package: five onboarding + thirteen core; four-scenario orientation, registry/worksheet activity, aligned notes and instructor scripts | User content review, fresh-learner/read-only or labeled-evidence preflight, independent 25-minute rehearsal |
 | [2. Establish the Approved Agent Baseline](../slides/module-02/README.md) | Separate eight-slide rough draft, notes, synthetic learner guide, passport, recovery guidance | User review before provisioning; actual runtime/authority/task/evidence proof; fresh learners; 35-minute rehearsal |
-| 3. Identity, Authority, and Blast Radius | Playbook-aligned scope, output, source map, preparation needs | Actual authority diagram and validated activity |
+| 3. Identity, Authority, and Blast Radius | Playbook-aligned scope, output, source map, preparation needs; [four-scenario authority exercise](../grounding/reference-images.md#image-3---agent-id-scenarios) | Actual authority diagram, validated activity, image provenance/reuse approval before deck publication |
 | 4. Governance and Lifecycle | Playbook-aligned scope and governance-case design | Supported roles/entitlements, actual effect, reset |
 | 5. Data and Compliance Evidence | DLP/Compliance Manager activity design | Scoped supported policy/result, action record and evidence |
 | 6. Compromise and Misuse | Separate GBB/identity-case design | Authorized fixture, actual observed or labeled prior-run evidence |

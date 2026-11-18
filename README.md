@@ -31,7 +31,7 @@ Each module has **two separate decks**, both in the original blue style:
 
 **Student deck** (the main page, safe to project and share):
 1. **Slides** - the teaching slides. After the lessons that need practice, a
-   **LAB 1, LAB 2...** button appears (Module 1 has six labs, Module 2 has four).
+   **LAB 1, LAB 2...** button appears (Module 1 has three labs, Module 2 has four).
 2. **Labs** - each lab is a handful of tiny steps: numbered "Do this" actions, a picture
    or real screenshot, Copy boxes, and a "You are done when" line. The last step of each
    lab sends you back to the next slide. No instructor material is in this deck.
@@ -75,10 +75,12 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > **Verified so far (Module 1, Labs 1-2):** a test learner submitted the live access form
 > (https://aka.ms/a365hub), the provisioner Logic App created the account and emailed the
 > access details about two minutes later, and that test user signed in to Outlook with the
-> Temporary Access Pass. The Lab 2 screenshots are from that run. Labs 3-6 are note-taking
-> steps; Module 2 (agent deployment, mail send) and the pictures in the other labs are not
-> yet verified in a live tenant. The instructor scripts are written from the slide content
-> and have not been rehearsed with a live class.
+> Temporary Access Pass. The Lab 2 screenshots are from that run. Module 1 Lab 3 uses a
+> prepared registry review (admin observations from November 5); fresh-learner AI Reader
+> access and timing still need event-specific validation. The separate staged Relay risk
+> was visible in Entra but not the registry after more than three hours. Module 2 runtime,
+> mail send and downstream evidence still need live proof. Instructor scripts have not
+> been rehearsed with a live class.
 
 The Markdown guides remain a plain-text reference and the source of every copy-and-run
 snippet used in the slides (a check fails if they drift):
@@ -96,6 +98,10 @@ Build the decks locally with `node scripts/build-walkthroughs.mjs`; output is in
 Use this same slides -> numbered labs -> separate instructor deck pattern for future modules.
 
 ## Complete eight-module story
+
+See the [customer-facing module outlines](docs/01-full-day-workshop.md#customer-facing-outline)
+for the proposed remote pilot series, guided activities, learner outputs, and the
+four Agent ID scenario lenses. The table below retains current technical package names.
 
 | # | Module | Learner output | Minutes |
 |---|---|---|---:|

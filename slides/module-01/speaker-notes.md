@@ -24,21 +24,36 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 ## Slide 6 - See It. Control It. Protect It.
 
-**1 minute.** Pitch secure AI adoption, not a string of product demos. The workshop is the vehicle. Explain that every module uses the Agent Identities chapter as its security spine: risk, control, evidence, decision. E7 is a later entitlement/value discussion, not the opening proof of security.
+**1 minute.** An agent can invoke tools, so useful access needs an explicit boundary.
+Introduce see/control/protect and the readiness worksheet: four answers, one gap,
+one owned next action. Do not promise universal inventory or protection.
+Keep object models/token flows for Module 3; E7 follows the customer gap.
 
 **Source:** Cloud-Architekt Agent Identities; Microsoft Learn Agent 365 overview. This presentation is an original teaching synthesis, not copied diagrams.
 
 ## Slide 7 - One business case. Four questions.
 
-**2 minutes.** Project Beacon is a fictional training case. The candidate is Stefano's documented Mail MCP task from the signed-in user's mailbox. Do not claim a working deployment or specific identity objects exist yet. Keep using these four questions in every later module. The eventual mailbox, recipient, actual authority, and evidence must be verified.
+**2 minutes.** Project Beacon's synthetic status-mail case gives a useful task before
+misuse. Ask purpose, people/actor, permitted reach, and evidence. The intended boundary
+is a reviewed message to an approved internal recipient; intended limits are not
+implemented enforcement. Registration and actual runtime proof differ.
 
-## Slide 8 - An agent has four parts
+## Slide 8 - Four scenarios. The same four questions.
 
-**1 minute.** Contrast answering a question with invoking a tool. For this case, sending mail is a write action, not read-only access. Avoid token-flow detail here; Module 3 maps actual authority. Teach the difference between task instructions, effective permissions, and independently enforced controls.
+**1 minute.** Orient to Agent 365 customers, Microsoft first-party runtimes, agents
+anywhere calling Microsoft APIs, and cross-cloud workflows/federation. These lenses
+overlap. Hosting, identity, registry visibility and resource permission differ;
+federation alone does not grant resource access. Use original text, not the supplied
+picture pending provenance/reuse confirmation. No four-deployment requirement.
+Module 3 traces authority, objects and blast radius.
 
 ## Slide 9 - Two attack surfaces. Two evidence planes.
 
-**3 minutes.** This is the chapter's core lesson. An indirect prompt injection/XPIA can arrive in content the agent is permitted to read; do not demonstrate a live attack here. The absence of a suspicious sign-in is not proof of safe behavior, and identity evidence is still useful for subsequent actions. Ask: what tells us what the tool actually did?
+**3 minutes.** Contrast identity/management misuse with content-driven manipulation.
+An unexpected recipient is a reason to investigate, not proof of one attack path.
+Injection need not cause a new sign-in at ingestion; later authentication/resource
+activity may still leave identity evidence. Ask what shows the actual tool action.
+No live attack or new attack fixture is needed; detailed mechanics belong in Module 6.
 
 **Control boundary:** Entra controls authentication/authorization. Runtime/tool controls and data protections address different parts of the risk. Logging alone is not detection or blocking.
 
@@ -48,11 +63,22 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 ## Slide 11 - Review one agent, not three portals
 
-**3 minutes.** This is deliberately not a screenshot or real inventory record. After content approval, replace it with an authorized real record or clearly labeled verified prior run. The presenter can use Microsoft 365 admin center's Agents/Registry path after rechecking the tenant. Do not block, deploy, delete, or change policy during Module 1. Empty/unavailable fields remain gaps, not completed checks.
+**3 minutes.** Start Lab 3 using tested AI Reader access, an authorized presenter
+view, or labeled prior-run evidence with source/time. Review the prepared Mail Agent
+record, not an imaginary card. Registration is not runtime proof. Complete Lab 3
+across this review and slide 12's five minutes, not as eight extra minutes.
+Risk staging is optional: on November 5, Entra showed the separate Relay Agent as
+High/confirmedCompromised, while registry risk stayed a dash/0 after more than three
+hours. Do not promise sync or Risk details. Missing fields are unknowns. No Block,
+deployment, grant, deletion or policy action is allowed.
 
 ## Slide 12 - Five Entra pillars, one control map
 
-**5 minutes.** Introduce the control structure without five demos. A sponsor is not automatically a technical owner or privileged manager. Explain that agent identity, agent user, delegated user, and blueprint are distinct concepts; map the selected route later. CA has documented exceptions and user/agent targeting differences. GSA integration/discovery/GenAI Insights require supported routes and prerequisites; do not promise they protect the candidate Mail task today.
+**5 minutes.** Finish the registry review while matching a worksheet gap to a control
+objective. Registry context does not establish approval/expiry, effective technical
+rights, policy targeting or actual enforcement. Verify those in the relevant source.
+A sponsor is not automatically a technical owner or privileged manager. CA depends
+on flow/target and GSA on supported routes. No five demos or policy changes.
 
 **Sources:** Agent Identities chapter; Microsoft Learn Agent ID, governance, Conditional Access for agents, ID Protection for agents, and gateway guidance.
 
@@ -70,7 +96,11 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 ## Slide 16 - Three-minute readiness check
 
-**3 minutes.** Two minutes to answer, one to discuss. One point for each defensible answer; question 3 is mandatory for the target. An example unexpected action is an unapproved recipient or tool. No new attack scenario runs here. If the class treats sign-in success as end-to-end protection, revisit slide 9 before moving on.
+**3 minutes.** Two minutes to complete the worksheet, one to discuss. Purpose/people,
+intended boundary, why sign-in is insufficient, and evidence/gap/owned next action
+are the four prompts. Use the discussion answer key; no interactive quiz. Accept
+unknowns with a concrete next check. If sign-in is treated as end-to-end protection,
+revisit slide 9. Do not claim a control was tested.
 
 ## Slide 17 - Sell the outcome. Validate the fit.
 
@@ -78,4 +108,7 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 ## Slide 18 - Establish normal before investigating abnormal
 
-**1 minute.** Total core: 25 minutes. Explain the new numbering and transition to the approved business-agent baseline. During this review, ask for feedback on the story and activity scope only. Test-user provisioning and fake-data preparation occur after approval, with the per-module data/automation plan.
+**1 minute.** Total core: 25 minutes; sign-in is separate. Retain the worksheet.
+Module 2 must pass its own runtime, sender, task and receipt preflight; a matching
+registration name is insufficient. Collect feedback before finalizing the next
+remote session. Independent timing and live preparation remain release gates.

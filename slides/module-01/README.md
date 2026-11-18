@@ -27,7 +27,8 @@ in the labs and the instructor deck.
 
 | File | Use |
 |---|---|
-| [index.html](index.html) | Standalone 18-slide presentation with built-in notes |
+| [index.html](index.html) | Student presentation: 18 teaching slides and numbered visual labs; presenter tools hidden |
+| [Instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) | Separate instructor deck with show/say scripts, lab cues and recovery |
 | [slides.md](slides.md) | Aligned slide content |
 | [speaker-notes.md](speaker-notes.md) | Per-slide timing and talk track |
 | [exercise.md](exercise.md) | Three-minute four-point check and answer key |
@@ -52,9 +53,19 @@ in the labs and the instructor deck.
 | E7 fit / Module 2 handoff | 2 |
 | **Total** | **25** |
 
-The first five slides preserve the access sequence but contain no active provisioning
-link. TAP lifetime/reuse and CA prompts require actual tenant testing. The agent-review
-card is explicitly fictional, not a Registry export or validated evidence.
+The first five slides preserve the access sequence; Lab 1 includes the event access
+form, which must be smoke-tested and approved before use. TAP lifetime/reuse and CA
+prompts require actual tenant testing. Lab 3 reviews a prepared registry record using
+tested AI Reader access, an authorized presenter view, or labeled prior-run evidence.
+Registration is not runtime proof; staged risk is optional and registry sync is not
+guaranteed.
+
+**November 13 alignment:** Slide 8 introduces the four overlapping Agent ID scenarios
+in original text. The core stays introductory: detailed authority moves to Module 3
+and compromise mechanics to Module 6. The student slides, notes, learner guide and
+instructor scripts use the same synthetic-mail case, four-question review and
+readiness worksheet. Lab 3 fits within the existing review/control-map segment.
+See the [customer outline](../../grounding/workshop-customer-outline.md).
 
 Complete only after user review, aligned content/supporting sources, actual prepared
 presentation mode, and an independent 25-minute rehearsal. The deeper classification
@@ -62,3 +73,23 @@ exercise moves to Module 3; original anatomy is not lost.
 
 See the [master plan](../../docs/06-customer-learning-plan.md) and
 [roadmap](../../docs/module-roadmap.md).
+
+## November 18 verification
+
+The local package was rebuilt with `node scripts/build-walkthroughs.mjs` and passed
+`node scripts/check-workshop.mjs`. The pre-build teaching page navigated all eighteen
+slides without horizontal page overflow at the tested viewport. This is a browser
+smoke check, not an independent timed rehearsal.
+
+An authorized presenter opened **Agents > All agents > Registry > Project Beacon
+Mail Agent** in the Microsoft 365 admin center. Details, Permissions, Data & tools,
+Security, Users and Activity tabs were available. Data & tools reported unavailable;
+Permissions displayed `AgentIdentity.CreateAsManager`; Security linked to Entra
+protections. These observations do not prove Mail MCP execution, approved mail
+permissions, effective policy enforcement, or learner access. No tenant settings
+were changed.
+
+**Delivery mode:** use the authorized presenter-led registry review until a fresh
+learner's read-only access has passed preflight. Record current source/time and
+unknowns in the worksheet. Fresh-learner access and an independent 25-minute
+rehearsal remain release gates; do not describe the workshop as fully validated.
