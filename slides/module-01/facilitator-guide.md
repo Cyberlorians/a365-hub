@@ -1,7 +1,9 @@
 # Module 1 Facilitator Guide
 
-**Content review draft.** Use the [notes](speaker-notes.md) for all eighteen slides.
-The 25-minute core starts at slide 6; five planned onboarding slides sit outside it.
+Use the [notes](speaker-notes.md) for all seventeen slides.
+The 25-minute core starts at slide 6; five onboarding slides sit outside it.
+Onboarding is budgeted at 12 minutes, including the single-screen, one-minute
+Lab 2 sign-in check. Do not repeat Slide 4's instructions for signed-in learners.
 
 Use the [learner step-by-step guide](../../labs/module-01-security-foundation.md)
 and [ordered admin runbook](../../docs/07-module-01-admin-runbook.md) for a complete
@@ -27,6 +29,14 @@ walkthrough. They separate content-only rehearsal from authorized tenant prepara
 - Lab 3 uses eight minutes across slide 11's review and slide 12's control mapping,
   not eight additional minutes. Match one observed gap to a control as learners
   finish the registry review. The proposed 25-minute core still needs rehearsal.
+- Start Lab 3 with its Copy worksheet template in a blank note; no extra handout
+  or Excel file is required. If a risk count opens an empty list, record **Count
+  shown; risk details not returned** and continue. Blank Permissions and Data & tools
+  also complete the relevant step with **not shown**; do not imply a populated list.
+- Keep the story on the fictional Beacon coordinator, three-fact brief, human review
+  and approved recipient. Slide 9 compares two possible causes of a wrong email;
+  slide 14 gives log navigation for instructor/later-module follow-up, not a new
+  learner access requirement.
 - Close with slide 16's readiness discussion: four answers, one gap and one owned
   next action. Revisit slide 9 if legitimate sign-in is treated as safe behavior.
 - The Relay Agent risk comparison is optional. November 5 evidence showed High risk
@@ -35,6 +45,7 @@ walkthrough. They separate content-only rehearsal from authorized tenant prepara
 - Test AI Reader access with a fresh learner. If unavailable, use the presenter
   evidence rather than granting write roles. Finish with feedback for the next session.
 - Handoff to the separate [Module 2 draft](../module-02/README.md).
+- The former sales slide is removed. Slide 17 is now the Module 2 handoff.
 
 ## Review and preparation gates
 

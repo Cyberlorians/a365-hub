@@ -10,34 +10,46 @@ teaching deck and numbered labs.
 **You need:** A browser, somewhere to take notes, and tested read-only registry access
 or the instructor's authorized presenter/labeled prior-run evidence.
 **Allow:** 25 core minutes including the registry activity and discussion, plus
-15 proposed onboarding minutes. No admin/write role is needed.
+12 proposed onboarding minutes, including a one-minute sign-in check. No write role
+is needed; standing AI Reader or the presenter fallback provides read-only access.
 
 ## Get ready
 
 Use the event's tested access form or privately distributed credentials. Visual
-Labs 1-2 walk through access and Outlook sign-in outside the core timebox.
+Lab 1 requests access. Slide 4 explains admin-center sign-in; Lab 2 is a one-screen,
+one-minute confirmation, not a second walkthrough. Both sit outside the core timebox.
 Never use a production account, share a TAP, or bypass a security prompt.
-Mailbox access does not prove registry access: the instructor preflights AI Reader
+The instructor preflights AI Reader
 separately. If blocked, follow the prepared presenter view; do not request write rights.
 
-Copy this worksheet into a blank note:
+The **worksheet is a plain-text note**, not a separate handout or Excel file.
+Open Notepad, OneNote or any blank note and paste the template below. The first
+screen of visual Lab 3 has the same template with a Copy button.
 
 ```text
 Evidence mode (current lab / presenter view / prior run), source and time:
+Registry counts (Total agents / Agents at risk / Agents without owners):
+Risk details, or "Count shown; risk details not returned":
+Selected agent name:
 What does the agent do?
 Who is accountable, and who actually acts?
-What task, data, tools and recipient are permitted?
+What reach is actually reported? (Permissions / Data & tools; "not shown" is valid.)
+What is the intended task/data/recipient boundary? (Not proof of effective access.)
 What evidence shows what happened?
 One gap:
 Next action and accountable person or role:
 ```
 
-## Step 1: Understand the business case (3 minutes)
+## Step 1: Understand the business case (4 minutes)
 
 **Do:** Open [Slide 6](https://cyberlorians.github.io/a365-hub/#slide-6), then
-[Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Project Beacon's intended
-task is a reviewed internal project-status email from a synthetic brief to an
-approved internal recipient. Start the worksheet's purpose and boundary answers.
+[Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Project Beacon is a
+fictional rollout, and you are its coordinator. The approved brief has three of four
+documentation tasks complete, an architecture diagram still to review, and a next
+action to confirm the review owner. The Mail Agent should draft an update; you
+review the content and one approved internal recipient before explicitly requesting
+send and checking receipt in Module 2. Module 1 reviews its registration only.
+Start the worksheet's purpose and boundary answers.
 
 **Check:** You know the useful task and four review questions. You have not claimed
 the runtime or boundary was tested merely because a record exists.
@@ -64,10 +76,14 @@ cannot establish every action. Module 3 traces authority in detail.
 [Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Start visual Lab 3:
 open **Agents > All agents > Registry** using tested access, or follow labeled
 presenter evidence. Find the prepared **Project Beacon Mail Agent** and begin the
-four-question review. Record source/time, actual counts and available fields.
+four-question review. Start with Lab 3's copyable worksheet, then record source/time,
+actual counts and available fields.
 
 **Check:** Unknowns stay unknown. A zero/dash risk count does not prove safety.
-Any optional Relay Agent flag is staged; Entra and registry risk may disagree.
+If the risk count opens an empty list, record **Count shown; risk details not
+returned** and continue. The separate Relay Agent is the staged training-risk
+example, not the Mail Agent or a live incident. The instructor can compare Entra
+Identity Protection > Risky agents later; learners need no extra role.
 Do not click Block or change anything.
 
 **Next:** Continue Lab 3 within Step 4, not as extra time.
@@ -79,8 +95,12 @@ Lab 3's read-only profile review: Details, Permissions, Data & tools, Security,
 Users and Activity where available. Record purpose, accountable people, reach and
 evidence. Match one finding to an Entra control objective.
 
-**Check:** A permission list is not proof of approved/expiring access or every
-effective grant. Unavailable tools/activity do not prove absence. A displayed
+**Check:** Permissions and Data & tools may both be blank for this record. Write
+**Permissions: not shown** and **Data & tools: not shown** as applicable.
+You are not expected to find capabilities, knowledge sources or tools.
+Ask the instructor to verify the mapped app/service principal grants in Entra and
+the deployed tool configuration; Module 2 tests the actual task.
+An available permission list is not proof of every effective grant. A displayed
 security link does not prove a control is configured or effective.
 Use a labeled fallback if the selected record or tab is unavailable.
 
@@ -95,7 +115,10 @@ gap to identity, runtime/tool, data/workload or supported network evidence.
 
 **Check:** Entra addresses identity/access, Agent 365 supported management visibility,
 Purview data controls/improvement work, and Defender investigation/response.
-Audit is not block. Opening more portals is not required in this module.
+Audit is not block. Slide 14 gives actual navigation paths for Entra sign-in and
+directory audit logs, Azure Container App Log stream, Purview Audit and Defender
+Incidents & alerts. They require separate access and appropriate logging.
+Opening more portals is not required in this module.
 
 **Next:** Step 6.
 
@@ -112,12 +135,10 @@ This is a discussion, not an interactive quiz.
 
 **Next:** Step 7.
 
-## Step 7: Keep the next action and hand off (2 minutes)
+## Step 7: Keep the next action and hand off (1 minute)
 
-**Do:** Read [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17), then
-[Slide 18](https://cyberlorians.github.io/a365-hub/#slide-18). Retain your worksheet.
-Identify the gap before discussing entitlements/costs, and share feedback for the
-next remote session.
+**Do:** Read [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17).
+Retain your worksheet and share feedback for the next remote session.
 
 **Check:** You have four answers, one gap and one owned next action. Module 2 needs
 its own runtime/mail preflight; registration is not deployment or delivery proof.
@@ -141,7 +162,7 @@ exercises after the teaching slides.
 | Step | Open | What you do | Expected result / checkpoint | Minutes |
 |---|---|---|---|---:|
 | 1 | [Slide 6](https://cyberlorians.github.io/a365-hub/#slide-6) | Frame secure adoption | See/control/protect; readiness output | 1 |
-| 2 | [Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7) | Start four answers for Project Beacon | Purpose, people, reach, evidence | 2 |
+| 2 | [Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7) | Follow the concrete Beacon email scenario | Purpose, people, reach, evidence | 3 |
 | 3 | [Slide 8](https://cyberlorians.github.io/a365-hub/#slide-8) | Recognize the four overlapping scenarios | Hosting, identity, visibility and permission differ | 1 |
 | 4 | [Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9) | Compare identity/content misuse | Valid sign-in is not safe behavior | 3 |
 | 5 | [Slide 10](https://cyberlorians.github.io/a365-hub/#slide-10) | Relate observe/govern/secure | Inventory is not complete coverage | 1 |
@@ -151,8 +172,7 @@ exercises after the teaching slides.
 | 9 | [Slide 14](https://cyberlorians.github.io/a365-hub/#slide-14) | Identify evidence sources and gaps | Unknown is not safe | 1 |
 | 10 | [Slide 15](https://cyberlorians.github.io/a365-hub/#slide-15) | Connect evidence to response | Scoped action and verification | 1.5 |
 | 11 | [Slide 16](https://cyberlorians.github.io/a365-hub/#slide-16) | Finish and discuss worksheet | Four answers, gap, owned next action | 3 |
-| 12 | [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17) | Gap-first entitlement discussion | No E7 exclusivity claim | 1 |
-| 13 | [Slide 18](https://cyberlorians.github.io/a365-hub/#slide-18) | Keep notes and give feedback | Module 2's independent runtime gate | 1 |
+| 12 | [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17) | Keep notes and give feedback | Module 2's independent runtime gate | 1 |
 
 Presenting? Use the [admin runbook](../docs/07-module-01-admin-runbook.md) and
 [lab-by-lab preparation](../docs/09-admin-lab-by-lab.md).

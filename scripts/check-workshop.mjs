@@ -51,12 +51,12 @@ for (const id of [1, 2]) {
   const directory = `slides/module-0${id}`;
   const html = read(`${directory}/index.html`);
   const slides = [...html.matchAll(/<section class="slide" data-title="([^"]+)" data-minutes="([\d.]+)" data-phase="([^"]+)"/g)];
-  assert.equal(slides.length, id === 1 ? 18 : 8, `Module ${id} slide count`);
+  assert.equal(slides.length, id === 1 ? 17 : 8, `Module ${id} slide count`);
   assert.equal([...html.matchAll(/<div class="module" data-module=/g)].length, 1, "Each page contains exactly one deck");
   assert.equal([...html.matchAll(/<template class="speaker-notes">/g)].length, slides.length, "Every slide has notes");
   const sum = entries => entries.reduce((total, match) => total + Number(match[2]), 0);
   assert.equal(sum(slides.filter(slide => slide[3] === "core")), id === 1 ? 25 : 35);
-  if (id === 1) assert.equal(sum(slides.filter(slide => slide[3] === "onboarding")), 15);
+  if (id === 1) assert.equal(sum(slides.filter(slide => slide[3] === "onboarding")), 12);
   for (const [index, script] of [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].entries())
     new vm.Script(script[1], { filename: `module-${id}-inline-${index + 1}.js` });
   assert(html.includes('href="https://cyberlorians.github.io/a365-hub/#slide-6"'));
@@ -103,12 +103,25 @@ assert(scenarioSlide.includes("These scenarios overlap") && scenarioSlide.includ
 assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
 assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
 const registrySteps = labSlides(1).filter(step => step.lab === 3);
-assert.equal(registrySteps.length, 6, "Keep the registry review to six small steps");
+assert(/three of four documentation tasks/i.test(module1) && /Three of four documentation tasks/.test(read("labs/module-02-business-agent.md")), "The concrete Beacon brief must align with the following module");
+assert.equal(registrySteps.length, 7, "Provide the worksheet, then six registry review steps");
+assert.equal(registrySteps[0].key, "r3-note", "Create the worksheet before requesting observations");
+assert.equal(registrySteps[0].snippet.code, codeBlocks("labs/module-01-security-foundation.md", /<details>\n<summary>Optional reference:/)["0.1"].code, "Worksheet must be the same copyable template as the guide");
+assert(registrySteps[0].doItems.some(item => item.includes("no separate handout or spreadsheet")), "Explain what the worksheet is");
+const signInCheck = labMeta(1).find(lab => lab.n === 2);
+assert.equal(signInCheck.minutes, 1, "Do not budget a full lab for the sign-in check");
+assert.equal(labSlides(1).filter(step => step.lab === 2).length, 1, "Do not repeat the Slide 4 sign-in walkthrough");
+assert(registrySteps.find(step => step.key === "r3-registry").doneWhen.includes("Count shown; risk details not returned"), "Risk-count/empty-list mismatch must have an explicit completion path");
+assert(registrySteps.find(step => step.key === "r3-reach").doneWhen.includes("Empty tabs complete this step"), "Missing reach metadata must not block completion");
+assert(!module1.includes("Sell the outcome. Validate the fit.") && !/ON MONDAY/.test(module1), "Remove the sales slide and unexplained incident labels");
+assert(teachingSlides(1).at(-1).title === "Establish normal before investigating abnormal", "Renumber the handoff after removing the sales slide");
+for (const location of ["Monitoring &amp; health", "Log stream", "Solutions", "Audit", "Incidents &amp; alerts"])
+  assert(module1.includes(location), `Evidence map needs concrete navigation: ${location}`);
 assert(registrySteps.at(-1).doneWhen.includes("one gap and one owned next action"), "Registry lab must produce the readiness worksheet");
 assert(!registrySteps.at(-1).link, "Lab 3 must return to the remaining Module 1 lessons, not bypass them for Module 2");
 for (const role of ["learner", "instructor"]) {
   const html = buildView({ module: 1, role }).html;
-  assert(html.includes("more than three hours") && html.includes("optional"), `Module 1 ${role}: retain the known risk gap and optional comparison`);
+  assert(html.includes("Count shown; risk details not returned") && html.includes("staged training"), `Module 1 ${role}: actionable risk gap and labeled training example`);
   assert(!/Agents at risk (?:shows|is|=) 1|the Monday story|one stolen blueprint secret|Activity starts to fill in|Labs 1 to 6/i.test(html), `Module 1 ${role}: stale attack/sync promises`);
 }
 const plan = read("docs/06-customer-learning-plan.md");
@@ -117,7 +130,7 @@ assert.equal([...plan.matchAll(/^\| [HTGBLC]\d+ \|/gm)].length, 39);
 assert(plan.includes("## 16. Per-module data and automation preparation"));
 assert(plan.includes("Review-first gate") && plan.includes("R0: public content draft"));
 const module1Steps = [...read("labs/module-01-security-foundation.md").matchAll(/^\| \d+ \| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
-assert.deepEqual(module1Steps.map(match => Number(match[1])), Array.from({ length: 13 }, (_, index) => index + 6), "Learner guide must cover Module 1 slides 6-18 in order");
+assert.deepEqual(module1Steps.map(match => Number(match[1])), Array.from({ length: 12 }, (_, index) => index + 6), "Learner guide must cover Module 1 slides 6-17 in order");
 assert.equal(module1Steps.reduce((total, match) => total + Number(match[2]), 0), 25, "Module 1 walkthrough timing");
 const module2Steps = [...read("labs/module-02-business-agent.md").matchAll(/^\| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
 assert.deepEqual(module2Steps.map(match => Number(match[1])), Array.from({ length: 8 }, (_, index) => index + 1), "Learner guide must cover all eight Module 2 slides in order");
@@ -142,8 +155,8 @@ for (const [file, count, firstSlide] of [
   });
   if (firstSlide !== null) {
     const slideNumbers = [...stepText.matchAll(/\[Slide (\d+)\]/g)].map(match => Number(match[1]));
-    assert.deepEqual(slideNumbers, Array.from({ length: firstSlide === 6 ? 13 : 8 }, (_, index) => index + firstSlide), `Visible walkthrough slide coverage in ${file}`);
-    const minutes = [...stepText.matchAll(/^## Step \d+:.*\((\d+) minutes\)/gm)].reduce((sum, match) => sum + Number(match[1]), 0);
+    assert.deepEqual(slideNumbers, Array.from({ length: firstSlide === 6 ? 12 : 8 }, (_, index) => index + firstSlide), `Visible walkthrough slide coverage in ${file}`);
+    const minutes = [...stepText.matchAll(/^## Step \d+:.*\((\d+) minutes?\)/gm)].reduce((sum, match) => sum + Number(match[1]), 0);
     assert.equal(minutes, firstSlide === 6 ? 25 : 35, `Visible walkthrough timing in ${file}`);
   }
 }
@@ -198,7 +211,8 @@ for (const config of views) {
     assert.equal(steps.length, labSlides(config.module).length, `${label} step count`);
     for (const lab of labMeta(config.module)) {
       const inLab = steps.filter(slide => slide.lab === lab.n);
-      assert(inLab.length >= 3 && inLab.length <= 6, `${label} Lab ${lab.n} should have three to six small steps`);
+      const expectedRange = config.module === 1 && lab.n === 2 ? [1, 1] : config.module === 1 && lab.n === 3 ? [7, 7] : [3, 6];
+      assert(inLab.length >= expectedRange[0] && inLab.length <= expectedRange[1], `${label} Lab ${lab.n} step count`);
       assert(inLab.at(-1).links.some(link => link.href === `./#slide-${lab.back}`), `${label} Lab ${lab.n} must lead back to its lesson`);
     }
     assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and a cue for the instructor deck`);
@@ -238,6 +252,6 @@ for (const name of markdownFiles) {
     assert(fs.existsSync(path.resolve(root, path.dirname(name), file)), `Broken local link in ${name}: ${target}`);
   }
   for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
-    assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 18), `Invalid slide link in ${name}: ${match[0]}`);
+    assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 17), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two blue modules with 18/8 teaching slides, visual student labs, instructor setup/notes, exact copyable snippets, 15/25/35 timing, source alignment, eight-module plan, 39 sources and documentation links.");
+console.log("PASS: Two blue modules with 17/8 teaching slides, one-minute sign-in check, copyable worksheet, empty-risk/permissions paths, instructor setup/notes, exact snippets, 12/25/35 timing, source alignment, eight-module plan, 39 sources and documentation links.");

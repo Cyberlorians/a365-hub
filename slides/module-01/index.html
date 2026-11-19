@@ -267,19 +267,21 @@
         <p class="small">Your pass is a credential. Never share it, and ask your instructor for a new one if it expires.</p>
         <template class="speaker-notes"><p><strong>Planned time: 4 minutes.</strong> The existing flow uses the subject "Your A365 Workshop lab access"; confirm the event's real template. Only state TAP lifetime/reusability after configuration and sign-in testing. Local notes say automated cleanup is disabled. Credentials and attendee information must never be projected or included in public materials.</p></template>
       </section>
-      <section class="slide" data-title="Sign in using the approved method" data-minutes="4" data-phase="onboarding" hidden>
-        <p class="eyebrow">Onboarding 4 of 5 / Planned</p>
-        <h2>Sign in using the approved method</h2>
-        <ol><li>Open a private browser window and go to <a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a>.</li><li>Type your lab username, not your own account.</li><li>Enter your Temporary Access Pass.</li><li>Answer <strong>No</strong> to "Stay signed in?".</li></ol>
-        <div class="callout">If anything asks you to add a sign-in method or skip a security step, stop and ask your instructor. Never share your pass.</div>
-        <template class="speaker-notes"><p><strong>Planned time: 4 minutes.</strong> Do not promise that Authenticator, device registration, or MFA prompts can never occur. Test the actual tenant's CA/TAP behavior, mailbox readiness, and required access. Support learners through approved policy-owner procedures; never grant broad admin roles as a shortcut.</p></template>
+      <section class="slide" data-title="Sign in using the approved method" data-minutes="1" data-phase="onboarding" hidden>
+
+        <p class="eyebrow">Onboarding 4 of 5 / One-minute sign-in check</p>
+        <h2>Sign in once. Check your lab account.</h2>
+        <ol><li>In a private window, open <a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a>.</li><li>Use your lab username and Temporary Access Pass.</li><li>Choose <strong>No</strong> if asked to stay signed in.</li></ol>
+        <div class="callout">Already signed in? Check the account menu and continue. The quick check below is not another full lab. If blocked by a security prompt, ask the instructor; do not bypass it.</div>
+        <template class="speaker-notes"><p><strong>Planned time: 1 minute.</strong> Teach the sign-in here once, then use the one-screen checkpoint only to confirm the lab username. Do not repeat the walkthrough. Move access failures to a helper and use the presenter fallback. Never weaken Conditional Access, MFA or device rules.</p></template>
       </section>
       <section class="slide" data-title="Confirm readiness without extra privileges" data-minutes="2" data-phase="onboarding" hidden>
-        <p class="eyebrow">Onboarding 5 of 5 / You are ready</p>
-        <h2>You are in. Now the story.</h2>
-        <div class="grid three"><div class="card"><h3>Lab account</h3><p>The Microsoft 365 admin center is open with your lab account. Keep your Temporary Access Pass private.</p></div><div class="card"><h3>Follow the workshop</h3><p>Return to these slides. Open each numbered lab when directed; no agent building or threat hunting is required in Module 1.</p></div><div class="card"><h3>Lab 3: read-only review</h3><p><a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a> &gt; Agents &gt; All agents &gt; Registry. Find Project Beacon Mail Agent.</p></div></div>
-        <p class="lede">Your lab account uses read-only AI Reader access. If blocked, ask the instructor and follow the presenter view. Do not change settings.</p>
-        <template class="speaker-notes"><p><strong>Planned time: 2 minutes.</strong> Confirm the admin center and return to the Module 1 slides. The email links to the workshop, admin-center sign-in for Lab 2 and the Microsoft 365 admin center for Lab 3. Learners use standing read-only AI Reader, not management rights. No agent build or Defender hunt is required. Move access failures to a helper and use the presenter view without granting write privileges. Admin-center access is not runtime proof.</p></template>
+
+        <p class="eyebrow">Onboarding 5 of 5 / Meet the case</p>
+        <h2>You are in. Meet Project Beacon.</h2>
+        <div class="grid three"><div class="card"><h3>The project</h3><p>Project Beacon is a fictional internal rollout. A coordinator needs to send a short weekly status update.</p></div><div class="card"><h3>The agent</h3><p>Project Beacon Mail Agent is intended to turn an approved brief into an email draft for a person to review.</p></div><div class="card"><h3>Your task today</h3><p>Review its registration and record what you can and cannot verify. You will not send email in Module 1.</p></div></div>
+        <p class="lede">Keep <a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a> open with your lab account. Lab 3 uses Agents &gt; All agents &gt; Registry with standing read-only AI Reader access. No setting changes.</p>
+        <template class="speaker-notes"><p><strong>Planned time: 2 minutes.</strong> Distinguish the fictional project from the agent named after it. Module 1 reviews a registration; Module 2 tests the task after runtime preflight. There is no mailbox exercise here. Keep the presenter fallback available. Total onboarding is 12 proposed minutes, including the one-minute sign-in check.</p></template>
       </section>
       <section class="slide" data-title="See It. Control It. Protect It." data-minutes="1" data-phase="core">
         <p class="eyebrow">Part 2 / Why agents need security</p>
@@ -290,14 +292,15 @@
         <p class="small">Takeaway: a readiness worksheet with four answers, one gap and one next action. No technical background needed.</p>
         <template class="speaker-notes"><p><strong>1 minute.</strong> An agent can invoke tools, so useful access needs an explicit boundary. Introduce see, control and protect without a product tour. Promise a readiness worksheet, not visibility of every agent or proof of complete protection. Agent 365, Entra, Purview and Defender contribute different parts. Leave object models and token flows for Module 3.</p><p><strong>Source:</strong> Microsoft Learn Agent 365 overview; Cloud-Architekt Agent Identities.</p></template>
       </section>
-      <section class="slide" data-title="One business case. Four questions." data-minutes="2" data-phase="core" hidden>
-        <p class="eyebrow">Shared case / Project Beacon</p>
-        <h2>One useful task. Four questions.</h2>
-        <div class="callout quote">Project Beacon helps draft and send a short internal project-status email.</div>
-        <p class="lede">The task is useful. Before expanding its use, we ask:</p>
-        <div class="grid four"><div class="card"><h3>What exists?</h3><p>Which agent is it, and what is it for?</p></div><div class="card"><h3>Who owns it?</h3><p>Who is responsible for it, and who acts as it?</p></div><div class="card"><h3>What can it reach?</h3><p>Which permissions and data can it use?</p></div><div class="card"><h3>What is watching it?</h3><p>What evidence shows what it did?</p></div></div>
-        <p class="small">In Lab 3, review the prepared registry record or labeled presenter evidence. In Module 2, run the approved task only after the runtime is tested.</p>
-        <template class="speaker-notes"><p><strong>2 minutes.</strong> Use the synthetic internal-mail case, not an attack demonstration. The intended boundary is a reviewed status email from a synthetic brief to one approved internal recipient. An intended boundary is not proof of enforcement. Ask the four questions and start the readiness worksheet. Distinguish the prepared registration from a tested runtime; registration alone does not establish mail capability. Module 2 establishes actual normal behavior.</p></template>
+      <section class="slide" data-title="One business case. Four questions." data-minutes="3" data-phase="core" hidden>
+
+        <p class="eyebrow">Shared case / Fictional Project Beacon rollout</p>
+        <h2>A weekly status email, not unlimited access.</h2>
+        <p class="lede">You are the project coordinator. Give <strong>Project Beacon Mail Agent</strong> an approved fictional brief: three of four documentation tasks are complete, the architecture diagram still needs review, and the next action is to confirm the review owner.</p>
+        <div class="grid three"><div class="card"><h3>1. Draft</h3><p>The agent turns those three facts into a short internal update. No customer data or inbox-reading task is needed.</p></div><div class="card"><h3>2. Review</h3><p>You check the facts, wording and the one instructor-approved internal recipient. Nothing should send before your approval.</p></div><div class="card"><h3>3. Send and verify</h3><p>In Module 2, request the reviewed send and check actual receipt. Today we review the registration only.</p></div></div>
+        <div class="callout"><strong>Four review questions:</strong> What exists? Who owns it and who acts? What can it reach? What evidence shows what happened?</div>
+        <p class="small">These are intended boundaries, not claims that the registry proves enforcement. Lab 3 includes a copyable plain-text worksheet; no separate handout or spreadsheet is needed.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Make the business task concrete before the security concepts. Project Beacon is a fictional rollout; Project Beacon Mail Agent is the agent. The learner is the coordinator, the brief contains three approved facts, and the recipient is one approved internal lab recipient. Draft, human review, explicit send and receipt are the intended Module 2 sequence, not a Module 1 runtime claim. Introduce the four questions. The worksheet is a blank note copied from Lab 3's first step.</p></template>
       </section>
       <section class="slide" data-title="Four scenarios. The same four questions." data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Agent ID scenarios / Orientation, not four deployments</p>
@@ -308,115 +311,40 @@
         <template class="speaker-notes"><p><strong>1 minute.</strong> Spend about fifteen seconds on each scenario. An agent can fit several: running in a Microsoft platform does not exclude Agent 365 visibility or federation. Do not claim universal discovery, automatic controls, or secretless operation. Use this original text orientation; the supplied picture is retained as a grounding reference pending provenance/reuse confirmation. Module 3 handles identity objects, token flows and blast radius.</p></template>
       </section>
       <section class="slide" data-title="Two attack surfaces. Two evidence planes." data-minutes="3" data-phase="core" hidden>
-        <p class="eyebrow">Risk overview / Two ways in</p>
-        <h2>Two ways in. Different evidence.</h2>
-        <div class="table-wrap"><svg class="infographic" viewBox="0 20 960 400" role="img" aria-labelledby="fig9t fig9d" xmlns="http://www.w3.org/2000/svg">
-          <title id="fig9t">How an agent is attacked: before, getting in, after</title>
-          <desc id="fig9d">An agent can be misused through compromised identity or management access, or through untrusted instructions in content. Identity and audit records answer access questions. Runtime, tool and data records help establish actual actions. The resulting activity may look like normal work.</desc>
-          <defs>
-            <marker id="ar9" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-accent)"/></marker>
-          </defs>
-          <rect x="20" y="46" width="190" height="350" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="36" y="76" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-accent)">BEFORE</text>
-          <text font-size="16" style="fill: var(--cp-text)"><tspan x="36" y="96">The attacker maps</tspan><tspan x="36" y="120">your agents,</tspan><tspan x="36" y="144">their tools and the</tspan><tspan x="36" y="168">people who</tspan><tspan x="36" y="192">administer them.</tspan></text>
-          <text font-size="14" style="fill: var(--cp-text-muted)"><tspan x="36" y="262">They may also try</tspan><tspan x="36" y="282">stolen keys or</tspan><tspan x="36" y="302">consent phishing.</tspan></text>
-          <line x1="210" y1="140" x2="248" y2="140" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
-          <line x1="210" y1="320" x2="248" y2="320" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
-          <rect x="250" y="46" width="460" height="170" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="264" y="72" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-accent)">GETTING IN: THROUGH THE IDENTITY</text>
-          <rect x="262" y="86" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-accent)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="272" y="108">Credentials or</tspan><tspan x="272" y="128">admin rights</tspan><tspan x="272" y="148">are misused</tspan></text>
-          <line x1="392" y1="124" x2="414" y2="124" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
-          <rect x="416" y="86" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-accent)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="426" y="108">Uses the agent's</tspan><tspan x="426" y="128">existing or</tspan><tspan x="426" y="148">changed access</tspan></text>
-          <line x1="546" y1="124" x2="568" y2="124" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
-          <rect x="570" y="86" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-accent)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="580" y="108">Acts outside</tspan><tspan x="580" y="128">the approved</tspan><tspan x="580" y="148">business boundary</tspan></text>
-          <text x="264" y="198" font-size="14" font-weight="700" style="fill: var(--cp-success, #4ade80)">Look in: audit log, sign-in logs, new grants</text>
-          <rect x="250" y="236" width="460" height="160" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-warning)"/>
-          <text x="264" y="262" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-warning)">GETTING IN: THROUGH THE CONTENT</text>
-          <rect x="262" y="276" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="272" y="298">An email or file</tspan><tspan x="272" y="318">the agent may read</tspan><tspan x="272" y="338">hides an order</tspan></text>
-          <line x1="392" y1="314" x2="414" y2="314" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-warning)"/>
-          <rect x="416" y="276" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="426" y="298">The agent follows</tspan><tspan x="426" y="318">it as if it were a</tspan><tspan x="426" y="338">real request</tspan></text>
-          <line x1="546" y1="314" x2="568" y2="314" stroke-width="2.5" marker-end="url(#ar9)" style="stroke: var(--cp-warning)"/>
-          <rect x="570" y="276" width="130" height="76" rx="10" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text font-size="13.5" style="fill: var(--cp-text)"><tspan x="580" y="298">A valid identity</tspan><tspan x="580" y="318">can still do</tspan><tspan x="580" y="338">the wrong thing</tspan></text>
-          <text x="264" y="381" font-size="14" font-weight="700" style="fill: var(--cp-success, #4ade80)">Look at: what the agent did, tool and data records</text>
-          <line x1="710" y1="140" x2="748" y2="140" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-accent)"/>
-          <line x1="710" y1="320" x2="748" y2="320" stroke-width="3" marker-end="url(#ar9)" style="stroke: var(--cp-warning)"/>
-          <rect x="750" y="46" width="190" height="350" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-danger)"/>
-          <text x="766" y="76" font-size="15" font-weight="700" letter-spacing="1" style="fill: var(--cp-danger)">AFTER</text>
-          <text font-size="16" style="fill: var(--cp-text)"><tspan x="766" y="96">The attacker uses</tspan><tspan x="766" y="120">the agent's own</tspan><tspan x="766" y="144">tools: its mail,</tspan><tspan x="766" y="168">its files, its</tspan><tspan x="766" y="192">connections.</tspan></text>
-          <text font-size="16" font-weight="700" style="fill: var(--cp-danger)"><tspan x="766" y="244">It looks like</tspan><tspan x="766" y="266">normal work.</tspan></text>
-          <text font-size="14" style="fill: var(--cp-text-muted)"><tspan x="766" y="316">Found by behavior,</tspan><tspan x="766" y="336">not by a signature.</tspan></text>
-        </svg></div>
-        <div class="callout quote">A correctly signed-in agent can still be steered into misusing legitimate access.</div>
-        <p class="small"><strong>How we defend:</strong> govern management rights, limit effective access, protect data and tools, and correlate the evidence.</p>
-        <p class="small">Injection need not cause a new sign-in at that moment. Later activity can still leave identity evidence. Diagram: original, based on the Cloud-Architekt three-phase model.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Contrast misuse of identity/management access with malicious instructions in content. In the mail case, an unexpected recipient is a reason to investigate, not proof of a particular attack. Ask which records show the actor and which show the actual send. Injection need not trigger a new sign-in at ingestion; later authentication and resource activity may still leave identity evidence. No live attack or new attack fixture is required here. Keep credential-abuse mechanics for Module 6 and detailed authority for Module 3.</p><p><strong>Control boundary:</strong> Entra controls authentication and authorization. Runtime, tool and data controls address different parts. Logging alone is not detection or blocking.</p><p><strong>Diagram source:</strong> original drawing based on the Cloud-Architekt Agent Identities chapter.</p></template>
+
+        <p class="eyebrow">Same mail task / Two different causes of a wrong action</p>
+        <h2>A valid sign-in does not prove a safe email.</h2>
+        <div class="grid two"><div class="card"><h3>Misused identity or management access</h3><p>Someone misuses credentials or changes access and sends a Beacon update outside the approved boundary.</p><p><strong>Check:</strong> sign-ins, changed grants and directory audit records in <a href="https://entra.microsoft.com/" target="_blank" rel="noopener noreferrer">Entra</a>.</p></div><div class="card"><h3>Misleading content</h3><p>The agent reads an untrusted brief and treats embedded directions as authority. It may send the wrong content or use the wrong recipient while correctly signed in.</p><p><strong>Check:</strong> the actual request, tool call and result in the deployed agent's runtime logs, plus the sent-message evidence.</p></div></div>
+        <div class="callout"><strong>The point:</strong> an unexpected email is a finding, not a diagnosis. Compare who authenticated with what the agent actually did.</div>
+        <p class="small">Evidence locations: Entra ID &gt; Monitoring &amp; health &gt; Sign-in logs or Audit logs; Azure portal &gt; the agent's Container App &gt; Monitoring &gt; Log stream. Slide 14 maps the other sources. These are instructor/later-module checks, not extra portals you must access now.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Use the same Beacon email for both examples. One cause concerns identity or management access; the other concerns how untrusted content influences a permitted action. A successful sign-in alone cannot distinguish them. Neither outcome is being executed here. The runtime logs may not contain complete prompts or tool records: state any collection gap. AI Reader does not grant these additional log permissions. Use the concrete locations and revisit detailed mechanics in Module 6.</p></template>
       </section>
       <section class="slide" data-title="Agent 365: observe, govern, secure" data-minutes="1" data-phase="core" hidden>
-        <p class="eyebrow">The answer / One place to start</p>
-        <h2>Observe. Govern. Secure.</h2>
-        <p class="lede">How do we catch Monday's problem sooner? Start with Agent 365.</p>
-        <div class="table-wrap"><svg class="infographic" viewBox="0 0 960 360" role="img" aria-labelledby="fig10t fig10d" xmlns="http://www.w3.org/2000/svg">
-          <title id="fig10t">Agent 365: observe, govern, secure</title>
-          <desc id="fig10d">Observe is See It: the registry shows every agent and who owns it, and would have shown the agent nobody owned. Govern is Control It: Entra ID Governance gives each agent an owner and a sponsor and limits what it can reach, so the new secret and the powerful permission get reviewed. Secure is Protect It: Purview, Entra and Defender raise risk signals on the agent, which can flag the odd sign-in and the data that moved.</desc>
-          <defs>
-            <marker id="ar10" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" style="fill: var(--cp-accent)"/></marker>
-          </defs>
-          <rect x="20" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="38" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">SEE IT</text>
-          <text x="38" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Observe</text>
-          <text font-size="16" style="fill: var(--cp-text)"><tspan x="38" y="112">Find every agent.</tspan><tspan x="38" y="134">Who owns it? What can</tspan><tspan x="38" y="156">it reach?</tspan></text>
-          <line x1="38" y1="176" x2="282" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
-          <text x="38" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
-          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="38" y="220">Shows an agent that</tspan><tspan x="38" y="240">nobody owns.</tspan></text>
-          <line x1="300" y1="147" x2="338" y2="147" stroke-width="3" marker-end="url(#ar10)" style="stroke: var(--cp-accent)"/>
-          <rect x="340" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="358" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">CONTROL IT</text>
-          <text x="358" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Govern</text>
-          <text font-size="16" style="fill: var(--cp-text)"><tspan x="358" y="112">Give it an owner and a</tspan><tspan x="358" y="134">sponsor. Limit what it</tspan><tspan x="358" y="156">can reach.</tspan></text>
-          <line x1="358" y1="176" x2="602" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
-          <text x="358" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
-          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="358" y="220">The new secret and the</tspan><tspan x="358" y="240">powerful permission get</tspan><tspan x="358" y="260">reviewed.</tspan></text>
-          <line x1="620" y1="147" x2="658" y2="147" stroke-width="3" marker-end="url(#ar10)" style="stroke: var(--cp-accent)"/>
-          <rect x="660" y="16" width="280" height="262" rx="14" stroke-width="2" style="fill: var(--cp-bg-elevated); stroke: var(--cp-accent)"/>
-          <text x="678" y="46" font-size="14" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-text-muted)">PROTECT IT</text>
-          <text x="678" y="80" font-size="28" font-weight="700" style="fill: var(--cp-accent)">Secure</text>
-          <text font-size="16" style="fill: var(--cp-text)"><tspan x="678" y="112">Watch what it does.</tspan><tspan x="678" y="134">Raise a flag on risky</tspan><tspan x="678" y="156">behavior.</tspan></text>
-          <line x1="678" y1="176" x2="922" y2="176" stroke-width="1.5" style="stroke: var(--cp-border)"/>
-          <text x="678" y="198" font-size="13" font-weight="700" letter-spacing="1.5" style="fill: var(--cp-danger)">ON MONDAY</text>
-          <text font-size="15" style="fill: var(--cp-text-muted)"><tspan x="678" y="220">Can flag the odd sign-in</tspan><tspan x="678" y="240">and the data that moved.</tspan></text>
-          <rect x="20" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text x="160" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Agent 365 registry</text>
-          <rect x="340" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text x="480" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Entra ID Governance</text>
-          <rect x="660" y="296" width="280" height="44" rx="22" stroke-width="1.5" style="fill: var(--cp-bg); stroke: var(--cp-warning)"/>
-          <text x="800" y="324" font-size="16" font-weight="700" text-anchor="middle" style="fill: var(--cp-warning)">Purview · Entra · Defender</text>
-        </svg></div>
-        <p class="small">The registry starts a review. A clean inventory is not proof of safe behavior. Risk signals need an E7 or Agent 365 license. Learn more: <a href="https://learn.microsoft.com/microsoft-agent-365/overview" target="_blank" rel="noopener noreferrer">Overview of Microsoft Agent 365</a> and <a href="https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview" target="_blank" rel="noopener noreferrer">the agent registry</a> on Microsoft Learn.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Bridge from slide 9: how would we have caught Monday's problem sooner? Agent 365 is Microsoft's control plane for agents: observe, govern, secure. It maps to the title of this module: See It, Control It, Protect It. Walk the three boxes and the 'On Monday' line in each, then the product chips: the registry in the Microsoft 365 admin center (Agents, All agents, Registry), Entra ID Governance for ownership and access, and Purview, Entra and Defender for risk signals. Viewing the inventory needs the AI Reader role and no extra license; the Risks column needs an E7 or Agent 365 license (Microsoft Learn). The 'On Monday' lines say what each step could show or flag; they are not guarantees. Counts can lag up to an hour. Do not infer low risk from a zero count. Original drawing, informed by the Agent 365 overview and the Blue16 explainer (inspiration only). Microsoft Learn facts to quote: the overview describes Agent 365 as observe, govern and secure; it is generally available for the Commercial segment since May 1, 2026, licensed per user; it works best with Microsoft E5, and at least one user must hold a qualifying Agent 365 license. Check current plans and pricing on Learn before quoting. Learners can read more at learn.microsoft.com/microsoft-agent-365/overview.</p></template>
+
+        <p class="eyebrow">Apply the three verbs to the same Beacon case</p>
+        <h2>See it. Control it. Protect it.</h2>
+        <div class="grid three"><div class="card"><h3>Observe</h3><p>Find Project Beacon Mail Agent in the registry. Read its purpose, owner and available identity information.</p></div><div class="card"><h3>Govern</h3><p>Verify who approved the email task and access. A displayed owner or permission list is only part of that review.</p></div><div class="card"><h3>Secure</h3><p>Compare the approved task with observed actions and reported risks. Investigate missing evidence or unexpected recipients.</p></div></div>
+        <div class="callout">Module 1 starts with the registry. It does not configure controls or prove the mail runtime works.</div>
+        <p class="small">Open <a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a> &gt; Agents &gt; All agents &gt; Registry. Supported visibility and risk reporting depend on integration, access and licensing. A clean inventory is not proof of safe behavior.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Apply observe, govern and secure directly to the fictional Beacon task, not a separate unexplained incident. The next slide launches the read-only review. Do not promise universal discovery, automatic enforcement or a particular risk count.</p></template>
       </section>
       <section class="slide" data-title="Review one agent, not three portals" data-minutes="3" data-phase="core" hidden>
-        <p class="eyebrow">One review / Your tenant's registry</p>
-        <h2>Review one agent.</h2>
-        <p class="lede">Review the prepared <strong>Project Beacon Mail Agent</strong> record. Registration is a starting point, not proof its runtime or controls work.</p>
-        <div class="grid four"><div class="card"><h3>1. Purpose</h3><p>What exists? Read the registry counts and find the selected agent.</p></div><div class="card"><h3>2. People</h3><p>Who owns it? Read Owner, Created by and available identity context.</p></div><div class="card"><h3>3. Reach</h3><p>What can it reach? Inspect Permissions and Data &amp; tools; record gaps.</p></div><div class="card"><h3>4. Evidence</h3><p>What is watching it? Inspect Security and Activity; ask what they prove.</p></div></div>
-        <div class="callout">A zero or missing registry risk count does not prove safety. An optional staged Relay Agent flag may be visible in Entra but absent from this registry.</div>
-        <p class="small">Use your tested read-only lab access or follow labeled presenter/prior-run evidence. Do not click Block or change anything.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Launch Lab 3 within the existing review/control-map time, not as eight extra minutes. Preflight AI Reader access; if it is unavailable, use an authorized presenter view or sanitized labeled prior-run record. Do not grant write roles. The November 5 run showed the Relay Agent High and confirmedCompromised in Entra while registry risk remained a dash/0 after more than three hours. Risk staging is an optional presenter comparison, not a learner completion gate. Do not promise sync or Risk details. Empty owner, permission, tool or activity fields are findings; they do not prove absence of ownership, access or activity. Explain which source can resolve each gap.</p></template>
+
+        <p class="eyebrow">Lab 3 / Start with a blank note</p>
+        <h2>Review one agent. Keep one note.</h2>
+        <p class="lede">Press Start Lab 3. Its first step has the <strong>Copy worksheet</strong> template: paste it into Notepad, OneNote or any blank note. No download, Excel file or separate handout is required.</p>
+        <div class="grid four"><div class="card"><h3>Purpose</h3><p>Find Project Beacon Mail Agent. Is its intended task actually described?</p></div><div class="card"><h3>People</h3><p>Read Owner, Created by and available identity information.</p></div><div class="card"><h3>Reach</h3><p>Permissions and Data &amp; tools may be blank. Write <strong>not shown</strong>; do not invent grants or tools.</p></div><div class="card"><h3>Evidence</h3><p>Read available Security and Activity fields. Keep one gap and an owned follow-up.</p></div></div>
+        <div class="callout">Risk count but empty list? Write <strong>Count shown; risk details not returned</strong> and continue. A separate Relay agent is a staged training-risk example, not the Mail Agent or a live incident.</div>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Start with the copyable worksheet, not an assumed handout. Lab 3 spans this segment and slide 12's five minutes. Learners can complete it with empty risk details and blank Permissions/Data &amp; tools. Use read-only AI Reader or a labeled presenter view. If the risk count opens an empty list, record the mismatch once and continue; the instructor can compare Entra Risky agents later. No blocking or role elevation.</p></template>
       </section>
       <section class="slide" data-title="Five Entra pillars, one control map" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Entra foundation / Controls depend on flow and support</p>
         <h2>Five controls that keep an agent accountable.</h2>
         <p class="lede">Microsoft Entra is the identity part of the story. Agent 365 provides some context, not proof every control is configured or effective.</p>
-        <div class="table-wrap"><table><thead><tr><th>What you control</th><th>Microsoft Entra feature</th><th>Question to ask</th><th>Where you saw it in Agent 365</th></tr></thead><tbody>
+        <div class="table-wrap"><table><thead><tr><th>What you control</th><th>Microsoft Entra feature</th><th>Question to ask</th><th>Registry clue, if available</th></tr></thead><tbody>
           <tr><td>Who the agent is</td><td>Entra Agent ID</td><td>Does it have its own identity, and who manages it over time?</td><td>Details tab: <strong>Entra agent ID</strong> and Identity</td></tr>
           <tr><td>Who can create and manage it</td><td>Identity Governance</td><td>Who can create it, own it and control it?</td><td>Details tab: <strong>Owner</strong> and <strong>Created by</strong></td></tr>
-          <tr><td>What it can access</td><td>Entitlement management</td><td>Why this access, for how long, approved by whom?</td><td><strong>Permissions</strong> shows grants, not approval or expiry. Verify governance separately.</td></tr>
+          <tr><td>What it can access</td><td>Entitlement management</td><td>Why this access, for how long, approved by whom?</td><td><strong>Permissions</strong> may be blank. If populated, grants still do not prove approval or expiry. Verify mapped grants and governance separately.</td></tr>
           <tr><td>When it can sign in</td><td>Conditional Access and ID Protection</td><td>Which rules and risk checks apply when it signs in?</td><td>Risk fields may be absent. Verify policy scope and results in Entra.</td></tr>
           <tr><td>Where its traffic goes</td><td>Global Secure Access</td><td>Does its traffic pass through a route we can inspect?</td><td>Not shown in the registry. A later module covers it.</td></tr>
         </tbody></table></div>
@@ -432,11 +360,17 @@
         <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Use the Mail example to ask which Exchange policy, if any, applies. Do not describe Purview as a universal prompt filter for custom agents. Compliance Manager belongs in the customer story as accountable improvement work, not an incident tool. Specific assessment templates/controls and supported interactions depend on configuration and licensing. No live policy deployment occurs in this introduction.</p></template>
       </section>
       <section class="slide" data-title="Ask what each evidence source can prove" data-minutes="1" data-phase="core" hidden>
-        <p class="eyebrow">Coverage, not assumptions</p>
-        <h2>Ask what each evidence source can prove.</h2>
-        <div class="grid two"><div class="card"><h3>Identity and access</h3><p>Who signed in? What access changed?</p></div><div class="card"><h3>What the agent did</h3><p>What was it asked, which tool ran, and what happened?</p></div><div class="card"><h3>Data</h3><p>What data was sent or opened? Did the policy warn or block?</p></div><div class="card"><h3>Network</h3><p>What crossed a route we can inspect? What can we not see?</p></div></div>
-        <p class="small">If we did not observe it, say unknown. Unknown is not the same as safe.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Remote MCP network logging does not see local MCP server traffic, and captured content does not itself prove injection detection. Signal coverage differs by platform/integration. Treat prompt/MCP content as sensitive: synthetic data, approved access, retention, and diagnostic settings. Do not assume a process/network log contains an MCP payload. Keep an unobserved action labeled unknown, not safe.</p></template>
+
+        <p class="eyebrow">Evidence map / Reference for instructor and later modules</p>
+        <h2>Where would you check the evidence?</h2>
+        <div class="table-wrap"><table><thead><tr><th>Question</th><th>Where to look</th></tr></thead><tbody>
+          <tr><td>Who signed in or changed access?</td><td><a href="https://entra.microsoft.com/" target="_blank" rel="noopener noreferrer">Entra</a> &gt; Entra ID &gt; Monitoring &amp; health &gt; <strong>Sign-in logs</strong> or <strong>Audit logs</strong></td></tr>
+          <tr><td>Which tool ran, and what was returned?</td><td><a href="https://portal.azure.com/" target="_blank" rel="noopener noreferrer">Azure portal</a> &gt; the deployed agent's Container App &gt; Monitoring &gt; <strong>Log stream</strong>. Collected detail depends on logging.</td></tr>
+          <tr><td>What workload activity was audited?</td><td><a href="https://purview.microsoft.com/" target="_blank" rel="noopener noreferrer">Purview</a> &gt; Solutions &gt; <strong>Audit</strong> &gt; Search. Requires supported events, audit access and retention.</td></tr>
+          <tr><td>Was a threat investigated?</td><td><a href="https://security.microsoft.com/" target="_blank" rel="noopener noreferrer">Defender</a> &gt; <strong>Incidents &amp; alerts</strong> &gt; Incidents or Alerts. No alert does not prove no activity.</td></tr>
+        </tbody></table></div>
+        <p class="small">Reference only: AI Reader does not grant access to all these logs. Your Module 1 task stays in the registry. Record the source to ask the instructor about; opening these portals is not a completion requirement.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Answer where, not just which product. Point to directory audit versus Purview workload audit as different records. Correlate actual actor, action and time; any source may be unavailable, delayed or lack the requested detail. Do not imply the student has the extra roles, or that a runtime Log stream is a complete transcript. Network evidence depends on an inspected route and is not required here.</p></template>
       </section>
       <section class="slide" data-title="Connect the evidence to a decision" data-minutes="1.5" data-phase="core" hidden>
         <p class="eyebrow">Defender XDR / Integrated security operations</p>
@@ -453,14 +387,7 @@
         <p class="small">Complete your readiness worksheet: four answers, one gap and one owned next action. Discuss, do not guess.</p>
         <template class="speaker-notes"><p><strong>3 minutes.</strong> Give two minutes to complete the worksheet and one to discuss. This is a readiness conversation, not an interactive quiz. Use the answer-key reference for defensible examples; accept explicit unknowns with validation steps. If learners equate sign-in success with safe behavior, revisit slide 9. Neither a registry record nor this discussion proves any control was configured or tested.</p></template>
       </section>
-      <section class="slide" data-title="Sell the outcome. Validate the fit." data-minutes="1" data-phase="core" hidden>
-        <p class="eyebrow">E7 / A connected value conversation</p>
-        <h2>Sell the outcome. Validate the fit.</h2>
-        <p class="lede">In Lab 3 you saw what an agent security review looks like. The gaps a customer cannot answer decide what they need.</p>
-        <div class="grid two"><div class="card"><h3>1. Find the gap first</h3><p>What do they already own? Which of the four questions can they not answer: what exists, who owns it, what it can reach, what is watching it?</p></div><div class="card"><h3>2. Then talk about E7</h3><p>E7 bundles Microsoft 365 E5, Microsoft 365 Copilot, Entra Suite and Agent 365. Compare the alternatives and the extra costs.</p></div></div>
-        <div class="callout">Do not sell ordinary XDR, basic DLP or ISOC as E7-only. Check entitlements and Azure costs first.</div>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Use Microsoft Learn comparison/service-description/transition sources for the actual proposal. This workshop supports a readiness assessment and scoped pilot; it is not evidence that every customer must upgrade. Do not quote Blue16 calculator assumptions as customer pricing.</p></template>
-      </section>
+
       <section class="slide" data-title="Establish normal before investigating abnormal" data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Module 1 complete / Handoff</p>
         <h2>Establish normal before investigating abnormal.</h2>
@@ -480,7 +407,7 @@
   <footer>
     <nav class="navigation" aria-label="Slide navigation">
       <button type="button" id="prev" aria-label="Previous slide">Previous</button>
-      <span id="slideCount" aria-live="polite" aria-atomic="true">Slide 6 / 18</span>
+      <span id="slideCount" aria-live="polite" aria-atomic="true">Slide 6 / 17</span>
       <button type="button" id="next" class="primary" aria-label="Next slide">Next</button>
       <label for="jump" class="small">Jump</label><select id="jump" aria-label="Jump to slide"></select>
     </nav>
@@ -490,7 +417,7 @@
     <div class="dialog-head"><h2 id="helpTitle">Review and navigation</h2><button type="button" data-close-dialog>Close</button></div>
     <p>Use the two module links to open the separate presentations. Module 1 retains its five planned onboarding slides; Start Module 1 core skips to slide 6.</p>
     <ul><li><kbd>Right</kbd> / <kbd>PageDown</kbd>: next; <kbd>Left</kbd> / <kbd>PageUp</kbd>: previous</li><li><kbd>Home</kbd> / <kbd>End</kbd>: first / last slide in this module</li><li><kbd>N</kbd>: presenter notes; <kbd>R</kbd>: preflight; <kbd>F</kbd>: fullscreen when supported</li><li><kbd>?</kbd>: help; <kbd>Esc</kbd>: close a dialog or notes</li></ul>
-    <p>Touch: horizontal swipe outside controls/tables. Print produces all 18 slides in this module. Use the browser's zoom if needed.</p>
+    <p>Touch: horizontal swipe outside controls/tables. Print produces all 17 slides in this module. Use the browser's zoom if needed.</p>
     <p>Deep links: <code>#slide-6</code> for Module 1 core; <code>/module-02/#slide-1</code> for Module 2.</p>
     <p><strong>Review focus:</strong> Is the pitch clear? Is the Module 2 task useful? What should change before lab preparation? Nothing in this file creates users, sends mail, or calls a tenant.</p>
   </dialog>

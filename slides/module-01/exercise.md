@@ -20,3 +20,9 @@ A zero/dash risk count does not establish safety. The optional staged Relay Agen
 flag may appear in Entra but not the registry. Accept explicit unknowns with a
 concrete follow-up; do not invent evidence. No live attack or policy change is
 required. Detailed authority and compromise mechanics belong in Modules 3 and 6.
+
+The worksheet is the copyable plain-text template at the start of Lab 3, not a
+separate spreadsheet. For a count that opens an empty list, accept **Count shown;
+risk details not returned**. For blank Permissions/Data & tools, accept **not shown**
+and a follow-up to verify mapped grants, deployed tools and the Module 2 task.
+The Relay record is staged training risk, not proof of a live incident.

@@ -1,8 +1,9 @@
 # Module 1: See It. Control It. Protect It.
 
 **Status:** Reworked content draft for review; not independently rehearsed or tenant-validated.
-**Core:** 25 proposed minutes / thirteen slides. **Onboarding:** five separate slides /
-15 proposed minutes. Presenter-led; no learner admin roles.
+**Core:** 25 proposed minutes / twelve slides. **Onboarding:** five separate slides /
+12 proposed minutes, including the one-minute sign-in check. Presenter-led with
+standing read-only AI Reader or labeled presenter evidence; no learner write roles.
 
 [Open Module 1 core](https://cyberlorians.github.io/a365-hub/#slide-6) |
 [Labs](https://cyberlorians.github.io/a365-hub/?view=lab) |
@@ -15,7 +16,7 @@
 Explain the dual attack surfaces, identify the purpose/accountability/access/evidence
 boundary, and connect Entra's five pillars, Agent 365, Purview, and Defender/ISOC.
 The Agent Identities chapter anchors risk -> control -> evidence -> decision.
-E7 fit follows the customer gap, not an unsupported exclusivity claim.
+The output is a plain-text readiness worksheet copied at the start of Lab 3.
 
 ## Package
 
@@ -27,7 +28,7 @@ in the labs and the instructor deck.
 
 | File | Use |
 |---|---|
-| [index.html](index.html) | Student presentation: 18 teaching slides and numbered visual labs; presenter tools hidden |
+| [index.html](index.html) | Student presentation: 17 teaching slides, two labs and a one-minute sign-in check; presenter tools hidden |
 | [Instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) | Separate instructor deck with show/say scripts, lab cues and recovery |
 | [slides.md](slides.md) | Aligned slide content |
 | [speaker-notes.md](speaker-notes.md) | Per-slide timing and talk track |
@@ -44,13 +45,13 @@ in the labs and the instructor deck.
 
 | Segment | Minutes |
 |---|---:|
-| Customer outcome / shared case | 3 |
+| Customer outcome / shared case | 4 |
 | Agent action model / dual attack surface | 4 |
 | Four questions / one agent review | 4 |
 | Five Entra pillars | 5 |
 | Data/runtime/SOC loop | 4 |
 | Knowledge check | 3 |
-| E7 fit / Module 2 handoff | 2 |
+| Module 2 handoff | 1 |
 | **Total** | **25** |
 
 The first five slides preserve the access sequence; Lab 1 includes the event access
@@ -59,6 +60,16 @@ prompts require actual tenant testing. Lab 3 reviews a prepared registry record 
 tested AI Reader access, an authorized presenter view, or labeled prior-run evidence.
 Registration is not runtime proof; staged risk is optional and registry sync is not
 guaranteed.
+
+**November 19 student-feedback revision:** Lab 2 is a single-screen check, not an
+eight-minute repeated sign-in lab. The Beacon case now names the coordinator,
+fictional brief, review, recipient and intended send/receipt sequence. Slide 9
+explains why authentication alone is insufficient; slide 14 gives actual log
+navigation paths for instructor/later-module follow-up. Lab 3 starts with a
+copyable note template and accepts blank reach metadata and count/empty-risk-list
+mismatches as observations. Relay is explicitly the staged training example.
+The sales slide was removed; the handoff is now slide 17. Its minute moves to the
+scenario, preserving the 25-minute core.
 
 **November 13 alignment:** Slide 8 introduces the four overlapping Agent ID scenarios
 in original text. The core stays introductory: detailed authority moves to Module 3

@@ -229,7 +229,7 @@ function slidesFor({ module, role }) {
   const first = {
     key: "intro", title: intro.title, number: 0, total: 0, eyebrow: `Module ${module} / Labs / Start here`, heading: "You need",
     lead: intro.lead, doItems: intro.need, doneWhen: "Each lab is placed after its lesson in the slides. Stop and ask your instructor whenever something does not match the picture.",
-    visual: fig("Your labs", grid(meta.map(lab => [`Lab ${lab.n}`, `${lab.title}. About ${lab.minutes} minutes.`])))
+    visual: fig("Your labs", grid(meta.map(lab => [`Lab ${lab.n}`, `${lab.title}. About ${lab.minutes} minute${lab.minutes === 1 ? "" : "s"}.`])))
   };
   const out = [first];
   for (const lab of meta) {
@@ -316,9 +316,9 @@ export function buildModule(module) {
     slideNumber++;
     const lab = labMeta(module).find(item => item.after === slideNumber);
     if (!lab) return whole;
-    return `${opening}\n        <p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>Do this now: ${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minutes.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>`;
+    return `${opening}\n        <p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>Do this now: ${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minute${lab.minutes === 1 ? "" : "s"}.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>`;
   });
-  assert.equal(slideNumber, module === 1 ? 18 : 8, "Every teaching slide must be considered for a lab callout");
+  assert.equal(slideNumber, module === 1 ? 17 : 8, "Every teaching slide must be considered for a lab callout");
   const style = `<style>
     .lab-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin: 8px 0 20px; padding: 16px 20px; border: 2px solid var(--cp-accent); border-radius: 16px; background: var(--cp-accent-soft); font-size: 20px; }
     .lab-badge { padding: 4px 10px; border-radius: 8px; background: var(--cp-accent); color: var(--cp-accent-fg); font-weight: 750; letter-spacing: 1px; font-size: 14px; }

@@ -75,7 +75,9 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > **Verified so far (Module 1, Labs 1-2):** a test learner submitted the live access form
 > (https://aka.ms/a365hub), the provisioner Logic App created the account and emailed the
 > access details about two minutes later, and that test user signed in to Outlook with the
-> Temporary Access Pass. The Lab 2 screenshots are from that run. Module 1 Lab 3 uses a
+> Temporary Access Pass. That was a historical sign-in test, not the current learner
+> route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
+> one-minute account check. Module 1 Lab 3 uses a copyable plain-text worksheet and a
 > prepared registry review (admin observations from November 5); fresh-learner AI Reader
 > access and timing still need event-specific validation. The separate staged Relay risk
 > was visible in Entra but not the registry after more than three hours. Module 2 runtime,

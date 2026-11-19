@@ -2,7 +2,7 @@
 
 Aligned November 13, 2026, with the customer-facing outline. This is the plain-text
 teaching reference for the HTML deck, not proof of tenant readiness.
-Five onboarding slides take 15 proposed minutes; the thirteen-slide core takes 25.
+Five onboarding slides take 12 proposed minutes; the twelve-slide core takes 25.
 
 ## Slide 1 - Get your lab account
 
@@ -32,22 +32,23 @@ submitting again. Keep credentials private.
 
 ## Slide 4 - Sign in using the approved method
 
-**Planned time:** 4 minutes (onboarding).
+**Planned time:** 1 minute (onboarding).
 
 Open [Microsoft 365 admin center](https://admin.microsoft.com/) in a private window. Use your lab username and TAP, and answer No to
-Stay signed in. Lab 2 walks through sign-in. If prompts require a different method
+Stay signed in. Lab 2 is a one-screen, one-minute check of the signed-in lab account,
+not another full sign-in walkthrough. If prompts require a different method
 or a security change, stop and ask the instructor; do not bypass policy.
 
 ## Slide 5 - Confirm readiness without extra privileges
 
 **Planned time:** 2 minutes (onboarding).
 
-Confirm the Microsoft 365 admin center is open with your lab account and keep your TAP private. Return to the
-Module 1 slides and open each numbered lab when directed. In Lab 3, open Microsoft
-365 admin center > Agents > All agents > Registry and find Project Beacon Mail
-Agent. Your lab account uses standing read-only AI Reader access, not management
-rights. If blocked, ask the instructor and follow the presenter view. Module 1
-does not require building an agent or running Advanced Hunting.
+Project Beacon is a fictional internal rollout. A project coordinator needs a weekly
+status email; Project Beacon Mail Agent is intended to draft it from an approved
+brief for human review. Module 1 reviews the registration; it does not send mail.
+Keep the admin center open with standing read-only AI Reader access. Lab 3 uses
+Agents > All agents > Registry. If blocked, follow the presenter view without write
+privileges.
 
 ## Slide 6 - See It. Control It. Protect It.
 
@@ -64,9 +65,16 @@ not proof that every agent or control is visible.
 
 ## Slide 7 - One business case. Four questions.
 
-**Planned time:** 2 minutes (core).
+**Planned time:** 3 minutes (core).
 
-Project Beacon helps draft and send a short internal project-status email.
+You are Project Beacon's coordinator. The approved fictional brief contains three
+facts from Module 2: three of four documentation tasks are complete, the architecture
+diagram needs review, and the next action is to confirm the review owner.
+The agent drafts an internal update from those facts. You review the wording and
+one instructor-approved internal recipient, explicitly request the reviewed send,
+then verify actual receipt in Module 2. No customer data or inbox-reading task is
+needed. These are intended boundaries, not claims of enforced permissions.
+
 Before expanding its use, ask:
 
 1. What exists: which agent and purpose?
@@ -74,9 +82,9 @@ Before expanding its use, ask:
 3. What can it reach: which permissions, tools and data?
 4. What is watching it: which evidence shows what happened?
 
-The intended task uses a synthetic brief, reviewed email and approved internal
-recipient. Intended limits are not demonstrated enforcement. Lab 3 reviews a prepared
-record; Module 2 runs the task only after runtime preflight.
+Lab 3 reviews a prepared record and provides the copyable worksheet for any blank
+note; no separate spreadsheet or handout is needed. Module 2 runs the task only
+after runtime preflight.
 
 ## Slide 8 - Four scenarios. The same four questions.
 
@@ -104,40 +112,51 @@ This original text overview does not reproduce the supplied reference picture.
 - **Content manipulation:** Untrusted instructions in permitted content can steer
   a correctly signed-in agent. Inspect actual runtime, tool and data actions.
 
-An unexpected recipient is a reason to investigate, not proof of one attack path.
-Injection need not cause a new sign-in at ingestion; later authentication/resource
-activity may still leave identity evidence. Logging is not detection or blocking.
-No live attack occurs here; detailed mechanics belong in Modules 3 and 6.
+The point: a valid sign-in does not prove a safe email. An unexpected Beacon email
+could result from misused identity/access or misleading content, and is a reason to
+investigate, not proof of either cause.
+
+For identity changes, use Entra > Entra ID > Monitoring & health > Sign-in logs or
+Audit logs. For the actual action, ask the instructor to check the deployed agent's
+Container App > Monitoring > Log stream and sent-message evidence. Logs may not
+contain a complete transcript. Slide 14 maps the other sources; these are instructor
+or later-module checks, not extra learner access requirements. No live attack occurs.
 
 ## Slide 10 - Agent 365: observe, govern, secure
 
 **Planned time:** 1 minute (core).
 
-Use Agent 365 to review supported inventory, accountability and security context.
-Discovery, registration and actual activity visibility are separate checks.
-A clean inventory is not proof of safe behavior.
+Apply observe, govern and secure to the same Beacon case: find the Mail Agent and
+owner; verify approval for the task and access; compare actual actions and reported
+risks with that boundary. Use the same task throughout, not a separate unexplained incident.
+Module 1 starts in Microsoft 365 admin center > Agents > All agents > Registry.
+Discovery, registration and runtime visibility are separate checks; a clean inventory
+is not proof of safe behavior.
 
 ## Slide 11 - Review one agent, not three portals
 
 **Planned time:** 3 minutes (core).
 
-Review the prepared Project Beacon Mail Agent record using tested AI Reader access,
-an authorized presenter view, or labeled prior-run evidence.
+Start Lab 3 by copying its worksheet template into Notepad, OneNote or any blank
+note. No separate handout or spreadsheet is needed. Review the prepared
+Project Beacon Mail Agent record using tested AI Reader access, an authorized
+presenter view, or labeled prior-run evidence.
 
 | Question | Look for |
 |---|---|
 | What exists? | Actual registry counts and selected record |
 | Who owns it? | Owner, Created by and available identity context |
-| What can it reach? | Permissions and Data & tools, including missing metadata |
+| What can it reach? | Permissions and Data & tools may be blank; write not shown |
 | What is watching it? | Security and Activity, and what they actually establish |
 
 Lab 3 fits across this review and the control-map segment; it is not eight extra
 minutes. Record source/time and unknowns. Do not click Block or change settings.
 Registration does not prove a working runtime.
 
-Risk staging is optional. On November 5, Entra showed the separate Relay Agent as
-High/confirmedCompromised, while registry risk stayed a dash/0 after more than three
-hours. A zero/missing registry count does not prove safety or promise eventual sync.
+If the Agents at risk count opens an empty list, write **Count shown; risk details
+not returned** and continue. Do not wait or repeatedly refresh. The separate Relay
+agent is a staged training-risk example, not the Mail Agent or a live incident.
+The instructor can follow up in Entra Identity Protection > Risky agents.
 
 ## Slide 12 - Five Entra pillars, one control map
 
@@ -147,7 +166,7 @@ hours. A zero/missing registry count does not prove safety or promise eventual s
 |---|---|---|
 | Identity and lifecycle | Entra Agent ID | Verify the actual identity and lifecycle owner |
 | Creators/managers | Identity Governance | A displayed owner is not a complete technical-rights review |
-| Permissions | Entitlement management | Grants alone do not prove approval or expiry |
+| Permissions | Entitlement management | Permissions may be blank; grants alone do not prove approval or expiry |
 | Access protection | Conditional Access and ID Protection | Verify actual policy scope and result in Entra |
 | Supported traffic | Global Secure Access | Coverage requires the actual supported forwarded/inspected route |
 
@@ -166,12 +185,16 @@ not certification. Module 5 tests a scoped control, not universal prompt protect
 
 **Planned time:** 1 minute (core).
 
-- Identity/access: who signed in and which grants changed?
-- Runtime/tools: which instruction, tool and result?
-- Data/workload: what was sent/accessed and which policy result?
-- Supported network: what crossed the inspected route, and what is unseen?
+| Question | Evidence location |
+|---|---|
+| Who signed in or changed access? | [Entra](https://entra.microsoft.com/) > Entra ID > Monitoring & health > Sign-in logs or Audit logs |
+| Which tool ran and what happened? | [Azure portal](https://portal.azure.com/) > the deployed agent's Container App > Monitoring > Log stream; collected detail depends on logging |
+| Which workload activity was audited? | [Purview](https://purview.microsoft.com/) > Solutions > Audit > Search; supported events, audit access and retention required |
+| Was a threat investigated? | [Defender](https://security.microsoft.com/) > Incidents & alerts > Incidents or Alerts |
 
-Unobserved means unknown, not safe. Captured content is not itself injection detection.
+Reference for instructor/later modules only. AI Reader does not grant all these log
+permissions. Module 1 students stay in the registry and record a follow-up source.
+Unobserved means unknown, not safe; none of these records guarantees complete coverage.
 
 ## Slide 15 - Connect the evidence to a decision
 
@@ -197,15 +220,7 @@ Complete and discuss the readiness worksheet, not an interactive quiz:
 Use two minutes to write and one to discuss. Unknowns with concrete validation steps
 are valid. No control is claimed tested by this discussion.
 
-## Slide 17 - Sell the outcome. Validate the fit.
-
-**Planned time:** 1 minute (core).
-
-Find the customer gap before discussing E7. Compare existing subscriptions,
-entitlements, alternatives and Azure/ingestion costs. Ordinary XDR, basic DLP and
-ISOC are not E7-exclusive.
-
-## Slide 18 - Establish normal before investigating abnormal
+## Slide 17 - Establish normal before investigating abnormal
 
 **Planned time:** 1 minute (core).
 
