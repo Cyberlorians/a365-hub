@@ -126,7 +126,16 @@ account outside its manifest. It never prints TAP values to the console.
 
 **Next:** Step 5.
 
-## Step 5: Test both accounts before inviting learners
+## Step 5: Test Module 1 access before inviting learners
+
+Sign in to [Microsoft 365 admin center](https://admin.microsoft.com/) in a private
+browser profile using a learner account and TAP. Confirm the account, then check
+**Agents > All agents > Registry** with standing read-only **AI Reader**.
+If access fails, investigate before class and keep the presenter fallback available.
+Module 1 does not require Outlook or an open mailbox.
+
+The following mailbox checks are optional preparation for **Module 2**, not a
+Module 1 learner prerequisite:
 
 **Do:**
 

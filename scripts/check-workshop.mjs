@@ -15,7 +15,7 @@ for (const name of ["provisioner-forms.template.json", "provisioner.template.jso
   const definition = workflow.properties.definition;
   const actions = definition.actions;
   const welcome = actions.Send_email.inputs.body.Body;
-  assert(welcome.includes("https://cyberlorians.github.io/a365-hub/") && welcome.includes("https://outlook.office.com/mail/") && welcome.includes("https://admin.microsoft.com/"), `${name}: welcome email must follow Module 1`);
+  assert(welcome.includes("https://cyberlorians.github.io/a365-hub/") && welcome.includes("https://admin.microsoft.com/") && !/outlook\.office|>Outlook</i.test(welcome), `${name}: welcome email must link directly to the admin center, not Outlook`);
   assert(welcome.includes("lifetimeInMinutes") && welcome.includes("Agents &gt; All agents &gt; Registry"), `${name}: actual TAP lifetime and registry route`);
   assert(!/no phone needed|Start building|copilotstudio\.microsoft\.com|security\.microsoft\.com|office365\.us|graph\.microsoft\.us/i.test(welcome), `${name}: no unrelated lab links or sign-in guarantees`);
   assert.equal(template.parameters.aiReaderGroupId.minLength, 36, `${name}: require explicit target group`);
@@ -161,6 +161,7 @@ assert(!workflow.includes("cp slides/module-01/index.html") && !workflow.include
 for (const module of [1, 2]) {
   const html = buildModule(module);
   if (module === 1) {
+    assert(!/outlook\.office|lab1-07-privacy-prompt|lab1-08-inbox-open/i.test(html + buildView({ module: 1, role: "learner" }).html), "Module 1 students must sign into the admin center without mailbox steps");
     for (const page of [html, buildView({ module: 1, role: "learner" }).html, buildView({ module: 1, role: "instructor" }).html]) {
       assert(!/GCC High|US Government|AzureUSGovernment|office365\.us|graph\.microsoft\.us/i.test(page), "Module 1 must use only this workshop's sign-in route");
     }

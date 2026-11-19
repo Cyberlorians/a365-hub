@@ -34,7 +34,7 @@ submitting again. Keep credentials private.
 
 **Planned time:** 4 minutes (onboarding).
 
-Open Outlook in a private window. Use your lab username and TAP, and answer No to
+Open [Microsoft 365 admin center](https://admin.microsoft.com/) in a private window. Use your lab username and TAP, and answer No to
 Stay signed in. Lab 2 walks through sign-in. If prompts require a different method
 or a security change, stop and ask the instructor; do not bypass policy.
 
@@ -42,7 +42,7 @@ or a security change, stop and ask the instructor; do not bypass policy.
 
 **Planned time:** 2 minutes (onboarding).
 
-Confirm your lab inbox is open in Outlook and keep your TAP private. Return to the
+Confirm the Microsoft 365 admin center is open with your lab account and keep your TAP private. Return to the
 Module 1 slides and open each numbered lab when directed. In Lab 3, open Microsoft
 365 admin center > Agents > All agents > Registry and find Project Beacon Mail
 Agent. Your lab account uses standing read-only AI Reader access, not management

@@ -124,7 +124,7 @@ Keep it internal to the workshop tenant. The Form owner triggers the flow.
 - To: the presenter / attendee's provided email
 - Body: their UPN, the TAP value `@{body('Issue_TAP')?['temporaryAccessPass']}`,
   the actual issued lifetime, the [Module 1 student workshop](https://cyberlorians.github.io/a365-hub/),
-  [Outlook for Lab 2](https://outlook.office.com/mail/) in a private window, and
+  [Microsoft 365 admin center for Lab 2](https://admin.microsoft.com/) in a private window, and
   [Microsoft 365 admin center](https://admin.microsoft.com/) for Lab 3:
   **Agents > All agents > Registry > Project Beacon Mail Agent** (read-only).
   Do not send students to Copilot Studio or Defender hunting for Module 1.
