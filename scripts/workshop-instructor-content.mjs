@@ -25,7 +25,7 @@ export function teachingSlides(module) {
 
 const plan = {
   1: {
-    prep: ["a-route", "a-formcheck", "a-cloud", "a-start", "a-files", "a-prepare", "a-group", "a-tap", "a-skus", "a-users", "a-signin", "a-renew", "a-seed"],
+    prep: ["a-route", "a-formcheck", "a-tenant", "a-start", "a-files", "a-prepare", "a-group", "a-tap", "a-skus", "a-users", "a-signin", "a-renew", "a-seed"],
     rhythm: "a-teach", recovery: { 2: ["a-l1"], 3: ["a-l2"] }, after: ["a-close"]
   },
   2: {
@@ -40,7 +40,7 @@ const say = {
   "1.2": "I am posting the form link in chat. It needs your name and an email you can open right now; company is optional. Tick I agree and submit once. If you submit twice you can end up with two accounts. Now run Lab 1.",
   "1.3": "In two to three minutes an email arrives with your username and a one-time pass, valid for eight hours. If you do not see it, check Junk. Treat the pass like a password: do not paste it into chat.",
   "1.4": "Now sign in. Use a private window and the lab username, not your own account. Follow the prompts. If anything asks you to weaken a security setting or add a sign-in method, stop and tell me.",
-  "1.5": "Nobody here needs admin rights. You have an isolated account, access only to what the exercise needs, and someone to ask for help. Please confirm you have an open inbox, then we start the content.",
+  "1.5": "Confirm your lab inbox is open and return to the Module 1 slides. In Lab 3, use the Microsoft 365 admin center, Agents, All agents, Registry to review Project Beacon Mail Agent. The lab account has standing read-only AI Reader access, not agent-management rights. No Copilot Studio build or Defender hunt is required in Module 1. If blocked, ask for help and follow the presenter view; do not request write privileges.",
   "1.6": "An agent can read, decide and use tools with real access. We want useful work with clear boundaries. See it: know purpose and accountability. Control it: approve access, data and tools. Protect it: check evidence and act on gaps. You leave with a readiness worksheet, not proof of complete protection. No technical background is needed.",
   "1.8": "Four scenarios help us ask better questions. Agent 365 is a management view for supported agents. Microsoft runtimes such as Copilot Studio or Foundry host agents. An externally hosted agent can call Microsoft APIs. Cross-cloud workflows can use federation, an approved trust, to request access. These scenarios overlap: hosting, identity, registry visibility and permission are different things. Federation alone grants no resource access. We trace actual authority in Module 3; we do not deploy four agents today.",
   "1.9": "Two kinds of misuse need different evidence. Someone can misuse credentials or management access. Or untrusted content can steer an agent that is correctly signed in. In our mail example, an unexpected recipient needs investigation; it is not proof of a particular attack. Ask who acted, which tool ran and what was sent. Injection need not cause a new sign-in at ingestion, but later identity evidence can still help. No live attack is needed here; detailed attack mechanics belong in Module 6.",

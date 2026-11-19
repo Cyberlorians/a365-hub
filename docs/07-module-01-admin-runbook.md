@@ -158,6 +158,80 @@ Return here after that guide's live test passes.
 
 ## Step 6: Run Module 1 with the class
 
+### Form-created learners: standing AI Reader access
+
+The form/Logic App places users in the dynamic **A365-Workshop-Attendees** group.
+That group can supply licenses and Conditional Access targeting, but a dynamic
+group cannot hold an Entra directory role. Do not replace it or duplicate its
+licenses/policies.
+
+An authorized Privileged Role Administrator can run the following against the
+approved lab tenant. Review the source membership first: AI Reader exposes
+organization-wide agent information. This creates a separate **Assigned**,
+role-assignable **A365-Workshop-AI-Readers** security group, assigns active standing
+**AI Reader**, and copies enabled user members for initial backfill. Learners do not activate PIM.
+
+Preview with `.\scripts\Sync-WorkshopAIReaders.ps1 -TenantId $tenant -WhatIf`.
+Apply with `.\scripts\Sync-WorkshopAIReaders.ps1 -TenantId $tenant`.
+
+**Normal onboarding is automatic:** the provisioner now runs **Create_user ->
+Issue_TAP -> Add_AI_Reader_Group_Member -> Send_email**. New students are added
+directly to the Assigned group; no PIM activation or recurring copy script is
+required. The dynamic licensing/CA group remains unchanged.
+
+The sync command above is for backfill/recovery only, not the normal onboarding
+path. It does not remove members. Review removals/expiry separately.
+
+For an existing deployment, use
+[Enable-WorkshopAIReaderOnboarding.ps1](../scripts/Enable-WorkshopAIReaderOnboarding.ps1)
+with the approved tenant, exact workflow resource ID and AI Reader group ID.
+Preview with `-WhatIf`. It saves a private workflow backup and preserves existing
+form, email, state and connection settings.
+
+**Privilege boundary:** automatic role-assignable membership requires Graph
+application permissions **GroupMember.ReadWrite.All** and
+**RoleManagement.ReadWrite.Directory** on a dedicated user-assigned membership
+identity attached to the provisioner. The original system-assigned identity keeps
+its account/TAP/mail permissions, not these two additional grants. The latter is
+tenant-wide role-management authority, not a group-scoped permission. This
+explicitly approved automation is more privileged than ordinary account creation.
+Restrict workflow editors and form access; do not copy this design into production
+without a privileged-onboarding review. Membership failure stops the access email;
+inspect the failed action rather than telling the learner their access is ready.
+
+Verify the role is active, not eligible; then test a fresh learner session at
+**Microsoft 365 admin center > Agents > All agents > Registry**. Have existing
+learners sign out and back in after propagation. Use the presenter view until
+the learner check passes.
+
+See [Microsoft's role-assignable group restrictions](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/groups-concept).
+
+**November 18 operator verification:** The separate group was created in the
+authorized lab tenant with `isAssignableToRole=true` and Assigned membership.
+The source contained one user; enabled source membership and an active tenant-wide
+AI Reader assignment were read back successfully. A second sync passed without
+requiring changes. This verifies directory configuration, not a fresh learner's
+browser session. The original dynamic group was not modified. The provisioner
+was subsequently updated for automatic membership as described above; cleanup
+remains unchanged.
+
+**November 18 end-to-end verification:** A synthetic form submission completed
+account creation, TAP issuance, automatic AI Reader group membership, the explicit
+membership-success check and the email-send action. Membership and the group's
+active standing AI Reader assignment were independently verified through Graph.
+The successful run was `08584065721540637307178060889CU58`.
+Its membership request failed on attempt 0 during replication and succeeded on
+attempt 1, demonstrating the retry path rather than just a first-attempt success.
+All synthetic test users were removed afterward; the real learner remained.
+Email-action success is not a claim of inbox receipt or learner browser access.
+
+The first test exposed cached-permission behavior on the existing system identity.
+The membership action now uses a dedicated user-assigned identity permissioned
+before its first use. A second test exposed Graph's new-user replication delay.
+The workflow retries only the observed resource-not-yet-present Graph 400 response,
+up to twelve attempts/three minutes, and explicitly fails before email on other
+errors or exhaustion. No perpetual retries or success-shaped fallback is used.
+
 **Do:** Give each learner only their own lab username/TAP through an approved private
 channel. Keep the recipient account with the facilitator. Then:
 

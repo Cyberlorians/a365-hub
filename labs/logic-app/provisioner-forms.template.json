@@ -18,6 +18,12 @@
       "type": "int",
       "defaultValue": 480
     },
+    "aiReaderGroupId": {
+      "type": "string",
+      "minLength": 36,
+      "maxLength": 36,
+      "metadata": { "description": "Assigned role-assignable group with active standing AI Reader access. Not the dynamic licensing group." }
+    },
     "formId": {
       "type": "string",
       "metadata": { "description": "Microsoft Form ID (the id= value from the form URL). Use Get-FormMetadata.ps1 to discover it." }
@@ -46,8 +52,14 @@
       "name": "[parameters('logicAppName')]",
       "location": "[parameters('location')]",
       "identity": {
-        "type": "SystemAssigned"
+        "type": "SystemAssigned, UserAssigned",
+        "userAssignedIdentities": {
+          "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', concat(parameters('logicAppName'), '-AIReader-Membership'))]": {}
+        }
       },
+      "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', concat(parameters('logicAppName'), '-AIReader-Membership'))]"
+      ],
       "properties": {
         "state": "Enabled",
         "definition": {
@@ -61,6 +73,14 @@
             "tapLifetimeMinutes": {
               "type": "Int",
               "defaultValue": "[parameters('tapLifetimeMinutes')]"
+            },
+            "aiReaderGroupId": {
+              "type": "String",
+              "defaultValue": "[parameters('aiReaderGroupId')]"
+            },
+            "membershipIdentityResourceId": {
+              "type": "String",
+              "defaultValue": "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', concat(parameters('logicAppName'), '-AIReader-Membership'))]"
             },
             "formId": {
               "type": "String",
@@ -143,6 +163,54 @@
                 }
               }
             },
+            "Add_AI_Reader_Group_Member": {
+              "type": "Until",
+              "runAfter": { "Issue_TAP": [ "Succeeded" ] },
+              "expression": "@or(equals(outputs('Add_AI_Reader_Membership_Request')?['statusCode'], 204), not(and(equals(outputs('Add_AI_Reader_Membership_Request')?['statusCode'], 400), equals(body('Add_AI_Reader_Membership_Request')?['error']?['code'], 'Request_BadRequest'), contains(coalesce(body('Add_AI_Reader_Membership_Request')?['error']?['message'], ''), 'do not exist'))))",
+              "limit": { "count": 12, "timeout": "PT3M" },
+              "operationOptions": "FailWhenLimitsReached",
+              "actions": {
+                "Add_AI_Reader_Membership_Request": {
+                  "type": "Http",
+                  "runAfter": {},
+                  "inputs": {
+                    "method": "POST",
+                    "uri": "@concat('https://graph.microsoft.com/v1.0/groups/', parameters('aiReaderGroupId'), '/members/$ref')",
+                    "headers": { "Content-Type": "application/json" },
+                    "body": {
+                      "@@odata.id": "@concat('https://graph.microsoft.com/v1.0/directoryObjects/', body('Create_user')?['id'])"
+                    },
+                    "authentication": {
+                      "type": "ManagedServiceIdentity",
+                      "identity": "@parameters('membershipIdentityResourceId')",
+                      "audience": "https://graph.microsoft.com"
+                    }
+                  }
+                },
+                "Wait_for_Group_Replication": {
+                    "type": "If",
+                    "runAfter": { "Add_AI_Reader_Membership_Request": [ "Succeeded", "Failed", "TimedOut" ] },
+                    "expression": "@and(equals(outputs('Add_AI_Reader_Membership_Request')?['statusCode'], 400), equals(body('Add_AI_Reader_Membership_Request')?['error']?['code'], 'Request_BadRequest'), contains(coalesce(body('Add_AI_Reader_Membership_Request')?['error']?['message'], ''), 'do not exist'))",
+                    "actions": { "Replication_Delay": { "type": "Wait", "runAfter": {}, "inputs": { "interval": { "count": 10, "unit": "Second" } } } },
+                    "else": { "actions": {} }
+                }
+              }
+            },
+            "Confirm_AI_Reader_Membership": {
+                "type": "If",
+                "runAfter": { "Add_AI_Reader_Group_Member": [ "Succeeded" ] },
+                "expression": "@equals(outputs('Add_AI_Reader_Membership_Request')?['statusCode'], 204)",
+                "actions": {},
+                "else": {
+                  "actions": {
+                    "Fail_AI_Reader_Membership": {
+                      "type": "Terminate",
+                      "runAfter": {},
+                      "inputs": { "runStatus": "Failed", "runError": { "code": "AIReaderMembershipFailed", "message": "@concat('AI Reader membership failed: ', string(outputs('Add_AI_Reader_Membership_Request')?['statusCode']), ' ', coalesce(body('Add_AI_Reader_Membership_Request')?['error']?['message'], 'No Graph error details.'))" } }
+                    }
+                  }
+                }
+            },
             "Issue_TAP": {
               "type": "Http",
               "runAfter": {
@@ -165,7 +233,7 @@
             "Send_email": {
               "type": "ApiConnection",
               "runAfter": {
-                "Issue_TAP": [ "Succeeded" ]
+                "Confirm_AI_Reader_Membership": [ "Succeeded" ]
               },
               "inputs": {
                 "host": {
@@ -178,7 +246,7 @@
                 "body": {
                   "To": "@body('Get_response_details')?[parameters('emailQuestionId')]",
                   "Subject": "Your A365 Workshop lab access",
-                  "Body": "@concat('<p>Hi ', first(split(body('Get_response_details')?[parameters('fullNameQuestionId')], ' ')), ',</p><p>Your A365 Workshop lab account is ready. You will sign in with a <b>Temporary Access Pass (TAP)</b> - no password, no phone needed.</p><p><b>Step 1 - Sign in:</b> Go to <a href=\"https://www.office.com\">office.com</a>, enter the username below, choose <b>Sign in with a Temporary Access Pass</b>, and paste your pass.</p><ul><li><b>Username:</b> ', body('Create_user')?['userPrincipalName'], '</li><li><b>Temporary Access Pass:</b> ', body('Issue_TAP')?['temporaryAccessPass'], ' (valid 8 hours)</li></ul><p><b>Step 2 - Start building:</b></p><ul><li>Build agents in <b>Copilot Studio</b>: <a href=\"https://copilotstudio.microsoft.com\">copilotstudio.microsoft.com</a></li><li>Explore identity in <b>Microsoft Entra</b>: <a href=\"https://entra.microsoft.com\">entra.microsoft.com</a></li></ul>')",
+                  "Body": "@concat('<p>Your A365 Workshop lab account is ready for Module 1.</p><p><b>Step 1 - Open the workshop:</b> Start with the <a href=\"https://cyberlorians.github.io/a365-hub/\">Module 1 student slides and labs</a>. Follow the numbered labs and return to the slides after each activity.</p><p><b>Step 2 - Sign in for Lab 2:</b> Open <a href=\"https://outlook.office.com/mail/\">Outlook</a> in a private (InPrivate or Incognito) browser window. Enter your lab username, select Temporary Access Pass if prompted, and enter the pass below. Follow the actual security prompts; if blocked, ask your instructor. Do not bypass policy.</p><ul><li><b>Username:</b> ', body('Create_user')?['userPrincipalName'], '</li><li><b>Temporary Access Pass:</b> ', body('Issue_TAP')?['temporaryAccessPass'], '</li><li><b>Pass lifetime:</b> ', string(body('Issue_TAP')?['lifetimeInMinutes']), ' minutes from issuance.</li></ul><p>Keep this email private. Do not share your pass or include it in screenshots. Use only your lab account, not a personal or production account.</p><p><b>Step 3 - Continue Module 1:</b> When Lab 3 directs you, open the <a href=\"https://admin.microsoft.com/\">Microsoft 365 admin center</a> using your lab account, then select <b>Agents &gt; All agents &gt; Registry</b>. Find <b>Project Beacon Mail Agent</b> and review it read-only. Do not block agents or change settings. If access is unavailable, tell your instructor and follow the presenter view.</p><p>You do not need to build an agent or run Advanced Hunting for Module 1. Return to the student slides to continue.</p>')",
                   "Importance": "Normal"
                 }
               }
@@ -203,6 +271,12 @@
           }
         }
       }
+    },
+    {
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-01-31",
+      "name": "[concat(parameters('logicAppName'), '-AIReader-Membership')]",
+      "location": "[parameters('location')]"
     }
   ],
   "outputs": {

@@ -42,9 +42,12 @@ or a security change, stop and ask the instructor; do not bypass policy.
 
 **Planned time:** 2 minutes (onboarding).
 
-Confirm the lab account, open inbox and support contact. No admin/write role is needed.
-The registry activity needs separately tested read-only AI Reader access or labeled
-presenter evidence; mailbox access alone does not establish that.
+Confirm your lab inbox is open in Outlook and keep your TAP private. Return to the
+Module 1 slides and open each numbered lab when directed. In Lab 3, open Microsoft
+365 admin center > Agents > All agents > Registry and find Project Beacon Mail
+Agent. Your lab account uses standing read-only AI Reader access, not management
+rights. If blocked, ask the instructor and follow the presenter view. Module 1
+does not require building an agent or running Advanced Hunting.
 
 ## Slide 6 - See It. Control It. Protect It.
 

@@ -2,8 +2,10 @@
 
 This folder contains everything needed to stand up the **public Form → Logic App →
 lab account + Temporary Access Pass (TAP) → email**, plus an **hourly cleanup** that
-deletes the accounts after the TAP expires. Every Graph call uses a Logic App
-**system-assigned managed identity** — no app registration, no client secret.
+deletes the accounts after the TAP expires. Graph calls use **managed identities**:
+the existing system-assigned identity for account/TAP/email operations and a
+dedicated user-assigned identity for role-assignable group membership. No client
+secret is added.
 
 ## Files
 
@@ -24,7 +26,8 @@ flowchart LR
     A[Public Microsoft Form] -->|Forms webhook| B[Provisioner Logic App]
     B --> C[Graph: create user<br/>department=workshop]
     C --> D[Graph: issue 8h TAP]
-    D --> E[Office 365: email pass]
+    D --> R[Add user to standing AI Reader group]
+    R --> E[Existing email action: send pass]
     F[Cleanup Logic App<br/>hourly] --> G{createdDateTime<br/>older than TAP lifetime?}
     G -- yes --> H[Graph: delete user]
     G -- no --> I[keep]
@@ -41,6 +44,26 @@ flowchart LR
 - Entra prerequisites for the sign-in experience (see
   [../../docs/04-onboarding-flow.md](../../docs/04-onboarding-flow.md)): TAP policy
   enabled; optional dynamic group + Conditional Access.
+- A separate **Assigned, role-assignable security group** with active standing
+  **AI Reader**. Supply its ID as `-AIReaderGroupId`; the dynamic attendee group
+  cannot hold directory roles. No PIM activation is required.
+
+Automatic membership requires **GroupMember.ReadWrite.All** and
+**RoleManagement.ReadWrite.Directory** application permissions on the dedicated
+membership identity attached to the provisioner. Its existing system-assigned
+identity retains the original account/TAP permissions. The latter
+is powerful tenant-wide role-management authority. Protect the workflow and
+restrict who can submit the lab form. Membership must succeed before the access
+email is sent. New-user replication errors are retried up to twelve times/three
+minutes; other Graph errors or exhaustion fail the workflow before email.
+Neither this step nor the role replaces licenses or CA checks.
+
+For an already deployed workflow, use
+[Enable-WorkshopAIReaderOnboarding.ps1](../../scripts/Enable-WorkshopAIReaderOnboarding.ps1)
+to add only the membership step and required permissions while retaining its actual
+form, connections, email implementation and enabled/disabled state. Preview with
+`-WhatIf`; a private backup is saved before changes. Do not rerun the historical
+full deployment just to add this step: it also deploys the separate cleanup app.
 
 ## Deploy (repeatable)
 
@@ -83,7 +106,8 @@ from the output.
     -UpnDomain      "<yourtenant>.onmicrosoft.com" `
     -FormId             "<formId>" `
     -FullNameQuestionId "<fullNameQuestionId>" `
-    -EmailQuestionId    "<emailQuestionId>"
+    -EmailQuestionId    "<emailQuestionId>" `
+    -AIReaderGroupId    "<assigned-ai-reader-group-guid>"
 ```
 
 The script pauses once, after creating the API connections, so you can **authorize**

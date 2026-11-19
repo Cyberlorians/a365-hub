@@ -20,7 +20,13 @@ Content draft. Proposed 25-minute core plus separate 15-minute onboarding. No in
 
 ## Slide 5 - Confirm readiness without extra privileges
 
-**Planned time: 2 minutes.** Total proposed onboarding: 15 minutes, separate from the core. During draft review, skip these access actions entirely. At delivery, move unresolved issues to a helper. Viewing Microsoft 365 home alone is not proof that the later business-agent UI, Mail MCP, or observability works.
+**Planned time: 2 minutes.** Confirm the lab inbox, then return learners to the
+Module 1 slides. The welcome email links to the workshop, Outlook for Lab 2 and
+the Microsoft 365 admin center for Lab 3's read-only registry review. The lab
+account has standing AI Reader access, not agent-management rights. No agent
+build or Defender hunt is required here. Move access failures to a helper and
+use the presenter view without granting write privileges. Total onboarding is
+15 proposed minutes, separate from the core; mailbox access is not runtime proof.
 
 ## Slide 6 - See It. Control It. Protect It.
 

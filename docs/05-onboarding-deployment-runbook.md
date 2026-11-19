@@ -88,6 +88,23 @@ application** app roles (app-only), granted via `appRoleAssignment` to the Logic
 
 ### 4a. Provisioner — `A365-Workshop-Provisioner`
 
+**November 18 standing AI Reader update:** The provisioner now adds each newly
+created learner to a separate Assigned role-assignable group before sending the
+access email. This adds Graph application permissions
+`GroupMember.ReadWrite.All` and `RoleManagement.ReadWrite.Directory` on a dedicated
+user-assigned membership identity attached to the Logic App; the latter is
+tenant-wide role-management authority. The dynamic attendee group still handles
+licensing/CA and is not modified. There is no PIM activation.
+The deployment templates require `aiReaderGroupId`; existing workflows can be
+patched using [Enable-WorkshopAIReaderOnboarding.ps1](../scripts/Enable-WorkshopAIReaderOnboarding.ps1).
+Protect form access and workflow editors. The following original permission/email
+inventory is historical: the live provisioner also retains its existing
+`Mail.Send` permission and email implementation. The membership update does not
+reconfigure email or cleanup. The original system-assigned identity does not
+retain the new membership/role-management grants. Account/TAP/mail actions continue
+using that original identity; only the membership request selects the dedicated
+identity.
+
 | Graph app role | Role ID | Needed for | Status |
 |----------------|---------|-----------|--------|
 | `User.ReadWrite.All` | `741f803b-c850-494e-b5df-cde7c675a1ca` | `POST /users` — create the lab account | **Required** |

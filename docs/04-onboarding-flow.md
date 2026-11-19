@@ -66,9 +66,18 @@ foreach ($r in $roles.GetEnumerator()) {
 }
 ```
 
-> Least privilege: the flow only needs `User.ReadWrite.All` (create accounts) and
-> `UserAuthenticationMethod.ReadWrite.All` (issue TAPs). No `Group.*` — the dynamic
-> group evaluates membership on its own.
+> The original dynamic licensing/CA group evaluates membership on its own.
+> **Standing AI Reader access now uses a second, Assigned role-assignable group.**
+> The provisioner adds the newly created user to that group after issuing the TAP
+> and before emailing access instructions. This additionally requires Graph
+> application permissions `GroupMember.ReadWrite.All` and
+> `RoleManagement.ReadWrite.Directory` on a dedicated user-assigned membership
+> identity attached to the Logic App (the original system identity is unchanged).
+> The latter grants powerful tenant-wide
+> role-management authority; it is not limited to this group. Restrict workflow
+> editors and form submissions. See the
+> [current operator steps](07-module-01-admin-runbook.md#form-created-learners-standing-ai-reader-access).
+> Dynamic membership cannot carry an Entra role; no PIM activation is used.
 
 ### 4. Build the Microsoft Form
 Fields:
@@ -114,7 +123,12 @@ Keep it internal to the workshop tenant. The Form owner triggers the flow.
 **Action C — Email the attendee** (Office 365 Outlook *Send an email*):
 - To: the presenter / attendee's provided email
 - Body: their UPN, the TAP value `@{body('Issue_TAP')?['temporaryAccessPass']}`,
-  the sign-in URL `https://portal.office.com`, and a note that the pass is valid 8 hours.
+  the actual issued lifetime, the [Module 1 student workshop](https://cyberlorians.github.io/a365-hub/),
+  [Outlook for Lab 2](https://outlook.office.com/mail/) in a private window, and
+  [Microsoft 365 admin center](https://admin.microsoft.com/) for Lab 3:
+  **Agents > All agents > Registry > Project Beacon Mail Agent** (read-only).
+  Do not send students to Copilot Studio or Defender hunting for Module 1.
+  Follow actual security prompts; do not promise that MFA/phone prompts cannot occur.
 
 ### 6. Result
 On submit: account created → dynamic group auto-captures it → CA015 requires MFA →

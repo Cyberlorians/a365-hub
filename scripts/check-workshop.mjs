@@ -9,6 +9,34 @@ import { teachingSlides } from "./workshop-instructor-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const read = name => fs.readFileSync(path.join(root, name), "utf8");
+for (const name of ["provisioner-forms.template.json", "provisioner.template.json", "provisioner.workflow.json"]) {
+  const template = JSON.parse(read(`labs/logic-app/${name}`));
+  const workflow = template.resources.find(resource => resource.type === "Microsoft.Logic/workflows");
+  const definition = workflow.properties.definition;
+  const actions = definition.actions;
+  const welcome = actions.Send_email.inputs.body.Body;
+  assert(welcome.includes("https://cyberlorians.github.io/a365-hub/") && welcome.includes("https://outlook.office.com/mail/") && welcome.includes("https://admin.microsoft.com/"), `${name}: welcome email must follow Module 1`);
+  assert(welcome.includes("lifetimeInMinutes") && welcome.includes("Agents &gt; All agents &gt; Registry"), `${name}: actual TAP lifetime and registry route`);
+  assert(!/no phone needed|Start building|copilotstudio\.microsoft\.com|security\.microsoft\.com|office365\.us|graph\.microsoft\.us/i.test(welcome), `${name}: no unrelated lab links or sign-in guarantees`);
+  assert.equal(template.parameters.aiReaderGroupId.minLength, 36, `${name}: require explicit target group`);
+  assert.equal(definition.parameters.aiReaderGroupId.defaultValue, "[parameters('aiReaderGroupId')]");
+  assert.deepEqual(actions.Issue_TAP.runAfter, { Create_user: ["Succeeded"] });
+  assert.deepEqual(actions.Add_AI_Reader_Group_Member.runAfter, { Issue_TAP: ["Succeeded"] });
+  assert.deepEqual(actions.Send_email.runAfter, { Confirm_AI_Reader_Membership: ["Succeeded"] }, `${name}: no success email if group membership fails`);
+  assert.deepEqual(actions.Confirm_AI_Reader_Membership.runAfter, { Add_AI_Reader_Group_Member: ["Succeeded"] });
+  assert.equal(actions.Confirm_AI_Reader_Membership.else.actions.Fail_AI_Reader_Membership.inputs.runStatus, "Failed");
+  assert.equal(actions.Add_AI_Reader_Group_Member.operationOptions, "FailWhenLimitsReached");
+  assert.equal(actions.Add_AI_Reader_Group_Member.limit.count, 12);
+  assert.equal(actions.Add_AI_Reader_Group_Member.limit.timeout, "PT3M");
+  const inputs = actions.Add_AI_Reader_Group_Member.actions.Add_AI_Reader_Membership_Request.inputs;
+  assert.equal(inputs.method, "POST");
+  assert.equal(inputs.authentication.type, "ManagedServiceIdentity");
+  assert.equal(inputs.authentication.audience, "https://graph.microsoft.com");
+  assert.equal(inputs.authentication.identity, "@parameters('membershipIdentityResourceId')");
+  assert(template.resources.some(resource => resource.type === "Microsoft.ManagedIdentity/userAssignedIdentities"), `${name}: dedicated membership identity`);
+  assert.equal(inputs.uri, "@concat('https://graph.microsoft.com/v1.0/groups/', parameters('aiReaderGroupId'), '/members/$ref')");
+  assert.equal(inputs.body["@@odata.id"], "@concat('https://graph.microsoft.com/v1.0/directoryObjects/', body('Create_user')?['id'])", `${name}: escape literal @odata.id for Logic Apps`);
+}
 let brandPalette;
 const markdownFiles = [
   "README.md", "docs/00-project-outline.md", "docs/01-full-day-workshop.md",
@@ -132,6 +160,11 @@ assert(workflow.includes("node scripts/build-walkthroughs.mjs"), "Pages must bui
 assert(!workflow.includes("cp slides/module-01/index.html") && !workflow.includes("cp slides/module-02/index.html"), "Do not overwrite the built modules with the teaching-only source");
 for (const module of [1, 2]) {
   const html = buildModule(module);
+  if (module === 1) {
+    for (const page of [html, buildView({ module: 1, role: "learner" }).html, buildView({ module: 1, role: "instructor" }).html]) {
+      assert(!/GCC High|US Government|AzureUSGovernment|office365\.us|graph\.microsoft\.us/i.test(page), "Module 1 must use only this workshop's sign-in route");
+    }
+  }
   assert(!/<title>[^<]*(?:draft|reworked)/i.test(html), "Student page titles must use release-facing names");
   assert(!/>Module [12] - (?:Reworked|Rough draft)<\/a>/.test(html), "Student navigation must use clean module names");
   assert(html.includes('id="view-lab"') && !html.includes('id="view-admin"'), "The student page contains only the labs view");

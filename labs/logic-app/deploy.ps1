@@ -30,7 +30,8 @@
         -UpnDomain      "contoso.onmicrosoft.com" `
         -FormId             "<form-id>" `
         -FullNameQuestionId "<full-name-question-id>" `
-        -EmailQuestionId    "<email-question-id>"
+        -EmailQuestionId    "<email-question-id>" `
+        -AIReaderGroupId    "<assigned-ai-reader-group-guid>"
 #>
 [CmdletBinding()]
 param(
@@ -41,6 +42,7 @@ param(
     [Parameter(Mandatory)] [string] $FormId,
     [Parameter(Mandatory)] [string] $FullNameQuestionId,
     [Parameter(Mandatory)] [string] $EmailQuestionId,
+    [Parameter(Mandatory)] [guid] $AIReaderGroupId,
 
     [string] $ProvisionerName = "A365-Workshop-Provisioner",
     [string] $CleanupName     = "A365-Workshop-Cleanup",
@@ -71,6 +73,11 @@ function Grant-GraphRole {
         -Uri "https://graph.microsoft.com/v1.0/servicePrincipals/$PrincipalId/appRoleAssignments").value
     foreach ($name in $RoleNames) {
         $roleId = $ROLE[$name]
+        if (-not $roleId) {
+            $matches = @($graphSp.appRoles | Where-Object { $_.value -eq $name -and $_.isEnabled -and $_.allowedMemberTypes -contains 'Application' })
+            if ($matches.Count -ne 1) { throw "Cannot resolve Graph application permission $name." }
+            $roleId = $matches[0].id
+        }
         if ($existing | Where-Object { $_.appRoleId -eq $roleId -and $_.resourceId -eq $graphSp.id }) {
             Write-Host "    [=] $name already granted"
             continue
@@ -115,6 +122,7 @@ $provPrincipal = az deployment group create --resource-group $ResourceGroup `
                  tapLifetimeMinutes=$TapLifetimeMinutes formId=$FormId `
                  fullNameQuestionId=$FullNameQuestionId emailQuestionId=$EmailQuestionId `
                  formsConnectionName=$FormsConnectionName office365ConnectionName=$Office365ConnectionName `
+                 aiReaderGroupId=$AIReaderGroupId `
     --only-show-errors --query "properties.outputs.principalId.value" -o tsv
 Write-Host "    provisioner MI principalId: $provPrincipal"
 
@@ -127,8 +135,13 @@ $cleanPrincipal = az deployment group create --resource-group $ResourceGroup `
 Write-Host "    cleanup MI principalId: $cleanPrincipal"
 
 Write-Host "==> Granting Graph app roles (may take a moment to propagate)"
+Write-Warning 'Automatic membership grants the dedicated membership identity tenant-wide RoleManagement.ReadWrite.Directory authority. Restrict workflow editors and form access.'
 Write-Host "  Provisioner MI:"
 Grant-GraphRole -PrincipalId $provPrincipal -RoleNames @('User.ReadWrite.All','UserAuthenticationMethod.ReadWrite.All')
+$membershipPrincipal = az identity show --subscription $SubscriptionId --resource-group $ResourceGroup `
+    --name "$ProvisionerName-AIReader-Membership" --query principalId -o tsv
+if ($LASTEXITCODE -ne 0 -or -not $membershipPrincipal) { throw 'Cannot resolve the dedicated membership identity.' }
+Grant-GraphRole -PrincipalId $membershipPrincipal -RoleNames @('GroupMember.ReadWrite.All','RoleManagement.ReadWrite.Directory')
 Write-Host "  Cleanup MI:"
 Grant-GraphRole -PrincipalId $cleanPrincipal -RoleNames @('User.ReadWrite.All')
 
