@@ -229,7 +229,7 @@ function slidesFor({ module, role }) {
   const first = {
     key: "intro", title: intro.title, number: 0, total: 0, eyebrow: `Module ${module} / Labs / Start here`, heading: "You need",
     lead: intro.lead, doItems: intro.need, doneWhen: "Each lab is placed after its lesson in the slides. Stop and ask your instructor whenever something does not match the picture.",
-    visual: fig("Your labs", grid(meta.map(lab => [`Lab ${lab.n}`, `${lab.title}. About ${lab.minutes} minute${lab.minutes === 1 ? "" : "s"}.`])))
+    visual: fig("Your labs", grid(meta.map(lab => [`Lab ${lab.n}`, lab.title])))
   };
   const out = [first];
   for (const lab of meta) {
@@ -296,7 +296,7 @@ export function buildView(config) {
   <footer class="walk-footer"><div class="row">
     <button type="button" id="prev">Previous</button><span id="position" aria-live="polite"></span>
     <select id="jump" aria-label="Jump to step"></select><button class="primary" type="button" id="next">Next</button>
-    <p id="status" role="status" aria-live="polite">Use Next or the arrow keys. Copy buttons only copy text; they never run anything.</p>
+    <p id="status" role="status" aria-live="polite">Use Next or the arrow keys.${slides.some(item => item.snippet) ? " Copy buttons only copy text; they never run anything." : ""}</p>
   </div></footer>`;
   const html = `${head}<style>${css}</style></head>
 <body data-deck="${esc(label)}">${body}
@@ -316,7 +316,7 @@ export function buildModule(module) {
     slideNumber++;
     const lab = labMeta(module).find(item => item.after === slideNumber);
     if (!lab) return whole;
-    return `${opening}\n        <p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>Do this now: ${esc(lab.title)}</strong> <span class="muted">About ${lab.minutes} minute${lab.minutes === 1 ? "" : "s"}.</span> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>`;
+    return `${opening}\n        <p class="lab-callout"><span class="lab-badge">LAB ${lab.n}</span> <strong>Do this now: ${esc(lab.title)}</strong> <a class="button primary" href="./?view=lab#slide-${labSlideIndex(lab.n)}">Start Lab ${lab.n}</a></p>`;
   });
   assert.equal(slideNumber, module === 1 ? 17 : 8, "Every teaching slide must be considered for a lab callout");
   const style = `<style>

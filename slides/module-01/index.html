@@ -269,7 +269,7 @@
       </section>
       <section class="slide" data-title="Sign in using the approved method" data-minutes="1" data-phase="onboarding" hidden>
 
-        <p class="eyebrow">Onboarding 4 of 5 / One-minute sign-in check</p>
+        <p class="eyebrow">Onboarding 4 of 5 / Sign-in check</p>
         <h2>Sign in once. Check your lab account.</h2>
         <ol><li>In a private window, open <a href="https://admin.microsoft.com/" target="_blank" rel="noopener noreferrer">Microsoft 365 admin center</a>.</li><li>Use your lab username and Temporary Access Pass.</li><li>Choose <strong>No</strong> if asked to stay signed in.</li></ol>
         <div class="callout">Already signed in? Check the account menu and continue. The quick check below is not another full lab. If blocked by a security prompt, ask the instructor; do not bypass it.</div>
@@ -289,8 +289,8 @@
         <p class="lede">An AI agent is a digital coworker. It reads, makes decisions, and acts with real access.</p>
         <div class="grid three"><div class="card"><h3>See it</h3><p>Know the agent's purpose, owner and operating context.</p></div><div class="card"><h3>Control it</h3><p>Approve its access, data and tool boundaries.</p></div><div class="card"><h3>Protect it</h3><p>Check what happened and act on the evidence.</p></div></div>
         <p class="lede">Companies want agents for the work they do. Our job is to see them, control them and protect them.</p>
-        <p class="small">Takeaway: a readiness worksheet with four answers, one gap and one next action. No technical background needed.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> An agent can invoke tools, so useful access needs an explicit boundary. Introduce see, control and protect without a product tour. Promise a readiness worksheet, not visibility of every agent or proof of complete protection. Agent 365, Entra, Purview and Defender contribute different parts. Leave object models and token flows for Module 3.</p><p><strong>Source:</strong> Microsoft Learn Agent 365 overview; Cloud-Architekt Agent Identities.</p></template>
+        <p class="small">Takeaway: explain what the registry shows and one thing it cannot verify. No technical background or written submission needed.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> An agent can invoke tools, so useful access needs an explicit boundary. Introduce see, control and protect without a product tour. Promise a review, not visibility of every agent or proof of complete protection. Agent 365, Entra, Purview and Defender contribute different parts. Leave object models and token flows for Module 3.</p><p><strong>Source:</strong> Microsoft Learn Agent 365 overview; Cloud-Architekt Agent Identities.</p></template>
       </section>
       <section class="slide" data-title="One business case. Four questions." data-minutes="3" data-phase="core" hidden>
 
@@ -299,8 +299,8 @@
         <p class="lede">You are the project coordinator. Give <strong>Project Beacon Mail Agent</strong> an approved fictional brief: three of four documentation tasks are complete, the architecture diagram still needs review, and the next action is to confirm the review owner.</p>
         <div class="grid three"><div class="card"><h3>1. Draft</h3><p>The agent turns those three facts into a short internal update. No customer data or inbox-reading task is needed.</p></div><div class="card"><h3>2. Review</h3><p>You check the facts, wording and the one instructor-approved internal recipient. Nothing should send before your approval.</p></div><div class="card"><h3>3. Send and verify</h3><p>In Module 2, request the reviewed send and check actual receipt. Today we review the registration only.</p></div></div>
         <div class="callout"><strong>Four review questions:</strong> What exists? Who owns it and who acts? What can it reach? What evidence shows what happened?</div>
-        <p class="small">These are intended boundaries, not claims that the registry proves enforcement. Lab 3 includes a copyable plain-text worksheet; no separate handout or spreadsheet is needed.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Make the business task concrete before the security concepts. Project Beacon is a fictional rollout; Project Beacon Mail Agent is the agent. The learner is the coordinator, the brief contains three approved facts, and the recipient is one approved internal lab recipient. Draft, human review, explicit send and receipt are the intended Module 2 sequence, not a Module 1 runtime claim. Introduce the four questions. The worksheet is a blank note copied from Lab 3's first step.</p></template>
+        <p class="small">These are intended boundaries, not claims that the registry proves enforcement. In Lab 3, look through the agent's record. No copying exercise or worksheet is needed.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Make the business task concrete before the security concepts. Project Beacon is a fictional rollout; Project Beacon Mail Agent is the agent. The learner is the coordinator, the brief contains three approved facts, and the recipient is one approved internal lab recipient. Draft, human review, explicit send and receipt are the intended Module 2 sequence, not a Module 1 runtime claim. Introduce the four questions. No worksheet or written submission is required.</p></template>
       </section>
       <section class="slide" data-title="Four scenarios. The same four questions." data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Agent ID scenarios / Orientation, not four deployments</p>
@@ -330,12 +330,12 @@
       </section>
       <section class="slide" data-title="Review one agent, not three portals" data-minutes="3" data-phase="core" hidden>
 
-        <p class="eyebrow">Lab 3 / Start with a blank note</p>
-        <h2>Review one agent. Keep one note.</h2>
-        <p class="lede">Press Start Lab 3. Its first step has the <strong>Copy worksheet</strong> template: paste it into Notepad, OneNote or any blank note. No download, Excel file or separate handout is required.</p>
-        <div class="grid four"><div class="card"><h3>Purpose</h3><p>Find Project Beacon Mail Agent. Is its intended task actually described?</p></div><div class="card"><h3>People</h3><p>Read Owner, Created by and available identity information.</p></div><div class="card"><h3>Reach</h3><p>Permissions and Data &amp; tools may be blank. Write <strong>not shown</strong>; do not invent grants or tools.</p></div><div class="card"><h3>Evidence</h3><p>Read available Security and Activity fields. Keep one gap and an owned follow-up.</p></div></div>
-        <div class="callout">Risk count but empty list? Write <strong>Count shown; risk details not returned</strong> and continue. A separate Relay agent is a staged training-risk example, not the Mail Agent or a live incident.</div>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Start with the copyable worksheet, not an assumed handout. Lab 3 spans this segment and slide 12's five minutes. Learners can complete it with empty risk details and blank Permissions/Data &amp; tools. Use read-only AI Reader or a labeled presenter view. If the risk count opens an empty list, record the mismatch once and continue; the instructor can compare Entra Risky agents later. No blocking or role elevation.</p></template>
+        <p class="eyebrow">Lab 3 / Look through the agent's record</p>
+        <h2>Review one agent.</h2>
+        <p class="lede">Press Start Lab 3. Open Project Beacon Mail Agent and look through its available information. No worksheet, copying exercise or written submission is required.</p>
+        <div class="grid four"><div class="card"><h3>Purpose</h3><p>Find Project Beacon Mail Agent. Is its intended task actually described?</p></div><div class="card"><h3>People</h3><p>Read Owner, Created by and available identity information.</p></div><div class="card"><h3>Reach</h3><p>Permissions and Data &amp; tools may be blank. Treat blank fields as unknown; do not invent grants or tools.</p></div><div class="card"><h3>Evidence</h3><p>Read available Security and Activity fields. Notice what you still cannot verify.</p></div></div>
+        <div class="callout">Risk count but empty list? Continue; the details are unavailable here. A separate Relay agent is a staged training-risk example, not the Mail Agent or a live incident.</div>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Start directly in the registry; no worksheet or copying exercise is needed. Lab 3 spans this segment and slide 12's five minutes. Learners can complete it with empty risk details and blank Permissions/Data &amp; tools. Use read-only AI Reader or a labeled presenter view. If the risk count opens an empty list, record the mismatch once and continue; the instructor can compare Entra Risky agents later. No blocking or role elevation.</p></template>
       </section>
       <section class="slide" data-title="Five Entra pillars, one control map" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Entra foundation / Controls depend on flow and support</p>
@@ -384,8 +384,8 @@
         <p class="eyebrow">Recap / What you can now explain</p>
         <h2>What you can now explain.</h2>
         <div class="grid two"><div class="card"><h3>Purpose and people</h3><p>What does the agent do? Who is accountable and who acts?</p></div><div class="card"><h3>Approved boundary</h3><p>Which task, data, tools and recipient are allowed?</p></div><div class="card"><h3>Why identity is not enough</h3><p>How could legitimate access still be misused?</p></div><div class="card"><h3>Evidence and next action</h3><p>What did you observe, what is unknown, and who follows up?</p></div></div>
-        <p class="small">Complete your readiness worksheet: four answers, one gap and one owned next action. Discuss, do not guess.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Give two minutes to complete the worksheet and one to discuss. This is a readiness conversation, not an interactive quiz. Use the answer-key reference for defensible examples; accept explicit unknowns with validation steps. If learners equate sign-in success with safe behavior, revisit slide 9. Neither a registry record nor this discussion proves any control was configured or tested.</p></template>
+        <p class="small">Discuss one thing you learned about the agent and one thing you still cannot verify. No written answers are required.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Discuss one observation and one unanswered question. This is a readiness conversation, not an interactive quiz. Use the answer-key reference for defensible examples; accept explicit unknowns with validation steps. If learners equate sign-in success with safe behavior, revisit slide 9. Neither a registry record nor this discussion proves any control was configured or tested.</p></template>
       </section>
 
       <section class="slide" data-title="Establish normal before investigating abnormal" data-minutes="1" data-phase="core" hidden>
@@ -396,7 +396,7 @@
         <p>Later modules map authority, govern access, protect data, investigate misuse and plan adoption.</p>
         <p class="small">The identity-anatomy deep dive follows in Module 3.</p>
         <p><a class="button primary" href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1">Continue to Module 2</a></p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Total core: 25 minutes, with sign-in outside it. Retain the readiness worksheet for Module 2. The actual runtime, sender, task and receipt must pass the Module 2 preflight; a matching registration name does not prove the route is operational. Collect feedback on this module before finalizing the next remote session.</p></template>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Total core: 25 minutes, with sign-in outside it. Use the open questions to frame Module 2. The actual runtime, sender, task and receipt must pass the Module 2 preflight; a matching registration name does not prove the route is operational. Collect feedback on this module before finalizing the next remote session.</p></template>
       </section>
     </div>
     <aside class="notes" id="notesPanel" aria-label="Presenter notes" hidden>

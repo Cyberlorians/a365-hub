@@ -104,24 +104,23 @@ assert(!module1.includes("An agent has four parts") && !module1.includes("UserAu
 assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
 const registrySteps = labSlides(1).filter(step => step.lab === 3);
 assert(/three of four documentation tasks/i.test(module1) && /Three of four documentation tasks/.test(read("labs/module-02-business-agent.md")), "The concrete Beacon brief must align with the following module");
-assert.equal(registrySteps.length, 7, "Provide the worksheet, then six registry review steps");
-assert.equal(registrySteps[0].key, "r3-note", "Create the worksheet before requesting observations");
-assert.equal(registrySteps[0].snippet.code, codeBlocks("labs/module-01-security-foundation.md", /<details>\n<summary>Optional reference:/)["0.1"].code, "Worksheet must be the same copyable template as the guide");
-assert(registrySteps[0].doItems.some(item => item.includes("no separate handout or spreadsheet")), "Explain what the worksheet is");
+assert.equal(registrySteps.length, 6, "Keep six direct registry review steps, without a worksheet setup step");
+assert.equal(registrySteps[0].key, "r3-open", "Start directly in the registry");
+assert(registrySteps.every(step => !step.snippet), "No mandatory copy exercise in the registry lab");
 const signInCheck = labMeta(1).find(lab => lab.n === 2);
 assert.equal(signInCheck.minutes, 1, "Do not budget a full lab for the sign-in check");
 assert.equal(labSlides(1).filter(step => step.lab === 2).length, 1, "Do not repeat the Slide 4 sign-in walkthrough");
-assert(registrySteps.find(step => step.key === "r3-registry").doneWhen.includes("Count shown; risk details not returned"), "Risk-count/empty-list mismatch must have an explicit completion path");
-assert(registrySteps.find(step => step.key === "r3-reach").doneWhen.includes("Empty tabs complete this step"), "Missing reach metadata must not block completion");
+assert(registrySteps.find(step => step.key === "r3-registry").doneWhen.includes("empty list is a valid result"), "Risk-count/empty-list mismatch must not block completion");
+assert(registrySteps.find(step => step.key === "r3-reach").doItems.some(item => item.includes("continue")), "Missing reach metadata must not block completion");
 assert(!module1.includes("Sell the outcome. Validate the fit.") && !/ON MONDAY/.test(module1), "Remove the sales slide and unexplained incident labels");
 assert(teachingSlides(1).at(-1).title === "Establish normal before investigating abnormal", "Renumber the handoff after removing the sales slide");
 for (const location of ["Monitoring &amp; health", "Log stream", "Solutions", "Audit", "Incidents &amp; alerts"])
   assert(module1.includes(location), `Evidence map needs concrete navigation: ${location}`);
-assert(registrySteps.at(-1).doneWhen.includes("one gap and one owned next action"), "Registry lab must produce the readiness worksheet");
+assert(registrySteps.at(-1).doneWhen.includes("one thing you still cannot verify"), "End with a simple observation, not a written assignment");
 assert(!registrySteps.at(-1).link, "Lab 3 must return to the remaining Module 1 lessons, not bypass them for Module 2");
 for (const role of ["learner", "instructor"]) {
   const html = buildView({ module: 1, role }).html;
-  assert(html.includes("Count shown; risk details not returned") && html.includes("staged training"), `Module 1 ${role}: actionable risk gap and labeled training example`);
+  assert(/empty (?:risk )?list/.test(html) && html.includes("staged training"), `Module 1 ${role}: actionable risk gap and labeled training example`);
   assert(!/Agents at risk (?:shows|is|=) 1|the Monday story|one stolen blueprint secret|Activity starts to fill in|Labs 1 to 6/i.test(html), `Module 1 ${role}: stale attack/sync promises`);
 }
 const plan = read("docs/06-customer-learning-plan.md");
@@ -129,9 +128,6 @@ assert.equal([...plan.matchAll(/^### Module \d+:/gm)].length, 8);
 assert.equal([...plan.matchAll(/^\| [HTGBLC]\d+ \|/gm)].length, 39);
 assert(plan.includes("## 16. Per-module data and automation preparation"));
 assert(plan.includes("Review-first gate") && plan.includes("R0: public content draft"));
-const module1Steps = [...read("labs/module-01-security-foundation.md").matchAll(/^\| \d+ \| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
-assert.deepEqual(module1Steps.map(match => Number(match[1])), Array.from({ length: 12 }, (_, index) => index + 6), "Learner guide must cover Module 1 slides 6-17 in order");
-assert.equal(module1Steps.reduce((total, match) => total + Number(match[2]), 0), 25, "Module 1 walkthrough timing");
 const module2Steps = [...read("labs/module-02-business-agent.md").matchAll(/^\| \[Slide (\d+)\].* \| ([\d.]+) \|$/gm)];
 assert.deepEqual(module2Steps.map(match => Number(match[1])), Array.from({ length: 8 }, (_, index) => index + 1), "Learner guide must cover all eight Module 2 slides in order");
 assert.equal(module2Steps.reduce((total, match) => total + Number(match[2]), 0), 35, "Module 2 walkthrough timing");
@@ -156,8 +152,11 @@ for (const [file, count, firstSlide] of [
   if (firstSlide !== null) {
     const slideNumbers = [...stepText.matchAll(/\[Slide (\d+)\]/g)].map(match => Number(match[1]));
     assert.deepEqual(slideNumbers, Array.from({ length: firstSlide === 6 ? 12 : 8 }, (_, index) => index + firstSlide), `Visible walkthrough slide coverage in ${file}`);
-    const minutes = [...stepText.matchAll(/^## Step \d+:.*\((\d+) minutes?\)/gm)].reduce((sum, match) => sum + Number(match[1]), 0);
-    assert.equal(minutes, firstSlide === 6 ? 25 : 35, `Visible walkthrough timing in ${file}`);
+    if (firstSlide === 6) assert(!/^## Step .*minutes?/m.test(stepText), "Do not put timing estimates on Module 1 lab steps");
+    else {
+      const minutes = [...stepText.matchAll(/^## Step \d+:.*\((\d+) minutes?\)/gm)].reduce((sum, match) => sum + Number(match[1]), 0);
+      assert.equal(minutes, 35, `Visible walkthrough timing in ${file}`);
+    }
   }
 }
 const liveLearner = read("labs/module-02-business-agent.md").split("<details>")[0];
@@ -187,6 +186,8 @@ for (const module of [1, 2]) {
   for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) new vm.Script(script[1]);
   for (const lab of labMeta(module))
     assert.equal((html.match(new RegExp(`>Start Lab ${lab.n}</a>`, "g")) ?? []).length, 1, `Module ${module} lessons must start Lab ${lab.n} exactly once`);
+  for (const callout of html.matchAll(/<p class="lab-callout">[\s\S]*?<\/p>/g))
+    assert(!/\bminutes?\b/i.test(callout[0]), `Module ${module}: no timing labels on student lab callouts`);
 }
 const adminGuides = { 1: ["docs/07-module-01-admin-runbook.md", /<details>\n<summary>Optional admin reference:/], 2: ["docs/08-module-02-admin-runbook.md", /<details>\n<summary>Optional technical reference:/] };
 for (const config of views) {
@@ -211,11 +212,15 @@ for (const config of views) {
     assert.equal(steps.length, labSlides(config.module).length, `${label} step count`);
     for (const lab of labMeta(config.module)) {
       const inLab = steps.filter(slide => slide.lab === lab.n);
-      const expectedRange = config.module === 1 && lab.n === 2 ? [1, 1] : config.module === 1 && lab.n === 3 ? [7, 7] : [3, 6];
+      const expectedRange = config.module === 1 && lab.n === 2 ? [1, 1] : [3, 6];
       assert(inLab.length >= expectedRange[0] && inLab.length <= expectedRange[1], `${label} Lab ${lab.n} step count`);
       assert(inLab.at(-1).links.some(link => link.href === `./#slide-${lab.back}`), `${label} Lab ${lab.n} must lead back to its lesson`);
     }
     assert(steps.every(slide => slide.visual && slide.note), `${label} steps each need a picture and a cue for the instructor deck`);
+    assert(slides.every(slide => !/\bminutes?\b/i.test(slide.title + (slide.lead ?? ""))), `${label}: no timing labels on student lab titles or introductions`);
+    assert(!/\bAbout \d+ minutes?\b/i.test(slides[0].visual), `${label}: no duration labels in the lab overview`);
+    assert(!html.includes("About 1 minute.") && !html.includes("About 8 minutes."), `${label}: no generated lab duration badges`);
+    if (config.module === 1) assert(!html.includes('<div class="snippet">'), "No worksheet copy boxes in Module 1 labs");
     assert(!/facilitator-note|Instructor only|Instructor notes|data-instructor-only|Instructor guide/.test(html), "Student labs must not contain instructor material");
     assert(!html.includes('id="notesMode"'), "Student labs must not offer an instructor toggle");
   } else {
@@ -254,4 +259,4 @@ for (const name of markdownFiles) {
   for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
     assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 17), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two blue modules with 17/8 teaching slides, one-minute sign-in check, copyable worksheet, empty-risk/permissions paths, instructor setup/notes, exact snippets, 12/25/35 timing, source alignment, eight-module plan, 39 sources and documentation links.");
+console.log("PASS: Two blue modules with 17/8 teaching slides, untimed student lab labels, direct registry review without worksheets, empty-risk/permissions paths, instructor setup/notes, exact snippets, source alignment, eight-module plan, 39 sources and documentation links.");

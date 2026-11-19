@@ -29,10 +29,10 @@ walkthrough. They separate content-only rehearsal from authorized tenant prepara
 - Lab 3 uses eight minutes across slide 11's review and slide 12's control mapping,
   not eight additional minutes. Match one observed gap to a control as learners
   finish the registry review. The proposed 25-minute core still needs rehearsal.
-- Start Lab 3 with its Copy worksheet template in a blank note; no extra handout
-  or Excel file is required. If a risk count opens an empty list, record **Count
-  shown; risk details not returned** and continue. Blank Permissions and Data & tools
-  also complete the relevant step with **not shown**; do not imply a populated list.
+- Start Lab 3 directly in the registry. No worksheet, copying exercise or written
+  submission is required. Let learners continue when a risk list or Permissions
+  and Data & tools is blank; explain that the information is unknown from this view.
+- Keep timing estimates in instructor planning only, not on student lab pages.
 - Keep the story on the fictional Beacon coordinator, three-fact brief, human review
   and approved recipient. Slide 9 compares two possible causes of a wrong email;
   slide 14 gives log navigation for instructor/later-module follow-up, not a new

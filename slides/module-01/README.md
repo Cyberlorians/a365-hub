@@ -16,7 +16,7 @@ standing read-only AI Reader or labeled presenter evidence; no learner write rol
 Explain the dual attack surfaces, identify the purpose/accountability/access/evidence
 boundary, and connect Entra's five pillars, Agent 365, Purview, and Defender/ISOC.
 The Agent Identities chapter anchors risk -> control -> evidence -> decision.
-The output is a plain-text readiness worksheet copied at the start of Lab 3.
+The output is a discussion of what the registry showed and what remains unknown. No worksheet or written submission is required.
 
 ## Package
 
@@ -28,7 +28,7 @@ in the labs and the instructor deck.
 
 | File | Use |
 |---|---|
-| [index.html](index.html) | Student presentation: 17 teaching slides, two labs and a one-minute sign-in check; presenter tools hidden |
+| [index.html](index.html) | Student presentation: 17 teaching slides, two labs and a sign-in check; presenter tools hidden |
 | [Instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) | Separate instructor deck with show/say scripts, lab cues and recovery |
 | [slides.md](slides.md) | Aligned slide content |
 | [speaker-notes.md](speaker-notes.md) | Per-slide timing and talk track |
@@ -38,7 +38,7 @@ in the labs and the instructor deck.
 | [permissions-preflight.md](permissions-preflight.md) | Presenter versus learner access |
 | [interactive-guide.md](interactive-guide.md) | Navigation, offline/print, and authoring rules |
 | [sources.md](sources.md) | Source roles and claim boundaries |
-| [Learner step-by-step guide](../../labs/module-01-security-foundation.md) | Slide-by-slide actions, expected results, worksheet, check, recovery |
+| [Learner step-by-step guide](../../labs/module-01-security-foundation.md) | Slide-by-slide actions, expected results, discussion, recovery |
 | [Admin runbook](../../docs/07-module-01-admin-runbook.md) | Copy/paste account, license, TAP, sign-in test, delivery and shutdown steps |
 
 ## Core flow
@@ -65,8 +65,8 @@ guaranteed.
 eight-minute repeated sign-in lab. The Beacon case now names the coordinator,
 fictional brief, review, recipient and intended send/receipt sequence. Slide 9
 explains why authentication alone is insufficient; slide 14 gives actual log
-navigation paths for instructor/later-module follow-up. Lab 3 starts with a
-copyable note template and accepts blank reach metadata and count/empty-risk-list
+navigation paths for instructor/later-module follow-up. Lab 3 uses a
+direct registry review and accepts blank reach metadata and count/empty-risk-list
 mismatches as observations. Relay is explicitly the staged training example.
 The sales slide was removed; the handoff is now slide 17. Its minute moves to the
 scenario, preserving the 25-minute core.
@@ -75,7 +75,7 @@ scenario, preserving the 25-minute core.
 in original text. The core stays introductory: detailed authority moves to Module 3
 and compromise mechanics to Module 6. The student slides, notes, learner guide and
 instructor scripts use the same synthetic-mail case, four-question review and
-readiness worksheet. Lab 3 fits within the existing review/control-map segment.
+readiness discussion. Lab 3 fits within the existing review/control-map segment.
 See the [customer outline](../../grounding/workshop-customer-outline.md).
 
 Complete only after user review, aligned content/supporting sources, actual prepared
@@ -102,5 +102,5 @@ were changed.
 
 **Delivery mode:** use the authorized presenter-led registry review until a fresh
 learner's read-only access has passed preflight. Record current source/time and
-unknowns in the worksheet. Fresh-learner access and an independent 25-minute
+unknowns in the discussion. Fresh-learner access and an independent 25-minute
 rehearsal remain release gates; do not describe the workshop as fully validated.

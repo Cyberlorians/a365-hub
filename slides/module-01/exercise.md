@@ -1,7 +1,7 @@
 # Module 1: Three-Minute Readiness Discussion
 
-Two minutes to complete the worksheet, one to discuss. No interactive quiz.
-Target: four short answers, one gap and one owned next action. Revisit slide 9
+Discuss one thing the registry showed and one thing you still cannot verify.
+No worksheet, copying exercise or written submission. Revisit slide 9
 if learners equate a valid sign-in with safe behavior.
 
 | Question | Answer key |
@@ -21,8 +21,7 @@ flag may appear in Entra but not the registry. Accept explicit unknowns with a
 concrete follow-up; do not invent evidence. No live attack or policy change is
 required. Detailed authority and compromise mechanics belong in Modules 3 and 6.
 
-The worksheet is the copyable plain-text template at the start of Lab 3, not a
-separate spreadsheet. For a count that opens an empty list, accept **Count shown;
-risk details not returned**. For blank Permissions/Data & tools, accept **not shown**
-and a follow-up to verify mapped grants, deployed tools and the Module 2 task.
+For a count that opens an empty list, or blank Permissions/Data & tools, let learners
+continue. They only need to understand that the information is unavailable here.
+The instructor can follow up on mapped grants, deployed tools and the Module 2 task.
 The Relay record is staged training risk, not proof of a live incident.

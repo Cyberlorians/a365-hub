@@ -60,7 +60,7 @@ An agent reads, decides and acts with real access.
 - **Control it:** Approve access, data and tool boundaries.
 - **Protect it:** Check what happened and act on evidence.
 
-Takeaway: a readiness worksheet with four answers, one gap and one owned next action,
+Takeaway: a discussion of what the registry shows and what remains unknown,
 not proof that every agent or control is visible.
 
 ## Slide 7 - One business case. Four questions.
@@ -82,8 +82,7 @@ Before expanding its use, ask:
 3. What can it reach: which permissions, tools and data?
 4. What is watching it: which evidence shows what happened?
 
-Lab 3 reviews a prepared record and provides the copyable worksheet for any blank
-note; no separate spreadsheet or handout is needed. Module 2 runs the task only
+Lab 3 reviews a prepared record. Notes are optional; no template or written submission is needed. Module 2 runs the task only
 after runtime preflight.
 
 ## Slide 8 - Four scenarios. The same four questions.
@@ -137,8 +136,7 @@ is not proof of safe behavior.
 
 **Planned time:** 3 minutes (core).
 
-Start Lab 3 by copying its worksheet template into Notepad, OneNote or any blank
-note. No separate handout or spreadsheet is needed. Review the prepared
+Start Lab 3 directly in the registry. No worksheet or written submission is needed. Review the prepared
 Project Beacon Mail Agent record using tested AI Reader access, an authorized
 presenter view, or labeled prior-run evidence.
 
@@ -146,15 +144,14 @@ presenter view, or labeled prior-run evidence.
 |---|---|
 | What exists? | Actual registry counts and selected record |
 | Who owns it? | Owner, Created by and available identity context |
-| What can it reach? | Permissions and Data & tools may be blank; write not shown |
+| What can it reach? | Permissions and Data & tools may be blank; treat it as unknown |
 | What is watching it? | Security and Activity, and what they actually establish |
 
 Lab 3 fits across this review and the control-map segment; it is not eight extra
 minutes. Record source/time and unknowns. Do not click Block or change settings.
 Registration does not prove a working runtime.
 
-If the Agents at risk count opens an empty list, write **Count shown; risk details
-not returned** and continue. Do not wait or repeatedly refresh. The separate Relay
+If the Agents at risk count opens an empty list, continue; the details are unavailable here. Do not wait or repeatedly refresh. The separate Relay
 agent is a staged training-risk example, not the Mail Agent or a live incident.
 The instructor can follow up in Entra Identity Protection > Risky agents.
 
@@ -171,7 +168,7 @@ The instructor can follow up in Entra Identity Protection > Risky agents.
 | Supported traffic | Global Secure Access | Coverage requires the actual supported forwarded/inspected route |
 
 Agent 365 gives some context, not proof all these controls are configured or effective.
-Map one control to a worksheet gap while completing Lab 3. No policy changes occur.
+Map one control to a open question while completing Lab 3. No policy changes occur.
 
 ## Slide 13 - Protect the data. Record the evidence.
 
@@ -210,21 +207,21 @@ keep existing Sentinel customers on their supported experience.
 
 **Planned time:** 3 minutes (core).
 
-Complete and discuss the readiness worksheet, not an interactive quiz:
+Use these questions for discussion, not a written assignment:
 
 1. Purpose, accountable people and acting identity.
 2. Intended task/data/tool/recipient boundary.
 3. Why legitimate authentication does not prove safe behavior.
 4. Evidence observed, unknowns, one gap and one owned next action.
 
-Use two minutes to write and one to discuss. Unknowns with concrete validation steps
+Discuss one observation and one unanswered question. Unknowns with concrete validation steps
 are valid. No control is claimed tested by this discussion.
 
 ## Slide 17 - Establish normal before investigating abnormal
 
 **Planned time:** 1 minute (core).
 
-Keep the worksheet for Module 2's approved task and actual baseline evidence.
+Use the open questions to frame Module 2's actual baseline evidence.
 Registration alone does not establish a working mail route. Later modules deepen
 identity, governance, data protection and investigation. Collect feedback before
 finalizing the next remote session.

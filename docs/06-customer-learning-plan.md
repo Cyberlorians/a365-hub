@@ -16,7 +16,7 @@ and multiple-build proposals. [Module 1](../slides/module-01/README.md) and
 
 | Module | Learner walkthrough | Admin walkthrough |
 |---|---|---|
-| 1 | [Slide-by-slide guide and worksheet](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
+| 1 | [Slide-by-slide registry review](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
 | 2 | [Task, prompts, evidence and passport](../labs/module-02-business-agent.md) | [Preparation/proof/rehearsal runbook](08-module-02-admin-runbook.md) |
 
 Guide authoring and browser checks do not constitute live tenant or independent
@@ -204,11 +204,12 @@ data, and operational evidence.
 - **Control:** Agent 365 accountability/visibility, the five Entra pillars, supported
   Purview controls, and Defender/ISOC investigation responsibilities.
 - **Activity:** Follow the synthetic status-mail customer case, inspect one prepared
-  agent record, and complete the readiness worksheet/discussion. Slide 8 introduces
+  agent record, and discuss what it shows and what remains unknown. No worksheet,
+  copying exercise or written submission is required. Slide 8 introduces
   the four overlapping Agent ID scenarios in original text; detailed authority and
   credential-abuse mechanics remain in Modules 3 and 6.
-- **Evidence/output:** Four-question readiness worksheet with an exposure, a relevant
-  control/evidence source, and an accountable next action.
+- **Evidence/output:** Explain one registry observation and one unanswered question,
+  including where the instructor could verify it next.
 - **Decision:** State the approved operating boundary and what must be verified next.
 - **Sources:** C1, H2, B1-B2, L1, L7, L10, L12, L15, L17, L19, L21, L23.
 
@@ -410,7 +411,7 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 | 13 | Purview data boundary and Compliance Manager evidence follow-through |
 | 14 | Runtime/tool and applicable network evidence: what identity logs cannot show alone |
 | 15 | Defender/ISOC investigation-response-improvement loop |
-| 16 | Three-minute worksheet completion and readiness discussion |
+| 16 | Readiness discussion: one observation and one unanswered question |
 | 17 | E7 fit, existing entitlements, and adoption options |
 | 18 | Recap and handoff to the approved baseline task |
 

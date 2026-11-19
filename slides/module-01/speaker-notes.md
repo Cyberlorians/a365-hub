@@ -31,7 +31,7 @@ Total onboarding is 12 proposed minutes, including the one-minute sign-in check.
 ## Slide 6 - See It. Control It. Protect It.
 
 **1 minute.** An agent can invoke tools, so useful access needs an explicit boundary.
-Introduce see/control/protect and the readiness worksheet: four answers, one gap,
+Introduce see/control/protect and the readiness discussion: four answers, one gap,
 one owned next action. Do not promise universal inventory or protection.
 Keep object models/token flows for Module 3.
 
@@ -44,7 +44,7 @@ complete, architecture diagram review remains, confirm the review owner next.
 The coordinator asks for a draft, reviews it and the one approved
 internal recipient, explicitly requests send, then verifies receipt in Module 2.
 Today we only review the registration. Intended boundaries are not implemented
-enforcement. The worksheet is a copyable blank note in Lab 3, not a missing handout.
+enforcement. No worksheet or copying exercise is needed.
 
 ## Slide 8 - Four scenarios. The same four questions.
 
@@ -74,8 +74,7 @@ visibility are different checks. No universal discovery or automatic enforcement
 
 ## Slide 11 - Review one agent, not three portals
 
-**3 minutes.** Start Lab 3 by pasting the worksheet from its first step into a blank
-note. Use tested AI Reader or labeled presenter evidence. Complete the lab across
+**3 minutes.** Start Lab 3 directly in the registry; no worksheet or written submission. Use tested AI Reader or labeled presenter evidence. Complete the lab across
 this review and slide 12's five minutes, not as extra time. An Agents at risk count
 with an empty result list is recorded as **Count shown; risk details not returned**;
 do not make learners wait. Permissions/Data & tools can be blank. Relay is a
@@ -83,7 +82,7 @@ separate staged training-risk record, not proof of a live incident. No write act
 
 ## Slide 12 - Five Entra pillars, one control map
 
-**5 minutes.** Finish the registry review while matching a worksheet gap to a control
+**5 minutes.** Finish the registry review while matching a open question to a control
 objective. Registry context does not establish approval/expiry, effective technical
 rights, policy targeting or actual enforcement. Verify those in the relevant source.
 A sponsor is not automatically a technical owner or privileged manager. CA depends
@@ -109,7 +108,7 @@ instructor and later modules; students stay in the registry.
 
 ## Slide 16 - Three-minute readiness check
 
-**3 minutes.** Two minutes to complete the worksheet, one to discuss. Purpose/people,
+**3 minutes.** Discuss one observation and one unanswered question. Purpose/people,
 intended boundary, why sign-in is insufficient, and evidence/gap/owned next action
 are the four prompts. Use the discussion answer key; no interactive quiz. Accept
 unknowns with a concrete next check. If sign-in is treated as end-to-end protection,
@@ -117,7 +116,7 @@ revisit slide 9. Do not claim a control was tested.
 
 ## Slide 17 - Establish normal before investigating abnormal
 
-**1 minute.** Total core: 25 minutes; sign-in is separate. Retain the worksheet.
+**1 minute.** Total core: 25 minutes; sign-in is separate. Carry open questions into Module 2.
 Module 2 must pass its own runtime, sender, task and receipt preflight; a matching
 registration name is insufficient. Collect feedback before finalizing the next
 remote session. Independent timing and live preparation remain release gates.

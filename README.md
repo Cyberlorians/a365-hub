@@ -77,7 +77,7 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > access details about two minutes later, and that test user signed in to Outlook with the
 > Temporary Access Pass. That was a historical sign-in test, not the current learner
 > route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
-> one-minute account check. Module 1 Lab 3 uses a copyable plain-text worksheet and a
+> simple account check. Module 1 Lab 3 uses a direct, read-only
 > prepared registry review (admin observations from November 5); fresh-learner AI Reader
 > access and timing still need event-specific validation. The separate staged Relay risk
 > was visible in Entra but not the registry after more than three hours. Module 2 runtime,
@@ -107,7 +107,7 @@ four Agent ID scenario lenses. The table below retains current technical package
 
 | # | Module | Learner output | Minutes |
 |---|---|---|---:|
-| 1 | See It. Control It. Protect It. | Readiness worksheet | 25 |
+| 1 | See It. Control It. Protect It. | Registry review and discussion | 25 |
 | 2 | Establish the Approved Agent Baseline | Actual actor/tool/data/evidence passport | 35 |
 | 3 | Understand Identity, Authority, and Blast Radius | Authority diagram and justified boundary | 35 |
 | 4 | Govern Creators, Access, and Lifecycle | Ownership/access/lifecycle decision | 40 |

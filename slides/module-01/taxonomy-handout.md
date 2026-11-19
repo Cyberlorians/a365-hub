@@ -31,7 +31,7 @@ owned Compliance Manager action, and Defender/ISOC investigation/response.
 
 | Module | Main output |
 |---|---|
-| 1. Frame risk and controls | Readiness worksheet |
+| 1. Frame risk and controls | Registry review and discussion |
 | 2. Establish normal behavior | Actor/tool/data/evidence passport |
 | 3. Map identity and authority | Actual diagram and blast radius |
 | 4. Govern lifecycle/access | Accountable decision |
@@ -44,6 +44,6 @@ Audit is not blocking. Generated content does not automatically inherit source l
 Prompt review is not an implemented approval boundary. Missing evidence is a gap,
 not proof of safety. See the [master plan](../../docs/06-customer-learning-plan.md).
 
-Keep a readiness worksheet: evidence mode/source/time, four answers, one gap and
-one owned next action. Missing metadata stays unknown. Optional staged Entra risk
+Discuss one thing the registry showed and one unanswered question. Notes are optional;
+there is no written submission. Missing metadata stays unknown. Optional staged Entra risk
 need not appear in the Agent 365 registry; zero does not establish safety.
