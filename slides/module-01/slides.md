@@ -151,9 +151,11 @@ Lab 3 fits across this review and the control-map segment; it is not eight extra
 minutes. Record source/time and unknowns. Do not click Block or change settings.
 Registration does not prove a working runtime.
 
-If the Agents at risk count opens an empty list, continue; the details are unavailable here. Do not wait or repeatedly refresh. The separate Relay
-agent is a staged training-risk example, not the Mail Agent or a live incident.
-The instructor can follow up in Entra Identity Protection > Risky agents.
+Select **Total agents**, search **Project Beacon Relay**, press **Enter**, then open
+**Project Beacon Relay Agent > Security > Risk details**. See **High** and
+**The agent is compromised.** This is staged training risk, not the Mail Agent
+or a live incident. Bypass the broken Agents at risk filter. If the risk is missing,
+tell the instructor; the risk check is not complete. Then review the Mail Agent.
 
 ## Slide 12 - Five Entra pillars, one control map
 

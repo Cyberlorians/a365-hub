@@ -58,16 +58,17 @@ The first five slides preserve the access sequence; Lab 1 includes the event acc
 form, which must be smoke-tested and approved before use. TAP lifetime/reuse and CA
 prompts require actual tenant testing. Lab 3 reviews a prepared registry record using
 tested AI Reader access, an authorized presenter view, or labeled prior-run evidence.
-Registration is not runtime proof; staged risk is optional and registry sync is not
-guaranteed.
+Registration is not runtime proof. The separate Relay Agent must show staged High
+risk in Security > Risk details; bypass the broken risk-count filter.
 
 **November 19 student-feedback revision:** Lab 2 is a single-screen check, not an
 eight-minute repeated sign-in lab. The Beacon case now names the coordinator,
 fictional brief, review, recipient and intended send/receipt sequence. Slide 9
 explains why authentication alone is insufficient; slide 14 gives actual log
 navigation paths for instructor/later-module follow-up. Lab 3 uses a
-direct registry review and accepts blank reach metadata and count/empty-risk-list
-mismatches as observations. Relay is explicitly the staged training example.
+direct registry review and accepts blank reach metadata as unknown. The risk check
+opens Relay > Security > Risk details and requires the staged High / compromised
+signal, rather than accepting the risk filter's empty list as completion.
 The sales slide was removed; the handoff is now slide 17. Its minute moves to the
 scenario, preserving the 25-minute core.
 

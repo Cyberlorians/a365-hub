@@ -345,8 +345,11 @@ describes the prepared registry review, not a fictional card. Preflight AI Reade
 for the exact run-owned learners as described in the lab-by-lab admin guide; if
 blocked, use the authorized presenter view rather than a write role.
 Zero risk counts, missing metadata or empty activity do not prove safety.
-The optional Relay flag can be shown in labeled Entra presenter evidence; November 5
-registry risk remained a dash/0 after more than three hours. Do not promise sync.
+The separate Relay Agent's staged risk is required. Select Total agents, search
+Relay, press Enter, and open Security > Risk details. Verify High / The agent is
+compromised. This worked in the admin view on November 19 while the risk-count
+filter returned no agents. Preflight AI Reader visibility; use the live presenter
+view for an access issue, never a write role. Missing profile risk blocks readiness.
 
 Module 1 does not require opening Purview or Defender live. Slides explain those
 control/evidence planes. No DLP, GSA/TLS, ISOC enrollment, connector, or query deployment

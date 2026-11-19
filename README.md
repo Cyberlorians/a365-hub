@@ -79,8 +79,10 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
 > simple account check. Module 1 Lab 3 uses a direct, read-only
 > prepared registry review (admin observations from November 5); fresh-learner AI Reader
-> access and timing still need event-specific validation. The separate staged Relay risk
-> was visible in Entra but not the registry after more than three hours. Module 2 runtime,
+> access and timing still need event-specific validation. On November 19, the separate
+> staged Relay risk showed High / compromised in the agent's Security > Risk details.
+> The registry risk-count filter returned no agents; Lab 3 uses the working profile route.
+> Fresh-learner visibility of those details still needs validation. Module 2 runtime,
 > mail send and downstream evidence still need live proof. Instructor scripts have not
 > been rehearsed with a live class.
 

@@ -215,7 +215,9 @@ data, and operational evidence.
 
 Keep protocol mechanics, full DLP setup, risk hunts, and live policy changes out of this
 introduction. Use tested AI Reader access or labeled presenter/prior-run evidence.
-Any staged Relay risk is optional; do not promise registry risk visibility or sync.
+Prepare the separate staged-risk Relay Agent and verify High and "The agent is
+compromised." through Security > Risk details. Use Total agents and search Relay,
+not the broken risk-count filter. Missing profile risk blocks the risk exercise.
 Detailed completion work is specified in Section 6.
 
 ### Module 2: Establish the Approved Agent Baseline - 35 minutes

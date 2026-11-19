@@ -39,9 +39,11 @@ walkthrough. They separate content-only rehearsal from authorized tenant prepara
   learner access requirement.
 - Close with slide 16's readiness discussion: four answers, one gap and one owned
   next action. Revisit slide 9 if legitimate sign-in is treated as safe behavior.
-- The Relay Agent risk comparison is optional. November 5 evidence showed High risk
-  in Entra while registry risk remained a dash/0 after more than three hours.
-  Do not promise sync, a count of 1, or populated Risk details.
+- Prepare the required staged-risk Relay Agent. Select Total agents, search Relay,
+  press Enter, then open Security > Risk details: High / The agent is compromised.
+  Verified in the admin view on November 19; the risk-count filter still returned
+  an empty list. Test the profile route with AI Reader before class. Missing risk
+  blocks preparation; do not mark an empty list as completion or flag the Mail Agent.
 - Test AI Reader access with a fresh learner. If unavailable, use the presenter
   evidence rather than granting write roles. Finish with feedback for the next session.
 - Handoff to the separate [Module 2 draft](../module-02/README.md).

@@ -20,8 +20,12 @@ Do not grant Global Administrator or other broad learner roles to fix missing me
 Do not bypass CA/device compliance, publish TAPs, or assume a universal eight-hour TAP
 or no-Authenticator flow.
 
-An optional Relay Agent flag may show in Entra but not the registry. Risk details,
-a registry count of 1 and populated Activity are not completion gates.
+Verify the required staged Relay risk through **Registry > Total agents > search
+Relay > Enter > Project Beacon Relay Agent > Security > Risk details**. Expect
+**High / The agent is compromised.** Test this with AI Reader; use the live presenter
+view if learner visibility is blocked, without granting more roles. The risk-count
+filter can return no agents despite visible profile risk. Missing profile risk
+blocks readiness. A fixed count of 1 and populated Activity are not required.
 
 Local operational notes report cleanup disabled; verify live state. Do not infer TAP
 expiry from account age or enable destructive cleanup merely to prepare slides.

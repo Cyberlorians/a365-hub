@@ -75,10 +75,12 @@ visibility are different checks. No universal discovery or automatic enforcement
 ## Slide 11 - Review one agent, not three portals
 
 **3 minutes.** Start Lab 3 directly in the registry; no worksheet or written submission. Use tested AI Reader or labeled presenter evidence. Complete the lab across
-this review and slide 12's five minutes, not as extra time. An Agents at risk count
-with an empty result list is recorded as **Count shown; risk details not returned**;
-do not make learners wait. Permissions/Data & tools can be blank. Relay is a
-separate staged training-risk record, not proof of a live incident. No write actions.
+this review and slide 12's five minutes, not as extra time. First select Total agents,
+search Relay and press Enter. Open Project Beacon Relay Agent > Security > Risk details.
+Verify High and The agent is compromised. This working route bypasses the risk-count
+filter, which returned an empty list on November 19. Missing risk is a setup/access
+failure to resolve, not completion. Then review the Mail Agent; its Permissions/Data
+& tools can be blank. Relay is staged training risk, not a live incident. No write actions.
 
 ## Slide 12 - Five Entra pillars, one control map
 

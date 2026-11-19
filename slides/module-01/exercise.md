@@ -16,12 +16,15 @@ review and **slide 16** for this check. Do not solve comprehension/access issues
 granting broad admin roles.
 
 The prepared registry record is not proof of a working runtime or effective controls.
-A zero/dash risk count does not establish safety. The optional staged Relay Agent
-flag may appear in Entra but not the registry. Accept explicit unknowns with a
-concrete follow-up; do not invent evidence. No live attack or policy change is
-required. Detailed authority and compromise mechanics belong in Modules 3 and 6.
+A zero/dash risk count does not establish safety. The required staged Relay Agent
+risk is inspected through its Security > Risk details tab: High / The agent is
+compromised. Do not use the broken risk-count filter. No live attack or learner
+policy change is required. Detailed authority and compromise mechanics belong
+in Modules 3 and 6.
 
-For a count that opens an empty list, or blank Permissions/Data & tools, let learners
-continue. They only need to understand that the information is unavailable here.
+If the risk counter opens an empty list, select Total agents, search Relay and
+press Enter, then open the Relay Agent's Security tab. Missing risk needs instructor
+investigation, not a completion check. Blank Mail Agent Permissions/Data & tools
+still means the information is unavailable here; learners can continue that check.
 The instructor can follow up on mapped grants, deployed tools and the Module 2 task.
 The Relay record is staged training risk, not proof of a live incident.

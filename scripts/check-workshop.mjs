@@ -110,7 +110,12 @@ assert(registrySteps.every(step => !step.snippet), "No mandatory copy exercise i
 const signInCheck = labMeta(1).find(lab => lab.n === 2);
 assert.equal(signInCheck.minutes, 1, "Do not budget a full lab for the sign-in check");
 assert.equal(labSlides(1).filter(step => step.lab === 2).length, 1, "Do not repeat the Slide 4 sign-in walkthrough");
-assert(registrySteps.find(step => step.key === "r3-registry").doneWhen.includes("empty list is a valid result"), "Risk-count/empty-list mismatch must not block completion");
+const riskStep = registrySteps.find(step => step.key === "r3-registry");
+assert(riskStep.doItems.some(item => item.includes("Total agents")) && riskStep.doItems.some(item => item.includes("Enter")), "Find Relay through the unfiltered registry search");
+assert(riskStep.doItems.some(item => item.includes("Security") && item.includes("Risk details")), "Open the working agent-profile risk view");
+assert(riskStep.doneWhen.includes("High") && riskStep.doneWhen.includes("The agent is compromised."), "Require the live staged risk, not an empty result");
+assert(riskStep.doItems.some(item => item.includes("this step is not complete")), "Missing risk must be reported, not accepted as completion");
+assert(riskStep.link.href.includes("search=Project%20Beacon%20Relay") && !riskStep.link.href.includes("statCard=risky"), "Risk shortcut must bypass the broken registry filter");
 assert(registrySteps.find(step => step.key === "r3-reach").doItems.some(item => item.includes("continue")), "Missing reach metadata must not block completion");
 assert(!module1.includes("Sell the outcome. Validate the fit.") && !/ON MONDAY/.test(module1), "Remove the sales slide and unexplained incident labels");
 assert(teachingSlides(1).at(-1).title === "Establish normal before investigating abnormal", "Renumber the handoff after removing the sales slide");
@@ -120,7 +125,7 @@ assert(registrySteps.at(-1).doneWhen.includes("one thing you still cannot verify
 assert(!registrySteps.at(-1).link, "Lab 3 must return to the remaining Module 1 lessons, not bypass them for Module 2");
 for (const role of ["learner", "instructor"]) {
   const html = buildView({ module: 1, role }).html;
-  assert(/empty (?:risk )?list/.test(html) && html.includes("staged training"), `Module 1 ${role}: actionable risk gap and labeled training example`);
+  assert(html.includes("Risk details") && html.includes("The agent is compromised.") && html.includes("staged training"), `Module 1 ${role}: required profile risk and labeled training example`);
   assert(!/Agents at risk (?:shows|is|=) 1|the Monday story|one stolen blueprint secret|Activity starts to fill in|Labs 1 to 6/i.test(html), `Module 1 ${role}: stale attack/sync promises`);
 }
 const plan = read("docs/06-customer-learning-plan.md");
@@ -259,4 +264,4 @@ for (const name of markdownFiles) {
   for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
     assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 17), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two blue modules with 17/8 teaching slides, untimed student lab labels, direct registry review without worksheets, empty-risk/permissions paths, instructor setup/notes, exact snippets, source alignment, eight-module plan, 39 sources and documentation links.");
+console.log("PASS: Two blue modules with 17/8 teaching slides, untimed student lab labels, direct registry review without worksheets, required Relay profile risk, unknown permissions handling, instructor setup/notes, exact snippets, source alignment, eight-module plan, 39 sources and documentation links.");

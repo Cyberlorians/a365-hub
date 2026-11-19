@@ -91,7 +91,10 @@ to review **Agents > All agents > Registry** and the prepared **Project Beacon M
 They record actual counts, purpose, accountable people, reach and evidence, including unknowns;
 then keep one gap and one owned next action. No settings are changed. Inspect available
 Details, Permissions, Data & tools, Security, Users and Activity without treating missing
-metadata as absence. An optional staged Relay risk comparison is not a completion gate.
+metadata as absence. First inspect the required staged Relay risk through
+**Project Beacon Relay Agent > Security > Risk details**: **High / The agent is
+compromised.** Select Total agents and search Relay, then press Enter; do not use
+the broken risk-count filter. Missing risk needs investigation, not completion.
 Fit this activity into slide 11's three minutes and slide 12's five-minute control mapping.
 
 > **If learners do not see the agents (found November 5, 2026):** nothing in Module 1 creates them.
@@ -101,19 +104,20 @@ Fit this activity into slide 11's three minutes and slide 12's five-minute contr
 
 #### Populate Lab 3
 
-The core lab needs **one prepared Mail Agent record or labeled prior-run fallback**.
-A separate Relay Agent and staged risk comparison are optional, not prerequisites:
+The core lab needs **a prepared Mail Agent record and a separate staged-risk Relay Agent**.
+Verify the live Relay risk before class, including the learner's read-only visibility:
 
 | Agent | Made how | Why |
 |---|---|---|
-| **Project Beacon Relay Agent** (optional) | `a365 setup all --agent-name "Project Beacon Relay"` (Route B, step 3; the CLI adds " Agent"), then flagged only with approval | Separate staged Entra risk evidence; it does not guarantee a registry signal |
+| **Project Beacon Relay Agent** | `a365 setup all --agent-name "Project Beacon Relay"` (Route B, step 3; the CLI adds " Agent"), then flagged only with lab approval | Required staged High / compromised signal in Security > Risk details |
 | **Project Beacon Mail Agent** | `a365 setup all --m365 --agent-name "Project Beacon Mail"` (Route B, step 4; the real Module 2 agent) | Has an Entra agent ID, an owner (sponsor), identity IDs and Entra permissions, so Details and Permissions have real values |
 
 **Route B is the recommended route.** It produced identity/permission context in our run,
 but Data & tools remained unavailable. An actual Entra agent identity is needed for
-the optional risk flag. **Route A** (upload a stand-in from the
+the staged risk flag. **Route A** (upload a stand-in from the
 admin center) was run end to end on November 5, 2026 and is the fallback: it registers an agent with
 **empty** Data & tools, Permissions and Entra agent ID, and it cannot be flagged.
+Route A alone does not satisfy the required live Relay risk check.
 
 **Route A (fallback): publish a stand-in from the admin center**
 
@@ -139,8 +143,9 @@ CLI, no consent pages.
 
 This is a small declarative agent with no actions: it cannot send email. In the Details pane it shows
 **Owner: a dash**, **Entra agent ID: a dash**, **Data and tools: unavailable** and **Permissions: none from
-Entra ID**. Lab 3 expects populated tabs, so with Route A tell learners these are the findings (an agent
-nobody owns and nothing governs) and skip the Relay Agent steps.
+Entra ID**. Treat these missing fields as unknown, not proof of no owner or governance.
+This stand-in does not replace the required Relay Agent and its live risk check;
+complete the separate Relay setup in Route B.
 To remove it later: Registry > Project Beacon Mail Agent > delete or remove the agent.
 
 **Route B (recommended): register the agents with the Agent 365 CLI**
@@ -232,10 +237,15 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
 
 **What the learner should find, and why** (so you can explain it in class).
 
-- **Risk may not appear in the registry.** The optional staged Relay flag was visible in
-  Entra but absent from the registry after more than three hours on November 5.
-  Record actual risk details only if present; otherwise use optional labeled Entra
-  presenter evidence or record the gap. Do not promise sync.
+- **Use the agent profile for risk, not the counter filter.** On November 19,
+  **Agents at risk** reported 1 and its filtered list returned no agents. The live
+  risk metrics identified the same Relay identity and registry title, but the
+  registry cache returned no risky records. **Total agents > search Relay > Enter >
+  Project Beacon Relay Agent > Security > Risk details** showed **High** and
+  **The agent is compromised.**, sourced from Microsoft Entra. Two occurrences
+  were visible; do not require a fixed number. This was an admin-view verification,
+  not a fresh AI Reader sign-in. Test learner visibility before class. Missing
+  profile risk blocks preparation; do not accept the empty filter as completion.
 - **Project Beacon Mail Agent (observed November 5, 2026).** Details: **Owner** and **Created by** show whoever
   ran setup (the CLI makes that person sponsor and owner), **Publisher** None, **Publisher type** Your users, an
   **Entra agent ID**. **Instructions**: "No instructions provided". **Identity**: Entra agent ID, Blueprint ID,
@@ -272,10 +282,13 @@ Connect-MgGraph -TenantId $c.tenantId -Scopes Application.Read.All -NoWelcome
   review it in Lab 3, then use it in Module 2. A build-and-install lab belongs in an optional later module.
 - Learners must not click **Block** (it acts on the whole tenant).
 
-**Optional: stage a separate Entra risk comparison**
+**Prepare the required staged Relay risk**
 
 Flag the **Project Beacon Relay Agent** on purpose, in the lab tenant only. Rules:
 
+- **Keep an existing High/confirmedCompromised flag.** Verify first. Do not repeat
+  confirmCompromised just to generate extra occurrences; the November 19 live check
+  already showed the required risk without changing the tenant.
 - **Only an Entra agent identity can be flagged.** The Route A stand-in has no Entra identity, so it cannot be
   flagged. Use the Relay Agent registered in Route B, step 3.
 - **Never flag the Mail Agent.** A High risk level can be blocked by a Conditional Access policy and
@@ -302,11 +315,12 @@ Invoke-MgGraphRequest -Method POST -ContentType 'application/json' `
   Select-Object agentDisplayName, riskLevel, riskState
 ```
 
-Verify whether it lists the Relay Agent as **high** and **confirmedCompromised**.
-On November 5, Entra showed those values while registry risk remained a dash/0 after
-more than three hours. Do not promise registry sync or require it to finish the lab.
-Use labeled Entra presenter evidence if available; otherwise omit this optional comparison.
-Undo the approved lab flag with **Confirm safe** or **Dismiss risk** in the same report
+Verify it lists the Relay Agent as **high** and **confirmedCompromised**, then verify
+the student route: **Registry > Total agents > search Relay > Enter > Project Beacon
+Relay Agent > Security > Risk details** must show **High / The agent is compromised.**
+The registry count/filter is not the acceptance test. Do not omit the risk exercise
+or mark it complete if profile risk is missing; investigate setup or access.
+After the workshop, undo the approved lab flag with **Confirm safe** or **Dismiss risk** in the same report
 (`.../riskyAgents/dismiss` with the same body). If you delete and re-register the Relay Agent, its old risk
 record stays; dismiss it. Only if risk is actually shown can learners inspect its source
 and details in their read-only view. Missing Risk details is a recorded visibility gap.
@@ -332,11 +346,12 @@ foreach ($u in $users) {
    Run it **after** learners have their accounts, right before Lab 3. The same pass can also be
    done by hand: Entra admin center > Roles & admins > **AI Reader** > Add assignments.
 
-2. **Prepare the Mail Agent record and evidence mode.** Do **Populate Lab 3**, Route B
-   (Route A only as a teaching fallback). Search for **Project Beacon Mail Agent** and
-   record actual fields, source/time and limits. If the optional Relay comparison is
-   approved, verify it in Entra and prepare its scoped reset. Neither a Relay Agent nor
-   a registry risk count of 1 is required. Registration is not runtime proof for Module 2.
+2. **Prepare Mail and the at-risk Relay.** Do **Populate Lab 3**, Route B.
+   Search for **Project Beacon Mail Agent** and record actual fields, source/time
+   and limits. Verify **Project Beacon Relay Agent > Security > Risk details**
+   shows **High / The agent is compromised.**, with an approved scoped reset after
+   the workshop. A fixed registry count is not required; visible Relay risk is.
+   Registration is not runtime proof for Module 2.
 3. **Other agents (optional).** Another option: a **Copilot Studio** agent created and shared by a throwaway
    user appears in the registry on its own, and hard deleting that user makes it an ownerless agent (the
    **Agents without owners** count goes up). Untested.
@@ -346,8 +361,10 @@ foreach ($u in $users) {
 
 **Check:** sign in as a lab user in a separate profile, open `admin.microsoft.com`, go to
 **Agents > All agents > Registry**. Record the actual counts and available Mail Agent tabs,
-including empty/unavailable fields. If the learner cannot reach the view, use authorized
-presenter or labeled prior-run evidence. Do not grant a write role.
+including empty/unavailable fields. Also open **Relay > Security > Risk details**
+and verify **High / The agent is compromised.** If the learner cannot reach the
+view, investigate and use the authorized live presenter view. Missing profile risk
+is blocked preparation, not completion. Do not grant a write role.
 
 **If it fails**
 
@@ -355,7 +372,7 @@ presenter or labeled prior-run evidence. Do not grant a write role.
 |---|---|
 | Blank page or HTTP 401 at the admin center | The user has no role yet. Assign **AI Reader**. |
 | Registry empty | Add the agents: **Populate Lab 3**. Check no filter is set. |
-| Agents at risk shows a dash or 0 | Record it, not a safety conclusion or failed lab. On November 5, Entra showed High/confirmedCompromised while registry risk remained a dash/0 after more than three hours. Use optional labeled Entra presenter evidence if prepared; do not promise the registry number follows. A Route A stand-in cannot be flagged. |
+| Agents at risk is empty, or its count opens no agents | Select **Total agents**, search **Project Beacon Relay**, press **Enter**, then open **Security > Risk details**. Expect **High / The agent is compromised.** This bypasses the broken registry filter, verified November 19. If profile risk is missing too, investigate identity, flag and read-only visibility before class; do not mark complete. A Route A stand-in cannot be flagged. |
 | Project Beacon missing | Nothing in Module 1 creates the agents. Run **Populate Lab 3**, then search the Registry for **Beacon**. On Route B check the registered names start with **Project Beacon**; if the agent exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |

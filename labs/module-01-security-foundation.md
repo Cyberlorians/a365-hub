@@ -61,9 +61,13 @@ presenter evidence. Find the prepared **Project Beacon Mail Agent** and begin th
 four-question review. Look at the counts and available fields. No copying is needed.
 
 **Check:** Unknowns stay unknown. A zero/dash risk count does not prove safety.
-If the risk count opens an empty list, continue; the count's details are unavailable in this view. The separate Relay Agent is the staged training-risk
-example, not the Mail Agent or a live incident. The instructor can compare Entra
-Identity Protection > Risky agents later; learners need no extra role.
+Inspect the prepared risk: select **Total agents**, search **Project Beacon Relay**,
+press **Enter**, and open **Project Beacon Relay Agent > Security > Risk details**.
+You should see **High** and **The agent is compromised.** This is staged training
+risk, not the Mail Agent or a live incident. Do not use the **Agents at risk** filter:
+it can return an empty list even while the agent's Security tab shows the signal.
+Missing risk must be reported to the instructor, not marked complete. Use the
+instructor's live view if learner visibility is blocked; learners need no extra role.
 Do not click Block or change anything.
 
 **Next:** Continue Lab 3 within Step 4, not as extra time.
