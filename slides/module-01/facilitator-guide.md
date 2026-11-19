@@ -1,88 +1,77 @@
 # Module 1 Facilitator Guide
 
-Use the [notes](speaker-notes.md) for all seventeen slides.
-The 25-minute core starts at slide 6; five onboarding slides sit outside it.
-Onboarding is budgeted at 12 minutes, including the single-screen, one-minute
-Lab 2 sign-in check. Do not repeat Slide 4's instructions for signed-in learners.
+Use the seventeen-slide [teaching reference](slides.md), [notes](speaker-notes.md)
+and separate [instructor deck](https://cyberlorians.github.io/a365-hub/instructor/).
+Keep the 25-minute core and separate 12-minute onboarding as planning targets,
+not tested durations. Rehearse the new eight-step Lab 3. No student lab time labels.
 
-Use the [learner step-by-step guide](../../labs/module-01-security-foundation.md)
-and [ordered admin runbook](../../docs/07-module-01-admin-runbook.md) for a complete
-walkthrough. They separate content-only rehearsal from authorized tenant preparation.
+## Ground the lesson in Microsoft's structure
+
+Use [Agent Academy Recruit, standard harness](https://microsoft.github.io/agent-academy/recruit/):
+
+1. Mission 00: prepare the Contoso IT SharePoint template and sample data.
+2. Mission 04: prepare the solution.
+3. Mission 06: create the helpdesk agent, add actual knowledge and test it.
+4. Mission 11: publish to an approved authenticated channel.
+5. Add this workshop's original read-only Agent 365 ownership/access/risk review.
+
+Microsoft supplies a learning sequence, not a one-click tenant deployment.
+Do not copy the full Academy course into these slides or claim Microsoft authorship
+of our security extension. Use the maintained official links for maker steps.
+The [source map](sources.md) distinguishes low-code Academy labs from pro-code
+Agent 365 SDK samples.
+
+## Before class
+
+- Follow the [sample preparation in the admin runbook](../../docs/07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample).
+  Existing Beacon/Mail registration does not satisfy this setup.
+- Verify real instructions, at least one ready knowledge source and a source page
+  you can open. Use the course's synthetic IT policy pages and Devices/Tickets lists.
+  Lists do not automatically become tools; no ticket write is required.
+- Select one answerable support question and one ordinary out-of-scope question.
+  Rehearse actual answers and any citations against the actual source.
+- Publish/share through an approved authenticated channel; test it as a fresh learner.
+  Record the exact event name, URL, environment and available IDs privately.
+- Correlate that sample to its registry entry. Test standing AI Reader separately
+  from chat and source access. Show configuration from the instructor's maker view.
+- Keep the separate Relay profile at staged High risk. Verify Security > Risk details
+  using Total agents and search Relay, not the broken risk-count filter. Never flag
+  the helpdesk or Mail Agent; plan a scoped reset after the workshop.
+- Missing sample, ready knowledge, published-channel test or profile risk blocks
+  preparation. Do not silently substitute the sparse Mail Agent or prior screenshots
+  and call the live lab complete.
 
 ## Delivery
 
-- Lead with secure AI adoption, the dual attack surface, and one customer case.
-- Use one preflighted read-only Registry view or authorized sanitized prior-run
-  evidence with source/time. The teaching deck now describes that review, not a
-  fictional card. Registration does not prove a working runtime.
-- Explain the five Entra pillars without five demos. Keep deep flow/authority work
-  for Module 3; do not promise CA on every exchange or universal gateway coverage.
-- On slide 8, use the four
-  [Agent ID scenario prompts](../../grounding/reference-images.md#image-3---agent-id-scenarios)
-  for a one-minute orientation: Agent 365 visibility, Microsoft runtimes, external
-  agents calling Microsoft APIs, and cross-cloud federation. These lenses overlap.
-  The student deck uses original text; the supplied picture remains a reference
-  pending provenance/reuse confirmation. Defer authority tracing to Module 3 and
-  credential-abuse mechanics to Module 6. Do not add four deployments.
-- Explain Purview supported data controls, owned improvement evidence, and the
-  Defender/ISOC loop. Do not add three live portal transitions.
-- Lab 3 uses eight minutes across slide 11's review and slide 12's control mapping,
-  not eight additional minutes. Match one observed gap to a control as learners
-  finish the registry review. The proposed 25-minute core still needs rehearsal.
-- Start Lab 3 directly in the registry. No worksheet, copying exercise or written
-  submission is required. Let learners continue when a risk list or Permissions
-  and Data & tools is blank; explain that the information is unknown from this view.
-- Keep timing estimates in instructor planning only, not on student lab pages.
-- Keep the story on the fictional Beacon coordinator, three-fact brief, human review
-  and approved recipient. Slide 9 compares two possible causes of a wrong email;
-  slide 14 gives log navigation for instructor/later-module follow-up, not a new
-  learner access requirement.
-- Close with slide 16's readiness discussion: four answers, one gap and one owned
-  next action. Revisit slide 9 if legitimate sign-in is treated as safe behavior.
-- Prepare the required staged-risk Relay Agent. Select Total agents, search Relay,
-  press Enter, then open Security > Risk details: High / The agent is compromised.
-  Verified in the admin view on November 19; the risk-count filter still returned
-  an empty list. Test the profile route with AI Reader before class. Missing risk
-  blocks preparation; do not mark an empty list as completion or flag the Mail Agent.
-- Test AI Reader access with a fresh learner. If unavailable, use the presenter
-  evidence rather than granting write roles. Finish with feedback for the next session.
-- Handoff to the separate [Module 2 draft](../module-02/README.md).
-- The former sales slide is removed. Slide 17 is now the Module 2 handoff.
+- Keep the employee's helpdesk task throughout: understand, inspect knowledge,
+  test the answer, then review ownership, access and evidence.
+- Learners use/inspect; only the instructor creates/publishes. No maker, broad admin
+  or management rights for attendees. AI Reader is not chat/source access.
+- Use the live presenter for the same checks if individual learner access is blocked,
+  while explicitly recording that access failure.
+- A blank registry field is not proof of no access. Compare it with the real maker
+  configuration; do not claim every source or tool must synchronize.
+- Keep the dual attack surfaces and Entra/Purview/Defender control map, but do not
+  add policy deployments, credential attacks or unrelated portal exercises.
+- Show Copilot Studio Test activity for this sample. The Container App Log stream
+  belongs to the separate Module 2 custom runtime.
+- End with the task, actual source, observed behavior and one unproven control.
+  No worksheet, mandatory copied answer or submission.
+- The current [Module 2](../module-02/README.md) remains the separate mail-agent
+  exercise; its runtime, sender and receipt need their own preflight.
 
-## Review and preparation gates
-
-Content review precedes test users, fake-data fixtures, simulator execution, and
-automation. Then approve the isolated environment, actual roles/entitlements,
-presentation/evidence mode, cost/run bounds, and exact reset manifest.
-No broad admin roles for attendees, policy bypass, or silent account-age cleanup.
-
-## Recovery
-
-### Presenter preflight observation: November 18
-
-The prepared Mail Agent profile opened through **Agents > All agents > Registry**.
-Its Details, Users, Data & tools, Security, Permissions and Activity tabs were
-present. Data & tools reported unavailable, Permissions displayed
-`AgentIdentity.CreateAsManager`, and Security linked to Entra protections.
-Use these as observed visibility limits, not as evidence of mail authority,
-runtime success or policy enforcement. Do not copy management permissions into
-the learner's intended mail boundary. Activity loading or an empty panel is not
-proof that no activity occurred. Recheck before each event.
-
-This was an authorized presenter session, not a fresh AI Reader learner test.
-No tenant settings were changed. The read-only presenter route is usable for
-content review; independent rehearsal and learner-access validation remain open.
+## Recovery and honest outcomes
 
 | Problem | Response |
 |---|---|
-| Identity-only interpretation | Revisit slide 9; distinguish injection-time versus later identity evidence |
-| Missing actual agent view | Use prepared labeled prior-run evidence or record the activity as blocked; do not claim live inventory success |
-| Empty/late telemetry | State missing/late coverage; do not infer safety |
-| Portal/role unavailable | Use approved prior-run evidence or narrow scope; do not elevate learners |
-| Onboarding trouble | Confirm real event setup with the owner after approval; do not activate signup in the draft |
-| Time overrun | Remove extra demos, not the control/evidence caveats or knowledge check |
+| Sample/knowledge missing | Stop live delivery and finish the official preparation; documentation-only review is not live completion |
+| Learner chat or registry blocked | Record the access issue and execute the same checks in the authorized live presenter view; do not elevate |
+| Sample absent from registry | Investigate publication, integration and correlation; do not register a fake title or substitute a catalog agent |
+| Registry Data & tools blank | Inspect actual maker knowledge/connections and report the registry visibility gap |
+| Answer unsupported or invented | Compare with the source, report failed grounding and refine/retest; do not invent a passing result |
+| Risk count opens no agents | Total agents > search Relay > Enter > Security > Risk details; missing profile risk is blocked setup |
+| Empty/late activity | State missing coverage; do not promise sync or infer safety |
+| Overrun | Reduce narration and extra demos, not evidence checks; record actual duration for the next event |
 
-Rehearse with another facilitator; confirm source/HTML/notes parity, keyboard/notes/
-print behavior, proposed 25-minute timing, and explicit release mode.
-See [permissions](permissions-preflight.md), [exercise](exercise.md),
-and [master plan](../../docs/06-customer-learning-plan.md).
+This content rebuild does not itself deploy the sample, grant maker rights, or
+verify fresh learner access. Confirm tenant readiness separately before inviting a class.

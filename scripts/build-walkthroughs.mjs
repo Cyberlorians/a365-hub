@@ -102,7 +102,7 @@ const css = `
   .check-list.numbered { counter-reset: row; }
   .check-list.numbered li { counter-increment: row; }
   .check-list.numbered li::before { content: counter(row) ".\\00a0"; color: var(--cp-accent); font-weight: 700; }
-  .walk-footer { position: sticky; bottom: 0; background: var(--cp-bg-elevated); border-top: 1px solid var(--cp-border); padding: 12px 24px; }
+  .walk-footer { background: var(--cp-bg-elevated); border-top: 1px solid var(--cp-border); padding: 12px 24px; }
   .walk-footer .row { max-width: 1232px; margin: auto; justify-content: space-between; }
   #jump { max-width: min(520px, 46vw); }
   #status { flex-basis: 100%; color: var(--cp-text-muted); margin: 4px 0 0; font-size: 14px; }

@@ -1,133 +1,128 @@
-# Module 1: Follow Along Step by Step
+# Module 1: Understand, Test and Inspect an Agent
 
 <!-- source-only -->
 [Open the visual student labs](https://cyberlorians.github.io/a365-hub/?view=lab).
-This Markdown guide follows the same business case and evidence boundaries as the
-teaching deck and numbered labs.
+This guide follows the same sample-led sequence as the teaching deck.
 <!-- /source-only -->
 
-**What you will do:** Review one agent and discuss what the registry does and does not tell you.
-**You need:** A browser and tested read-only registry access
-or the instructor's authorized presenter/labeled prior-run evidence.
-Standing AI Reader or the presenter fallback provides read-only access. No write role is needed.
+**What you will do:** Explore Microsoft's IT helpdesk learning scenario, inspect
+real knowledge, compare an answer with its source and review access/risk.
+**You need:** Your approved lab account, the exact sample name and tested chat link
+from the instructor, and standing AI Reader for registry review.
+The instructor shows configuration from their maker view. Chat and source access
+are separate from AI Reader. If your access is blocked, follow the live demonstration
+while the instructor investigates; do not request maker or admin rights.
 
 ## Get ready
 
-Use the event's tested access form or privately distributed credentials. Visual
-Lab 1 requests access. Slide 4 explains admin-center sign-in; Lab 2 is a one-screen
-account confirmation, not a second walkthrough.
-Never use a production account, share a TAP, or bypass a security prompt.
-The instructor preflights AI Reader
-separately. If blocked, follow the prepared presenter view; do not request write rights.
+Lab 1 requests the event account. Slide 4 explains sign-in; Lab 2 only confirms
+the signed-in username. Keep TAPs private. Never bypass a security prompt.
+You do not create or publish an agent in Module 1. No worksheet, prescribed copied
+answer, written submission, ticket creation or production data is required.
 
-There is no worksheet, copying exercise or written submission. Optional notes are for your own use.
-
-## Step 1: Understand the business case
+## Step 1: Understand Microsoft's sample
 
 **Do:** Open [Slide 6](https://cyberlorians.github.io/a365-hub/#slide-6), then
-[Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Project Beacon is a
-fictional rollout, and you are its coordinator. The approved brief has three of four
-documentation tasks complete, an architecture diagram still to review, and a next
-action to confirm the review owner. The Mail Agent should draft an update; you
-review the content and one approved internal recipient before explicitly requesting
-send and checking receipt in Module 2. Module 1 reviews its registration only.
-Identify the task and its intended boundary.
+[Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Read the use case in
+[Microsoft Agent Academy's helpdesk lesson](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/#use-case).
+An employee needs help with an IT issue or policy. The agent should use approved
+sources and escalate unknowns. The course's Contoso IT site provides sample policy
+pages and Devices/Tickets lists; a list is not automatically a tool.
 
-**Check:** You know the useful task and four review questions. You have not claimed
-the runtime or boundary was tested merely because a record exists.
+**Check:** You can state the useful task and intended boundary: answer and explain
+from approved knowledge. Microsoft supplies a learning sequence, not a running
+agent in your tenant. The instructor must prepare the actual sample.
 
 **Next:** Step 2.
 
-## Step 2: Compare scenarios and risks
+## Step 2: Separate knowledge, tools and authority
 
 **Do:** Read [Slide 8](https://cyberlorians.github.io/a365-hub/#slide-8), then
-[Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9). Recognize four overlapping
-lenses: Agent 365 customers, Microsoft first-party runtimes, agents anywhere calling
-Microsoft APIs, and cross-cloud workflows/federation. Write why a correctly signed-in
-agent could still do the wrong thing.
+[Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9). Distinguish purpose,
+instructions, knowledge and tools. Compare access/configuration misuse with
+misleading source content.
 
-**Check:** Hosting is not permission. Federation alone grants no resource access.
-Both identity misuse and content manipulation need investigation; a sign-in alone
-cannot establish every action. Module 3 traces authority in detail.
+**Check:** Knowledge supplies information; tools perform configured actions.
+Instructions are not an access-control policy. A valid sign-in or a correct answer
+does not prove safe access or complete protection.
 
 **Next:** Step 3.
 
-## Step 3: Start the registry review
+## Step 3: Start the sample lab
 
 **Do:** Read [Slide 10](https://cyberlorians.github.io/a365-hub/#slide-10), then
-[Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Start visual Lab 3:
-open **Agents > All agents > Registry** using tested access, or follow labeled
-presenter evidence. Find the prepared **Project Beacon Mail Agent** and begin the
-four-question review. Look at the counts and available fields. No copying is needed.
+[Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Start Lab 3.
+Follow the instructor's real instructions and Knowledge view. Open an actual ready
+source, ask a support question through the tested channel, and compare the answer
+with that source. Try an ordinary out-of-scope question and inspect the actual result.
+The instructor shows Test activity; you do not need maker access.
 
-**Check:** Unknowns stay unknown. A zero/dash risk count does not prove safety.
-Inspect the prepared risk: select **Total agents**, search **Project Beacon Relay**,
-press **Enter**, and open **Project Beacon Relay Agent > Security > Risk details**.
-You should see **High** and **The agent is compromised.** This is staged training
-risk, not the Mail Agent or a live incident. Do not use the **Agents at risk** filter:
-it can return an empty list even while the agent's Security tab shows the signal.
-Missing risk must be reported to the instructor, not marked complete. Use the
-instructor's live view if learner visibility is blocked; learners need no extra role.
-Do not click Block or change anything.
+**Check:** You have seen real configuration and a real answer/source comparison.
+If the sample or source is missing, report blocked setup; reading the lesson alone
+is not completion. If an answer is invented, report the failure rather than calling
+the boundary successful. Do not follow the linked lesson's Create or Publish steps.
 
-**Next:** Continue Lab 3 within Step 4, not as extra time.
+**Next:** Continue Lab 3 within Step 4.
 
-## Step 4: Complete the review and choose a control
+## Step 4: Review access and risk
 
-**Do:** Open [Slide 12](https://cyberlorians.github.io/a365-hub/#slide-12). Complete
-Lab 3's read-only profile review: Details, Permissions, Data & tools, Security,
-Users and Activity where available. Look for purpose, accountable people, reach and evidence. Match one finding to an Entra control objective.
+**Do:** Open [Slide 12](https://cyberlorians.github.io/a365-hub/#slide-12). Find the
+same prepared helpdesk sample in **Agents > All agents > Registry**: select
+**Total agents**, search its exact event name, press **Enter** and open its Details.
+Read ownership and available identity context. Compare Data & tools and Permissions
+with the instructor's live configuration.
 
-**Check:** Permissions and Data & tools may both be blank for this record. Continue when they are blank; access is unknown from this view.
-You are not expected to find capabilities, knowledge sources or tools.
-Ask the instructor to verify the mapped app/service principal grants in Entra and
-the deployed tool configuration; Module 2 tests the actual task.
-An available permission list is not proof of every effective grant. A displayed
-security link does not prove a control is configured or effective.
-Use a labeled fallback if the selected record or tab is unavailable.
+For the separate staged-risk example, search **Project Beacon Relay**, open
+**Project Beacon Relay Agent > Security > Risk details**, and see **High /
+The agent is compromised.** This is a separate identity, not the helpdesk agent or
+a live attack. Bypass the risk-count filter; it can return an empty list despite
+profile risk. Missing profile risk is not a completed risk check.
 
-**Next:** Return from Lab 3 to the teaching deck and continue with Step 5.
+**Check:** You can name an actual knowledge source and distinguish a configured
+tool from a list or answer. Registry blanks are visibility gaps; continue the
+comparison in the live configuration view, not by guessing. Match one finding to
+an Entra control. Do not Block, publish, grant access or change risk.
 
-## Step 5: Decide what proof you need
+**Next:** Return to the teaching deck and continue with Step 5.
+
+## Step 5: Decide what each source proves
 
 **Do:** Read [Slide 13](https://cyberlorians.github.io/a365-hub/#slide-13),
-[Slide 14](https://cyberlorians.github.io/a365-hub/#slide-14), and
+[Slide 14](https://cyberlorians.github.io/a365-hub/#slide-14) and
 [Slide 15](https://cyberlorians.github.io/a365-hub/#slide-15). Connect one open
-question to the source that could answer it.
+question to an evidence source.
 
-**Check:** Entra addresses identity/access, Agent 365 supported management visibility,
-Purview data controls/improvement work, and Defender investigation/response.
-Audit is not block. Slide 14 gives actual navigation paths for Entra sign-in and
-directory audit logs, Azure Container App Log stream, Purview Audit and Defender
-Incidents & alerts. They require separate access and appropriate logging.
-Opening more portals is not required in this module.
+**Check:** Copilot Studio test activity helps inspect this sample's knowledge/action
+path. Entra sign-in/audit, Purview Audit and Defender Incidents & alerts answer
+different questions and require separate roles. Audit is not blocking; a test pane
+is not a complete security audit trail. The separate Module 2 custom runtime uses
+Container App Log stream, not this sample's test view.
 
 **Next:** Step 6.
 
-## Step 6: Discuss what you saw
+## Step 6: Explain what you observed
 
 **Do:** Open [Slide 16](https://cyberlorians.github.io/a365-hub/#slide-16).
-Discuss one thing the registry showed and one thing you still cannot verify. Use the
-[discussion answer key](../slides/module-01/exercise.md) for examples.
+Discuss the employee task, one real source, whether a tool action was configured
+or observed, and one unproven control. Notes are optional.
 
-**Check:** Explain why a valid sign-in does not prove safe behavior. Explicit unknowns
-with a concrete validation step are valid; invented results are not.
-This is a discussion, not an interactive quiz.
+**Check:** You can explain one observed result and one unknown without inventing
+permissions, tool executions or policy outcomes. A failed test is a finding.
 
 **Next:** Step 7.
 
-## Step 7: Keep the next action and hand off
+## Step 7: Carry the method into the next module
 
 **Do:** Read [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17).
-Share feedback for the next remote session.
+Use the same purpose, people, reach and evidence questions with other agents.
 
-**Check:** You can describe one observation and one unanswered question. Module 2 needs
-its own runtime/mail preflight; registration is not deployment or delivery proof.
+**Check:** The current Module 2 is a separate custom mail-agent exercise. This
+helpdesk test does not prove its runtime, sender or delivery, and does not mean you
+created an agent. The instructor must preflight that exercise separately.
 
-**Next:** [Module 2 walkthrough](module-02-business-agent.md), when the instructor
-confirms its setup is ready.
+**Next:** [Module 2 walkthrough](module-02-business-agent.md), when released by the instructor.
 
 ## Finished
 
-Do not delete accounts, change grants, or alter policy.
-The instructor handles approved support, retention and run-scoped cleanup.
+Do not delete shared resources or alter grants/policy. The instructor handles
+approved retention, risk reset and run-scoped cleanup.

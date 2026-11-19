@@ -33,7 +33,8 @@ Each module has **two separate decks**, both in the original blue style:
 1. **Slides** - the teaching slides. After the lessons that need practice, a
    **LAB 1, LAB 2...** button appears (Module 1 has three labs, Module 2 has four).
 2. **Labs** - each lab is a handful of tiny steps: numbered "Do this" actions, a picture
-   or real screenshot, Copy boxes, and a "You are done when" line. The last step of each
+   or real screenshot, copy boxes where needed, and a "You are done when" line. Module 1
+   has no required copying or written submission. The last step of each
    lab sends you back to the next slide. No instructor material is in this deck.
 
 **Instructor deck** (separate link, for the presenter only):
@@ -77,14 +78,24 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > access details about two minutes later, and that test user signed in to Outlook with the
 > Temporary Access Pass. That was a historical sign-in test, not the current learner
 > route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
-> simple account check. Module 1 Lab 3 uses a direct, read-only
-> prepared registry review (admin observations from November 5); fresh-learner AI Reader
-> access and timing still need event-specific validation. On November 19, the separate
+> simple account check. Module 1 now follows Microsoft's Academy helpdesk sample:
+> understand purpose/instructions, inspect real knowledge, test an answer, and review
+> access/risk. The new sample deployment, published learner channel and source access
+> have **not** been verified by this content rebuild. Prepare them with the
+> [sample setup guide](docs/07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample);
+> the old Beacon registration is not a substitute. On November 19, the separate
 > staged Relay risk showed High / compromised in the agent's Security > Risk details.
 > The registry risk-count filter returned no agents; Lab 3 uses the working profile route.
 > Fresh-learner visibility of those details still needs validation. Module 2 runtime,
 > mail send and downstream evidence still need live proof. Instructor scripts have not
 > been rehearsed with a live class.
+
+Module 1 uses the [Microsoft Agent Academy IT helpdesk lesson](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/)
+as its maintained learning foundation, with original security-review guidance.
+The instructor prepares/publishes; students use and inspect without maker rights.
+[Agent 365 SDK samples](https://learn.microsoft.com/microsoft-agent-365/developer/samples)
+are a separate pro-code path, not interchangeable with Copilot Studio setup.
+Module 2 remains the separate custom mail exercise and is not changed by this revision.
 
 The Markdown guides remain a plain-text reference and the source of every copy-and-run
 snippet used in the slides (a check fails if they drift):

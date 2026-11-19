@@ -4,7 +4,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { buildView, buildModule, views, urlFor } from "./build-walkthroughs.mjs";
-import { codeBlocks, esc, labMeta, labSlides } from "./workshop-lab-content.mjs";
+import { codeBlocks, esc, labMeta, labSlides, setupSlides } from "./workshop-lab-content.mjs";
 import { teachingSlides } from "./workshop-instructor-content.mjs";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
@@ -95,18 +95,29 @@ for (const id of [1, 2]) {
   markdownFiles.push(...names.map(name => `${directory}/${name}`));
 }
 const module1 = read("slides/module-01/index.html");
-const scenarioSlide = module1.match(/<section class="slide" data-title="Four scenarios\. The same four questions\."[\s\S]*?<\/section>/)?.[0];
-assert(scenarioSlide, "Module 1 must introduce the four overlapping Agent ID scenarios");
-for (const label of ["Agent 365 customers", "Microsoft first-party runtimes", "Agents anywhere calling Microsoft APIs", "Cross-cloud workflows / federation"])
-  assert(scenarioSlide.includes(label) && read("slides/module-01/slides.md").includes(label), `Module 1 scenario missing: ${label}`);
-assert(scenarioSlide.includes("These scenarios overlap") && scenarioSlide.includes("Federation alone does not grant resource access"));
+const scenarioSlide = module1.match(/<section class="slide" data-title="One Microsoft sample\. Four questions\."[\s\S]*?<\/section>/)?.[0];
+assert(scenarioSlide, "Module 1 must lead with the Microsoft sample, not the Beacon mail story");
+for (const label of ["Agent Academy", "IT helpdesk", "Contoso IT", "Devices", "Tickets"])
+  assert(module1.includes(label) && read("slides/module-01/slides.md").includes(label), `Module 1 sample missing: ${label}`);
+assert(scenarioSlide.includes("https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/"), "Show the actual Microsoft learning source");
+assert(!module1.includes("three of four documentation tasks") && !scenarioSlide.includes("Mail Agent"), "Do not disguise the old mail case as a Microsoft helpdesk sample");
 assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
 assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
 const registrySteps = labSlides(1).filter(step => step.lab === 3);
-assert(/three of four documentation tasks/i.test(module1) && /Three of four documentation tasks/.test(read("labs/module-02-business-agent.md")), "The concrete Beacon brief must align with the following module");
-assert.equal(registrySteps.length, 6, "Keep six direct registry review steps, without a worksheet setup step");
-assert.equal(registrySteps[0].key, "r3-open", "Start directly in the registry");
+assert(/Three of four documentation tasks/.test(read("labs/module-02-business-agent.md")), "Keep the separate existing Module 2 task unchanged");
+assert.deepEqual(registrySteps.map(step => step.key), ["r3-brief", "r3-knowledge", "r3-test", "r3-open", "r3-reach", "r3-registry", "r3-evidence", "r3-watch"], "Follow the sample-led understand/test/inspect sequence");
 assert(registrySteps.every(step => !step.snippet), "No mandatory copy exercise in the registry lab");
+assert(registrySteps[0].link.href.includes("agent-academy/recruit/06-create-agent-from-conversation/"), "Begin with Microsoft's actual helpdesk use case");
+assert(registrySteps.find(step => step.key === "r3-knowledge").doneWhen.includes("at least one configured, available knowledge source"), "A missing live knowledge source cannot complete the sample lab");
+const testStep = registrySteps.find(step => step.key === "r3-test");
+assert(testStep.doItems.some(item => item.includes("out of that source's scope") || item.includes("outside that source's scope")), "Include an ordinary out-of-scope test");
+assert(testStep.doneWhen.includes("report that failure"), "Do not replace a failed grounding test with a success claim");
+assert(registrySteps.find(step => step.key === "r3-open").doItems.some(item => item.includes("exact sample name")), "Correlate the actual event sample, not a catalog stand-in");
+const setup1 = setupSlides(1);
+for (const key of ["a-seed", "a-publish", "a-risk"])
+  assert(setup1.some(step => step.key === key), `Missing instructor sample preparation: ${key}`);
+assert(setup1.find(step => step.key === "a-publish").doneWhen.includes("not tenant-readiness proof"), "Published content must not imply a deployed sample");
+assert(read("slides/module-01/sources.md").includes("Microsoft Learn MCP"), "Keep the research provenance and official source map");
 const signInCheck = labMeta(1).find(lab => lab.n === 2);
 assert.equal(signInCheck.minutes, 1, "Do not budget a full lab for the sign-in check");
 assert.equal(labSlides(1).filter(step => step.lab === 2).length, 1, "Do not repeat the Slide 4 sign-in walkthrough");
@@ -119,7 +130,7 @@ assert(riskStep.link.href.includes("search=Project%20Beacon%20Relay") && !riskSt
 assert(registrySteps.find(step => step.key === "r3-reach").doItems.some(item => item.includes("continue")), "Missing reach metadata must not block completion");
 assert(!module1.includes("Sell the outcome. Validate the fit.") && !/ON MONDAY/.test(module1), "Remove the sales slide and unexplained incident labels");
 assert(teachingSlides(1).at(-1).title === "Establish normal before investigating abnormal", "Renumber the handoff after removing the sales slide");
-for (const location of ["Monitoring &amp; health", "Log stream", "Solutions", "Audit", "Incidents &amp; alerts"])
+for (const location of ["Monitoring &amp; health", "activity map", "Solutions", "Audit", "Incidents &amp; alerts"])
   assert(module1.includes(location), `Evidence map needs concrete navigation: ${location}`);
 assert(registrySteps.at(-1).doneWhen.includes("one thing you still cannot verify"), "End with a simple observation, not a written assignment");
 assert(!registrySteps.at(-1).link, "Lab 3 must return to the remaining Module 1 lessons, not bypass them for Module 2");
@@ -217,7 +228,7 @@ for (const config of views) {
     assert.equal(steps.length, labSlides(config.module).length, `${label} step count`);
     for (const lab of labMeta(config.module)) {
       const inLab = steps.filter(slide => slide.lab === lab.n);
-      const expectedRange = config.module === 1 && lab.n === 2 ? [1, 1] : [3, 6];
+      const expectedRange = config.module === 1 && lab.n === 2 ? [1, 1] : config.module === 1 && lab.n === 3 ? [8, 8] : [3, 6];
       assert(inLab.length >= expectedRange[0] && inLab.length <= expectedRange[1], `${label} Lab ${lab.n} step count`);
       assert(inLab.at(-1).links.some(link => link.href === `./#slide-${lab.back}`), `${label} Lab ${lab.n} must lead back to its lesson`);
     }
@@ -264,4 +275,4 @@ for (const name of markdownFiles) {
   for (const match of content.matchAll(/https:\/\/cyberlorians\.github\.io\/a365-hub\/(module-02\/)?#slide-(\d+)/g))
     assert(Number(match[2]) >= 1 && Number(match[2]) <= (match[1] ? 8 : 17), `Invalid slide link in ${name}: ${match[0]}`);
 }
-console.log("PASS: Two blue modules with 17/8 teaching slides, untimed student lab labels, direct registry review without worksheets, required Relay profile risk, unknown permissions handling, instructor setup/notes, exact snippets, source alignment, eight-module plan, 39 sources and documentation links.");
+console.log("PASS: Two blue modules with 17/8 teaching slides, Microsoft sample-led eight-step Module 1 lab, real knowledge/test requirements, separate maker/user/reviewer access, required Relay profile risk, untimed student labs without worksheets, instructor setup, source alignment and documentation links.");

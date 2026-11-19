@@ -5,7 +5,17 @@
 Four questions: **What agent/purpose? Who is accountable and acts? Which data/tools/
 permissions? What happened, which evidence, and which decision?**
 
-## Four overlapping scenarios
+## Follow Microsoft's sample-learning sequence
+
+Use the [Academy IT helpdesk example](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/):
+purpose and instructions > actual knowledge > question and source check >
+ownership, access and evidence review. The instructor prepares/publishes it;
+students use and inspect. AI Reader is not maker, chat or source access.
+
+Knowledge supplies information. Tools perform configured actions. Instructions
+do not replace permissions, and a SharePoint list is not automatically a tool.
+
+## Later authority reference: four overlapping scenarios
 
 | Lens | Ask |
 |---|---|
@@ -31,7 +41,7 @@ owned Compliance Manager action, and Defender/ISOC investigation/response.
 
 | Module | Main output |
 |---|---|
-| 1. Frame risk and controls | Registry review and discussion |
+| 1. Understand, test and inspect | Actual sample/source comparison and security review |
 | 2. Establish normal behavior | Actor/tool/data/evidence passport |
 | 3. Map identity and authority | Actual diagram and blast radius |
 | 4. Govern lifecycle/access | Accountable decision |
@@ -44,6 +54,7 @@ Audit is not blocking. Generated content does not automatically inherit source l
 Prompt review is not an implemented approval boundary. Missing evidence is a gap,
 not proof of safety. See the [master plan](../../docs/06-customer-learning-plan.md).
 
-Discuss one thing the registry showed and one unanswered question. Notes are optional;
-there is no written submission. Missing metadata stays unknown. Optional staged Entra risk
-need not appear in the Agent 365 registry; zero does not establish safety.
+Discuss the task, actual source, observed behavior and one unproven control.
+Notes are optional; there is no written submission. Missing metadata stays unknown.
+The separate Relay staged risk is required through Security > Risk details, not
+the broken risk-count filter. It is not the helpdesk sample or a live attack.

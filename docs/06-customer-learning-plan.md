@@ -16,7 +16,7 @@ and multiple-build proposals. [Module 1](../slides/module-01/README.md) and
 
 | Module | Learner walkthrough | Admin walkthrough |
 |---|---|---|
-| 1 | [Slide-by-slide registry review](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
+| 1 | [Microsoft sample-led learning and review](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
 | 2 | [Task, prompts, evidence and passport](../labs/module-02-business-agent.md) | [Preparation/proof/rehearsal runbook](08-module-02-admin-runbook.md) |
 
 Guide authoring and browser checks do not constitute live tenant or independent
@@ -203,18 +203,23 @@ data, and operational evidence.
   of the story.
 - **Control:** Agent 365 accountability/visibility, the five Entra pillars, supported
   Purview controls, and Defender/ISOC investigation responsibilities.
-- **Activity:** Follow the synthetic status-mail customer case, inspect one prepared
-  agent record, and discuss what it shows and what remains unknown. No worksheet,
-  copying exercise or written submission is required. Slide 8 introduces
-  the four overlapping Agent ID scenarios in original text; detailed authority and
-  credential-abuse mechanics remain in Modules 3 and 6.
-- **Evidence/output:** Explain one registry observation and one unanswered question,
-  including where the instructor could verify it next.
+- **Activity:** Follow Microsoft's Agent Academy Recruit standard-harness helpdesk
+  scenario: understand purpose/instructions, inspect ready knowledge, compare a real
+  answer with its source, then review the matching registry entry and separate Relay
+  risk. Students use/inspect; the instructor builds/publishes. No worksheet, required
+  copying or written submission. Authority and misuse mechanics stay in Modules 3 and 6.
+- **Evidence/output:** Explain the useful task, an actual source, observed
+  retrieval/action and one unproven control with an owned next check.
 - **Decision:** State the approved operating boundary and what must be verified next.
 - **Sources:** C1, H2, B1-B2, L1, L7, L10, L12, L15, L17, L19, L21, L23.
 
 Keep protocol mechanics, full DLP setup, risk hunts, and live policy changes out of this
 introduction. Use tested AI Reader access or labeled presenter/prior-run evidence.
+For the new live sample lab, follow Academy Missions 00, 04, 06 and 11; see the
+[sample source map](../slides/module-01/sources.md). The published content does
+not deploy the sample. Actual knowledge, published-channel testing and matching
+registry correlation are readiness gates. Prior-run documentation is not live
+runtime proof. AI Reader does not grant maker, chat or source access.
 Prepare the separate staged-risk Relay Agent and verify High and "The agent is
 compromised." through Security > Risk details. Use Total agents and search Relay,
 not the broken risk-count filter. Missing profile risk blocks the risk exercise.
@@ -394,28 +399,27 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 | Keep | Change now | Defer |
 |---|---|---|
 | Existing self-contained HTML and controls | Reframe the opening around secure AI adoption and the playbook's dual attack surfaces | New frontend framework or separate explainer application |
-| Five onboarding slides plus thirteen core slides | Treat onboarding as a separate 15-minute block; qualify TAP/CA behavior using actual tests | Full workload-authentication deep dive |
+| Five onboarding slides plus twelve core slides | Keep onboarding's 12-minute plan separate from the 25-minute core; qualify TAP/CA using actual tests | Full workload-authentication deep dive |
 | Observe/govern/secure and four review questions | Add the five Entra pillars as one control map; explain identity alone is insufficient | Full GSA/TLS/ISOC onboarding |
-| One Registry agent review | Prefer one live portal transition; use labeled, current control screenshots for the rest | Three live portal tours and policy editing |
+| Purpose, people, reach and evidence questions | Follow the Academy helpdesk: actual knowledge, answer/source test, matching registry and separate risk | Student maker/publishing rights without separate approval |
 | Existing notes/handout/source-map structure | Update all numbering, sources, timing, recovery prompts, and transitions | Branding/export perfection as a release blocker |
 
-### Proposed core sequence, retaining slides 6-18
+### Current sample-led core sequence, slides 6-17
 
 | Slide | Planned role |
 |---|---|
 | 6 | Secure AI adoption: customer value and learning outcome |
-| 7 | The shared status-mail case and four review questions |
-| 8 | Four overlapping Agent ID scenarios; hosting, identity, visibility and permission differ |
+| 7 | Microsoft's IT helpdesk sample and four review questions |
+| 8 | Purpose, instructions, knowledge and tools |
 | 9 | Two attack surfaces; correct authentication does not establish safe behavior |
-| 10 | Agent 365 observe/govern/secure and the Registry |
-| 11 | Review one actual agent: purpose, accountability, access, activity |
+| 10 | Maker, user and reviewer roles; distinct access and sample routes |
+| 11 | Understand, test and inspect the prepared Microsoft helpdesk sample |
 | 12 | Five Entra control pillars, with flow/support boundaries |
 | 13 | Purview data boundary and Compliance Manager evidence follow-through |
-| 14 | Runtime/tool and applicable network evidence: what identity logs cannot show alone |
+| 14 | Copilot Studio test activity, Entra, Purview and Defender evidence paths |
 | 15 | Defender/ISOC investigation-response-improvement loop |
 | 16 | Readiness discussion: one observation and one unanswered question |
-| 17 | E7 fit, existing entitlements, and adoption options |
-| 18 | Recap and handoff to the approved baseline task |
+| 17 | Handoff to the separate Module 2 custom Mail Agent and its own preflight |
 
 Do not turn every slide into a separate product demonstration. Use original explanations
 inspired by Blue16, not copied implementation or graphics.
@@ -424,13 +428,13 @@ inspired by Blue16, not copied implementation or graphics.
 
 | Segment | Minutes |
 |---|---:|
-| Customer outcome and shared case | 3 |
-| Four-scenario orientation and dual attack surface | 4 |
-| Four questions and one prepared agent record | 4 |
+| Customer outcome and Microsoft sample | 4 |
+| Sample components and dual attack surface | 4 |
+| Roles and sample lab launch | 4 |
 | Five Entra pillars | 5 |
 | Data/runtime/SOC loop | 4 |
 | Readiness check | 3 |
-| E7 fit and Module 2 transition | 2 |
+| Module 2 transition | 1 |
 | **Total** | **25** |
 
 ### Readiness check
@@ -444,11 +448,11 @@ Target: **four answers, one gap and one owned next action**, including the dual-
 explanation. Unknowns with concrete validation steps are valid. Clarify misconceptions
 before handoff; do not grant admin roles or add an interactive quiz.
 
-Lab 3's eight minutes fit within slide 11's three-minute review and slide 12's
-five-minute control mapping. They are not additional core time. Stage risk only as
-an optional presenter comparison; the November 5 registry did not reflect the
-confirmed Entra flag after more than three hours. Fresh-learner access and an
-independent timed rehearsal remain gates.
+Lab 3 is budgeted inside slide 11's launch and slide 12's control mapping, not as
+additional core time. Rehearse the new eight-step sample sequence; do not put
+duration estimates on student lab pages. The separate Relay risk is required through
+Security > Risk details, not the broken risk-count filter. Sample deployment,
+knowledge/source tests, published-channel access and independent timing remain gates.
 
 ### Files to update during implementation
 

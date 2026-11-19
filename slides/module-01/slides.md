@@ -1,229 +1,160 @@
-# Module 1 Reworked Slide Source
+# Module 1: See It. Control It. Protect It.
 
-Aligned November 13, 2026, with the customer-facing outline. This is the plain-text
-teaching reference for the HTML deck, not proof of tenant readiness.
-Five onboarding slides take 12 proposed minutes; the twelve-slide core takes 25.
+Teaching reference for the HTML deck. The sample-led learning sequence follows
+Microsoft Agent Academy Recruit's standard-harness IT helpdesk lessons, with an
+original Agent 365 security review. This is not a Microsoft-authored course.
+Instructor planning retains a 25-minute core and separate 12-minute onboarding;
+the revised live sequence requires rehearsal. Student labs show no durations.
 
 ## Slide 1 - Get your lab account
 
-**Planned time:** 2 minutes (onboarding).
-
-Learn, then practice. When a LAB button appears, follow its numbered steps and return
-to the next teaching slide. Use only your approved lab account, never production.
-The first lab starts on slide 2.
+Request the approved event account. Follow each numbered lab when its button
+appears, then return to the slides. Never use production credentials.
 
 ## Slide 2 - Use the approved access process
 
-**Planned time:** 3 minutes (onboarding).
-
-After the facilitator releases the event link, supply only the approved name/email
-and optional company, accept the lab terms and submit once. Lab 1 requests access.
-Use privately distributed credentials if the event uses scripted accounts instead.
-Never enter passwords, secrets, customer information or production data in the form.
+Open the released event form, provide only the requested name/email and optional
+company, accept the terms and submit once. Lab 1 handles access, not agent creation.
 
 ## Slide 3 - Check the lab-access email
 
-**Planned time:** 4 minutes (onboarding).
-
-Find your username, Temporary Access Pass and sign-in instructions. The current form
-template describes an eight-hour pass; the instructor must verify the actual event
-configuration. Check Junk, wait up to five minutes, then ask for help instead of
-submitting again. Keep credentials private.
+Find the username, Temporary Access Pass and sign-in link. Read the actual lifetime;
+keep the credential private. Check Junk and ask for help rather than resubmitting.
 
 ## Slide 4 - Sign in using the approved method
 
-**Planned time:** 1 minute (onboarding).
-
-Open [Microsoft 365 admin center](https://admin.microsoft.com/) in a private window. Use your lab username and TAP, and answer No to
-Stay signed in. Lab 2 is a one-screen, one-minute check of the signed-in lab account,
-not another full sign-in walkthrough. If prompts require a different method
-or a security change, stop and ask the instructor; do not bypass policy.
+Open [Microsoft 365 admin center](https://admin.microsoft.com/) in a private window
+with the lab account. Lab 2 only confirms that account. Do not bypass security prompts.
 
 ## Slide 5 - Confirm readiness without extra privileges
 
-**Planned time:** 2 minutes (onboarding).
-
-Project Beacon is a fictional internal rollout. A project coordinator needs a weekly
-status email; Project Beacon Mail Agent is intended to draft it from an approved
-brief for human review. Module 1 reviews the registration; it does not send mail.
-Keep the admin center open with standing read-only AI Reader access. Lab 3 uses
-Agents > All agents > Registry. If blocked, follow the presenter view without write
-privileges.
+Understand, try and inspect Microsoft's helpdesk sample. The instructor prepares
+and publishes it, then gives the exact event name and tested chat URL.
+Standing AI Reader is registry access, not chat, source or Copilot Studio authoring
+access. Students do not create or publish an agent in Module 1.
 
 ## Slide 6 - See It. Control It. Protect It.
 
-**Planned time:** 1 minute (core).
+- **See it:** purpose, accountable people and context.
+- **Control it:** approved data, tools and authority.
+- **Protect it:** observed behavior, evidence and response.
 
-An agent reads, decides and acts with real access.
+Explain the task, knowledge, actions and evidence without claiming universal coverage.
 
-- **See it:** Know its purpose, owner and context.
-- **Control it:** Approve access, data and tool boundaries.
-- **Protect it:** Check what happened and act on evidence.
+## Slide 7 - One Microsoft sample. Four questions.
 
-Takeaway: a discussion of what the registry shows and what remains unknown,
-not proof that every agent or control is visible.
+Follow [Agent Academy Mission 06](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/).
+An employee needs help with an IT issue or policy. The agent should use verified
+support guidance and escalate unknowns, not invent policy or request passwords.
 
-## Slide 7 - One business case. Four questions.
+The course setup supplies a Contoso IT SharePoint template with sample policy
+pages and Devices/Tickets lists. Lists are not automatically agent tools.
+Module 1's boundary is answer and explain; ticket creation or device changes require
+separately configured actions, authorization and tests.
 
-**Planned time:** 3 minutes (core).
+Ask: what does it do, who owns and acts, what can it reach, and what evidence exists?
+Beacon is not the required business case or proof the sample is deployed.
 
-You are Project Beacon's coordinator. The approved fictional brief contains three
-facts from Module 2: three of four documentation tasks are complete, the architecture
-diagram needs review, and the next action is to confirm the review owner.
-The agent drafts an internal update from those facts. You review the wording and
-one instructor-approved internal recipient, explicitly request the reviewed send,
-then verify actual receipt in Module 2. No customer data or inbox-reading task is
-needed. These are intended boundaries, not claims of enforced permissions.
+## Slide 8 - Purpose, instructions, knowledge and tools
 
-Before expanding its use, ask:
-
-1. What exists: which agent and purpose?
-2. Who owns it: who is responsible, and who acts?
-3. What can it reach: which permissions, tools and data?
-4. What is watching it: which evidence shows what happened?
-
-Lab 3 reviews a prepared record. Notes are optional; no template or written submission is needed. Module 2 runs the task only
-after runtime preflight.
-
-## Slide 8 - Four scenarios. The same four questions.
-
-**Planned time:** 1 minute (core).
-
-| Scenario lens | Orientation |
+| Lens | Inspect |
 |---|---|
-| Agent 365 customers | A shared management view for supported agents |
-| Microsoft first-party runtimes | Platforms such as Copilot Studio or Foundry |
-| Agents anywhere calling Microsoft APIs | Externally hosted agents requesting Microsoft resource access |
-| Cross-cloud workflows / federation | Approved trust used to request access across platforms |
+| Purpose | The employee problem the agent should solve |
+| Instructions | Response and escalation guidance; not an access-control policy |
+| Knowledge | Actual approved sources and their access rules |
+| Tools | Configured lookups/actions, connections and permissions |
 
-These scenarios overlap. Hosting, identity, registry visibility and resource
-permission are different questions. Federation alone does not grant resource access.
-Ask the same four questions in every case; Module 3 traces actual authority.
-This original text overview does not reproduce the supplied reference picture.
+These are inspection lenses, not a universal object model. Knowledge answers;
+tools act. A good answer does not prove a tool ran.
 
 ## Slide 9 - Two attack surfaces. Two evidence planes.
 
-**Planned time:** 3 minutes (core).
+Misused identity, connection or management access can expose information outside
+the approved boundary. Misleading retrieved content can influence an agent that
+is correctly signed in. Compare identity/access evidence with the actual question,
+source, answer and any tool result. A valid sign-in does not prove safe advice.
 
-- **Identity/management misuse:** Compromised credentials or management access can
-  enable activity beyond the approved business boundary. Inspect identity and audit
-  evidence, grants and supported risk information.
-- **Content manipulation:** Untrusted instructions in permitted content can steer
-  a correctly signed-in agent. Inspect actual runtime, tool and data actions.
-
-The point: a valid sign-in does not prove a safe email. An unexpected Beacon email
-could result from misused identity/access or misleading content, and is a reason to
-investigate, not proof of either cause.
-
-For identity changes, use Entra > Entra ID > Monitoring & health > Sign-in logs or
-Audit logs. For the actual action, ask the instructor to check the deployed agent's
-Container App > Monitoring > Log stream and sent-message evidence. Logs may not
-contain a complete transcript. Slide 14 maps the other sources; these are instructor
-or later-module checks, not extra learner access requirements. No live attack occurs.
+Lab 3 uses an ordinary support question and an out-of-scope question, not an attack.
+A passing refusal test does not guarantee every boundary will hold.
 
 ## Slide 10 - Agent 365: observe, govern, secure
 
-**Planned time:** 1 minute (core).
+Microsoft's build sequence defines the purpose, adds knowledge, tests and publishes.
+Separate maker, employee and reviewer roles:
 
-Apply observe, govern and secure to the same Beacon case: find the Mail Agent and
-owner; verify approval for the task and access; compare actual actions and reported
-risks with that boundary. Use the same task throughout, not a separate unexplained incident.
-Module 1 starts in Microsoft 365 admin center > Agents > All agents > Registry.
-Discovery, registration and runtime visibility are separate checks; a clean inventory
-is not proof of safe behavior.
+- The maker configures the agent in an approved environment.
+- The employee uses its shared channel and checks the result.
+- The reviewer uses Agent 365 to inspect supported inventory and accountability.
+
+AI Reader alone provides neither maker nor chat/source access. The Academy is the
+low-code learning route; [Agent 365 SDK samples](https://learn.microsoft.com/microsoft-agent-365/developer/samples)
+are a separate pro-code integration route. Do not mix their setup instructions.
 
 ## Slide 11 - Review one agent, not three portals
 
-**Planned time:** 3 minutes (core).
+Launch Lab 3: **understand, inspect configuration, test, review inventory, compare
+access, inspect separate risk, distinguish evidence, explain**.
+No worksheet, prescribed copied answer or written submission.
 
-Start Lab 3 directly in the registry. No worksheet or written submission is needed. Review the prepared
-Project Beacon Mail Agent record using tested AI Reader access, an authorized
-presenter view, or labeled prior-run evidence.
+The instructor must supply a real helpdesk sample, available knowledge and a
+tested authenticated chat channel. A published lab page is not a running agent.
+Maker configuration is shown by the instructor; attendees do not need authoring roles.
+Missing sample setup is blocked, not successful completion.
 
-| Question | Look for |
-|---|---|
-| What exists? | Actual registry counts and selected record |
-| Who owns it? | Owner, Created by and available identity context |
-| What can it reach? | Permissions and Data & tools may be blank; treat it as unknown |
-| What is watching it? | Security and Activity, and what they actually establish |
-
-Lab 3 fits across this review and the control-map segment; it is not eight extra
-minutes. Record source/time and unknowns. Do not click Block or change settings.
-Registration does not prove a working runtime.
-
-Select **Total agents**, search **Project Beacon Relay**, press **Enter**, then open
-**Project Beacon Relay Agent > Security > Risk details**. See **High** and
-**The agent is compromised.** This is staged training risk, not the Mail Agent
-or a live incident. Bypass the broken Agents at risk filter. If the risk is missing,
-tell the instructor; the risk check is not complete. Then review the Mail Agent.
+The existing **Project Beacon Relay Agent** is a separate staged-risk identity,
+not the helpdesk agent. Select Total agents, search Relay and press Enter; open
+Security > Risk details and verify High / The agent is compromised.
+Bypass the risk-count filter, which returned no agents despite profile risk on
+November 19. Missing profile risk is not a completed check. No blocking or risk changes.
 
 ## Slide 12 - Five Entra pillars, one control map
 
-**Planned time:** 5 minutes (core).
-
-| Objective | Capability | Evidence boundary |
-|---|---|---|
-| Identity and lifecycle | Entra Agent ID | Verify the actual identity and lifecycle owner |
-| Creators/managers | Identity Governance | A displayed owner is not a complete technical-rights review |
-| Permissions | Entitlement management | Permissions may be blank; grants alone do not prove approval or expiry |
-| Access protection | Conditional Access and ID Protection | Verify actual policy scope and result in Entra |
-| Supported traffic | Global Secure Access | Coverage requires the actual supported forwarded/inspected route |
-
-Agent 365 gives some context, not proof all these controls are configured or effective.
-Map one control to a open question while completing Lab 3. No policy changes occur.
+Match a sample finding to identity/lifecycle, creators/managers, permission
+governance, Conditional Access/risk or supported network controls.
+Inspect actual source permissions and connections separately from registry metadata.
+Reported permissions do not prove approval, expiry or complete effective access.
+No policy changes in Module 1; authority tracing follows in Module 3.
 
 ## Slide 13 - Protect the data. Record the evidence.
 
-**Planned time:** 1.5 minutes (core).
-
-Know the data and effective access; test supported DLP; assign improvement work in
-Compliance Manager. Audit records activity but does not block. A compliance score is
-not certification. Module 5 tests a scoped control, not universal prompt protection.
+Use the IT knowledge example: know the data, limit unsafe sharing, and assign an
+owner to improvement work. Audit is not blocking. Compliance Manager's score is
+not certification; workload coverage and licensing need their own checks.
 
 ## Slide 14 - Ask what each evidence source can prove
 
-**Planned time:** 1 minute (core).
-
-| Question | Evidence location |
+| Question | Where to check |
 |---|---|
-| Who signed in or changed access? | [Entra](https://entra.microsoft.com/) > Entra ID > Monitoring & health > Sign-in logs or Audit logs |
-| Which tool ran and what happened? | [Azure portal](https://portal.azure.com/) > the deployed agent's Container App > Monitoring > Log stream; collected detail depends on logging |
-| Which workload activity was audited? | [Purview](https://purview.microsoft.com/) > Solutions > Audit > Search; supported events, audit access and retention required |
-| Was a threat investigated? | [Defender](https://security.microsoft.com/) > Incidents & alerts > Incidents or Alerts |
+| Knowledge or action used by this sample? | Instructor: Copilot Studio > sample agent > Test > activity map |
+| Identity sign-in or directory change? | Entra ID > Monitoring & health > Sign-in logs or Audit logs |
+| Supported workload audit? | Purview > Solutions > Audit > Search |
+| Threat investigation? | Defender > Incidents & alerts > Incidents or Alerts |
 
-Reference for instructor/later modules only. AI Reader does not grant all these log
-permissions. Module 1 students stay in the registry and record a follow-up source.
-Unobserved means unknown, not safe; none of these records guarantees complete coverage.
+AI Reader does not grant these additional roles. The test map is not a complete
+security audit trail. The separate Module 2 custom runtime uses Azure portal >
+its Container App > Monitoring > Log stream; do not present that as Copilot Studio.
 
 ## Slide 15 - Connect the evidence to a decision
 
-**Planned time:** 1.5 minutes (core).
+Observe, attribute, investigate, contain, verify and improve. Events, alerts and
+incidents differ. Do not force an incident or claim universal runtime protection.
+No live containment or ISOC enrollment is required.
 
-Observe, attribute, investigate, contain, verify and improve.
-Defender and security operations correlate the right actor/resource/evidence; response
-must be scoped and verified. Feed gaps back into ownership, access and data controls.
-Events, behaviors, alerts and incidents differ. ISOC preview is not a prerequisite;
-keep existing Sentinel customers on their supported experience.
+## Slide 16 - Explain the sample and its boundary
 
-## Slide 16 - Three-minute readiness check
-
-**Planned time:** 3 minutes (core).
-
-Use these questions for discussion, not a written assignment:
-
-1. Purpose, accountable people and acting identity.
-2. Intended task/data/tool/recipient boundary.
-3. Why legitimate authentication does not prove safe behavior.
-4. Evidence observed, unknowns, one gap and one owned next action.
-
-Discuss one observation and one unanswered question. Unknowns with concrete validation steps
-are valid. No control is claimed tested by this discussion.
+Discuss the employee task, one real source, whether a tool action was configured
+or observed, and one unproven control. A failed answer test is a finding, not a
+success to invent. Revisit slide 9 if legitimate sign-in is treated as safe behavior.
 
 ## Slide 17 - Establish normal before investigating abnormal
 
-**Planned time:** 1 minute (core).
+Reuse the review method across implementations. The current Module 2 uses a
+separate custom Mail Agent; it still needs its own runtime, sender, tool and receipt
+preflight. The helpdesk test does not prove mail delivery or student maker access.
+Later modules deepen identity, governance, data protection and investigation.
 
-Use the open questions to frame Module 2's actual baseline evidence.
-Registration alone does not establish a working mail route. Later modules deepen
-identity, governance, data protection and investigation. Collect feedback before
-finalizing the next remote session.
+## Sources and scope
+
+See the [source map](sources.md) for official build, sample, registry and security
+references, checked November 19, 2026. Source links are learning references, not
+proof that the sample has been deployed or that every registry field synchronizes.

@@ -9,7 +9,16 @@ to do if it breaks**. The long runbooks stay the detailed reference:
 Learners never get admin rights to set anything up. You prepare the tenant; they learn
 and look.
 
-## Status of each lab (tested November 2, 2026)
+## Current Module 1 preparation gate
+
+Module 1 now follows Microsoft's Agent Academy IT helpdesk sample. Lab 2 is a
+sign-in check, not a mailbox exercise. Before Lab 3, prepare the actual sample,
+knowledge and published channel, then rehearse with a fresh learner:
+[sample preparation checklist](07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample).
+The content revision does not deploy that sample. The historical Beacon checks
+below do not prove the new sample is ready.
+
+## Historical live-check record (November 2-5, 2026)
 
 | Lab | Status |
 |---|---|
@@ -26,8 +35,7 @@ and look.
    - **Access form (recommended):** learners go to `aka.ms/a365hub`. A Logic App creates the
      account and emails the pass. No script from you.
    - **Scripts:** you create the accounts with `New-WorkshopUsers.ps1`.
-4. GCC High / US Government tenants: the scripts and the Logic App use commercial endpoints and
-   have not been tested there. Learners use `outlook.office365.us`.
+4. Use the workshop's commercial Microsoft 365 tenant and endpoints.
 
 ---
 
@@ -84,18 +92,30 @@ A brand-new mailbox can take a few minutes. An empty inbox is correct.
 | Asked to add a sign-in method | Stop and ask. Never loosen Conditional Access or MFA. |
 | No mailbox | Check the license is assigned and wait a few minutes. |
 
-### Lab 3: See your agents in the Agent 365 registry
+### Lab 3: Explore Microsoft's helpdesk sample
 
-**Learner does:** uses tested AI Reader access or labeled presenter/prior-run evidence
-to review **Agents > All agents > Registry** and the prepared **Project Beacon Mail Agent**.
-They record actual counts, purpose, accountable people, reach and evidence, including unknowns;
-then keep one gap and one owned next action. No settings are changed. Inspect available
-Details, Permissions, Data & tools, Security, Users and Activity without treating missing
-metadata as absence. First inspect the required staged Relay risk through
-**Project Beacon Relay Agent > Security > Risk details**: **High / The agent is
-compromised.** Select Total agents and search Relay, then press Enter; do not use
-the broken risk-count filter. Missing risk needs investigation, not completion.
-Fit this activity into slide 11's three minutes and slide 12's five-minute control mapping.
+**Current sequence (November 19):** Microsoft Academy helpdesk brief > real
+instructions/knowledge > answer/source test > matching registry and owner >
+knowledge/tools/permissions comparison > separate Relay risk > evidence > discussion.
+Students use/inspect; only the instructor authors/publishes. No worksheet or copying.
+
+**Prepare:** follow the [Module 1 sample setup](07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample):
+Academy standard-harness Missions 00, 04, 06 and 11. The Contoso IT sample provides
+policy pages and Devices/Tickets lists. Rehearse one grounded question and one
+ordinary out-of-scope question through the published learner channel, correlate the
+registry record and show maker configuration from the instructor view.
+AI Reader is separate from maker, chat and source access. The old Beacon Mail Agent
+does not satisfy the new sample setup; this content revision does not deploy it.
+
+**Check:** the actual sample, ready knowledge, published-channel result and matching
+registry entry are verified. Registry blanks can be compared with the real
+configuration; absent sample data cannot be silently skipped. Verify the separate
+Relay's Security > Risk details shows High / The agent is compromised. Keep its
+existing approved flag without creating duplicate events. No learner writes or
+security-policy bypass. Rehearse the eight-step lab inside the instructor budget.
+
+<details>
+<summary>Historical Beacon registration and Relay risk reference (not the current helpdesk sample setup)</summary>
 
 > **If learners do not see the agents (found November 5, 2026):** nothing in Module 1 creates them.
 > A new tenant has no agent with that name, and the registry shows only what has been added to it. I checked
@@ -376,6 +396,8 @@ is blocked preparation, not completion. Do not grant a write role.
 | Project Beacon missing | Nothing in Module 1 creates the agents. Run **Populate Lab 3**, then search the Registry for **Beacon**. On Route B check the registered names start with **Project Beacon**; if the agent exists in Entra (Entra ID > Agents) but not in the registry, re-run only the registration step: `a365 setup all --agent-registration-only` (documented on [Microsoft Learn](https://learn.microsoft.com/entra/agent-id/create-blueprint#register-agents-in-the-agent-365-registry)). |
 | A learner is blocked | Show the registry on your screen. Never grant a write role. |
 | Learner clicks Block, Install, Uninstall or Pin | They should not. Read-only AI Reader cannot, but remind them. |
+
+</details>
 
 ---
 

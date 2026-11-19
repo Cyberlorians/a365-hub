@@ -162,8 +162,54 @@ class, then distribute the updated private credential file:
 Use the actual class learner count, not `1`, once additional learners exist. Renewal
 invalidates the previous TAPs for those accounts; notify the affected lab users.
 
-**Next:** [Prepare and deploy the agent using the Module 2 admin guide](08-module-02-admin-runbook.md).
-Return here after that guide's live test passes.
+### Prepare the Module 1 Microsoft helpdesk sample
+
+The current Module 1 follows **Microsoft Agent Academy Recruit, standard harness**.
+The existing Beacon Mail registration is not this sample. The content rebuild
+does not deploy it or prove tenant readiness.
+
+1. Follow [Mission 00 course setup](https://microsoft.github.io/agent-academy/recruit/00-course-setup/)
+   in the approved lab environment. Use the Contoso IT SharePoint template with
+   sample policy pages and Devices/Tickets lists. Keep all data synthetic.
+   Review current maker/publishing licensing and environment rights with the owner;
+   do not assume a trial, AI Reader or a Developer Plan grants every requirement.
+2. Follow [Mission 04 solution setup](https://microsoft.github.io/agent-academy/recruit/04-creating-a-solution/),
+   then [Mission 06 helpdesk build](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/).
+   Inspect the generated instructions. Connect at least one ready knowledge source,
+   open its actual content and confirm its authentication/access mode.
+   Knowledge and list existence do not automatically configure tools. No ticket
+   creation or device write is required for Module 1.
+3. Follow [Mission 11 publishing](https://microsoft.github.io/agent-academy/recruit/11-publish-your-agent/)
+   using an approved authenticated channel and audience. Do not enable anonymous
+   or tenant-wide sharing to bypass setup. Record the actual sample name, environment,
+   available correlation IDs, source URL and channel URL privately.
+4. As a fresh learner, test the actual published channel and knowledge access.
+   Choose one support question answerable from the source and one ordinary unrelated
+   question. Compare actual answers/citations with the source. Record unsupported
+   answers as failures; do not claim a passing boundary or universal protection.
+   Also rehearse the instructor's Test activity map for retrieval/action inspection.
+5. In **Agents > All agents > Registry**, select Total agents, search the exact event
+   sample name, press Enter, and correlate the record to the sample using its
+   available IDs/context. Test standing AI Reader independently from chat/source
+   access. Compare registry data/tools with actual maker knowledge/connections.
+   A registry blank is a visibility gap, not proof of no configured source.
+6. Preflight the separate staged-risk **Project Beacon Relay Agent > Security >
+   Risk details**: High / The agent is compromised. Use the existing approved flag
+   without adding duplicate events. Never flag the helpdesk or Mail Agent.
+   Bypass the broken risk-count filter and plan a scoped reset after class.
+7. Release the sample name and tested chat link to learners. Show configuration
+   from the instructor's maker view; attendees use/inspect without creating or
+   publishing. If an individual is blocked, record the access failure and use the
+   same live presenter checks. Missing sample, knowledge, channel proof, registry
+   correlation or profile risk is blocked preparation, not live-lab success.
+
+**Module 1 readiness:** verify the sample above independently. Neither the old Mail
+Agent's registration nor this published guide is evidence that it is deployed.
+The current Module 2 remains a separate mail exercise; follow its
+[admin guide](08-module-02-admin-runbook.md) before that exercise, not as a substitute
+for this sample setup.
+
+**Next:** Step 6, after the sample checks pass.
 
 ## Step 6: Run Module 1 with the class
 
@@ -248,10 +294,13 @@ channel. Keep the recipient account with the facilitator. Then:
 2. Have learners open the [numbered learner walkthrough](../labs/module-01-security-foundation.md).
 3. Follow learner Steps 1-7 in order. **Next** moves slides; **N** opens your notes.
 4. At learner Step 6, use the [answer key](../slides/module-01/exercise.md).
-5. If showing a real agent, use the read-only Registry instructions in the optional reference below.
+5. Follow the prepared Microsoft helpdesk sequence: configuration/source, real answer
+   test, matching registry review and separate Relay risk. Do not substitute the
+   sparse Mail Agent. No student publishing or maker-role assignments.
 
-**Check:** Each learner has four short answers, understands the identity/runtime
-monitoring gap, and can name one next action. Allow 25 core minutes; record actual time.
+**Check:** Each learner can explain the employee task, one real source, observed
+retrieval/action and one unproven control. No written submission. Plan 25 core
+minutes, rehearse the new eight-step lab and record actual time.
 
 **Next:** Run the [Module 2 learner walkthrough](../labs/module-02-business-agent.md).
 
@@ -345,7 +394,8 @@ describes the prepared registry review, not a fictional card. Preflight AI Reade
 for the exact run-owned learners as described in the lab-by-lab admin guide; if
 blocked, use the authorized presenter view rather than a write role.
 Zero risk counts, missing metadata or empty activity do not prove safety.
-The separate Relay Agent's staged risk is required. Select Total agents, search
+The separate Relay Agent's staged risk is required; it is not the helpdesk sample.
+Select Total agents, search
 Relay, press Enter, and open Security > Risk details. Verify High / The agent is
 compromised. This worked in the admin view on November 19 while the risk-count
 filter returned no agents. Preflight AI Reader visibility; use the live presenter

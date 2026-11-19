@@ -1,30 +1,21 @@
-# Module 1: Three-Minute Readiness Discussion
+# Module 1: Sample Review Discussion
 
-Discuss one thing the registry showed and one thing you still cannot verify.
-No worksheet, copying exercise or written submission. Revisit slide 9
-if learners equate a valid sign-in with safe behavior.
+Discuss what actually happened with Microsoft's helpdesk sample. No worksheet,
+copied script, scored submission or student publishing.
 
-| Question | Answer key |
+| Question | Defensible answer |
 |---|---|
-| 1. Name the agent's purpose and accountable roles | Intended synthetic status-mail task; observed owner/creator, with sponsor and actor distinct; mark missing accountability unknown |
-| 2. State the task/data/tool/recipient boundary | Supplied synthetic brief, reviewed internal status email, Mail MCP, approved internal recipient; no extra sources/attachments |
-| 3. Why is a valid sign-in not proof of safe behavior? | AI-native content can manipulate legitimate access without a new sign-in at ingestion; later identity evidence can still help |
-| 4. Which evidence, gap and next action follow? | Label actual registry/presenter/prior-run evidence with source/time; seek attributed tool/action and workload records; name a gap, validation step and accountable role. No containment action in Module 1 |
+| What useful task does the sample support? | Help an employee answer an IT/support question using approved knowledge; escalate what it cannot verify |
+| Which real source and action did you inspect? | Name the actual configured source and observed retrieval; distinguish a tool action from a response or a SharePoint list |
+| Why is a valid sign-in insufficient? | Legitimate access can be misconfigured or misused, and misleading content can influence an authenticated agent |
+| Which result and next check follow? | Compare the actual answer with its source, report a failure/unknown, then identify the control/evidence owner needed for follow-up |
 
-If question 3 is missed, return to **slide 9**. Use **slide 11** for the four-question
-review and **slide 16** for this check. Do not solve comprehension/access issues by
-granting broad admin roles.
+Use the instructor's live configuration and test activity, not expected outcomes
+copied from a lesson. A failed answer/refusal test is a finding. A passing test does
+not prove every access boundary or protection. Revisit slide 9 for identity-only claims.
 
-The prepared registry record is not proof of a working runtime or effective controls.
-A zero/dash risk count does not establish safety. The required staged Relay Agent
-risk is inspected through its Security > Risk details tab: High / The agent is
-compromised. Do not use the broken risk-count filter. No live attack or learner
-policy change is required. Detailed authority and compromise mechanics belong
-in Modules 3 and 6.
-
-If the risk counter opens an empty list, select Total agents, search Relay and
-press Enter, then open the Relay Agent's Security tab. Missing risk needs instructor
-investigation, not a completion check. Blank Mail Agent Permissions/Data & tools
-still means the information is unavailable here; learners can continue that check.
-The instructor can follow up on mapped grants, deployed tools and the Module 2 task.
-The Relay record is staged training risk, not proof of a live incident.
+The separate Relay record is staged training risk, not the helpdesk sample or a
+live attack. Verify High / The agent is compromised. in its Security tab; bypass
+the broken risk-count filter. Missing sample/knowledge/risk is blocked preparation,
+not a completed exercise. Registry blanks remain visibility gaps and must be
+compared with the real configuration, not treated as proof of no data or tools.
