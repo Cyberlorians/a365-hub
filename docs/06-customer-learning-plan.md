@@ -16,7 +16,7 @@ and multiple-build proposals. [Module 1](../slides/module-01/README.md) and
 
 | Module | Learner walkthrough | Admin walkthrough |
 |---|---|---|
-| 1 | [Microsoft sample-led learning and review](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
+| 1 | [Introductory prepared-record review](../labs/module-01-security-foundation.md) | [Presenter/admin runbook](07-module-01-admin-runbook.md) |
 | 2 | [Task, prompts, evidence and passport](../labs/module-02-business-agent.md) | [Preparation/proof/rehearsal runbook](08-module-02-admin-runbook.md) |
 
 Guide authoring and browser checks do not constitute live tenant or independent
@@ -201,28 +201,27 @@ data, and operational evidence.
 
 - **Risk:** A legitimate agent can be manipulated; an identity-only view misses part
   of the story.
-- **Control:** Agent 365 accountability/visibility, the five Entra pillars, supported
-  Purview controls, and Defender/ISOC investigation responsibilities.
-- **Activity:** Follow Microsoft's Agent Academy Recruit standard-harness helpdesk
-  scenario: understand purpose/instructions, inspect ready knowledge, compare a real
-  answer with its source, then review the matching registry entry and separate Relay
-  risk. Students use/inspect; the instructor builds/publishes. No worksheet, required
-  copying or written submission. Authority and misuse mechanics stay in Modules 3 and 6.
-- **Evidence/output:** Explain the useful task, an actual source, observed
-  retrieval/action and one unproven control with an owned next check.
+- **Control:** Introduce management, governance, security and business value, with
+  Agent 365, Entra, Purview and Defender responsibilities and coverage boundaries.
+- **Activity:** Use generic illustrative IT support, then read-only review of the
+  existing Project Beacon Relay Agent. All learner steps stay inside this workshop;
+  no Academy, build, chat or knowledge test. Authority/misuse depth stays later.
+- **Evidence/output:** Orally explain an observed fact, a gap and accountable next
+  check. No required copying, worksheet or submission.
 - **Decision:** State the approved operating boundary and what must be verified next.
 - **Sources:** C1, H2, B1-B2, L1, L7, L10, L12, L15, L17, L19, L21, L23.
 
 Keep protocol mechanics, full DLP setup, risk hunts, and live policy changes out of this
 introduction. Use tested AI Reader access or labeled presenter/prior-run evidence.
-For the new live sample lab, follow Academy Missions 00, 04, 06 and 11; see the
-[sample source map](../slides/module-01/sources.md). The published content does
-not deploy the sample. Actual knowledge, published-channel testing and matching
-registry correlation are readiness gates. Prior-run documentation is not live
-runtime proof. AI Reader does not grant maker, chat or source access.
-Prepare the separate staged-risk Relay Agent and verify High and "The agent is
-compromised." through Security > Risk details. Use Total agents and search Relay,
-not the broken risk-count filter. Missing profile risk blocks the risk exercise.
+Introduce evaluation, monitoring and tracing conceptually using
+[Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability);
+Foundry-specific integrations do not guarantee Copilot Studio/Agent 365 telemetry.
+See the [source map](../slides/module-01/sources.md). No new helpdesk deployment
+is required. On the same prepared Relay record verify High and "The agent is
+compromised." through Security > Risk details: staged training, not live attack.
+Use Total agents > search Project Beacon Relay > Enter, not the broken risk-count
+filter. Missing risk uses the instructor live view or remains unresolved access/setup,
+not complete. Prior admin observation is not independent fresh-learner proof.
 Detailed completion work is specified in Section 6.
 
 ### Module 2: Establish the Approved Agent Baseline - 35 minutes
@@ -400,26 +399,26 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 |---|---|---|
 | Existing self-contained HTML and controls | Reframe the opening around secure AI adoption and the playbook's dual attack surfaces | New frontend framework or separate explainer application |
 | Five onboarding slides plus twelve core slides | Keep onboarding's 12-minute plan separate from the 25-minute core; qualify TAP/CA using actual tests | Full workload-authentication deep dive |
-| Observe/govern/secure and four review questions | Add the five Entra pillars as one control map; explain identity alone is insufficient | Full GSA/TLS/ISOC onboarding |
-| Purpose, people, reach and evidence questions | Follow the Academy helpdesk: actual knowledge, answer/source test, matching registry and separate risk | Student maker/publishing rights without separate approval |
+| Observe/govern/secure and four review questions | Introduce management/governance/security/business value, then conceptual observability | Full GSA/TLS/ISOC onboarding |
+| Purpose, people, reach and evidence questions | Review one existing Relay record read-only; missing metadata stays unknown | Agent use/tests and optional maker build belong in Module 2 |
 | Existing notes/handout/source-map structure | Update all numbering, sources, timing, recovery prompts, and transitions | Branding/export perfection as a release blocker |
 
-### Current sample-led core sequence, slides 6-17
+### Current introductory core sequence, slides 6-17
 
 | Slide | Planned role |
 |---|---|
-| 6 | Secure AI adoption: customer value and learning outcome |
-| 7 | Microsoft's IT helpdesk sample and four review questions |
-| 8 | Purpose, instructions, knowledge and tools |
-| 9 | Two attack surfaces; correct authentication does not establish safe behavior |
-| 10 | Maker, user and reviewer roles; distinct access and sample routes |
-| 11 | Understand, test and inspect the prepared Microsoft helpdesk sample |
-| 12 | Five Entra control pillars, with flow/support boundaries |
-| 13 | Purview data boundary and Compliance Manager evidence follow-through |
-| 14 | Copilot Studio test activity, Entra, Purview and Defender evidence paths |
-| 15 | Defender/ISOC investigation-response-improvement loop |
-| 16 | Readiness discussion: one observation and one unanswered question |
-| 17 | Handoff to the separate Module 2 custom Mail Agent and its own preflight |
+| 6 | See It. Control It. Protect It. |
+| 7 | What does an agent do? |
+| 8 | Four questions for every agent |
+| 9 | What does observability mean? |
+| 10 | One job. Four Microsoft services. |
+| 11 | Review one prepared agent |
+| 12 | Know who is accountable |
+| 13 | Keep data and actions within bounds |
+| 14 | Know where to look for evidence |
+| 15 | Useful work needs measurable value |
+| 16 | Explain what you know and what is missing |
+| 17 | Establish normal before investigating abnormal |
 
 Do not turn every slide into a separate product demonstration. Use original explanations
 inspired by Blue16, not copied implementation or graphics.
@@ -428,11 +427,11 @@ inspired by Blue16, not copied implementation or graphics.
 
 | Segment | Minutes |
 |---|---:|
-| Customer outcome and Microsoft sample | 4 |
-| Sample components and dual attack surface | 4 |
-| Roles and sample lab launch | 4 |
-| Five Entra pillars | 5 |
-| Data/runtime/SOC loop | 4 |
+| Useful work and illustrative task | 4 |
+| Four pillars and conceptual observability | 4 |
+| Services and registry lab launch | 4 |
+| Accountability and lab continuation | 5 |
+| Boundaries, evidence and value | 4 |
 | Readiness check | 3 |
 | Module 2 transition | 1 |
 | **Total** | **25** |
@@ -444,19 +443,21 @@ identify agent/accountability; state the approved action/data boundary; explain 
 a valid sign-in does not prove safe behavior; name an appropriate control/evidence
 source and next decision.
 
-Target: **four answers, one gap and one owned next action**, including the dual-plane
-explanation. Unknowns with concrete validation steps are valid. Clarify misconceptions
+Target: **one observed fact, one gap and one accountable next check**, explained orally.
+Unknowns with concrete validation steps are valid. Clarify misconceptions
 before handoff; do not grant admin roles or add an interactive quiz.
 
-Lab 3 is budgeted inside slide 11's launch and slide 12's control mapping, not as
-additional core time. Rehearse the new eight-step sample sequence; do not put
-duration estimates on student lab pages. The separate Relay risk is required through
-Security > Risk details, not the broken risk-count filter. Sample deployment,
-knowledge/source tests, published-channel access and independent timing remain gates.
+Lab 3 launches after slide 11 and returns to slide 12, within their existing budget.
+Core slide minutes remain [1,3,1,3,1,3,5,1.5,1,1.5,3,1]; onboarding is 12 minutes.
+Lab 1 three access steps + Lab 2 one sign-in check + Lab 3 six steps = eleven learner
+screens, with no duration labels. Rehearse find/owner/reach/risk/Activity/oral next check.
+Fresh learner registry access, required staged risk and independent timing remain gates.
+Using/testing and any optional maker build belong in Module 2. Its current mail
+runtime/content is unchanged; no replacement sample or optional path is claimed deployed.
 
 ### Files to update during implementation
 
-These Module 1 files are aligned in the November 13 local revision; publication,
+These Module 1 references now reflect the approved introductory simplification; publication,
 content review, fresh-learner checks and independent rehearsal remain outstanding.
 
 | File in `slides/module-01/` | Required update |
@@ -464,12 +465,12 @@ content review, fresh-learner checks and independent rehearsal remain outstandin
 | `index.html` | Apply the revised core sequence; preserve entry/navigation/accessibility behavior |
 | `slides.md` | Match the HTML's actual slide content and numbering |
 | `speaker-notes.md` | Match the 25-minute core, separated onboarding, new talking points, check, and transition |
-| `exercise.md` | Replace the introductory six-minute task with the three-minute check and answer key |
+| `exercise.md` | Oral observed-fact/gap/accountable-next-check discussion; no worksheet or submission |
 | `taxonomy-handout.md` | Replace the old six-module map; move deep anatomy emphasis to Module 3 |
 | `facilitator-guide.md` | Correct poll/recovery slide references, scope, actual demo/fallback modes, and rehearsal checklist |
 | `permissions-preflight.md` | Preserve presenter/learner separation; state tested roles and available views |
 | `interactive-guide.md` | Correct changed slide links/navigation and later Module 2 access |
-| `sources.md` | Revalidate claims and availability; include playbook, five pillars, and current first-party sources |
+| `sources.md` | Preserve research provenance; distinguish four-pillar/observability grounding from later Academy references |
 | `README.md` | Correct duration, objectives, next-module numbering, and readiness status |
 
 Module 1 is complete only after source/HTML/notes agree, the check has an answer key,

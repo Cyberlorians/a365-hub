@@ -78,24 +78,30 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > access details about two minutes later, and that test user signed in to Outlook with the
 > Temporary Access Pass. That was a historical sign-in test, not the current learner
 > route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
-> simple account check. Module 1 now follows Microsoft's Academy helpdesk sample:
-> understand purpose/instructions, inspect real knowledge, test an answer, and review
-> access/risk. The new sample deployment, published learner channel and source access
-> have **not** been verified by this content rebuild. Prepare them with the
-> [sample setup guide](docs/07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample);
-> the old Beacon registration is not a substitute. On November 19, the separate
+> simple account check. Current Module 1 introduces four pillars and conceptual
+> observability, then reviews the existing Project Beacon Relay Agent read-only.
+> No new helpdesk deployment, Academy lab, agent build, chat or knowledge test is
+> required. Use the [registry preflight](docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
+> On November 19, the
 > staged Relay risk showed High / compromised in the agent's Security > Risk details.
 > The registry risk-count filter returned no agents; Lab 3 uses the working profile route.
 > Fresh-learner visibility of those details still needs validation. Module 2 runtime,
 > mail send and downstream evidence still need live proof. Instructor scripts have not
 > been rehearsed with a live class.
 
-Module 1 uses the [Microsoft Agent Academy IT helpdesk lesson](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/)
-as its maintained learning foundation, with original security-review guidance.
-The instructor prepares/publishes; students use and inspect without maker rights.
-[Agent 365 SDK samples](https://learn.microsoft.com/microsoft-agent-365/developer/samples)
-are a separate pro-code path, not interchangeable with Copilot Studio setup.
-Module 2 remains the separate custom mail exercise and is not changed by this revision.
+Module 1 uses generic illustrative IT support, not a deployed sample claim.
+Management, governance, security and business value precede conceptual evaluation,
+monitoring and tracing grounded in [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
+Foundry specifics do not guarantee Copilot Studio/Agent 365 telemetry.
+The authorized [four-pillar screenshots](grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+are separate from the rights-unconfirmed old Agent ID scenarios image.
+Lab 1 has three access steps, Lab 2 one sign-in check, Lab 3 six read-only checks
+of the same Relay record: eleven learner screens. Lab 3 launches after slide 11
+and returns to slide 12; learners orally explain a fact, gap and accountable next
+check. Missing required staged profile risk is unresolved, not complete; blank
+metadata is unknown and Activity is not full traces/security/audit evidence.
+Using/testing and any optional maker build belong in Module 2; current mail
+runtime/content is unchanged. No replacement sample or optional path is claimed deployed.
 
 The Markdown guides remain a plain-text reference and the source of every copy-and-run
 snippet used in the slides (a check fails if they drift):
@@ -132,6 +138,8 @@ four Agent ID scenario lenses. The table below retains current technical package
 Proposed instruction: **330 minutes**. Onboarding 15 + lunch 45 + breaks 30 =
 **420 minutes / seven hours**. Modules 1-2 alone: 60 instructional minutes plus
 15 onboarding. Modules 3-8 are planned, not complete teaching packages.
+That full-day proposal retains its onboarding allowance; the current Module 1
+instructor budget is 12 onboarding + 25 core minutes, subject to rehearsal.
 
 ## Start here
 

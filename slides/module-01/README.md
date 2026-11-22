@@ -1,7 +1,8 @@
 # Module 1: See It. Control It. Protect It.
 
-**Status:** Published sample-led learning materials. New helpdesk deployment and
-fresh-learner rehearsal remain required; this is not a tenant-readiness claim.
+**Status:** Introductory documentation aligned with the approved simplification.
+Fresh-learner registry rehearsal remains required; this is not a tenant-readiness
+or publication claim. No new helpdesk deployment is required.
 **Core:** 25 proposed minutes / twelve slides. **Onboarding:** five separate slides /
 12 proposed minutes, including the one-minute sign-in check. Presenter-led with
 standing read-only AI Reader or labeled presenter evidence; no learner write roles.
@@ -14,30 +15,21 @@ standing read-only AI Reader or labeled presenter evidence; no learner write rol
 
 ## Outcome
 
-Explain the dual attack surfaces, identify the purpose/accountability/access/evidence
-boundary, and connect Entra's five pillars, Agent 365, Purview, and Defender/ISOC.
-The Agent Identities chapter anchors risk -> control -> evidence -> decision.
-Follow Microsoft's Academy IT helpdesk sequence: understand purpose/instructions,
-inspect real knowledge, test an answer, and review ownership/access/risk.
-The output is an observed source/answer comparison and one unproven control.
-No worksheet or written submission. Students do not create/publish in Module 1.
+Introduce management, governance, security and business value, then conceptual
+evaluation, monitoring and tracing. Review the existing Project Beacon Relay Agent
+read-only and orally explain an observed fact, a gap and accountable next check.
+No external Academy lab, build, chat or knowledge test; no required copying,
+worksheet or written submission.
 
-## Microsoft sample foundation
+## Grounding and prepared record
 
-Use [Academy Recruit standard harness](https://microsoft.github.io/agent-academy/recruit/):
-[setup](https://microsoft.github.io/agent-academy/recruit/00-course-setup/),
-[solution](https://microsoft.github.io/agent-academy/recruit/04-creating-a-solution/),
-[helpdesk build](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/)
-and [publication](https://microsoft.github.io/agent-academy/recruit/11-publish-your-agent/).
-Microsoft's sample site supplies policy pages and Devices/Tickets lists.
-This is a guided build, not a prebuilt package or a deployment performed by this site.
-The instructor prepares it and verifies a learner channel, source access and
-matching registry entry. The sparse Beacon Mail Agent is no longer the Module 1
-sample. The existing separate Relay still supplies the staged-risk comparison.
-
-The [source map](sources.md) links the official lab catalog and distinguishes
-low-code Academy labs from pro-code Agent 365 SDK samples. Current Module 2 remains
-the separate mail-agent implementation with its own preflight.
+Use generic illustrative IT support, not a deployed sample claim. The authorized
+[four-pillar screenshots](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+are separate from the old Agent ID scenarios image whose rights remain unconfirmed.
+[Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability)
+grounds concepts, not guaranteed Copilot Studio/Agent 365 telemetry or a setup lab.
+The [source map](sources.md) retains Academy/Learn MCP provenance as instructor/
+Module 2 reference, not a core Module 1 learner lab.
 
 ## Package
 
@@ -53,7 +45,7 @@ in the labs and the instructor deck.
 | [Instructor deck](https://cyberlorians.github.io/a365-hub/instructor/) | Separate instructor deck with show/say scripts, lab cues and recovery |
 | [slides.md](slides.md) | Aligned slide content |
 | [speaker-notes.md](speaker-notes.md) | Per-slide timing and talk track |
-| [exercise.md](exercise.md) | Three-minute four-point check and answer key |
+| [exercise.md](exercise.md) | Oral observed-fact/gap/accountable-next-check discussion |
 | [taxonomy-handout.md](taxonomy-handout.md) | Four questions and current eight-module map |
 | [facilitator-guide.md](facilitator-guide.md) | Scope, preparation, recovery, review/release gates |
 | [permissions-preflight.md](permissions-preflight.md) | Presenter versus learner access |
@@ -66,33 +58,36 @@ in the labs and the instructor deck.
 
 | Segment | Minutes |
 |---|---:|
-| Customer outcome / shared case | 4 |
-| Agent action model / dual attack surface | 4 |
-| Four questions / one agent review | 4 |
-| Five Entra pillars | 5 |
-| Data/runtime/SOC loop | 4 |
-| Knowledge check | 3 |
+| Useful work / illustrative task | 4 |
+| Four pillars / conceptual observability | 4 |
+| Services / registry launch | 4 |
+| Accountability / lab continuation | 5 |
+| Boundaries / evidence / value | 4 |
+| Oral discussion | 3 |
 | Module 2 handoff | 1 |
 | **Total** | **25** |
 
 The first five slides preserve the access sequence; Lab 1 includes the event access
 form, which must be smoke-tested and approved before use. TAP lifetime/reuse and CA
-prompts require actual tenant testing. Lab 3 follows the actual sample configuration,
-answer/source test and corresponding registry review. Individual access failures
-can use the live presenter view but must be recorded as access failures.
-Registration is not runtime proof. The separate Relay Agent must show staged High
-risk in Security > Risk details; bypass the broken risk-count filter.
+prompts require actual tenant testing. Lab 1 has three access steps, Lab 2 one
+sign-in check and Lab 3 six registry steps: eleven generated learner screens.
+Launch Lab 3 after slide 11 and return to slide 12, not directly to Module 2.
+Core minutes remain [1,3,1,3,1,3,5,1.5,1,1.5,3,1].
 
-**Current sample-led revision:** Lab 2 remains a single-screen account check.
-Slide 7 introduces Microsoft's helpdesk scenario; slide 8 separates purpose,
-instructions, knowledge and tools; slide 9 retains the dual attack surfaces;
-slide 10 separates maker/user/reviewer roles. Lab 3 follows eight understand/test/
-inspect steps. Slide 14 uses Copilot Studio test activity for this implementation.
-Missing sample knowledge is blocked preparation, not a valid empty result.
-Registry blanks remain visibility gaps that can be compared with the real maker
-view. The separate Relay Security tab supplies required staged High risk.
-Detailed authority stays in Module 3 and misuse mechanics in Module 6.
-The seventeen-slide structure and core budget remain; timing needs a new rehearsal.
+Find the same prepared Relay through admin.microsoft.com > Agents > All agents >
+Registry > Total agents > search Project Beacon Relay > Enter > Project Beacon
+Relay Agent. Read Details Owner/Created by, Data & tools/Permissions, Security >
+Risk details, Activity, then discuss. Blanks mean unknown; Activity is inventory
+usage, not full execution/security/audit evidence. No Foundry/Copilot Test activity.
+Required risk is High / The agent is compromised., staged training not live attack.
+Avoid the faulty Agents at risk count filter. Missing risk uses instructor live
+view or remains unresolved access/setup, not complete. No learner changes.
+
+Instructor a-seed prepares/preflights the existing record; a-risk rehearses staged
+risk; a-l2 rehearses fresh learner registry access. No current a-publish requirement
+or maker role changes. Current Module 2 mail runtime/content remains unchanged.
+Using/testing and any optional maker build belong there, but no replacement sample
+or optional path is claimed implemented/deployed.
 
 Complete only after user review, aligned content/supporting sources, actual prepared
 presentation mode, and an independent 25-minute rehearsal. The deeper classification

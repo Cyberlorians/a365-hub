@@ -162,54 +162,40 @@ class, then distribute the updated private credential file:
 Use the actual class learner count, not `1`, once additional learners exist. Renewal
 invalidates the previous TAPs for those accounts; notify the affected lab users.
 
-### Prepare the Module 1 Microsoft helpdesk sample
+### Prepare the Module 1 registry review
 
-The current Module 1 follows **Microsoft Agent Academy Recruit, standard harness**.
-The existing Beacon Mail registration is not this sample. The content rebuild
-does not deploy it or prove tenant readiness.
+**a-seed:** Prepare/preflight the existing **Project Beacon Relay Agent** record.
+No new helpdesk deployment, Academy course, publishing, chat or knowledge test is
+required for Module 1. The IT support task is generic illustration.
 
-1. Follow [Mission 00 course setup](https://microsoft.github.io/agent-academy/recruit/00-course-setup/)
-   in the approved lab environment. Use the Contoso IT SharePoint template with
-   sample policy pages and Devices/Tickets lists. Keep all data synthetic.
-   Review current maker/publishing licensing and environment rights with the owner;
-   do not assume a trial, AI Reader or a Developer Plan grants every requirement.
-2. Follow [Mission 04 solution setup](https://microsoft.github.io/agent-academy/recruit/04-creating-a-solution/),
-   then [Mission 06 helpdesk build](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/).
-   Inspect the generated instructions. Connect at least one ready knowledge source,
-   open its actual content and confirm its authentication/access mode.
-   Knowledge and list existence do not automatically configure tools. No ticket
-   creation or device write is required for Module 1.
-3. Follow [Mission 11 publishing](https://microsoft.github.io/agent-academy/recruit/11-publish-your-agent/)
-   using an approved authenticated channel and audience. Do not enable anonymous
-   or tenant-wide sharing to bypass setup. Record the actual sample name, environment,
-   available correlation IDs, source URL and channel URL privately.
-4. As a fresh learner, test the actual published channel and knowledge access.
-   Choose one support question answerable from the source and one ordinary unrelated
-   question. Compare actual answers/citations with the source. Record unsupported
-   answers as failures; do not claim a passing boundary or universal protection.
-   Also rehearse the instructor's Test activity map for retrieval/action inspection.
-5. In **Agents > All agents > Registry**, select Total agents, search the exact event
-   sample name, press Enter, and correlate the record to the sample using its
-   available IDs/context. Test standing AI Reader independently from chat/source
-   access. Compare registry data/tools with actual maker knowledge/connections.
-   A registry blank is a visibility gap, not proof of no configured source.
-6. Preflight the separate staged-risk **Project Beacon Relay Agent > Security >
-   Risk details**: High / The agent is compromised. Use the existing approved flag
-   without adding duplicate events. Never flag the helpdesk or Mail Agent.
-   Bypass the broken risk-count filter and plan a scoped reset after class.
-7. Release the sample name and tested chat link to learners. Show configuration
-   from the instructor's maker view; attendees use/inspect without creating or
-   publishing. If an individual is blocked, record the access failure and use the
-   same live presenter checks. Missing sample, knowledge, channel proof, registry
-   correlation or profile risk is blocked preparation, not live-lab success.
+1. Open admin.microsoft.com > **Agents > All agents > Registry > Total agents**.
+   Search **Project Beacon Relay**, press **Enter** and open **Project Beacon Relay Agent**.
+2. Read Details **Owner** and **Created by**; distinguish missing reporting from
+   known accountability.
+3. Inspect **Data & tools** and **Permissions**. Blanks mean unknown; do not infer
+   permissions, effective access or absence of tools.
+4. **a-risk:** On the same record open **Security > Risk details**. Verify **High**
+   and **The agent is compromised.** Rehearse the existing approved training risk,
+   not a live attack, without duplicate flags or changes to the Module 2 Mail Agent.
+   Do not use the faulty **Agents at risk** count filter.
+5. Inspect **Activity**. Inventory usage is not full execution traces or complete
+   security/audit evidence. No Foundry or Copilot Studio Test activity is required.
+6. **a-l2:** Rehearse these registry checks in a fresh learner's read-only session,
+   not chat/source tests. Orally explain a fact, gap and accountable next check.
 
-**Module 1 readiness:** verify the sample above independently. Neither the old Mail
-Agent's registration nor this published guide is evidence that it is deployed.
-The current Module 2 remains a separate mail exercise; follow its
-[admin guide](08-module-02-admin-runbook.md) before that exercise, not as a substitute
-for this sample setup.
+Missing required risk uses the authorized instructor live view or remains an
+unresolved access/setup issue; it is not a completed check. No maker role changes
+or current Module 1 **a-publish** requirement. Prior admin observations do not
+independently verify fresh learner access.
 
-**Next:** Step 6, after the sample checks pass.
+<a id="prepare-the-module-1-microsoft-helpdesk-sample"></a>
+**Migration link:** The old helpdesk-preparation anchor now points to this registry
+review. Academy is an instructor/Module 2 reference, not a current Module 1 gate.
+The current Module 2 remains the separate mail exercise with its own
+[admin preflight](08-module-02-admin-runbook.md); no replacement or optional maker
+path is claimed implemented/deployed.
+
+**Next:** Step 6, after the registry preflight checks pass.
 
 ## Step 6: Run Module 1 with the class
 
@@ -294,13 +280,14 @@ channel. Keep the recipient account with the facilitator. Then:
 2. Have learners open the [numbered learner walkthrough](../labs/module-01-security-foundation.md).
 3. Follow learner Steps 1-7 in order. **Next** moves slides; **N** opens your notes.
 4. At learner Step 6, use the [answer key](../slides/module-01/exercise.md).
-5. Follow the prepared Microsoft helpdesk sequence: configuration/source, real answer
-   test, matching registry review and separate Relay risk. Do not substitute the
-   sparse Mail Agent. No student publishing or maker-role assignments.
+5. Introduce the four pillars, then conceptual evaluation/monitoring/tracing.
+   Launch six-step Lab 3 after slide 11 and return to slide 12. Review the same
+   prepared Relay record throughout. No student writes or maker-role assignments.
 
-**Check:** Each learner can explain the employee task, one real source, observed
-retrieval/action and one unproven control. No written submission. Plan 25 core
-minutes, rehearse the new eight-step lab and record actual time.
+**Check:** Each learner orally explains an observed fact, a gap and the accountable
+next check. No required copying, worksheet or submission. Lab 1 has three access
+steps, Lab 2 one account check, Lab 3 six registry steps: eleven learner screens.
+Plan 12 onboarding + 25 core minutes; rehearse and record actual time.
 
 **Next:** Run the [Module 2 learner walkthrough](../labs/module-02-business-agent.md).
 
@@ -333,7 +320,7 @@ Record one mode before opening any tenant portal:
 
 | Mode | Allowed actions | Required evidence |
 |---|---|---|
-| Content review | Open slides/guide, discuss the case/scenario overview and worksheet | Record findings; do not claim live registry access or create accounts |
+| Content review | Open slides/guide, discuss introductory pillars and illustrative task | Record findings; do not claim live registry access or create accounts |
 | Prepared presentation | Present a preflighted read-only lab view or authorized sanitized prior run | Real target/source/time and limits; never imply prior-run data is current |
 | Event onboarding + presentation | Approved form/account/sign-in flow followed by prepared presentation | Separate tested onboarding plan, support owner, credentials/privacy/expiry handling |
 
@@ -358,16 +345,16 @@ prior-run mode, not permission escalation or a silent readiness claim.
 ## 3. Preflight the presentation without a tenant
 
 1. Open [Module 1 slide 6](https://cyberlorians.github.io/a365-hub/#slide-6).
-2. Click Next through slides 6-18; use Jump to return to slide 9.
+2. Click Next through slides 6-17; use Jump to return to slide 9.
 3. In the separate instructor deck, confirm each show/say script matches its
    student slide. The source-only author preview retains Notes (N); students do not.
 4. Open the student Labs view and the separate instructor deck; student pages do not
    contain instructor notes or an admin toggle.
 5. Check the preparation matrix and confirm tenant actions remain gated by approval.
-6. If printing, preview all eighteen slides; onboarding is outside the core timebox.
-7. Keep the four-question learner worksheet and slide 16 answer key ready.
+6. If printing, preview all seventeen slides; onboarding is outside the core timebox.
+7. Keep the slide 16 oral discussion guide ready; no learner worksheet/submission.
 
-**Checkpoint:** Correct slides, links, notes, and worksheet. This is a content/browser
+**Checkpoint:** Correct slides, links, notes, and discussion guide. This is a content/browser
 preflight, not a test of identity, policy, telemetry, or delivery timing.
 
 ## 4. Prepare one read-only agent view, only if approved
@@ -379,7 +366,8 @@ Skip this section for content review.
 2. Open Microsoft 365 admin center at `https://admin.microsoft.com`.
 3. In the reviewed experience, select **Agents -> All agents -> Registry**.
    Recheck the actual tenant's navigation; do not invent a missing view.
-4. Open the selected safe lab agent. Read purpose, owner/publisher, available platform/
+4. Select Total agents, search Project Beacon Relay, press Enter and open
+   Project Beacon Relay Agent. Read purpose, owner/publisher, available platform/
    access context, and activity/security information. Do not block, deploy, delete,
    change grants, or switch policy state.
 5. Record what each field actually establishes. Verify identifiers against the real
@@ -394,9 +382,9 @@ describes the prepared registry review, not a fictional card. Preflight AI Reade
 for the exact run-owned learners as described in the lab-by-lab admin guide; if
 blocked, use the authorized presenter view rather than a write role.
 Zero risk counts, missing metadata or empty activity do not prove safety.
-The separate Relay Agent's staged risk is required; it is not the helpdesk sample.
+The same selected Relay Agent's staged risk is required; no helpdesk sample is needed.
 Select Total agents, search
-Relay, press Enter, and open Security > Risk details. Verify High / The agent is
+Project Beacon Relay, press Enter, and open Security > Risk details. Verify High / The agent is
 compromised. This worked in the admin view on November 19 while the risk-count
 filter returned no agents. Preflight AI Reader visibility; use the live presenter
 view for an access issue, never a write role. Missing profile risk blocks readiness.
@@ -431,18 +419,18 @@ tool access. Module 1 learners never inherit presenter admin roles.
 
 ## 6. Deliver the core in 25 proposed minutes
 
-Follow the [learner step table](../labs/module-01-security-foundation.md#walk-through-the-core)
+Follow the [learner guide](../labs/module-01-security-foundation.md)
 and [per-slide notes](../slides/module-01/speaker-notes.md).
 
 | Slides | Operator action | Checkpoint |
 |---|---|---|
-| 6-7 | State secure-adoption outcome and fictional status-mail case | Audience knows four review questions |
-| 8-9 | Orient to four overlapping scenarios and dual attack surfaces | Hosting is not permission; legitimate authentication is not safe behavior |
-| 10-11 | Start Lab 3 with the prepared record or labeled evidence | Actual versus unknown fields and source/time are distinguished |
-| 12 | Finish Lab 3 and map one gap to a control objective | Eight-minute lab fits slide 11 + 12; no extra time or policy changes |
-| 13-15 | Connect supported data controls, runtime/tool evidence, and operations | Audit/block and event/behavior/alert/incident remain distinct |
-| 16 | Allow two minutes to write, one to discuss | Four worksheet answers, one gap, one owned next action; revisit slide 9 if sign-in is treated as safety |
-| 17-18 | Gap-first E7 fit; handoff | No exclusivity/universal-coverage claim; Module 2 preparation gate retained |
+| 6-7 | State useful-work outcome and generic illustrative IT support task | No deployed sample claim |
+| 8-9 | Introduce four pillars, then evaluation/monitoring/tracing | Foundry concepts are not universal product telemetry |
+| 10-11 | Explain four services; launch Lab 3 after slide 11 | Same existing Relay record, six read-only checks |
+| 12 | Return from Lab 3 and discuss accountability | Lab fits slide 11 + 12's eight-minute internal budget; no learner duration label |
+| 13-15 | Connect access bounds, evidence gaps and measurable value | Blank fields stay unknown; Activity is not full traces/security/audit |
+| 16 | Discuss orally | One observed fact, one gap, one accountable next check; no written output |
+| 17 | Establish normal before investigating abnormal; handoff | Current Module 2 mail content/runtime unchanged; separate preflight |
 
 No live attack, containment, tenant policy edit, or production-content demonstration.
 
@@ -454,10 +442,11 @@ No live attack, containment, tenant policy edit, or production-content demonstra
 | Missing evidence | Mark unknown; no safety claim |
 | Access/credential failure | Support owner handles approved recovery; never bypass CA |
 | Wrong tenant, unsafe content, exposed secret | Stop sharing; follow authorized incident/remediation process |
-| Poor dual-plane understanding | Revisit slide 9 and repeat question 3 |
+| Inventory confused with complete observability | Revisit slides 9 and 14; ask what evidence is actually available |
 | Time overrun | Remove extra demos, not safety caveats; record actual duration |
 
-1. Collect only approved worksheet results and content feedback.
+1. Collect only approved content feedback and instructor readiness observations;
+   require no learner worksheet or submission.
 2. Close presenter tenant tabs and sign out as appropriate; no deletion is required
    for a content-only walkthrough.
 3. If onboarding created resources, use only its approved run manifest and verified

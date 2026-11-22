@@ -5,12 +5,15 @@
 Four questions: **What agent/purpose? Who is accountable and acts? Which data/tools/
 permissions? What happened, which evidence, and which decision?**
 
-## Follow Microsoft's sample-learning sequence
+## Introductory review sequence
 
-Use the [Academy IT helpdesk example](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/):
-purpose and instructions > actual knowledge > question and source check >
-ownership, access and evidence review. The instructor prepares/publishes it;
-students use and inspect. AI Reader is not maker, chat or source access.
+Management, governance, security and business value come first. Evaluation,
+monitoring and tracing are conceptual observability lenses grounded in
+[Foundry](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability),
+not guarantees of Copilot Studio/Agent 365 telemetry.
+Use generic illustrative IT support, then read-only review of the existing
+Project Beacon Relay Agent. No Academy, build, chat or knowledge test is required.
+AI Reader is not maker access.
 
 Knowledge supplies information. Tools perform configured actions. Instructions
 do not replace permissions, and a SharePoint list is not automatically a tool.
@@ -26,7 +29,8 @@ do not replace permissions, and a SharePoint list is not automatically a tool.
 
 Hosting, identity, registry visibility and resource permission differ. Federation
 alone grants no resource access. Module 3 traces the actual authority.
-The supplied picture is grounding, not a universal control-coverage claim.
+The old scenario picture remains rights-unconfirmed and is not published.
+Its later-module text lenses are separate from the authorized four-pillar screenshots.
 
 | Evidence lens | Can help establish | Cannot prove alone |
 |---|---|---|
@@ -41,7 +45,7 @@ owned Compliance Manager action, and Defender/ISOC investigation/response.
 
 | Module | Main output |
 |---|---|
-| 1. Understand, test and inspect | Actual sample/source comparison and security review |
+| 1. Introductory review | Orally explain an observed fact, a gap and an accountable next check |
 | 2. Establish normal behavior | Actor/tool/data/evidence passport |
 | 3. Map identity and authority | Actual diagram and blast radius |
 | 4. Govern lifecycle/access | Accountable decision |
@@ -54,7 +58,8 @@ Audit is not blocking. Generated content does not automatically inherit source l
 Prompt review is not an implemented approval boundary. Missing evidence is a gap,
 not proof of safety. See the [master plan](../../docs/06-customer-learning-plan.md).
 
-Discuss the task, actual source, observed behavior and one unproven control.
+Discuss the illustrative task, observed registry fact, gap and accountable next check.
 Notes are optional; there is no written submission. Missing metadata stays unknown.
-The separate Relay staged risk is required through Security > Risk details, not
-the broken risk-count filter. It is not the helpdesk sample or a live attack.
+The same selected Relay staged risk is required through Security > Risk details:
+High / The agent is compromised., not the broken risk-count filter.
+It is staged training, not a live attack. Missing required risk remains unresolved.

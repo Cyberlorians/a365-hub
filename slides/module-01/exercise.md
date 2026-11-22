@@ -1,21 +1,18 @@
-# Module 1: Sample Review Discussion
+# Module 1: Review Discussion
 
-Discuss what actually happened with Microsoft's helpdesk sample. No worksheet,
-copied script, scored submission or student publishing.
+Orally explain one observed fact, one gap and the accountable next check.
+No worksheet, required copying, written submission or student publishing.
 
 | Question | Defensible answer |
 |---|---|
-| What useful task does the sample support? | Help an employee answer an IT/support question using approved knowledge; escalate what it cannot verify |
-| Which real source and action did you inspect? | Name the actual configured source and observed retrieval; distinguish a tool action from a response or a SharePoint list |
-| Why is a valid sign-in insufficient? | Legitimate access can be misconfigured or misused, and misleading content can influence an authenticated agent |
-| Which result and next check follow? | Compare the actual answer with its source, report a failure/unknown, then identify the control/evidence owner needed for follow-up |
+| What useful task did we illustrate? | Generic IT support using approved guidance and escalation; not a deployed sample claim |
+| What did the selected record report? | State the actual Details Owner/Created by and available Data & tools/Permissions; blanks remain unknown |
+| What does the risk observation mean? | Relay Security > Risk details showed High / The agent is compromised.; staged training, not a live attack |
+| What evidence/value needs a next check? | Activity is inventory usage, not complete execution/security/audit proof; name an accountable evidence owner and a useful baseline measure |
 
-Use the instructor's live configuration and test activity, not expected outcomes
-copied from a lesson. A failed answer/refusal test is a finding. A passing test does
-not prove every access boundary or protection. Revisit slide 9 for identity-only claims.
-
-The separate Relay record is staged training risk, not the helpdesk sample or a
-live attack. Verify High / The agent is compromised. in its Security tab; bypass
-the broken risk-count filter. Missing sample/knowledge/risk is blocked preparation,
-not a completed exercise. Registry blanks remain visibility gaps and must be
-compared with the real configuration, not treated as proof of no data or tools.
+Use the same prepared Project Beacon Relay Agent throughout. Find it via Registry >
+Total agents > search Project Beacon Relay > Enter, not the faulty Agents at risk
+count filter. Missing required risk uses the instructor live view or remains
+unresolved access/setup, not a completed check.
+Evaluation, monitoring and tracing are conceptual lenses here, not a promise of
+Foundry telemetry in Copilot Studio/Agent 365. No agent chat/source test is required.

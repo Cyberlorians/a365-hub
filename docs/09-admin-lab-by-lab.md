@@ -11,12 +11,14 @@ and look.
 
 ## Current Module 1 preparation gate
 
-Module 1 now follows Microsoft's Agent Academy IT helpdesk sample. Lab 2 is a
-sign-in check, not a mailbox exercise. Before Lab 3, prepare the actual sample,
-knowledge and published channel, then rehearse with a fresh learner:
-[sample preparation checklist](07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample).
-The content revision does not deploy that sample. The historical Beacon checks
-below do not prove the new sample is ready.
+Module 1 introduces management, governance, security and business value, then
+conceptual evaluation/monitoring/tracing grounded in
+[Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
+Foundry specifics do not guarantee Copilot Studio/Agent 365 telemetry.
+Lab 2 is an account check, not a mailbox exercise. Lab 3 reviews the existing
+Project Beacon Relay Agent: [registry preflight](07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
+No Academy, new helpdesk deployment, publishing, chat/source test or maker changes.
+Historical admin checks are not independent proof of fresh learner access.
 
 ## Historical live-check record (November 2-5, 2026)
 
@@ -73,15 +75,14 @@ details, Create user, Issue TAP, Send email). Tell learners **not** to submit tw
 **Heads-up:** the email's "Step 2" tells learners to build agents in Copilot Studio and open Entra and
 Defender. Our labs do not ask for that. Tell learners to ignore Step 2, or edit the Logic App email.
 
-### Lab 2: Sign in to your lab mailbox
+### Lab 2: Confirm your signed-in lab account
 
-**Learner does:** opens Outlook in a private window, signs in with the username and pass, answers
-"Stay signed in?" with No, and sees an empty inbox.
+**Learner does:** checks the signed-in username at admin.microsoft.com after the
+slide 4 sign-in walkthrough. This remains a single-screen check.
 
-**You do before class:** nothing new. The pass policy and a mailbox license from Lab 1 are what matter.
+**You do before class:** preflight the approved sign-in route and actual TAP policy.
 
-**Check:** sign in as your test user in a separate browser profile. The inbox must open.
-A brand-new mailbox can take a few minutes. An empty inbox is correct.
+**Check:** the intended lab account is signed in. No mailbox or chat test is required.
 
 **If it fails**
 
@@ -90,32 +91,34 @@ A brand-new mailbox can take a few minutes. An empty inbox is correct.
 | Pass expired (8 hours via the form) | Issue a new pass: Entra admin center > Users > the user > Authentication methods > Add > Temporary Access Pass. Script route: re-run Provision with `-RenewTaps`. |
 | Personal account signs in by mistake | Use a private window. |
 | Asked to add a sign-in method | Stop and ask. Never loosen Conditional Access or MFA. |
-| No mailbox | Check the license is assigned and wait a few minutes. |
+| Registry menu missing | Investigate read-only access; use authorized instructor live view, not broad learner roles. |
 
-### Lab 3: Explore Microsoft's helpdesk sample
+### Lab 3: Review one prepared agent
 
-**Current sequence (November 19):** Microsoft Academy helpdesk brief > real
-instructions/knowledge > answer/source test > matching registry and owner >
-knowledge/tools/permissions comparison > separate Relay risk > evidence > discussion.
-Students use/inspect; only the instructor authors/publishes. No worksheet or copying.
+**Prepare (a-seed):** Preflight the existing Relay record, not a new helpdesk build.
+**a-risk** remains the approved staged-risk rehearsal; **a-l2** is fresh learner
+registry rehearsal, not chat/source testing. Remove a-publish from current Module 1
+preparation. No maker role changes.
 
-**Prepare:** follow the [Module 1 sample setup](07-module-01-admin-runbook.md#prepare-the-module-1-microsoft-helpdesk-sample):
-Academy standard-harness Missions 00, 04, 06 and 11. The Contoso IT sample provides
-policy pages and Devices/Tickets lists. Rehearse one grounded question and one
-ordinary out-of-scope question through the published learner channel, correlate the
-registry record and show maker configuration from the instructor view.
-AI Reader is separate from maker, chat and source access. The old Beacon Mail Agent
-does not satisfy the new sample setup; this content revision does not deploy it.
+**Learner does (six steps):**
+1. **r3-open:** admin.microsoft.com > Agents > All agents > Registry > Total agents >
+   search Project Beacon Relay > Enter > Project Beacon Relay Agent.
+2. **r3-owner:** Details Owner/Created by; distinguish reporting gaps.
+3. **r3-reach:** Data & tools/Permissions; blank means unknown, no inferred rights.
+4. **r3-registry:** Same record > Security > Risk details > **High** /
+   **The agent is compromised.** Staged training, not live attack. Never use the
+   faulty Agents at risk count filter.
+5. **r3-evidence:** Activity is inventory usage, not full execution/security/audit
+   evidence. No required Foundry/Copilot Studio Test activity.
+6. **r3-watch:** Orally explain a fact, gap and accountable next check.
 
-**Check:** the actual sample, ready knowledge, published-channel result and matching
-registry entry are verified. Registry blanks can be compared with the real
-configuration; absent sample data cannot be silently skipped. Verify the separate
-Relay's Security > Risk details shows High / The agent is compromised. Keep its
-existing approved flag without creating duplicate events. No learner writes or
-security-policy bypass. Rehearse the eight-step lab inside the instructor budget.
+**Check:** Missing required risk uses instructor live view or remains unresolved
+access/setup, not complete. No copying, worksheet or submission. Launch after
+slide 11, return to slide 12. Lab 1 three access steps + Lab 2 one sign-in check +
+Lab 3 six steps = eleven learner screens. Internal budget: 12 onboarding + 25 core.
 
 <details>
-<summary>Historical Beacon registration and Relay risk reference (not the current helpdesk sample setup)</summary>
+<summary>Historical Beacon registration and Relay risk commands (not current Module 1 deployment requirements)</summary>
 
 > **If learners do not see the agents (found November 5, 2026):** nothing in Module 1 creates them.
 > A new tenant has no agent with that name, and the registry shows only what has been added to it. I checked

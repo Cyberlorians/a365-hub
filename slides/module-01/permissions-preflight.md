@@ -1,44 +1,28 @@
 # Module 1 Permissions and Preparation
 
-The presentation calls no tenant APIs. Lab 1 links to the event's access form, so
-approve and smoke-test that route before delivery; skip it for content-only review.
-Learners use and inspect the prepared sample; they do not create or publish it.
+The presentation calls no tenant APIs. Approve and smoke-test the access form.
+Use the [admin runbook](../../docs/07-module-01-admin-runbook.md) and
+[learner guide](../../labs/module-01-security-foundation.md).
 
-For the ordered operator process, use the
-[Module 1 admin runbook](../../docs/07-module-01-admin-runbook.md); the audience uses
-the [learner walkthrough](../../labs/module-01-security-foundation.md).
-
-| Later presentation mode | Required preparation |
+| Mode/check | Required preparation |
 |---|---|
-| Slides only | Browser/navigation/notes/print checks; no claim that a real agent was reviewed |
-| Approved live Registry view | Preflight AI Reader for exact run-owned learners; test a fresh account and tab visibility. Use an authorized presenter view if blocked, never a learner write role |
-| Helpdesk sample preparation | Instructor follows Academy standard-harness Missions 00, 04, 06 and 11 in the approved environment; verify current maker license, role, connections and publication entitlement |
-| Sample use and knowledge | Test the authenticated published channel and actual source access as a learner; AI Reader grants neither. Share the precise event name/link privately |
-| Configuration and test inspection | Instructor shows real instructions, ready knowledge, source content and Test activity map; attendees do not need Copilot Studio maker access |
-| Verified screenshot/prior run | Authorized sanitized content, source/target/time/mode, rights |
-| Onboarding | Separate approved form-to-workflow test, actual account/license/email/TAP/CA behavior, support and cleanup |
-| Later Module 2 task | Its own isolated mailbox/UI/tool/authority/evidence preflight, not inherited from Microsoft 365 home access |
+| Slides only | Navigation/notes/print checks; no claim of live review |
+| Registry review | Standing read-only AI Reader for approved learners; independently preflight a fresh account |
+| Existing prepared record | Project Beacon Relay Agent, Details Owner/Created by, Data & tools/Permissions, Security > Risk details and Activity |
+| Staged risk | High / The agent is compromised. on the same Relay profile; approved training flag, not a live attack |
+| Presenter recovery | Authorized live view for the same checks; report learner access failure |
+| Grounded screenshots | Four-pillar images authorized in grounding; old Agent ID scenarios image remains rights-unconfirmed |
+| Onboarding | Actual form/workflow/email/TAP/CA behavior and private support/cleanup |
+| Module 2 | Separate mail runtime/tool/recipient/evidence preflight; not inherited from Module 1 |
 
-Do not grant Global Administrator or other broad learner roles to fix missing menus.
-Do not bypass CA/device compliance, publish TAPs, or assume a universal eight-hour TAP
-or no-Authenticator flow.
+Use admin.microsoft.com > Agents > All agents > Registry > Total agents > search
+Project Beacon Relay > Enter > Project Beacon Relay Agent. Avoid the faulty Agents
+at risk count filter. Missing required risk is unresolved access/setup, not complete.
+Blank fields mean unknown; Activity does not prove full traces or security/audit.
+No Foundry/Copilot Studio Test activity, helpdesk deployment, publication,
+chat/source tests or maker role changes are Module 1 prerequisites.
 
-Verify the required staged Relay risk through **Registry > Total agents > search
-Relay > Enter > Project Beacon Relay Agent > Security > Risk details**. Expect
-**High / The agent is compromised.** Test this with AI Reader; use the live presenter
-view if learner visibility is blocked, without granting more roles. The risk-count
-filter can return no agents despite visible profile risk. Missing profile risk
-blocks readiness. A fixed count of 1 and populated Activity are not required.
-Keep this identity separate from the helpdesk sample; never mark that usable
-sample compromised just to populate the risk counter.
-
-Sample registration, real knowledge readiness and published-channel testing are
-mandatory preparation, not inferred from the old Beacon registration. A blank
-registry tab can be compared with the live maker configuration; missing actual
-sample data cannot be called a completed live exercise.
-
-Local operational notes report cleanup disabled; verify live state. Do not infer TAP
-expiry from account age or enable destructive cleanup merely to prepare slides.
-
-See the [Module 2 preparation](../module-02/facilitator-guide.md) and
-[existing deployment runbook](../../docs/05-onboarding-deployment-runbook.md).
+Never grant broad admin roles, bypass CA/device/MFA or project TAPs. Verify actual
+TAP lifetime; do not infer it from account age. Local operational notes report
+cleanup disabled; verify live state without enabling destructive cleanup.
+Prior admin observations do not independently verify fresh learner access.

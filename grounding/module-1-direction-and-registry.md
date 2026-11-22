@@ -3,7 +3,41 @@
 **Saved October 30, 2026.** Decisions from the working sessions plus the Microsoft Learn
 and toolkit facts they rest on. Re-check Learn and the actual tenant before delivery.
 
-## Direction (owner decisions)
+## Current direction (November 19-21, 2026)
+
+- Keep Module 1 simple: explain agents, why governance matters, the responsible
+  teams and a brief prepared-agent inventory review. No building or external course lab.
+- Use the [authorized four-pillar screenshots](reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+  as introductory grounding: management, governance, security and business value.
+  Do not turn the source course's navigation into student steps.
+- Put using/testing and any optional maker build in Module 2. Its current mail
+  runtime/content remains unchanged; no replacement sample or optional path is
+  claimed implemented/deployed. AI Reader does not grant maker/chat/source access.
+- Keep student and instructor material separate. No student lab duration labels,
+  prescribed copied answers or worksheet submission.
+- These decisions supersede the earlier Module 1 incident-story/object deep dive
+  and the earlier sample-led sequence. Current documentation reflects this
+  simplification; it is not tenant-readiness or publication proof.
+- Generic IT support is illustration, not a deployed sample. Module 1 needs no
+  new helpdesk deployment, build, chat or knowledge test.
+- After the four pillars, introduce evaluation/monitoring/tracing conceptually from
+  [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
+  Foundry specifics do not guarantee Copilot Studio/Agent 365 telemetry.
+- Lab 3 reviews the same existing Project Beacon Relay Agent in six read-only
+  steps: Registry > Total agents > search Project Beacon Relay > Enter; Details
+  Owner/Created by; Data & tools/Permissions; Security > Risk details; Activity;
+  oral fact/gap/accountable next check. Blank reporting remains unknown.
+- Required profile risk: High / The agent is compromised., staged training not live
+  attack. Avoid the faulty Agents at risk count filter. Missing risk uses instructor
+  live view or remains unresolved access/setup, not complete. Activity is inventory
+  usage, not full execution/security/audit evidence.
+- Launch after slide 11 and return to slide 12. Three access steps, one sign-in check
+  and six registry steps produce eleven learner screens. Internal budget: 12+25.
+- a-seed prepares/preflights the existing record; a-risk rehearses risk; a-l2 is
+  fresh learner registry rehearsal. No current a-publish or maker role change.
+  Prior admin observation is not independent fresh learner proof.
+
+## Historical direction (October owner decisions)
 
 - Students **learn**. Admins **populate** all lab data on the backend by script. Students do
   no GUI setup and build no agents.

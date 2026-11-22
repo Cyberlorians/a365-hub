@@ -1,6 +1,6 @@
 # Reference Images (grounding)
 
-Images supplied as visual grounding. The first two source PNGs were pasted as attachments
+Images supplied as visual grounding. The first two historical source PNGs were pasted as attachments
 (not saved as files), so their content is transcribed here to preserve it. Re-add those
 original PNGs to `grounding/images/` if/when available. Image 3 is saved below.
 
@@ -80,10 +80,9 @@ overview below instead.
 
 ### Teaching placement
 
-- **Module 1:** Use the four scenario headings as a one-minute orientation within the
-  existing agent action-model segment, not four extra demos. Explain that agent
-  hosting, identity, governance visibility, and resource access are different questions.
-  Use the text summary below while image reuse remains unconfirmed.
+- **Module 1:** The current introductory frame uses the authorized four-pillar
+  screenshots below, not this rights-unconfirmed image or a scenario deep dive.
+  Preserve these text lenses for the later authority discussion.
 - **Module 2:** Classify the actual workshop agent in its passport. Record its observed
   runtime and authority; do not infer a flow from its platform or sample name.
 - **Module 3:** Use the eight-minute comparison below within the existing 35-minute
@@ -139,3 +138,68 @@ one boundary decision.
 Target at least 3/4, including the authority point. If evidence is unavailable, accept
 an explicit gap and a concrete validation step, not an invented result. This is a
 content activity draft; actual lab evidence and timed rehearsal remain release gates.
+
+---
+
+## Images 4-7 - AI Observability Overview: four pillars
+
+**Received:** November 21, 2026, as four user-supplied screenshots of a course titled
+**AI Observability Overview**. The user explicitly authorized workshop use:
+"legit you can use these". The screenshots are preserved unchanged below; the
+read-only attachment originals are not modified. The course provider, source URL,
+version and upstream license were not supplied. Do not invent attribution or describe
+these screenshots as independently verified Microsoft product documentation.
+
+This permission applies to these four screenshots, not the earlier Agent ID scenarios
+image or the rest of the source course.
+
+| Image | Preserved screenshot | Grounding contribution | Simple Module 1 question |
+|---|---|---|---|
+| 4: Management | [Management](images/ai-observability-management.png) | Operational visibility: activity, availability, responsiveness and output quality | Is the agent working as expected? |
+| 5: Governance | [Governance](images/ai-observability-governance.png) | Inventory, accountable ownership, access and lifecycle controls | Who owns it, and what can it access? |
+| 6: Security | [Security](images/ai-observability-security.png) | Recognize concerning identity/access/threat signals and involve the appropriate security team | How would we notice unsafe activity, and who should investigate? |
+| 7: Business value | [Business value](images/ai-observability-business-value.png) | Relate usage and cost to useful business outcomes | Is the agent delivering enough value for its cost? |
+
+### Teaching placement and Module 1 scope
+
+These are an introductory frame, not four additional labs or a requirement to open
+the source course. Use one concise overview and the four questions above to introduce
+**See It. Control It. Protect It.** Keep the student explanation inside this workshop.
+A brief review of a prepared agent can connect the frame to a real inventory record;
+do not require building, detailed configuration inspection or an external Academy lab.
+
+- **Module 1:** Introduce all four pillars and the teams responsible. A working agent,
+  a governed agent, a safe agent and a valuable agent are different claims.
+- **Module 2:** Using/testing and any optional maker build belong here with separate
+  prerequisites. Current mail runtime/content remains unchanged; no replacement
+  sample or optional path is claimed implemented/deployed.
+- **Modules 3-4:** Deepen identity, authority, ownership, permissions and lifecycle.
+- **Modules 5-7:** Examine data/tool controls, risky behavior, investigation and response.
+- **Module 8:** Return to business value, readiness and an accountable adoption decision.
+
+This November direction supersedes earlier Module 1 incident-story and sample-build
+teaching placement. Current Module 1 documentation reflects the simplification:
+generic illustrative IT support followed by read-only review of the existing
+Project Beacon Relay Agent. Documentation does not itself prove publication or
+fresh learner access. No new helpdesk deployment, chat/source test or external lab.
+Authorization for these four screenshots does not authorize Image 3.
+
+### Claim boundaries
+
+- [Microsoft Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability)
+  provides official grounding for evaluation, monitoring and tracing. It supports the
+  operational/quality visibility discussion; it does not verify the screenshots'
+  course provenance or establish all four pillars as Foundry product capabilities.
+  See the [module placement and integration boundaries](sources.md#foundry-observability-source-grounding-and-placement).
+- The four pillars are learning lenses, not four product features, exclusive product
+  assignments or a guarantee of universal telemetry.
+- Check supported integrations, permissions, licensing and actual evidence before
+  claiming a portal exposes health, latency, output quality, risk or cost for an agent.
+- A successful answer is not proof of safety; an empty risk view is not proof that
+  no risk exists. Escalate concerns through the approved incident-response process.
+- Use original workshop explanations. Preserve the screenshots as supplied references,
+  without requiring their course navigation, completion percentage or suggested-response
+  scripts as student activities.
+- The Business value screenshot mentions a planned FinOps course and FY27 release.
+  That is a statement in the supplied screenshot, not a verified release commitment;
+  do not carry the forecast into workshop promises.
