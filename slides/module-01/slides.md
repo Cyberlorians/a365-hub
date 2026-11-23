@@ -61,7 +61,8 @@ The reply "I opened a ticket" is a claim, not proof. Check the actual ticket and
 its queue/problem (**Evaluation**), recorded information/tool calls and results
 (**Tracing**), then failure rates, response time and usage across requests
 (**Monitoring**). These checks support operational management.
-A registry entry establishes listing, not task success. The learning goal is to
+A registry is a list of agents, not proof of task success. Ask the same owner
+to arrange the result and action records. The learning goal is to
 distinguish inventory, recorded activity and a verified result.
 [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability)
 grounds the concepts; actual collection and integrations must be verified.

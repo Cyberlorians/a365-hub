@@ -116,6 +116,7 @@ for (const boundary of ["Needed for this job", "Not needed for this job", "least
   assert(accessSlide.includes(boundary), `Missing access lesson: ${boundary}`);
 const evidenceSlide = module1.match(/<section class="slide" data-title="How do we know what an agent did\?"[\s\S]*?<\/section>/)?.[0];
 assert(evidenceSlide && evidenceSlide.includes("real ticket") && evidenceSlide.includes("recorded steps") && evidenceSlide.includes("Watch over time"), "Teach result, steps and reliability through the same ticket task");
+assert(evidenceSlide.includes("A registry is a list of agents"), "Define registry before bridging from the task lesson to inventory");
 for (const slide of [scenarioSlide, accessSlide, evidenceSlide])
   assert(slide.includes("What you are learning:"), "Each introductory slide needs a plain-language learning goal");
 assert(!module1.includes("source-visuals") && !module1.includes("assets/ai-observability-"), "Do not embed source-course screenshots or a source gallery");

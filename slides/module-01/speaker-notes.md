@@ -54,8 +54,9 @@ Then ask which recorded calls show the steps and what shows reliability across
 requests. Introduce evaluation, tracing and monitoring after those examples.
 State collection gaps and separate role/integration requirements. Traces do not
 reveal internal chain-of-thought. Foundry grounds the concepts, not automatic
-coverage or a new setup lab. Bridge to the registry review: listing is not task
-success, and the runtime owner supplies missing evidence.
+coverage or a new setup lab. Define a registry as a list of agents before the
+review; listing is not task success. Ask the same accountable owner to arrange
+evidence from the technical team, rather than introducing an unexplained new role.
 
 ## Slide 10 - One job. Four Microsoft services.
 
