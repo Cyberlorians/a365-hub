@@ -105,6 +105,16 @@ assert(module1.includes("No Foundry setup") && module1.includes("actual runtime 
 assert(!module1.includes("https://microsoft.github.io/agent-academy/"), "Do not send Module 1 learners to an external maker course");
 assert(!module1.includes("three of four documentation tasks") && !scenarioSlide.includes("Mail Agent"), "Keep the Module 1 example distinct from the current Module 2 mail task");
 assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
+assert(scenarioSlide.includes("Two attack surfaces") && scenarioSlide.includes("Misleading content") && scenarioSlide.includes("Misused identity or management access"), "Teach both attack surfaces through the same task before the registry lab");
+assert(module1.indexOf("Two attack surfaces") < module1.indexOf('data-title="Review one prepared agent"'), "Foundational teaching must precede the portal walkthrough");
+for (const concept of ["Entra Agent ID", "Identity Governance", "Entitlement management", "Conditional Access / ID Protection", "Global Secure Access", "Spot it", "Find who", "Investigate", "Contain", "Check it worked", "Fix the gap"])
+  assert(module1.includes(concept), `Preserve introductory control/response teaching: ${concept}`);
+assert(module1.includes("an event, alert and incident") && module1.includes("The ISOC preview is not required"), "Keep connected operations distinct from a promised preview integration");
+for (const pillar of ["management", "governance", "security", "business-value"]) {
+  const filename = `ai-observability-${pillar}.png`;
+  assert(module1.includes(`src="assets/${filename}"`), `Make the authorized ${pillar} visual available inside the teaching deck`);
+  assert(fs.existsSync(path.join(root, "grounding", "images", filename)), `Missing authorized ${pillar} source screenshot`);
+}
 assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
 const registrySteps = labSlides(1).filter(step => step.lab === 3);
 assert(/Three of four documentation tasks/.test(read("labs/module-02-business-agent.md")), "Keep the separate existing Module 2 task unchanged");

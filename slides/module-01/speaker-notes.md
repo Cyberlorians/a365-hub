@@ -33,11 +33,18 @@ No deployment, chat or knowledge test. Move access failures to a helper.
 
 **3 minutes.** Use generic illustrative IT support, not a deployed sample claim.
 Knowledge informs; tools act; instructions do not replace permissions.
+Walk Read > Decide > Act, then compare two causes of the same wrong ticket:
+identity/management misuse versus misleading content. Which evidence distinguishes
+them? Sign-in success alone cannot. No attacks or tool calls are executed; keep
+credential/token mechanics and hands-on investigation for Modules 3 and 6-7.
 
 ## Slide 8 - Four questions for every agent
 
 **1 minute.** Introduce management, governance, security and business value using
 the authorized four-pillar grounding. Do not conflate its rights with Image 3.
+The four original screenshots are expandable on slide 8. Use the icon-based
+teaching map first; expanding the source visuals is optional, not another lesson.
+Do not attribute the source course to Microsoft or promise its planned release.
 
 ## Slide 9 - What does observability mean?
 
@@ -64,6 +71,11 @@ faulty Agents at risk count filter. Missing risk is unresolved, not complete.
 **5 minutes.** Return here after Lab 3. Distinguish Owner, Created by and approval.
 Report missing metadata and name the owner of the next check. No new helpdesk
 deployment, maker role changes or student writes.
+Teach the five Entra control areas: identity, accountability, permissions,
+sign-in conditions and traffic boundary. Use the support task to explain each
+question. Registry metadata is a clue, not proof of approval, expiry, policy
+results or inspected routing. Coverage depends on the agent and supported flow;
+configuration belongs in Modules 3-5.
 
 ## Slide 13 - Keep data and actions within bounds
 
@@ -75,6 +87,11 @@ Reported rights do not prove approval or enforcement. Keep authority depth later
 **1 minute.** Activity is inventory usage, not full traces or security/audit proof.
 Entra, Purview and Defender follow-up needs separate roles. No required Foundry
 or Copilot Studio Test activity. Module 2 runtime logs are a different source.
+Teach Spot it > Find who > Investigate > Contain > Check it worked > Fix the gap
+using the same hypothetical wrong ticket. Compare identity evidence with runtime
+behavior before diagnosing it. An event, alert and incident differ; Defender
+integration is not automatic and the ISOC preview is not required. Containment is
+an authorized-team task in Module 7, not a Module 1 student action.
 
 ## Slide 15 - Useful work needs measurable value
 

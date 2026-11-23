@@ -43,6 +43,11 @@ and escalate what cannot be verified. Purpose, instructions, knowledge and tools
 differ. Knowledge informs; tools perform configured actions. Instructions do not
 replace permissions. This is a generic illustration, not a deployed sample claim.
 
+Follow **Read > Decide > Act**, then compare two causes of the same misdirected
+ticket: misused identity/management access versus misleading content. A valid
+sign-in does not prove safe behavior. Compare sign-ins and changed grants with
+the actual input, tool call and result; no attack or tool call is executed here.
+
 ## Slide 8 - Four questions for every agent
 
 | Pillar | Question |
@@ -51,6 +56,10 @@ replace permissions. This is a generic illustration, not a deployed sample claim
 | Governance | Who approves its access, changes and lifecycle? |
 | Security | What data and actions are within bounds, and how are problems handled? |
 | Business value | What useful outcome would justify it, and how will it be measured? |
+
+The four authorized source screenshots are available in the expandable visual
+reference on this slide. No other course is required; screenshot controls are
+not interactive. The original icon illustrations keep the teaching view concise.
 
 ## Slide 9 - What does observability mean?
 
@@ -77,6 +86,13 @@ No copying, worksheet, written submission or student changes.
 
 ## Slide 12 - Know who is accountable
 
+Five Entra control areas connect the support task to its boundary:
+identity (Entra Agent ID), accountability (Identity Governance), permissions
+(entitlement management), sign-in conditions (Conditional Access/ID Protection)
+and traffic boundary (Global Secure Access). Ask who acts, who manages it, why
+access was approved, which rules apply and whether traffic follows a supported route.
+This is a teaching map, not five setup tasks or a promise of universal coverage.
+
 Read Details **Owner** and **Created by** on that same record. Distinguish ownership,
 creation and approval; missing reporting is a gap, not proof nobody is accountable.
 Name who should confirm the missing context.
@@ -88,6 +104,15 @@ unknown, not no access. Reported permissions alone do not prove effective access
 approval or enforcement. No grants, blocking or policy changes.
 
 ## Slide 14 - Know where to look for evidence
+
+Connect evidence to a decision: **Spot it > Find who > Investigate > Contain >
+Check it worked > Fix the gap**. Use the same illustrative misdirected ticket:
+identity misuse and misleading content need different evidence. Defender and the
+security operations center help connect supported signals; no automatic correlation
+or ISOC preview is required. An event, alert and incident are different things.
+Containment belongs to the authorized response team, not Module 1 learners.
+Expand the evidence-location reference on this slide as needed, without leaving
+the workshop.
 
 Inspect **Activity**. Inventory usage is not a full execution trace, security
 investigation or workload audit trail. Entra sign-in/audit, Purview Audit and

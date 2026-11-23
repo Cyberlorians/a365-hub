@@ -13,6 +13,13 @@ Foundry-specific coverage does not guarantee Copilot Studio/Agent 365 telemetry.
 The IT support task is generic illustration, not a deployed sample.
 All learner steps stay inside this workshop; no Academy, build, chat or knowledge test.
 
+Introductory does not mean portal-only. Teach the read/decide/act support example
+and its two attack surfaces before the registry walkthrough. Keep the visual
+five-area Entra control map and connected security-operations response sequence
+in Module 1; they were not moved into Module 2. The four authorized source
+screenshots can be expanded on slide 8 without leaving the workshop.
+Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
+
 ## Before class
 
 - **a-seed:** [Prepare/preflight the existing registry record](../../docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).

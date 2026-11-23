@@ -152,6 +152,27 @@
     .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .card { border: 1px solid var(--cp-border); border-radius: 16px; padding: 20px; background: var(--cp-bg-elevated); min-width: 0; }
     .card p:last-child { margin-bottom: 0; }
+    .lesson-icon { width: 44px; height: 44px; color: var(--cp-accent); display: block; margin-bottom: 12px; }
+    .lesson-flow, .control-map, .response-flow { display: grid; gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
+    .lesson-flow, .response-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .control-map { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .lesson-flow li, .response-flow li { margin: 0; }
+    .lesson-flow .card { padding: 16px; }
+    .lesson-flow .step-number { margin-bottom: 0; }
+    .lesson-flow h3 { display: inline-block; margin: 0 0 0 8px; font-size: 18px; }
+    .lesson-flow p { font-size: 16px; }
+    .control-map .card, .response-flow .card { padding: 16px; }
+    .control-map h3, .response-flow h3 { font-size: 18px; }
+    .control-map p, .response-flow p { font-size: 16px; }
+    @media (min-width: 961px) {
+      .control-map h3 { min-height: 2lh; }
+      .control-map p:first-of-type { min-height: 3lh; }
+    }
+    .step-number { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 750; margin-bottom: 12px; }
+    .source-visuals { display: grid; gap: 24px; margin-top: 16px; }
+    .source-visuals figure { margin: 0; }
+    .source-visuals img { display: block; width: 100%; height: auto; border-radius: 8px; }
+    .source-visuals figcaption { margin-top: 8px; font-size: 15px; color: var(--cp-text-muted); }
     .callout { border-left: 4px solid var(--cp-accent); background: var(--cp-accent-soft); padding: 16px 20px; border-radius: .625rem; margin: 20px 0; }
     .quote { font-size: clamp(24px, 3vw, 34px); font-weight: 650; line-height: 1.3; }
     ul, ol { padding-left: 24px; margin: 12px 0; }
@@ -187,11 +208,15 @@
     .check { display: flex; gap: 12px; margin: 16px 0; }
     .check input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--cp-accent); }
     #error { color: var(--cp-danger); border: 1px solid var(--cp-danger); padding: 12px; }
+    @media (max-width: 960px) {
+      .control-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
     @media (max-width: 760px) {
       body { font-size: 17px; }
       header, footer { padding: 12px 16px; }
       main { padding: 0 12px; margin: 12px auto; }
       .two, .three, .four { grid-template-columns: 1fr; }
+      .lesson-flow, .control-map, .response-flow { grid-template-columns: 1fr; }
       .slide { min-height: 0; padding: 24px 20px; }
       .lede { font-size: 20px; }
       .toolbar, .top { align-items: start; }
@@ -295,17 +320,40 @@
       <section class="slide" data-title="What does an agent do?" data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">A simple example / Not a setup exercise</p>
         <h2>A question can lead to an action.</h2>
-        <p class="lede">Imagine an employee asks: &ldquo;How do I get help with my laptop?&rdquo; An IT support agent could find approved guidance, answer, or use a configured tool to raise a ticket.</p>
-        <div class="grid three"><div class="card"><h3>Read</h3><p>Find information the employee is allowed to use.</p></div><div class="card"><h3>Decide</h3><p>Choose an answer or the next approved step.</p></div><div class="card"><h3>Act</h3><p>Use a tool only when the task and permissions allow it.</p></div></div>
-        <div class="callout">A helpful answer and an authorized action are different things. A valid sign-in does not prove either is safe.</div>
+        <p class="lede">An employee asks for laptop help. Imagine a prepared support agent following this path:</p>
+        <ol class="lesson-flow" aria-label="Illustrative support-agent task">
+          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Read</h3><p>Find approved troubleshooting guidance.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Decide</h3><p>Answer the question or choose an approved escalation.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Act</h3><p>Use a configured tool to raise a ticket with the allowed team.</p></li>
+        </ol>
+        <h3>Two attack surfaces. The same wrong outcome.</h3>
+        <div class="grid two">
+          <div class="card"><h3>Misused identity or management access</h3><p>Misused credentials or changed access send the ticket outside its approved team.</p><p><strong>Check:</strong> sign-ins, grants and audit.</p></div>
+          <div class="card"><h3>Misleading content</h3><p>Untrusted document instructions misdirect the ticket despite a valid sign-in.</p><p><strong>Check:</strong> input, tool call and result.</p></div>
+        </div>
+        <div class="callout">A valid sign-in does not prove safe behavior. Compare identity with behavior.</div>
         <p class="small">This is an illustration, not a claim that our registry record has these capabilities. Module 2 uses an actual agent and checks its result.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Use one familiar task to explain why agents need boundaries. Do not open Copilot Studio or another course. A configured ticket tool is hypothetical here, not a capability of Relay. The existing Relay is a registry/risk training record, not this helpdesk runtime. Keep token flows, objects and attacks for later modules.</p></template>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Teach the read/decide/act path, then compare two causes of the same wrong ticket. Identity or management misuse needs identity evidence; misleading content needs execution evidence. No attack is executed. Ask which evidence would distinguish the causes, not for a written answer. A ticket tool is hypothetical, not a capability of Relay. No extra portal or course. Token/credential mechanics and hands-on attack investigation belong in Modules 3 and 6-7.</p></template>
       </section>
       <section class="slide" data-title="Four questions for every agent" data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">The big picture / Four learning pillars</p>
         <h2>Working. Accountable. Safe. Useful.</h2>
-        <div class="grid two"><div class="card"><h3>Management</h3><p>Is the agent working as expected?</p></div><div class="card"><h3>Governance</h3><p>Who owns it, and what can it access?</p></div><div class="card"><h3>Security</h3><p>How would we notice unsafe activity, and who would investigate?</p></div><div class="card"><h3>Business value</h3><p>Is it delivering useful results for its cost?</p></div></div>
+        <div class="grid two">
+          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="7" width="36" height="27" rx="4"/><path d="M12 26l8-8 7 5 9-10M24 34v7M16 41h16"/></svg><h3>Management</h3><p>Is the agent working as expected?</p></div>
+          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 5L8 12v12c0 10 16 19 16 19s16-9 16-19V12zM16 24l6 6 11-13"/></svg><h3>Governance</h3><p>Who owns it, and what can it access?</p></div>
+          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 5L8 12v12c0 10 16 19 16 19s16-9 16-19V12zM24 15v13M24 32v3"/></svg><h3>Security</h3><p>How would we notice unsafe activity, and who would investigate?</p></div>
+          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 41h36M10 41V28h7v13M21 41V21h7v20M32 41V12h7v29M8 19L36 6M29 5l9 1-3 8"/></svg><h3>Business value</h3><p>Is it delivering useful results for its cost?</p></div>
+        </div>
         <div class="callout">These are four questions, not four extra labs. No single dashboard answers all of them.</div>
+        <details><summary>Four-pillar source visuals</summary>
+          <p class="small">The four screenshots supplied for this workshop, preserved unchanged. Their source-course controls are not interactive here; no other course is required.</p>
+          <div class="source-visuals">
+            <figure><img src="assets/ai-observability-management.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining management through operational signals and service health."><figcaption>Management: working as expected.</figcaption></figure>
+            <figure><img src="assets/ai-observability-governance.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining governance through ownership, access and controls."><figcaption>Governance: accountable ownership and access.</figcaption></figure>
+            <figure><img src="assets/ai-observability-security.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining security signals and involvement of the appropriate security team."><figcaption>Security: recognize risk and involve the right team.</figcaption></figure>
+            <figure><img src="assets/ai-observability-business-value.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining business value through activity, cost and outcomes."><figcaption>Business value: useful outcomes for their cost. A planned source-course release is not a verified product promise.</figcaption></figure>
+          </div>
+        </details>
         <template class="speaker-notes"><p><strong>1 minute.</strong> Grounded in the authorized AI Observability Overview screenshots. Use original explanations, not source-course navigation. Each pillar needs different evidence. Do not assign each pillar exclusively to one product or imply the screenshots establish platform coverage. Business value returns in Module 8.</p></template>
       </section>
       <section class="slide" data-title="What does observability mean?" data-minutes="3" data-phase="core" hidden>
@@ -333,11 +381,18 @@
       </section>
       <section class="slide" data-title="Know who is accountable" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Governance / Someone must own the next action</p>
-        <h2>A listed agent still needs an accountable owner.</h2>
-        <div class="grid three"><div class="card"><h3>Business purpose</h3><p>Who approves the work this agent should do?</p></div><div class="card"><h3>Technical management</h3><p>Who maintains its configuration and access?</p></div><div class="card"><h3>Lifecycle</h3><p>Who reviews it and retires it when the job ends?</p></div></div>
+        <h2>Five Entra controls. Five questions to ask.</h2>
+        <p class="lede">For the support task, connect the agent's identity to its owner, access and operating boundary.</p>
+        <div class="control-map" aria-label="Five Entra control areas">
+          <div class="card"><span class="step-number" aria-hidden="true">1</span><h3>Identity</h3><p><strong>Entra Agent ID</strong></p><p>Who is acting?</p></div>
+          <div class="card"><span class="step-number" aria-hidden="true">2</span><h3>Accountability</h3><p><strong>Identity Governance</strong></p><p>Who manages its lifecycle?</p></div>
+          <div class="card"><span class="step-number" aria-hidden="true">3</span><h3>Permissions</h3><p><strong>Entitlement management</strong></p><p>Who approved access, and until when?</p></div>
+          <div class="card"><span class="step-number" aria-hidden="true">4</span><h3>Sign-in conditions</h3><p><strong>Conditional Access / ID Protection</strong></p><p>Which sign-in checks apply?</p></div>
+          <div class="card"><span class="step-number" aria-hidden="true">5</span><h3>Traffic boundary</h3><p><strong>Global Secure Access</strong></p><p>Is this a supported, inspected route?</p></div>
+        </div>
         <div class="callout">Created by is not automatically the current owner. A blank owner field means follow up, not guess.</div>
-        <p class="small">Finish the walkthrough and discuss one ownership gap. Module 3 covers identity; Module 4 covers governance.</p>
-        <template class="speaker-notes"><p><strong>5 minutes.</strong> Finish Lab 3 before moving on. Use the actual Details fields and acknowledge missing reporting. Business accountability and technical rights are different. Do not infer grants from a title or fill blank fields on behalf of learners. No changes are made. Later modules trace authority and decide access/lifecycle.</p></template>
+        <p class="small">Finish the walkthrough, then map one observed field or gap to a question. These are teaching concepts, not five setup tasks. Registry metadata does not prove a control is configured or effective; coverage depends on the agent and route. Modules 3-5 go deeper.</p>
+        <template class="speaker-notes"><p><strong>5 minutes.</strong> Finish Lab 3, then teach the five control areas using the support example. Agent identity, technical management and business approval are different responsibilities. Connect Details to identity/accountability, Permissions to a separate access review, and Security to a separate policy/risk review. Approval, expiry, Conditional Access results and traffic routing require evidence beyond the registry. Do not infer enforcement or universal coverage. No five demos, grants, role changes or configuration. Modules 3-5 develop these concepts.</p></template>
       </section>
       <section class="slide" data-title="Keep data and actions within bounds" data-minutes="1.5" data-phase="core" hidden>
         <p class="eyebrow">Purview / Data security and compliance follow-through</p>
@@ -349,16 +404,28 @@
       </section>
       <section class="slide" data-title="Know where to look for evidence" data-minutes="1" data-phase="core" hidden>
 
-        <p class="eyebrow">Evidence map / Reference for instructor and later modules</p>
-        <h2>Where would you check the evidence?</h2>
+        <p class="eyebrow">Connected security operations / Evidence before action</p>
+        <h2>Connect the evidence to a decision.</h2>
+        <p>For the misdirected support ticket, compare who authenticated with what the agent actually did. One signal cannot diagnose the whole event.</p>
+        <ol class="response-flow" aria-label="Security operations response sequence">
+          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Spot it</h3><p>Notice the unexpected outcome.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Find who</h3><p>Identify the agent, user and owner.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Investigate</h3><p>Correlate identity, runtime and data evidence.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">4</span><h3>Contain</h3><p>The authorized team scopes the response.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">5</span><h3>Check it worked</h3><p>Verify the unsafe activity stopped.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">6</span><h3>Fix the gap</h3><p>Assign and verify the corrective action.</p></li>
+        </ol>
+        <details><summary>Different questions need different evidence: where to look</summary>
         <div class="table-wrap"><table><thead><tr><th>Question</th><th>Where to look</th></tr></thead><tbody>
           <tr><td>Who signed in or changed access?</td><td><a href="https://entra.microsoft.com/" target="_blank" rel="noopener noreferrer">Entra</a> &gt; Entra ID &gt; Monitoring &amp; health &gt; <strong>Sign-in logs</strong> or <strong>Audit logs</strong></td></tr>
           <tr><td>Which model or tool steps ran?</td><td>Ask the runtime owner for recorded traces. Integrated Foundry apps can use <strong>Azure Monitor Application Insights</strong>.</td></tr>
           <tr><td>What workload activity was audited?</td><td><a href="https://purview.microsoft.com/" target="_blank" rel="noopener noreferrer">Purview</a> &gt; Solutions &gt; <strong>Audit</strong> &gt; Search. Requires supported events, audit access and retention.</td></tr>
           <tr><td>Was a threat investigated?</td><td><a href="https://security.microsoft.com/" target="_blank" rel="noopener noreferrer">Defender</a> &gt; <strong>Incidents &amp; alerts</strong> &gt; Incidents or Alerts. No alert does not prove no activity.</td></tr>
         </tbody></table></div>
-        <p class="small">This is a map for later modules, not another portal exercise. AI Reader does not grant access to these other evidence sources. No alert does not mean no risk.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Name the right team/source rather than opening four portals. Registry Activity is not a full trace or audit trail. Correlate actual runtime, identity and workload evidence in Module 7. Foundry instrumentation is not automatically enabled for Relay, Copilot Studio or the Module 2 mail runtime. These sources have separate collection and role prerequisites.</p></template>
+        <p class="small">AI Reader does not grant other evidence roles. Collection and Defender integrations must be verified for the actual runtime; the table is not proof of coverage. The ISOC preview is not required.</p>
+        </details>
+        <p class="small">Defender and the security operations center help connect supported evidence; an event, alert and incident are different things. No alert does not mean no risk. Response belongs to the authorized team, not Module 1 learners.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Walk the response sequence using the same hypothetical wrong ticket, then use the table as a reference rather than opening four portals. Do not equate an event, alert and incident, or promise automatic correlation. Defender coverage and ISOC eligibility depend on integration; the preview is not required. Registry Activity is not a full trace or audit trail. Foundry instrumentation is not automatically enabled for Relay, Copilot Studio or the Module 2 mail runtime. Module 7 investigates and contains with separately authorized roles.</p></template>
       </section>
       <section class="slide" data-title="Useful work needs measurable value" data-minutes="1.5" data-phase="core" hidden>
         <p class="eyebrow">Business value / Start with the outcome</p>

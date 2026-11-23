@@ -397,4 +397,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
   const assets = path.join(root, "slides", "assets");
   if (fs.existsSync(assets)) fs.cpSync(assets, path.join(root, "_site", "assets"), { recursive: true });
+  fs.mkdirSync(path.join(root, "_site", "assets"), { recursive: true });
+  for (const pillar of ["management", "governance", "security", "business-value"]) {
+    const filename = `ai-observability-${pillar}.png`;
+    fs.copyFileSync(path.join(root, "grounding", "images", filename), path.join(root, "_site", "assets", filename));
+  }
 }

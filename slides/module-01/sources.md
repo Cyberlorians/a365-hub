@@ -8,6 +8,13 @@ support instructor preparation/Module 2; students should not need to open an
 external course lab in Module 1. Current documentation reflects the approved
 simplification; publication and fresh learner access require separate validation.
 
+**Teaching restoration, November 23, 2026:** Introductory means no extra setup,
+not less learning. Module 1 retains the two attack surfaces through the same
+support task, the five-area Entra control map and the connected response sequence.
+These concepts were not moved into Module 2. The four authorized screenshots are
+now expandable inside slide 8, unchanged and without source-course navigation.
+Control setup, task testing and investigation retain their later-module boundaries.
+
 Sample-learning references checked November 19, 2026 using Microsoft Learn MCP
 search/fetch and the linked Microsoft-maintained Academy lessons. The deck is an
 original adaptation, not a verbatim copy or Microsoft certification course.
