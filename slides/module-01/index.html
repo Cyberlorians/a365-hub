@@ -152,21 +152,25 @@
     .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .card { border: 1px solid var(--cp-border); border-radius: 16px; padding: 20px; background: var(--cp-bg-elevated); min-width: 0; }
     .card p:last-child { margin-bottom: 0; }
-    .lesson-flow, .control-map, .response-flow { display: grid; gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
+    .lesson-flow, .response-flow, .control-table { display: grid; gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
     .lesson-flow, .response-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .control-map { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-    .lesson-flow li, .response-flow li { margin: 0; }
-    .lesson-flow .card { padding: 16px; }
+    .lesson-flow li, .response-flow li, .control-table li { margin: 0; }
+    .lesson-flow .card, .response-flow .card { padding: 16px; }
     .lesson-flow .step-number { margin-bottom: 0; }
     .lesson-flow h3 { display: inline-block; margin: 0 0 0 8px; font-size: 18px; }
-    .lesson-flow p { font-size: 16px; }
-    .control-map .card, .response-flow .card { padding: 16px; }
-    .control-map h3, .response-flow h3 { font-size: 18px; }
-    .control-map p, .response-flow p { font-size: 16px; }
-    @media (min-width: 961px) {
-      .control-map h3 { min-height: 2lh; }
-      .control-map p:first-of-type { min-height: 3lh; }
-    }
+    .response-flow .step-number { margin-bottom: 0; }
+    .response-flow h3 { display: inline-block; font-size: 18px; margin: 0 0 6px 8px; }
+    .response-flow p { margin: 6px 0 0; }
+    .lesson-flow p, .response-flow p { font-size: 16px; }
+    .control-table { gap: 8px; }
+    .control-row { display: grid; grid-template-columns: 1.15fr 1.25fr 1.7fr 1.35fr; gap: 16px; align-items: center; padding: 10px 16px; border: 1px solid var(--cp-border); border-radius: 12px; background: var(--cp-bg-elevated); }
+    .control-row p { margin: 0; font-size: 16px; }
+    .control-row .name { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; }
+    .control-row .name .step-number { margin: 0; flex: none; }
+    .control-head { padding: 0 16px; font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; font-weight: 750; color: var(--cp-text-muted); border: 0; background: none; }
+    .clue { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--cp-accent-soft); font-size: 15px; font-weight: 600; }
+    .learning { margin: 20px 0 0; padding-top: 14px; border-top: 1px solid var(--cp-border); font-size: 18px; }
+    .learning strong { color: var(--cp-accent); }
     .step-number { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 750; margin-bottom: 12px; }
     .callout { border-left: 4px solid var(--cp-accent); background: var(--cp-accent-soft); padding: 16px 20px; border-radius: .625rem; margin: 20px 0; }
     .quote { font-size: clamp(24px, 3vw, 34px); font-weight: 650; line-height: 1.3; }
@@ -191,7 +195,7 @@
     footer { border-top: 1px solid var(--cp-border); padding: 12px 24px; background: var(--cp-bg-elevated); }
     .navigation { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 12px; }
     #slideCount { min-width: 120px; text-align: center; font-variant-numeric: tabular-nums; }
-    #jump { width: min(380px, 100%); max-width: 100%; }
+    #jump { width: min(460px, 100%); max-width: 100%; }
     progress { width: 100%; height: 6px; display: block; border: 0; accent-color: var(--cp-accent); background: var(--cp-border); }
     progress::-webkit-progress-bar { background: var(--cp-border); }
     progress::-webkit-progress-value { background: var(--cp-accent); }
@@ -204,14 +208,15 @@
     .check input { width: 20px; height: 20px; flex: 0 0 auto; accent-color: var(--cp-accent); }
     #error { color: var(--cp-danger); border: 1px solid var(--cp-danger); padding: 12px; }
     @media (max-width: 960px) {
-      .control-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .control-row { grid-template-columns: 1fr 1fr; }
+      .control-head { display: none; }
     }
     @media (max-width: 760px) {
       body { font-size: 17px; }
       header, footer { padding: 12px 16px; }
       main { padding: 0 12px; margin: 12px auto; }
       .two, .three, .four { grid-template-columns: 1fr; }
-      .lesson-flow, .control-map, .response-flow { grid-template-columns: 1fr; }
+      .lesson-flow, .response-flow, .control-row { grid-template-columns: 1fr; }
       .slide { min-height: 0; padding: 24px 20px; }
       .lede { font-size: 20px; }
       .toolbar, .top { align-items: start; }
@@ -309,33 +314,33 @@
         <p class="lede">An AI agent is a digital coworker. It reads, makes decisions, and acts with real access.</p>
         <div class="grid three"><div class="card"><h3>See it</h3><p>Know the agent's purpose, owner and operating context.</p></div><div class="card"><h3>Control it</h3><p>Approve its access, data and tool boundaries.</p></div><div class="card"><h3>Protect it</h3><p>Check what happened and act on the evidence.</p></div></div>
         <p class="lede">Companies want agents for the work they do. Our job is to see them, control them and protect them.</p>
-        <p class="small">Takeaway: know what to ask before trusting an agent. No worksheet or written submission.</p>
+        <p class="learning"><strong>What you are learning:</strong> know what to ask before you trust an agent.</p>
         <template class="speaker-notes"><p><strong>1 minute.</strong> An agent can invoke tools, so useful access needs an explicit boundary. Introduce see, control and protect without a product tour. Promise a review, not visibility of every agent or proof of complete protection. Agent 365, Entra, Purview and Defender contribute different parts. Leave object models and token flows for Module 3.</p><p><strong>Source:</strong> Microsoft Learn Agent 365 overview; Cloud-Architekt Agent Identities.</p></template>
       </section>
       <section class="slide" data-title="What does an agent do?" data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">Learn the basics / From an answer to an action</p>
         <h2>An agent can use tools to do a job.</h2>
-        <p class="lede">An employee asks: &ldquo;My laptop will not start. Can you help and open a support ticket?&rdquo;</p>
+        <p class="lede">Meet our example support agent. An employee asks: &ldquo;My laptop will not start. Can you help and open a support ticket?&rdquo;</p>
         <ol class="lesson-flow" aria-label="A tool-enabled support-agent example">
           <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>The request</h3><p>The employee gives the agent a job: help with the laptop and request support.</p></li>
           <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>The information</h3><p>The agent uses an approved troubleshooting guide to provide useful instructions.</p></li>
           <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>The action</h3><p>A configured ticket tool lets the agent submit a request to the service desk.</p></li>
         </ol>
         <div class="callout"><strong>Knowledge supplies information. Tools perform actions.</strong> An agent needs permission to use the data and services involved; an instruction alone does not grant access.</div>
-        <p><strong>What you are learning:</strong> giving an answer and carrying out an action are different capabilities.</p>
+        <p class="learning"><strong>What you are learning:</strong> giving an answer and carrying out an action are different capabilities.</p>
         <p class="small">This is an illustration, not a claim that our registry record has these capabilities. Module 2 uses an actual agent and checks its result.</p>
         <template class="speaker-notes"><p><strong>3 minutes.</strong> Read the employee request aloud, then walk the three steps. Define knowledge as information the agent can use and a tool as a configured way to call a service or perform an action. Not every agent has a ticket tool, and a conversational interface can also be tool-enabled; do not draw an absolute chatbot/agent distinction. Ask what capability is needed to create the ticket rather than merely describe it. This is a teaching example, not Relay's runtime. No attack vocabulary, object model, build or extra portal here.</p></template>
       </section>
       <section class="slide" data-title="Why does agent access matter?" data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Same job / Give it the access the job needs</p>
         <h2>Opening a ticket does not need access to everything.</h2>
-        <p class="lede">Our support agent needs to read the support guide and create a service-desk ticket. Its owner must approve that access.</p>
+        <p class="lede">Our support agent needs to read the support guide and create a service-desk ticket. A named owner must approve that access.</p>
         <div class="grid two access-boundary">
           <div class="card"><h3>Needed for this job</h3><ul><li>Read the approved troubleshooting guide.</li><li>Create a ticket in the service-desk queue.</li></ul></div>
           <div class="card"><h3>Not needed for this job</h3><ul><li>Read payroll or HR records.</li><li>Change employee accounts or grant roles.</li></ul></div>
         </div>
-        <div class="callout"><strong>This is least privilege:</strong> limit access to what the approved task requires. A successful sign-in does not prove the agent used that access safely.</div>
-        <p><strong>What you are learning:</strong> why agents need an accountable owner and an explicit data/action boundary.</p>
+        <div class="callout"><strong>This is least privilege:</strong> limit access to what the approved task requires. Even approved access does not prove the agent uses it safely.</div>
+        <p class="learning"><strong>What you are learning:</strong> why agents need an accountable owner and an explicit data/action boundary.</p>
         <template class="speaker-notes"><p><strong>1 minute.</strong> Continue the same task, not a new scenario. Contrast the needed guide/ticket permissions with unrelated payroll/account-management access. Define least privilege in plain English. Other approved jobs may need other permissions; this is not a universal ban. Instructions are not an authorization control. Successful authentication is not proof of safe behavior: identity misuse and misleading content are different causes explored in later security modules. Governance approves the purpose/access; Security examines unsafe use. Do not configure permissions or imply Relay has this access. All wording and visuals are original; source-course screenshots are reference only and not distributed.</p></template>
       </section>
       <section class="slide" data-title="How do we know what an agent did?" data-minutes="3" data-phase="core" hidden>
@@ -348,62 +353,73 @@
           <div class="card"><h3>Watch over time</h3><p>Watch failures, response time and usage across requests.</p><p class="small"><strong>Monitoring:</strong> is it reliable over time?</p></div>
         </div>
         <div class="callout"><strong>A registry is a list of agents, not proof their tasks worked.</strong> Ask the owner for the result and action records.</div>
-        <p><strong>What you are learning:</strong> tell a listed agent, recorded activity and a verified result apart.</p>
-        <p class="small">Reference: <a href="https://learn.microsoft.com/en-us/azure/foundry/concepts/observability" target="_blank" rel="noopener noreferrer">Microsoft Foundry observability</a>. The actual runtime and integrations determine what is recorded. No Foundry setup in this module.</p>
+        <p class="learning"><strong>What you are learning:</strong> tell a listed agent, recorded activity and a verified result apart.</p>
+        <p class="small">Reference: <a href="https://learn.microsoft.com/en-us/azure/foundry/concepts/observability" target="_blank" rel="noopener noreferrer">Microsoft Foundry observability</a> (Foundry is Microsoft's platform for building AI apps and agents). The actual runtime and integrations determine what is recorded. No Foundry setup in this module.</p>
         <template class="speaker-notes"><p><strong>3 minutes.</strong> Say the claimed response, then ask what proves it. Start with the actual ticket, then recorded tool calls, then service behavior across requests. Introduce evaluation, tracing and monitoring only after the concrete questions. These are complementary checks, not automatic sources in Agent 365. Logs may be incomplete; ask the runtime owner about collection gaps. Traces are not internal chain-of-thought. The ticket is hypothetical; no ticket system or Foundry setup is required. Foundry documents the concepts but integration and evaluation costs differ by runtime. Bridge into the registry lab: learn what is reported without mistaking inventory for task success.</p></template>
       </section>
       <section class="slide" data-title="One job. Four Microsoft services." data-minutes="1" data-phase="core" hidden>
-        <p class="eyebrow">Who helps / Complementary responsibilities</p>
+        <p class="eyebrow">Who helps / Four services, one job each</p>
         <h2>Inventory, identity, data and defense.</h2>
-        <div class="grid two"><div class="card"><h3>Agent 365</h3><p>Find agents and review reported ownership, access, activity and risk.</p></div><div class="card"><h3>Microsoft Entra</h3><p>Manage identity, permissions, access rules and accountability.</p></div><div class="card"><h3>Microsoft Purview</h3><p>Protect information and review supported data-use and compliance evidence.</p></div><div class="card"><h3>Microsoft Defender</h3><p>Recognize threats, investigate evidence and support response.</p></div></div>
-        <p class="small">The products work together. Supported controls, integrations and access roles differ; one product does not prove the whole picture.</p>
+        <div class="grid two">
+          <div class="card"><h3>Agent 365</h3><p>Find agents and review reported ownership, access, activity and risk.</p><span class="clue">Next: the lab</span></div>
+          <div class="card"><h3>Microsoft Entra</h3><p>Manage the agent's identity, permissions, sign-in rules and accountability.</p><span class="clue">Slide 12</span></div>
+          <div class="card"><h3>Microsoft Purview</h3><p>Protect the information agents read and share, and keep the record.</p><span class="clue">Slide 13</span></div>
+          <div class="card"><h3>Microsoft Defender</h3><p>Recognize threats, investigate evidence and support response.</p><span class="clue">Slide 14</span></div>
+        </div>
+        <p class="learning"><strong>What you are learning:</strong> Agent 365 lists agents. The other three protect different parts.</p>
         <template class="speaker-notes"><p><strong>1 minute.</strong> Agent 365's observe, govern, secure story connects these responsibilities. Keep names recognizable without a configuration tour. The four learning pillars are not exclusive product assignments. AI Reader is not authorization to configure Entra, Purview or Defender. Save detailed controls and investigation for Modules 3-7.</p></template>
       </section>
       <section class="slide" data-title="Review one prepared agent" data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">Lab 3 / Read-only registry walkthrough</p>
         <h2>Open a record. Ask better questions.</h2>
-        <p class="lede">Use our six-step walkthrough to review the prepared Relay record in Microsoft 365 admin center. No other course, agent build or chat test.</p>
+        <p class="lede">Use our six-step walkthrough to review the prepared agent record, Project Beacon Relay, in Microsoft 365 admin center. No other course, agent build or chat test.</p>
         <div class="grid three"><div class="card"><h3>Accountability</h3><p>What does Details report about its owner?</p></div><div class="card"><h3>Access</h3><p>What do Data &amp; tools and Permissions report?</p></div><div class="card"><h3>Evidence</h3><p>What risk and activity are visible? What is missing?</p></div></div>
-        <div class="callout">Relay is a staged registry/risk example, not the illustrated IT helpdesk runtime. Viewing its record does not run it.</div>
+        <div class="callout">Relay is a staged registry and risk example, not the support agent from our story. Viewing its record does not run it.</div>
         <template class="speaker-notes"><p><strong>3 minutes.</strong> Launch Lab 3 and finish it during slide 12. Use the existing Project Beacon Relay Agent record and working Total agents/search/Enter route. Security > Risk details shows the prepared High/compromised signal; the aggregate risk filter has returned no rows. Same record throughout the lab. No new deployment, maker permissions or student setting changes. Rehearse learner access; use a labeled live presenter view if blocked.</p></template>
       </section>
-      <section class="slide" data-title="Know who is accountable" data-minutes="5" data-phase="core" hidden>
-        <p class="eyebrow">Governance / Someone must own the next action</p>
-        <h2>Five Entra controls. Five questions to ask.</h2>
-        <p class="lede">For the support task, connect the agent's identity to its owner, access and operating boundary.</p>
-        <div class="control-map" aria-label="Five Entra control areas">
-          <div class="card"><span class="step-number" aria-hidden="true">1</span><h3>Identity</h3><p><strong>Entra Agent ID</strong></p><p>Who is acting?</p></div>
-          <div class="card"><span class="step-number" aria-hidden="true">2</span><h3>Accountability</h3><p><strong>Identity Governance</strong></p><p>Who manages its lifecycle?</p></div>
-          <div class="card"><span class="step-number" aria-hidden="true">3</span><h3>Permissions</h3><p><strong>Entitlement management</strong></p><p>Who approved access, and until when?</p></div>
-          <div class="card"><span class="step-number" aria-hidden="true">4</span><h3>Sign-in conditions</h3><p><strong>Conditional Access / ID Protection</strong></p><p>Which sign-in checks apply?</p></div>
-          <div class="card"><span class="step-number" aria-hidden="true">5</span><h3>Traffic boundary</h3><p><strong>Global Secure Access</strong></p><p>Is this a supported, inspected route?</p></div>
-        </div>
-        <div class="callout">Created by is not automatically the current owner. A blank owner field means follow up, not guess.</div>
-        <p class="small">Finish the walkthrough, then map one observed field or gap to a question. These are teaching concepts, not five setup tasks. Registry metadata does not prove a control is configured or effective; coverage depends on the agent and route. Modules 3-5 go deeper.</p>
-        <template class="speaker-notes"><p><strong>5 minutes.</strong> Finish Lab 3, then teach the five control areas using the support example. Agent identity, technical management and business approval are different responsibilities. Connect Details to identity/accountability, Permissions to a separate access review, and Security to a separate policy/risk review. Approval, expiry, Conditional Access results and traffic routing require evidence beyond the registry. Do not infer enforcement or universal coverage. No five demos, grants, role changes or configuration. Modules 3-5 develop these concepts.</p></template>
-      </section>
-      <section class="slide" data-title="Keep data and actions within bounds" data-minutes="1.5" data-phase="core" hidden>
-        <p class="eyebrow">Purview / Data security and compliance follow-through</p>
-        <h2>Protect the data. Record the evidence.</h2>
-        <div class="grid three"><div class="card"><h3>Know your data</h3><p>Find sensitive information and see who can reach it.</p></div><div class="card"><h3>Limit unsafe sharing</h3><p>Data loss prevention (DLP) can warn or block. Test it on the real workload.</p></div><div class="card"><h3>Prove the fix</h3><p>Compliance Manager tracks each improvement: an owner, an action and a status.</p></div></div>
-        <div class="callout">Audit records what happened. It does not block anything.</div>
-        <p class="small">Module 5 tests one control. A compliance score is not a certification.</p>
-        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Return to the illustrative IT question: approved guidance is different from unrestricted information access or a write action. Do not describe Purview as a universal prompt filter. Audit is not block. Workload coverage and supported enforcement need tests in Module 5; we deploy no policy here.</p></template>
-      </section>
-      <section class="slide" data-title="Know where to look for evidence" data-minutes="1" data-phase="core" hidden>
-
-        <p class="eyebrow">Connected security operations / Evidence before action</p>
-        <h2>Connect the evidence to a decision.</h2>
-        <p>For the misdirected support ticket, compare who authenticated with what the agent actually did. One signal cannot diagnose the whole event.</p>
-        <ol class="response-flow" aria-label="Security operations response sequence">
-          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Spot it</h3><p>Notice the unexpected outcome.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Find who</h3><p>Identify the agent, user and owner.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Investigate</h3><p>Correlate identity, runtime and data evidence.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">4</span><h3>Contain</h3><p>The authorized team scopes the response.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">5</span><h3>Check it worked</h3><p>Verify the unsafe activity stopped.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">6</span><h3>Fix the gap</h3><p>Assign and verify the corrective action.</p></li>
+      <section class="slide" data-title="Who owns it and what can it reach?" data-minutes="5" data-phase="core" hidden>
+        <p class="eyebrow">Governance / Agent 365 and Microsoft Entra</p>
+        <h2>Who is accountable, and what can the agent reach?</h2>
+        <p class="lede">Agent 365 shows clues. Entra holds the controls. Each registry field you read points to an Entra control.</p>
+        <ol class="control-table" aria-label="Five Entra control areas for agents">
+          <li class="control-row control-head" aria-hidden="true"><span>Control</span><span>Entra feature</span><span>Question to ask</span><span>Agent 365 clue</span></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">1</span>Identity</span><p>Entra Agent ID</p><p>Which identity does the agent act as?</p><p><span class="clue">Details: Entra agent ID</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">2</span>Accountability</span><p>Identity Governance</p><p>Who is the accountable sponsor, and when is it reviewed or retired?</p><p><span class="clue">Details: Owner, Created by</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">3</span>Permissions</span><p>Entitlement management</p><p>Who approved this access, and until when?</p><p><span class="clue">Permissions tab</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">4</span>Sign-in rules</span><p>Conditional Access / ID Protection</p><p>Which sign-in rules and risk checks apply?</p><p><span class="clue">Security tab: risk</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">5</span>Network</span><p>Global Secure Access</p><p>Can its traffic be filtered and inspected?</p><p class="muted">Not shown in the registry</p></li>
         </ol>
-        <details><summary>Different questions need different evidence: where to look</summary>
+        <p class="learning"><strong>What you are learning:</strong> a registry field is a clue, not proof a control is working. A blank field means follow up, not guess.</p>
+        <template class="speaker-notes"><p><strong>5 minutes.</strong> Finish Lab 3, then teach the five control areas using the support example from slides 7-9. Agent 365 is the registry (discovery and inventory); Entra Agent ID provides the identity and access controls. Created by is not automatically the current owner, and a sponsor is not automatically a technical manager. Connect Details to identity and accountability, Permissions to a separate access review, and Security to a separate risk review. Approval, expiry, Conditional Access results and traffic routing need evidence beyond the registry. Network controls currently apply to specific agent types, such as Copilot Studio agents, so do not imply universal coverage. No demos, grants, role changes or configuration. Modules 3-5 go deeper.</p></template>
+      </section>
+      <section class="slide" data-title="What data can it touch?" data-minutes="1.5" data-phase="core" hidden>
+        <p class="eyebrow">Data protection / Microsoft Purview</p>
+        <h2>Protect the data the agent touches.</h2>
+        <p class="lede">Our support agent reads a troubleshooting guide and creates tickets. Purview can extend data protection to supported agent activity.</p>
+        <div class="grid three">
+          <div class="card"><h3>Label it</h3><p>Sensitivity labels mark confidential information so protection follows it.</p></div>
+          <div class="card"><h3>Stop unsafe sharing</h3><p>Data loss prevention (DLP) can warn or block when an agent shares regulated data.</p></div>
+          <div class="card"><h3>Keep the record</h3><p>Audit records what the agent accessed and did. It does not block anything.</p></div>
+        </div>
+        <p>In Agent 365: <span class="clue">Security tab: Microsoft Purview protections</span></p>
+        <p class="learning"><strong>What you are learning:</strong> labels, DLP and audit can extend to agents where supported. Audit records; DLP can block.</p>
+        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Return to the support agent: approved guidance is different from unrestricted information access or a write action. Purview applies existing sensitivity labels, DLP and audit to supported agent activity; it is not a universal prompt filter. Audit is not block. Workload coverage, licensing and supported enforcement vary, so verify them for the actual agent. The Security tab shows the Purview protections reported for the agent; a listed protection is not proof it was tested. We deploy no policy here. Module 5 tests data controls.</p></template>
+      </section>
+      <section class="slide" data-title="What if the agent gets it wrong?" data-minutes="1" data-phase="core" hidden>
+
+        <p class="eyebrow">Security / Microsoft Defender and your security team</p>
+        <h2>Connect the evidence to a decision.</h2>
+        <p class="lede">Our support agent's laptop ticket landed in the wrong queue. Where do you start?</p>
+        <ol class="response-flow" aria-label="Security response sequence">
+          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Spot it</h3><p>A ticket appears in the wrong queue.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Find who</h3><p>Find the agent and its owner in the registry.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Investigate</h3><p>Defender and your security team compare who signed in with what the agent did.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">4</span><h3>Contain</h3><p>The authorized team limits the agent's access.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">5</span><h3>Check it worked</h3><p>No more wrong-queue tickets appear.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">6</span><h3>Fix the gap</h3><p>Correct the access or guidance, and name an owner.</p></li>
+        </ol>
+        <div class="callout"><strong>Two possible causes:</strong> its access was misused, or untrusted content (such as hidden text in a document) misled it. A valid sign-in alone cannot tell them apart.</div>
+        <details><summary>Where would you look? Different questions need different evidence</summary>
         <div class="table-wrap"><table><thead><tr><th>Question</th><th>Where to look</th></tr></thead><tbody>
           <tr><td>Who signed in or changed access?</td><td><a href="https://entra.microsoft.com/" target="_blank" rel="noopener noreferrer">Entra</a> &gt; Entra ID &gt; Monitoring &amp; health &gt; <strong>Sign-in logs</strong> or <strong>Audit logs</strong></td></tr>
           <tr><td>Which model or tool steps ran?</td><td>Ask the runtime owner for recorded traces. Integrated Foundry apps can use <strong>Azure Monitor Application Insights</strong>.</td></tr>
@@ -412,30 +428,41 @@
         </tbody></table></div>
         <p class="small">AI Reader does not grant other evidence roles. Collection and Defender integrations must be verified for the actual runtime; the table is not proof of coverage. The ISOC preview is not required.</p>
         </details>
-        <p class="small">Defender and the security operations center help connect supported evidence; an event, alert and incident are different things. No alert does not mean no risk. Response belongs to the authorized team, not Module 1 learners.</p>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Walk the response sequence using the same hypothetical wrong ticket, then use the table as a reference rather than opening four portals. Do not equate an event, alert and incident, or promise automatic correlation. Defender coverage and ISOC eligibility depend on integration; the preview is not required. Registry Activity is not a full trace or audit trail. Foundry instrumentation is not automatically enabled for Relay, Copilot Studio or the Module 2 mail runtime. Module 7 investigates and contains with separately authorized roles.</p></template>
+        <p class="learning"><strong>What you are learning:</strong> a wrong result is a finding, not a diagnosis. Compare evidence before you act.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> This is the support agent from slides 7-9, not Relay. Walk the story: a laptop ticket lands in the wrong queue with details the employee never gave. Two causes are possible: misused identity or management access, or untrusted content that misled the agent. A valid sign-in cannot distinguish them; compare sign-in and audit evidence with the input, tool call and result. Use the table as a reference rather than opening four portals. Do not equate an event, alert and incident, or promise automatic correlation. Defender coverage and ISOC eligibility depend on integration; the preview is not required. No alert does not mean no risk. Registry Activity is not a full trace or audit trail. Foundry instrumentation is not automatically enabled for Relay, Copilot Studio or the Module 2 mail runtime. Containment belongs to the authorized response team; Module 7 investigates and contains with separately authorized roles. Nothing is executed here.</p></template>
       </section>
-      <section class="slide" data-title="Useful work needs measurable value" data-minutes="1.5" data-phase="core" hidden>
-        <p class="eyebrow">Business value / Start with the outcome</p>
-        <h2>More activity is not automatically more value.</h2>
-        <div class="grid three"><div class="card"><h3>Useful outcome</h3><p>Did employees get correct help or complete an approved task?</p></div><div class="card"><h3>Quality and effort</h3><p>Was time saved without more mistakes or rework?</p></div><div class="card"><h3>Cost</h3><p>What do usage, licensing and operations cost?</p></div></div>
-        <div class="callout">Agree on the outcome first. Then measure whether the agent improves it.</div>
-        <p class="small">Usage and token counts are clues, not a complete cost or value calculation. The adoption decision follows in Module 8.</p>
-        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Use the IT example: speed without correct guidance is not success. Do not invent savings or promise external course releases. Azure/evaluation usage costs and license costs differ; FinOps specialists can help with a full assessment. No sales slide or ROI worksheet.</p></template>
+      <section class="slide" data-title="Is the agent worth it?" data-minutes="1.5" data-phase="core" hidden>
+        <p class="eyebrow">Business value / Measure results, not activity</p>
+        <h2>Is the support agent worth keeping?</h2>
+        <p class="lede">Agent 365 shows an agent is being used, not whether the work was worth it.</p>
+        <div class="grid three">
+          <div class="card"><h3>Did it solve the problem?</h3><p><strong>Measure:</strong> tickets created correctly the first time.</p></div>
+          <div class="card"><h3>Did it save effort?</h3><p><strong>Measure:</strong> time per request before and after the agent.</p></div>
+          <div class="card"><h3>Is the cost worth it?</h3><p><strong>Measure:</strong> licensing, usage and the effort to run and review it.</p></div>
+        </div>
+        <p>In Agent 365: <span class="clue">Activity tab: shows usage, not value</span></p>
+        <p class="learning"><strong>What you are learning:</strong> many chats can still mean many failed requests. Decide what a good result is, then measure it.</p>
+        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Use the support agent: speed without correct guidance is not success. Registry Activity and usage counts show that an agent is used, not that the outcome was good or cost-effective. Agree the outcome and a baseline first; that decision is Module 8. Do not invent savings. Azure and evaluation usage costs differ from license costs, so involve FinOps for a full assessment. No sales slide or ROI worksheet.</p></template>
       </section>
-      <section class="slide" data-title="Explain what you know and what is missing" data-minutes="3" data-phase="core" hidden>
-        <p class="eyebrow">Recap / What you can now explain</p>
-        <h2>What you can now explain.</h2>
-        <div class="grid two"><div class="card"><h3>Management</h3><p>What would show whether the agent is working?</p></div><div class="card"><h3>Governance</h3><p>What did the registry report about ownership and access?</p></div><div class="card"><h3>Security</h3><p>Which staged signal did you see? What did it not prove?</p></div><div class="card"><h3>Business value</h3><p>Which useful outcome would you measure before expanding use?</p></div></div>
-        <p class="small">Discuss one thing you learned about the agent and one thing you still cannot verify. No written answers are required.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Collect one observed fact and one gap with an accountable next check. No worksheet, graded quiz or copied answer. A risk signal, passing sign-in and registry entry are different claims. Do not present blank metadata as proof of no access or a configured protection as a tested result.</p></template>
+      <section class="slide" data-title="What can you now say about an agent?" data-minutes="3" data-phase="core" hidden>
+        <p class="eyebrow">Recap / Four questions for any agent</p>
+        <h2>What can you now say about an agent?</h2>
+        <p class="lede">See it, control it, protect it. Before you trust any agent, ask four questions.</p>
+        <div class="grid two">
+          <div class="card"><p class="eyebrow">Management</p><h3>Is it working?</h3><p>Check the real result, the recorded steps and reliability. A registry listing is not proof.</p></div>
+          <div class="card"><p class="eyebrow">Governance</p><h3>Who owns it, and what can it reach?</h3><p>An accountable owner approves access limited to the job.</p></div>
+          <div class="card"><p class="eyebrow">Security</p><h3>What if it goes wrong?</h3><p>Spot it, find who, investigate, contain, check it worked, fix the gap.</p></div>
+          <div class="card"><p class="eyebrow">Business value</p><h3>Is it worth it?</h3><p>Measure problems solved, effort saved and cost, not activity.</p></div>
+        </div>
+        <p class="learning"><strong>Your turn:</strong> name one fact you saw in the Relay record from the lab and one thing it could not tell you. No writing needed.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Recap the four questions, then collect one observed fact and one gap, with the accountable person for the next check. No worksheet, graded quiz or copied answer. A risk signal, a passing sign-in and a registry entry are different claims. Relay showed a staged High risk signal; that is training, not a live attack, and a risk signal says investigate, not what happened. Do not present blank metadata as proof of no access, or a listed protection as a tested result.</p></template>
       </section>
 
       <section class="slide" data-title="Establish normal before investigating abnormal" data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Module 1 complete / Handoff</p>
         <h2>Establish normal before investigating abnormal.</h2>
-        <div class="callout quote">Risk, control, evidence, decision.</div>
-        <p class="lede">Reuse this review method in Module 2's separate custom mail-agent exercise: approve the task, run it and check what happened.</p>
+        <div class="callout quote">Working. Owned. Safe. Worth it.</div>
+        <p class="lede">Ask the same four questions in Module 2's separate custom mail-agent exercise: approve the task, run it and check what happened.</p>
         <p>Later modules map authority, govern access, protect data, investigate misuse and plan adoption.</p>
         <p class="small">Registry review does not prove a working runtime. Module 2 needs its own preflight. Building is an optional maker extension; the identity deep dive follows in Module 3.</p>
         <p><a class="button primary" href="https://cyberlorians.github.io/a365-hub/module-02/#slide-1">Continue to Module 2</a></p>

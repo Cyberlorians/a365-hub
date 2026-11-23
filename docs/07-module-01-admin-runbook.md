@@ -424,12 +424,11 @@ and [per-slide notes](../slides/module-01/speaker-notes.md).
 
 | Slides | Operator action | Checkpoint |
 |---|---|---|
-| 6-7 | State useful-work outcome and generic illustrative IT support task | No deployed sample claim |
-| 8-9 | Introduce four pillars, then evaluation/monitoring/tracing | Foundry concepts are not universal product telemetry |
+| 6-9 | Teach what an agent does, why access matters and how to verify its work through one support-ticket example | No deployed sample claim; Foundry concepts are not universal product telemetry |
 | 10-11 | Explain four services; launch Lab 3 after slide 11 | Same existing Relay record, six read-only checks |
-| 12 | Return from Lab 3 and discuss accountability | Lab fits slide 11 + 12's eight-minute internal budget; no learner duration label |
-| 13-15 | Connect access bounds, evidence gaps and measurable value | Blank fields stay unknown; Activity is not full traces/security/audit |
-| 16 | Discuss orally | One observed fact, one gap, one accountable next check; no written output |
+| 12 | Return from Lab 3; map registry clues to five Entra controls | Lab fits slide 11 + 12's eight-minute internal budget; no learner duration label |
+| 13-15 | Purview data protection, a wrong-ticket response and measurable value | Blank fields stay unknown; Activity is not full traces/security/audit |
+| 16 | Four-question recap; discuss orally | One observed fact, one gap, one accountable next check; no written output |
 | 17 | Establish normal before investigating abnormal; handoff | Current Module 2 mail content/runtime unchanged; separate preflight |
 
 No live attack, containment, tenant policy edit, or production-content demonstration.

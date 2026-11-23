@@ -119,6 +119,24 @@ assert(evidenceSlide && evidenceSlide.includes("real ticket") && evidenceSlide.i
 assert(evidenceSlide.includes("A registry is a list of agents"), "Define registry before bridging from the task lesson to inventory");
 for (const slide of [scenarioSlide, accessSlide, evidenceSlide])
   assert(slide.includes("What you are learning:"), "Each introductory slide needs a plain-language learning goal");
+const slideByTitle = title => module1.match(new RegExp(`<section class="slide" data-title="${title.replace(/[?.]/g, "\\$&")}"[\\s\\S]*?</section>`))?.[0];
+const visible = html => html.replace(/<template[\s\S]*?<\/template>/g, "");
+const ownerSlide = slideByTitle("Who owns it and what can it reach?");
+const dataSlide = slideByTitle("What data can it touch?");
+const wrongSlide = slideByTitle("What if the agent gets it wrong?");
+const valueSlide = slideByTitle("Is the agent worth it?");
+const recapSlide = slideByTitle("What can you now say about an agent?");
+for (const slide of [ownerSlide, dataSlide, wrongSlide, valueSlide, recapSlide])
+  assert(slide && visible(slide).includes("What you are learning:") || slide?.includes("Your turn:"), "Every core slide after the lab needs a plain-language takeaway");
+assert(ownerSlide.includes("Agent 365 shows clues. Entra holds the controls.") && ownerSlide.includes("Details: Entra agent ID") && ownerSlide.includes("Details: Owner, Created by") && ownerSlide.includes("Permissions tab"), "Slide 12 must show how Agent 365 relates to each Entra control");
+assert(!visible(ownerSlide).includes('class="small"') && !visible(ownerSlide).includes("Modules 3-5"), "Slide 12 must not carry small-print notes");
+assert(!visible(dataSlide).includes("Module 5") && !visible(dataSlide).includes('class="small"'), "Slide 13 must not carry a later-module note");
+assert(dataSlide.includes("Microsoft Purview protections") && visible(dataSlide).includes("support agent"), "Slide 13 must connect Purview to the support agent and the registry");
+assert(visible(wrongSlide).includes("Our support agent") && visible(wrongSlide).includes("wrong queue") && !/misdirected/i.test(wrongSlide), "Slide 14 must define the support-ticket story instead of assuming it");
+assert(valueSlide.includes("Measure:") && valueSlide.includes("Activity tab: shows usage, not value") && !visible(valueSlide).includes('class="small"'), "Slide 15 must give concrete measures tied to the support agent and registry Activity");
+for (const pillar of ["Management", "Governance", "Security", "Business value"])
+  assert(recapSlide.includes(pillar), `Recap needs the ${pillar} question`);
+assert(recapSlide.includes("Your turn:") && !visible(recapSlide).includes('class="small"'), "Recap must end with the oral prompt and no small print");
 assert(!module1.includes("source-visuals") && !module1.includes("assets/ai-observability-"), "Do not embed source-course screenshots or a source gallery");
 for (const pillar of ["management", "governance", "security", "business-value"]) {
   const filename = `ai-observability-${pillar}.png`;

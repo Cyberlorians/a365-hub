@@ -84,50 +84,58 @@ Use admin.microsoft.com > Agents > All agents > Registry > Total agents, search
 **Project Beacon Relay**, press **Enter**, then open **Project Beacon Relay Agent**.
 No copying, worksheet, written submission or student changes.
 
-## Slide 12 - Know who is accountable
+## Slide 12 - Who owns it and what can it reach?
 
-Five Entra control areas connect the support task to its boundary:
-identity (Entra Agent ID), accountability (Identity Governance), permissions
-(entitlement management), sign-in conditions (Conditional Access/ID Protection)
-and traffic boundary (Global Secure Access). Ask who acts, who manages it, why
-access was approved, which rules apply and whether traffic follows a supported route.
+Agent 365 discovers and lists agents; Microsoft Entra manages their identity and
+access. Five Entra control areas connect each registry field to its control:
+identity (**Entra Agent ID**; Details: Entra agent ID), accountability
+(**Identity Governance**; Details: Owner and Created by), permissions
+(**Entitlement management**; Permissions tab), sign-in rules (**Conditional Access /
+ID Protection**; Security tab risk) and network (**Global Secure Access**; not shown
+in the registry). A registry field is a clue, not proof a control is configured or
+effective, and a blank field means follow up, not guess. Distinguish ownership,
+creation and approval; missing reporting is a gap, not proof nobody is accountable.
 This is a teaching map, not five setup tasks or a promise of universal coverage.
 
-Read Details **Owner** and **Created by** on that same record. Distinguish ownership,
-creation and approval; missing reporting is a gap, not proof nobody is accountable.
-Name who should confirm the missing context.
+## Slide 13 - What data can it touch?
 
-## Slide 13 - Keep data and actions within bounds
+Using the support agent from slides 7-9, Microsoft Purview can extend sensitivity
+labels, data loss prevention (DLP) and audit, the protections used for people, to
+supported agent activity. Labels mark confidential information, DLP can warn or
+block unsafe sharing, and audit records what happened without blocking anything.
+In Agent 365, the **Security** tab lists the Purview protections reported for the
+agent; a listed protection is not proof it was tested. Blank or unavailable fields
+mean unknown, not no access. No grants, blocking or policy changes.
 
-Inspect **Data & tools** and **Permissions**. Blank or unavailable fields mean
-unknown, not no access. Reported permissions alone do not prove effective access,
-approval or enforcement. No grants, blocking or policy changes.
+## Slide 14 - What if the agent gets it wrong?
 
-## Slide 14 - Know where to look for evidence
+The support agent from slides 7-9 opens a laptop ticket that lands in the wrong
+queue with details the employee never gave. Follow **Spot it > Find who >
+Investigate > Contain > Check it worked > Fix the gap**. Two causes are possible:
+its access was misused, or untrusted content (such as hidden text in a document)
+misled it. The agent signs in either way, so a valid sign-in alone cannot tell
+them apart, so compare sign-in and audit evidence with the input, tool call and
+result. Defender and the security operations center help connect supported signals;
+no automatic correlation or ISOC preview is required. An event, alert and incident
+are different things. Containment belongs to the authorized response team.
+Expand the evidence-location reference on this slide as needed. Registry
+**Activity** is inventory usage, not a full execution trace, security investigation
+or workload audit trail; no Foundry or Copilot Studio test is required.
 
-Connect evidence to a decision: **Spot it > Find who > Investigate > Contain >
-Check it worked > Fix the gap**. Use the same illustrative misdirected ticket:
-identity misuse and misleading content need different evidence. Defender and the
-security operations center help connect supported signals; no automatic correlation
-or ISOC preview is required. An event, alert and incident are different things.
-Containment belongs to the authorized response team, not Module 1 learners.
-Expand the evidence-location reference on this slide as needed, without leaving
-the workshop.
+## Slide 15 - Is the agent worth it?
 
-Inspect **Activity**. Inventory usage is not a full execution trace, security
-investigation or workload audit trail. Entra sign-in/audit, Purview Audit and
-Defender Incidents & alerts answer different questions with separate access.
-No Foundry or Copilot Studio Test activity is required.
+For the support agent, ask whether it solved the problem (tickets created correctly
+the first time), saved effort (time per request before and after) and justified its
+cost (licenses, usage and effort to run and review it). Registry **Activity** shows
+usage, not value. Set a baseline and an accountable measure; do not infer business
+value from registration or staged risk.
 
-## Slide 15 - Useful work needs measurable value
+## Slide 16 - What can you now say about an agent?
 
-For the illustrative support task, consider time saved, answer quality, safe
-escalation and user outcomes. Set a baseline and an accountable measure; do not
-infer business value from registration or staged risk.
-
-## Slide 16 - Explain what you know and what is missing
-
-Orally explain one observed fact, one gap and the accountable next check.
+Recap the four questions: management (is it working?), governance (who owns it and
+what can it reach?), security (what if it goes wrong?) and business value (is it
+worth it?). Then orally name one observed fact from the Relay record and one thing
+it could not tell you.
 On the same Relay record, **Security > Risk details** must show **High** and
 **The agent is compromised.** This is staged training, not a live attack.
 Do not use the faulty Agents at risk count filter. If missing, use the instructor

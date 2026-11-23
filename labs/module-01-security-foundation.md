@@ -69,34 +69,38 @@ helpdesk deployment or agent testing. Missing evidence remains a gap.
 
 **Next:** Return from Lab 3 to slide 12 and Step 4, not directly to Module 2.
 
-## Step 4: Identify accountability
+## Step 4: Map the clues to Entra's controls
 
 **Do:** Open [Slide 12](https://cyberlorians.github.io/a365-hub/#slide-12).
-Discuss Owner and Created by from the selected record.
+Match Owner, Created by and Permissions from the selected record to the five Entra
+controls. Agent 365 shows clues; Entra holds the controls.
 
-**Check:** Creation, ownership and approval differ. Name the accountable next
-check when the record does not answer the question.
+**Check:** Creation, ownership and approval differ. A registry field is a clue, not
+proof a control works. Name the accountable next check when the record does not
+answer the question.
 
 **Next:** Step 5.
 
-## Step 5: Connect boundaries, evidence and value
+## Step 5: Data, a wrong result and value
 
 **Do:** Read [Slide 13](https://cyberlorians.github.io/a365-hub/#slide-13),
 [Slide 14](https://cyberlorians.github.io/a365-hub/#slide-14) and
 [Slide 15](https://cyberlorians.github.io/a365-hub/#slide-15).
-Connect a missing access/evidence question to its owner. Discuss how useful
-support work could be measured against a baseline.
+Using the support agent from the slides, ask what data it could touch, how you would
+respond if it opened a ticket in the wrong queue, and what would show it is worth
+keeping.
 
 **Check:** Registry metadata is not complete effective access or execution proof.
 Entra, Purview and Defender evidence has separate coverage/access requirements.
-Registration alone does not establish business value.
+Registration and usage alone do not establish business value.
 
 **Next:** Step 6.
 
-## Step 6: Explain what you know
+## Step 6: Say what you can now explain
 
 **Do:** Open [Slide 16](https://cyberlorians.github.io/a365-hub/#slide-16).
-Discuss one observed fact, one gap and the accountable next check.
+Review the four questions, then discuss one observed fact, one gap and the
+accountable next check.
 
 **Check:** You do not invent permissions, traces, control outcomes or a live attack.
 No copying, worksheet or written submission is required.

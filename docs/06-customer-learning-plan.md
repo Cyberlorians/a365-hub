@@ -409,15 +409,15 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 |---|---|
 | 6 | See It. Control It. Protect It. |
 | 7 | What does an agent do? |
-| 8 | Four questions for every agent |
-| 9 | What does observability mean? |
+| 8 | Why does agent access matter? |
+| 9 | How do we know what an agent did? |
 | 10 | One job. Four Microsoft services. |
 | 11 | Review one prepared agent |
-| 12 | Know who is accountable |
-| 13 | Keep data and actions within bounds |
-| 14 | Know where to look for evidence |
-| 15 | Useful work needs measurable value |
-| 16 | Explain what you know and what is missing |
+| 12 | Who owns it and what can it reach? |
+| 13 | What data can it touch? |
+| 14 | What if the agent gets it wrong? |
+| 15 | Is the agent worth it? |
+| 16 | What can you now say about an agent? |
 | 17 | Establish normal before investigating abnormal |
 
 Do not turn every slide into a separate product demonstration. Use original explanations

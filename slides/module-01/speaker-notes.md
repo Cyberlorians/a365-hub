@@ -72,43 +72,49 @@ Same selected record throughout. Security > Risk details must show High /
 The agent is compromised. Staged training, not a live attack. Never use the
 faulty Agents at risk count filter. Missing risk is unresolved, not complete.
 
-## Slide 12 - Know who is accountable
+## Slide 12 - Who owns it and what can it reach?
 
-**5 minutes.** Return here after Lab 3. Distinguish Owner, Created by and approval.
-Report missing metadata and name the owner of the next check. No new helpdesk
-deployment, maker role changes or student writes.
-Teach the five Entra control areas: identity, accountability, permissions,
-sign-in conditions and traffic boundary. Use the support task to explain each
-question. Registry metadata is a clue, not proof of approval, expiry, policy
-results or inspected routing. Coverage depends on the agent and supported flow;
-configuration belongs in Modules 3-5.
+**5 minutes.** Return here after Lab 3. Agent 365 is the registry (discovery and
+inventory); Entra provides identity and access controls. Walk the five control
+areas and the registry field that is a clue for each: identity (Details: Entra agent
+ID), accountability (Details: Owner, Created by), permissions (Permissions tab),
+sign-in rules (Security tab risk) and network (not shown). Created by is not the
+current owner, and sponsor, technical manager and approver differ. A registry field
+is a clue, not proof of approval, expiry, policy results or inspected routing.
+Report missing metadata and name who would confirm it. Coverage depends on the
+agent and flow; configuration belongs in Modules 3-5. No new helpdesk deployment,
+maker role changes or student writes.
 
-## Slide 13 - Keep data and actions within bounds
+## Slide 13 - What data can it touch?
 
-**1.5 minutes.** Data & tools/Permissions blanks mean unknown, not no access.
-Reported rights do not prove approval or enforcement. Keep authority depth later.
+**1.5 minutes.** Purview applies existing labels, DLP and audit to supported agent
+activity. Audit records; DLP can block. The Security tab lists reported Purview
+protections, which are not proof of a tested control. Blank fields mean unknown, not
+no access. Workload coverage and licensing vary. Module 5 tests data controls.
 
-## Slide 14 - Know where to look for evidence
+## Slide 14 - What if the agent gets it wrong?
 
-**1 minute.** Activity is inventory usage, not full traces or security/audit proof.
-Entra, Purview and Defender follow-up needs separate roles. No required Foundry
-or Copilot Studio Test activity. Module 2 runtime logs are a different source.
-Teach Spot it > Find who > Investigate > Contain > Check it worked > Fix the gap
-using the same hypothetical wrong ticket. Compare identity evidence with runtime
-behavior before diagnosing it. An event, alert and incident differ; Defender
-integration is not automatic and the ISOC preview is not required. Containment is
-an authorized-team task in Module 7, not a Module 1 student action.
+**1 minute.** The support agent from slides 7-9, not Relay: a laptop ticket lands in
+the wrong queue. Walk Spot it > Find who > Investigate > Contain > Check it worked >
+Fix the gap. Two causes are possible, misused access or misleading content, and a
+valid sign-in cannot tell them apart. Activity is inventory usage, not full traces or
+security/audit proof. Entra, Purview and Defender follow-up needs separate roles.
+An event, alert and incident differ; Defender integration is not automatic and the
+ISOC preview is not required. Containment is an authorized-team task in Module 7.
 
-## Slide 15 - Useful work needs measurable value
+## Slide 15 - Is the agent worth it?
 
-**1.5 minutes.** Ask how time saved, quality and safe escalation compare with a
-baseline. A registry entry does not prove useful outcomes.
+**1.5 minutes.** Ask whether the support agent solved the problem, saved effort and
+justified its cost, compared with a baseline. Registry Activity shows usage, not
+value. Many chats can still mean many failed requests. Module 8 decides adoption.
 
-## Slide 16 - Explain what you know and what is missing
+## Slide 16 - What can you now say about an agent?
 
-**3 minutes.** Ask orally for an observed fact, a gap and an accountable next check.
-Use the discussion guide. No worksheet, copying or submission. Missing access
-uses the instructor live view or remains an explicit unresolved issue.
+**3 minutes.** Recap management, governance, security and business value as four
+questions. Then ask orally for an observed fact from the Relay record and a gap it
+could not fill, plus the accountable next check. No worksheet, copying or
+submission. Missing access uses the instructor live view or remains an explicit
+unresolved issue.
 
 ## Slide 17 - Establish normal before investigating abnormal
 
