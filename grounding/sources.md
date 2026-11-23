@@ -22,6 +22,7 @@ Supplemental user-supplied visual grounding is cataloged below and in the
 | [GBBLabs](https://github.com/mcaps-microsoft/GBBLabs) | Selected approved SDK/setup, workload case and hunting patterns; authorization may be required |
 | [Blue16 Secure AI](https://blue16.nl/secure-ai-explainer.html#why) and [ISOC Explained](https://blue16.nl/isoc-explainer.html) | Inspiration for original explanations, not copied code/artwork or pricing authority |
 | [Reference-only four-pillar provenance](reference-images.md#images-4-7---ai-observability-overview-four-pillars) | Informal conceptual reference; screenshots are not redistributed. Module 1 uses original support-task explanations and visuals, not copied course material or verified product behavior |
+| [Explore Microsoft Agent 365 (Learn learning path)](https://learn.microsoft.com/en-us/training/paths/agent-365-solutions/) | Official three-module path; see the [module mapping](#microsoft-learn-learning-path-explore-microsoft-agent-365) below. Cite and paraphrase; do not copy its text, screenshots or exercises |
 
 ## Prior research retained for context
 
@@ -32,6 +33,27 @@ Supplemental user-supplied visual grounding is cataloged below and in the
 - [Module 1 direction, registry and admin seeding](module-1-direction-and-registry.md)
 
 ## Curriculum grounding
+
+### Microsoft Learn learning path: Explore Microsoft Agent 365
+
+**Reviewed November 23, 2026:** [Explore Microsoft Agent 365](https://learn.microsoft.com/en-us/training/paths/agent-365-solutions/),
+three modules and 37 units. Microsoft owns this content; this note records structure
+and paraphrased takeaways only. The unit text was read from a local copy kept outside
+the repository.
+
+| Learn module | Units | Takeaways used here | Workshop placement |
+|---|---|---|---|
+| [Get started with Microsoft Agent 365](https://learn.microsoft.com/en-us/training/modules/agent-365-get-started/) (beginner) | 9 | Agent 365 is a control plane framed as Observe, Govern and Secure; it extends the admin center, Entra, Purview and Defender to agents; Copilot Studio agents integrate automatically | Module 1: matches slide 6 (See, Control, Protect) and slide 10 (four services) |
+| [Monitor and manage agents with Microsoft Agent 365](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/) (intermediate; AI Administrator and an Agent 365 license) | 12 | Overview page, registry indicators (total agents, agents at risk, agents without owners, unmanaged agents, connected platforms), agent map, exceptions, adoption and usage measures | Module 1 lab context; Module 8 value. Ownerless and unmanaged agents support the slide 12 accountability point |
+| [Govern agents using Agent 365](https://learn.microsoft.com/en-us/training/modules/agent-365-govern/) (intermediate; AI Administrator and an Agent 365 license) | 16 | Agent settings, policy templates, access packages, onboarding, owners, blocking, rules that expire or flag agents, tools, audit logs | Modules 4 and 5 (access, lifecycle, tools) |
+
+**Boundaries:** The Monitor and Govern modules are administrator exercises, including
+blocking agents and changing policy. Workshop learners hold read-only AI Reader, so use
+them as instructor or later-module grounding, not Module 1 learner steps. The
+Monitor module's example uses the Microsoft Researcher agent with data sources
+shown; in the workshop tenant on November 23, 2026 Researcher showed no knowledge
+sources, no tools and no owner, so do not assume the course's example screens match
+the tenant.
 
 ### Foundry observability: source grounding and placement
 
