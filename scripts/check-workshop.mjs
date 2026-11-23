@@ -105,15 +105,24 @@ assert(module1.includes("No Foundry setup") && module1.includes("actual runtime 
 assert(!module1.includes("https://microsoft.github.io/agent-academy/"), "Do not send Module 1 learners to an external maker course");
 assert(!module1.includes("three of four documentation tasks") && !scenarioSlide.includes("Mail Agent"), "Keep the Module 1 example distinct from the current Module 2 mail task");
 assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
-assert(scenarioSlide.includes("Two attack surfaces") && scenarioSlide.includes("Misleading content") && scenarioSlide.includes("Misused identity or management access"), "Teach both attack surfaces through the same task before the registry lab");
-assert(module1.indexOf("Two attack surfaces") < module1.indexOf('data-title="Review one prepared agent"'), "Foundational teaching must precede the portal walkthrough");
+assert(scenarioSlide.includes("Knowledge supplies information") && scenarioSlide.includes("Tools perform actions") && scenarioSlide.includes("permission"), "Define information, actions and required access before security jargon");
+assert(!scenarioSlide.includes("Two attack surfaces"), "Teach agent basics before attack terminology");
 for (const concept of ["Entra Agent ID", "Identity Governance", "Entitlement management", "Conditional Access / ID Protection", "Global Secure Access", "Spot it", "Find who", "Investigate", "Contain", "Check it worked", "Fix the gap"])
   assert(module1.includes(concept), `Preserve introductory control/response teaching: ${concept}`);
 assert(module1.includes("an event, alert and incident") && module1.includes("The ISOC preview is not required"), "Keep connected operations distinct from a promised preview integration");
+const accessSlide = module1.match(/<section class="slide" data-title="Why does agent access matter\?"[\s\S]*?<\/section>/)?.[0];
+assert(accessSlide && accessSlide.includes("access-boundary"), "Show the same task's needed versus unrelated access on Slide 8");
+for (const boundary of ["Needed for this job", "Not needed for this job", "least privilege", "accountable owner"])
+  assert(accessSlide.includes(boundary), `Missing access lesson: ${boundary}`);
+const evidenceSlide = module1.match(/<section class="slide" data-title="How do we know what an agent did\?"[\s\S]*?<\/section>/)?.[0];
+assert(evidenceSlide && evidenceSlide.includes("real ticket") && evidenceSlide.includes("recorded steps") && evidenceSlide.includes("Watch over time"), "Teach result, steps and reliability through the same ticket task");
+for (const slide of [scenarioSlide, accessSlide, evidenceSlide])
+  assert(slide.includes("What you are learning:"), "Each introductory slide needs a plain-language learning goal");
+assert(!module1.includes("source-visuals") && !module1.includes("assets/ai-observability-"), "Do not embed source-course screenshots or a source gallery");
 for (const pillar of ["management", "governance", "security", "business-value"]) {
   const filename = `ai-observability-${pillar}.png`;
-  assert(module1.includes(`src="assets/${filename}"`), `Make the authorized ${pillar} visual available inside the teaching deck`);
-  assert(fs.existsSync(path.join(root, "grounding", "images", filename)), `Missing authorized ${pillar} source screenshot`);
+  for (const directory of ["grounding/images", "slides/assets", "_site/assets"])
+    assert(!fs.existsSync(path.join(root, directory, filename)), `Do not redistribute the ${pillar} course screenshot in ${directory}`);
 }
 assert(!module1.includes("Agents at risk</strong> shows 1"), "Do not guarantee a staged registry risk count");
 const registrySteps = labSlides(1).filter(step => step.lab === 3);

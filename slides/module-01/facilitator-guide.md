@@ -13,11 +13,14 @@ Foundry-specific coverage does not guarantee Copilot Studio/Agent 365 telemetry.
 The IT support task is generic illustration, not a deployed sample.
 All learner steps stay inside this workshop; no Academy, build, chat or knowledge test.
 
-Introductory does not mean portal-only. Teach the read/decide/act support example
-and its two attack surfaces before the registry walkthrough. Keep the visual
+Introductory does not mean portal-only. Slides 7-9 teach one continuous lesson:
+what an agent does, why its access matters, and how evidence verifies its work.
+Define knowledge/tools first, least privilege second, and result/recorded-step/
+reliability checks third. Name observability concepts after the concrete examples;
+keep attack mechanics for later. Keep the visual
 five-area Entra control map and connected security-operations response sequence
-in Module 1; they were not moved into Module 2. The four authorized source
-screenshots can be expanded on slide 8 without leaving the workshop.
+in Module 1; they were not moved into Module 2. Slide 8 uses an original
+needed-versus-unrelated-access comparison, not source-course screenshots or artwork.
 Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
 
 ## Before class
@@ -32,7 +35,8 @@ Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
   independently verified by prior admin observations.
 - There is no current Module 1 **a-publish** preparation requirement.
 - Preflight access/email/TAP privately. Never bypass CA/MFA or grant broad roles.
-- Use the authorized four-pillar screenshots with their recorded scope. Image 3's
+- Use our original teaching visuals. Shared course material was conceptual
+  reference only; do not distribute its screenshots or artwork. Image 3's
   unconfirmed rights remain separate; do not publish it.
 
 ## Delivery

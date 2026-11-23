@@ -3,13 +3,14 @@
 **Saved October 30, 2026.** Decisions from the working sessions plus the Microsoft Learn
 and toolkit facts they rest on. Re-check Learn and the actual tenant before delivery.
 
-## Current direction (November 19-21, 2026)
+## Current direction (November 19-23, 2026)
 
 - Keep Module 1 simple: explain agents, why governance matters, the responsible
   teams and a brief prepared-agent inventory review. No building or external course lab.
-- Use the [authorized four-pillar screenshots](reference-images.md#images-4-7---ai-observability-overview-four-pillars)
-  as introductory grounding: management, governance, security and business value.
-  Do not turn the source course's navigation into student steps.
+- Use [four-pillar ideas as reference only](reference-images.md#images-4-7---ai-observability-overview-four-pillars):
+  management, governance, security and business value. Explain them through our own
+  support-task questions and visuals, not redistributed screenshots, copied wording
+  or another course's navigation.
 - Put using/testing and any optional maker build in Module 2. Its current mail
   runtime/content remains unchanged; no replacement sample or optional path is
   claimed implemented/deployed. AI Reader does not grant maker/chat/source access.
@@ -20,7 +21,8 @@ and toolkit facts they rest on. Re-check Learn and the actual tenant before deli
   simplification; it is not tenant-readiness or publication proof.
 - Generic IT support is illustration, not a deployed sample. Module 1 needs no
   new helpdesk deployment, build, chat or knowledge test.
-- After the four pillars, introduce evaluation/monitoring/tracing conceptually from
+- After explaining agent capabilities and approved access through one support job,
+  introduce result/recorded-step/reliability checks, then name evaluation/monitoring/tracing from
   [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
   Foundry specifics do not guarantee Copilot Studio/Agent 365 telemetry.
 - Lab 3 reviews the same existing Project Beacon Relay Agent in six read-only

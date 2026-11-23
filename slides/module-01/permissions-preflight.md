@@ -11,7 +11,7 @@ Use the [admin runbook](../../docs/07-module-01-admin-runbook.md) and
 | Existing prepared record | Project Beacon Relay Agent, Details Owner/Created by, Data & tools/Permissions, Security > Risk details and Activity |
 | Staged risk | High / The agent is compromised. on the same Relay profile; approved training flag, not a live attack |
 | Presenter recovery | Authorized live view for the same checks; report learner access failure |
-| Grounded screenshots | Four-pillar images authorized in grounding; old Agent ID scenarios image remains rights-unconfirmed |
+| Teaching visuals | Original workshop visuals only; shared course screenshots are reference-only and not redistributed; old Agent ID scenarios image remains rights-unconfirmed |
 | Onboarding | Actual form/workflow/email/TAP/CA behavior and private support/cleanup |
 | Module 2 | Separate mail runtime/tool/recipient/evidence preflight; not inherited from Module 1 |
 

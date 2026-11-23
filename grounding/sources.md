@@ -21,7 +21,7 @@ Supplemental user-supplied visual grounding is cataloged below and in the
 | [Stefano's a365-lab-toolkit](https://github.com/stefanpems/a365-lab-toolkit/tree/1a1d3f5253771a20915fa519aaaa58f576a5cf35) | Candidate runtime/UI, documented internal-mail task, selected governance and observability |
 | [GBBLabs](https://github.com/mcaps-microsoft/GBBLabs) | Selected approved SDK/setup, workload case and hunting patterns; authorization may be required |
 | [Blue16 Secure AI](https://blue16.nl/secure-ai-explainer.html#why) and [ISOC Explained](https://blue16.nl/isoc-explainer.html) | Inspiration for original explanations, not copied code/artwork or pricing authority |
-| [User-supplied AI Observability Overview screenshots](reference-images.md#images-4-7---ai-observability-overview-four-pillars) | Authorized visual grounding for Module 1's management, governance, security and business-value frame; not independently verified product behavior |
+| [Reference-only four-pillar provenance](reference-images.md#images-4-7---ai-observability-overview-four-pillars) | Informal conceptual reference; screenshots are not redistributed. Module 1 uses original support-task explanations and visuals, not copied course material or verified product behavior |
 
 ## Prior research retained for context
 
@@ -50,7 +50,7 @@ management, governance, security and business-value lenses in the supplied scree
 
 | Module | Placement | Scope |
 |---|---|---|
-| 1: See It. Control It. Protect It. | Immediately after the four-pillar overview, as a brief explanation of what visibility means | Three questions: did it do the task well, is it working over time, and what steps did it take? No Foundry setup, evaluator configuration or external lab |
+| 1: See It. Control It. Protect It. | After explaining agent capabilities and least privilege through one support job; teach concrete evidence before naming observability concepts | Check the actual ticket, recorded tool steps and reliability across requests. No Foundry setup, evaluator configuration or external lab |
 | 2: Meet Your Business Agent | Approved-task/result check | Compare an actual answer/action with the expected result and available evidence; use the selected runtime's supported test view, not an assumed Foundry dashboard |
 | 6: Recognize Risky AI Behavior | Quality/safety versus suspicious behavior | A poor answer, an evaluator score and a security detection are different evidence; adversarial testing stays approved and isolated |
 | 7: Investigate and Contain | Runtime/tool evidence in the investigation timeline | Correlate validated traces with identity and data/security evidence; use prepared, labeled evidence where live integration is absent |
@@ -71,8 +71,9 @@ This grounding addition does not deploy anything or revise the published decks.
 
 Historical notes can contain obsolete portal, table, integration, or licensing statements.
 Use current Microsoft Learn and actual tenant validation before delivery. No raw GBB extract or unrelated external source-code/screenshot collection is
-redistributed here. The four AI Observability Overview screenshots are supplied
-references with explicit user authorization, documented in the reference-image notes.
+redistributed here. The four AI Observability Overview screenshots were informal
+conceptual references, not redistribution permission; their reproduced files have
+been removed. See the reference-only provenance note.
 
 Cloud-Architekt contributor-owned material is MIT; preserve notices when reusing it.
 Third-party assets and toolkit/GBB material need separate rights review.

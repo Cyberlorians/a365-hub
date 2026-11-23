@@ -30,7 +30,8 @@ do not replace permissions, and a SharePoint list is not automatically a tool.
 Hosting, identity, registry visibility and resource permission differ. Federation
 alone grants no resource access. Module 3 traces the actual authority.
 The old scenario picture remains rights-unconfirmed and is not published.
-Its later-module text lenses are separate from the authorized four-pillar screenshots.
+Its later-module text lenses are separate from the reference-only four-pillar ideas;
+neither reference authorizes redistribution of third-party pictures.
 
 | Evidence lens | Can help establish | Cannot prove alone |
 |---|---|---|

@@ -80,8 +80,8 @@ overview below instead.
 
 ### Teaching placement
 
-- **Module 1:** The current introductory frame uses the authorized four-pillar
-  screenshots below, not this rights-unconfirmed image or a scenario deep dive.
+- **Module 1:** The current introductory frame uses original support-task teaching
+  and visuals, not shared course screenshots, this rights-unconfirmed image or a scenario deep dive.
   Preserve these text lenses for the later authority discussion.
 - **Module 2:** Classify the actual workshop agent in its passport. Record its observed
   runtime and authority; do not infer a flow from its platform or sample name.
@@ -143,27 +143,28 @@ content activity draft; actual lab evidence and timed rehearsal remain release g
 
 ## Images 4-7 - AI Observability Overview: four pillars
 
-**Received:** November 21, 2026, as four user-supplied screenshots of a course titled
-**AI Observability Overview**. The user explicitly authorized workshop use:
-"legit you can use these". The screenshots are preserved unchanged below; the
-read-only attachment originals are not modified. The course provider, source URL,
-version and upstream license were not supplied. Do not invent attribution or describe
-these screenshots as independently verified Microsoft product documentation.
+**Reference only; clarified November 23, 2026.** Four screenshots were shared on
+November 21 to explain ideas, not to authorize redistribution of another course's
+data, pictures, wording or artwork. Earlier permission statements are superseded.
+The reproduced files and slide gallery have been removed from the current package.
+The user's original attachments are not modified.
 
-This permission applies to these four screenshots, not the earlier Agent ID scenarios
-image or the rest of the source course.
+The course provider, source URL, version and license were not supplied. Do not
+invent attribution or describe the reference as verified Microsoft documentation.
+Use original workshop examples and visuals; do not republish the screenshots.
+The heading is retained so existing provenance links remain valid.
 
-| Image | Preserved screenshot | Grounding contribution | Simple Module 1 question |
-|---|---|---|---|
-| 4: Management | [Management](images/ai-observability-management.png) | Operational visibility: activity, availability, responsiveness and output quality | Is the agent working as expected? |
-| 5: Governance | [Governance](images/ai-observability-governance.png) | Inventory, accountable ownership, access and lifecycle controls | Who owns it, and what can it access? |
-| 6: Security | [Security](images/ai-observability-security.png) | Recognize concerning identity/access/threat signals and involve the appropriate security team | How would we notice unsafe activity, and who should investigate? |
-| 7: Business value | [Business value](images/ai-observability-business-value.png) | Relate usage and cost to useful business outcomes | Is the agent delivering enough value for its cost? |
+| Conceptual lens | Original support-task check |
+|---|---|
+| Management | Correct help? Check an answer against a known troubleshooting case. |
+| Governance | Accountable owner? Identify who approves guidance, access and changes. |
+| Security | Approved actions? Compare actual data use and ticket destination with the approved boundary. |
+| Business value | Worth the effort? Compare resolved requests, rework and operating cost with a baseline. |
 
 ### Teaching placement and Module 1 scope
 
 These are an introductory frame, not four additional labs or a requirement to open
-the source course. Use one concise overview and the four questions above to introduce
+the source course. Use original support-task explanations and visuals to introduce
 **See It. Control It. Protect It.** Keep the student explanation inside this workshop.
 A brief review of a prepared agent can connect the frame to a real inventory record;
 do not require building, detailed configuration inspection or an external Academy lab.
@@ -177,12 +178,10 @@ do not require building, detailed configuration inspection or an external Academ
 - **Modules 5-7:** Examine data/tool controls, risky behavior, investigation and response.
 - **Module 8:** Return to business value, readiness and an accountable adoption decision.
 
-This November direction supersedes earlier Module 1 incident-story and sample-build
-teaching placement. Current Module 1 documentation reflects the simplification:
-generic illustrative IT support followed by read-only review of the existing
-Project Beacon Relay Agent. Documentation does not itself prove publication or
-fresh learner access. No new helpdesk deployment, chat/source test or external lab.
-Authorization for these four screenshots does not authorize Image 3.
+Module 1 keeps foundational visual teaching, generic illustrative IT support and
+read-only review of the existing Project Beacon Relay Agent. Documentation does
+not itself prove publication or fresh learner access. No new helpdesk deployment,
+chat/source test or external lab. Image 3's separate rights remain unconfirmed.
 
 ### Claim boundaries
 
@@ -197,9 +196,6 @@ Authorization for these four screenshots does not authorize Image 3.
   claiming a portal exposes health, latency, output quality, risk or cost for an agent.
 - A successful answer is not proof of safety; an empty risk view is not proof that
   no risk exists. Escalate concerns through the approved incident-response process.
-- Use original workshop explanations. Preserve the screenshots as supplied references,
-  without requiring their course navigation, completion percentage or suggested-response
-  scripts as student activities.
-- The Business value screenshot mentions a planned FinOps course and FY27 release.
-  That is a statement in the supplied screenshot, not a verified release commitment;
-  do not carry the forecast into workshop promises.
+- Use original workshop explanations and artwork. Do not copy course navigation,
+  completion indicators, suggested-response scripts or branded layouts.
+- Do not turn external course forecasts into workshop or product release promises.

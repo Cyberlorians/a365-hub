@@ -152,7 +152,6 @@
     .four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .card { border: 1px solid var(--cp-border); border-radius: 16px; padding: 20px; background: var(--cp-bg-elevated); min-width: 0; }
     .card p:last-child { margin-bottom: 0; }
-    .lesson-icon { width: 44px; height: 44px; color: var(--cp-accent); display: block; margin-bottom: 12px; }
     .lesson-flow, .control-map, .response-flow { display: grid; gap: 12px; margin: 20px 0; padding: 0; list-style: none; }
     .lesson-flow, .response-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .control-map { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -169,10 +168,6 @@
       .control-map p:first-of-type { min-height: 3lh; }
     }
     .step-number { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--cp-accent-soft); color: var(--cp-accent); font-weight: 750; margin-bottom: 12px; }
-    .source-visuals { display: grid; gap: 24px; margin-top: 16px; }
-    .source-visuals figure { margin: 0; }
-    .source-visuals img { display: block; width: 100%; height: auto; border-radius: 8px; }
-    .source-visuals figcaption { margin-top: 8px; font-size: 15px; color: var(--cp-text-muted); }
     .callout { border-left: 4px solid var(--cp-accent); background: var(--cp-accent-soft); padding: 16px 20px; border-radius: .625rem; margin: 20px 0; }
     .quote { font-size: clamp(24px, 3vw, 34px); font-weight: 650; line-height: 1.3; }
     ul, ol { padding-left: 24px; margin: 12px 0; }
@@ -318,51 +313,44 @@
         <template class="speaker-notes"><p><strong>1 minute.</strong> An agent can invoke tools, so useful access needs an explicit boundary. Introduce see, control and protect without a product tour. Promise a review, not visibility of every agent or proof of complete protection. Agent 365, Entra, Purview and Defender contribute different parts. Leave object models and token flows for Module 3.</p><p><strong>Source:</strong> Microsoft Learn Agent 365 overview; Cloud-Architekt Agent Identities.</p></template>
       </section>
       <section class="slide" data-title="What does an agent do?" data-minutes="3" data-phase="core" hidden>
-        <p class="eyebrow">A simple example / Not a setup exercise</p>
-        <h2>A question can lead to an action.</h2>
-        <p class="lede">An employee asks for laptop help. Imagine a prepared support agent following this path:</p>
-        <ol class="lesson-flow" aria-label="Illustrative support-agent task">
-          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>Read</h3><p>Find approved troubleshooting guidance.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>Decide</h3><p>Answer the question or choose an approved escalation.</p></li>
-          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>Act</h3><p>Use a configured tool to raise a ticket with the allowed team.</p></li>
+        <p class="eyebrow">Learn the basics / From an answer to an action</p>
+        <h2>An agent can use tools to do a job.</h2>
+        <p class="lede">An employee asks: &ldquo;My laptop will not start. Can you help and open a support ticket?&rdquo;</p>
+        <ol class="lesson-flow" aria-label="A tool-enabled support-agent example">
+          <li class="card"><span class="step-number" aria-hidden="true">1</span><h3>The request</h3><p>The employee gives the agent a job: help with the laptop and request support.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">2</span><h3>The information</h3><p>The agent uses an approved troubleshooting guide to provide useful instructions.</p></li>
+          <li class="card"><span class="step-number" aria-hidden="true">3</span><h3>The action</h3><p>A configured ticket tool lets the agent submit a request to the service desk.</p></li>
         </ol>
-        <h3>Two attack surfaces. The same wrong outcome.</h3>
-        <div class="grid two">
-          <div class="card"><h3>Misused identity or management access</h3><p>Misused credentials or changed access send the ticket outside its approved team.</p><p><strong>Check:</strong> sign-ins, grants and audit.</p></div>
-          <div class="card"><h3>Misleading content</h3><p>Untrusted document instructions misdirect the ticket despite a valid sign-in.</p><p><strong>Check:</strong> input, tool call and result.</p></div>
-        </div>
-        <div class="callout">A valid sign-in does not prove safe behavior. Compare identity with behavior.</div>
+        <div class="callout"><strong>Knowledge supplies information. Tools perform actions.</strong> An agent needs permission to use the data and services involved; an instruction alone does not grant access.</div>
+        <p><strong>What you are learning:</strong> giving an answer and carrying out an action are different capabilities.</p>
         <p class="small">This is an illustration, not a claim that our registry record has these capabilities. Module 2 uses an actual agent and checks its result.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Teach the read/decide/act path, then compare two causes of the same wrong ticket. Identity or management misuse needs identity evidence; misleading content needs execution evidence. No attack is executed. Ask which evidence would distinguish the causes, not for a written answer. A ticket tool is hypothetical, not a capability of Relay. No extra portal or course. Token/credential mechanics and hands-on attack investigation belong in Modules 3 and 6-7.</p></template>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Read the employee request aloud, then walk the three steps. Define knowledge as information the agent can use and a tool as a configured way to call a service or perform an action. Not every agent has a ticket tool, and a conversational interface can also be tool-enabled; do not draw an absolute chatbot/agent distinction. Ask what capability is needed to create the ticket rather than merely describe it. This is a teaching example, not Relay's runtime. No attack vocabulary, object model, build or extra portal here.</p></template>
       </section>
-      <section class="slide" data-title="Four questions for every agent" data-minutes="1" data-phase="core" hidden>
-        <p class="eyebrow">The big picture / Four learning pillars</p>
-        <h2>Working. Accountable. Safe. Useful.</h2>
-        <div class="grid two">
-          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="6" y="7" width="36" height="27" rx="4"/><path d="M12 26l8-8 7 5 9-10M24 34v7M16 41h16"/></svg><h3>Management</h3><p>Is the agent working as expected?</p></div>
-          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 5L8 12v12c0 10 16 19 16 19s16-9 16-19V12zM16 24l6 6 11-13"/></svg><h3>Governance</h3><p>Who owns it, and what can it access?</p></div>
-          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M24 5L8 12v12c0 10 16 19 16 19s16-9 16-19V12zM24 15v13M24 32v3"/></svg><h3>Security</h3><p>How would we notice unsafe activity, and who would investigate?</p></div>
-          <div class="card"><svg class="lesson-icon" viewBox="0 0 48 48" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 41h36M10 41V28h7v13M21 41V21h7v20M32 41V12h7v29M8 19L36 6M29 5l9 1-3 8"/></svg><h3>Business value</h3><p>Is it delivering useful results for its cost?</p></div>
+      <section class="slide" data-title="Why does agent access matter?" data-minutes="1" data-phase="core" hidden>
+        <p class="eyebrow">Same job / Give it the access the job needs</p>
+        <h2>Opening a ticket does not need access to everything.</h2>
+        <p class="lede">Our support agent needs to read the support guide and create a service-desk ticket. Its owner must approve that access.</p>
+        <div class="grid two access-boundary">
+          <div class="card"><h3>Needed for this job</h3><ul><li>Read the approved troubleshooting guide.</li><li>Create a ticket in the service-desk queue.</li></ul></div>
+          <div class="card"><h3>Not needed for this job</h3><ul><li>Read payroll or HR records.</li><li>Change employee accounts or grant roles.</li></ul></div>
         </div>
-        <div class="callout">These are four questions, not four extra labs. No single dashboard answers all of them.</div>
-        <details><summary>Four-pillar source visuals</summary>
-          <p class="small">The four screenshots supplied for this workshop, preserved unchanged. Their source-course controls are not interactive here; no other course is required.</p>
-          <div class="source-visuals">
-            <figure><img src="assets/ai-observability-management.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining management through operational signals and service health."><figcaption>Management: working as expected.</figcaption></figure>
-            <figure><img src="assets/ai-observability-governance.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining governance through ownership, access and controls."><figcaption>Governance: accountable ownership and access.</figcaption></figure>
-            <figure><img src="assets/ai-observability-security.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining security signals and involvement of the appropriate security team."><figcaption>Security: recognize risk and involve the right team.</figcaption></figure>
-            <figure><img src="assets/ai-observability-business-value.png" loading="lazy" alt="Supplied AI Observability Overview screenshot explaining business value through activity, cost and outcomes."><figcaption>Business value: useful outcomes for their cost. A planned source-course release is not a verified product promise.</figcaption></figure>
-          </div>
-        </details>
-        <template class="speaker-notes"><p><strong>1 minute.</strong> Grounded in the authorized AI Observability Overview screenshots. Use original explanations, not source-course navigation. Each pillar needs different evidence. Do not assign each pillar exclusively to one product or imply the screenshots establish platform coverage. Business value returns in Module 8.</p></template>
+        <div class="callout"><strong>This is least privilege:</strong> limit access to what the approved task requires. A successful sign-in does not prove the agent used that access safely.</div>
+        <p><strong>What you are learning:</strong> why agents need an accountable owner and an explicit data/action boundary.</p>
+        <template class="speaker-notes"><p><strong>1 minute.</strong> Continue the same task, not a new scenario. Contrast the needed guide/ticket permissions with unrelated payroll/account-management access. Define least privilege in plain English. Other approved jobs may need other permissions; this is not a universal ban. Instructions are not an authorization control. Successful authentication is not proof of safe behavior: identity misuse and misleading content are different causes explored in later security modules. Governance approves the purpose/access; Security examines unsafe use. Do not configure permissions or imply Relay has this access. All wording and visuals are original; source-course screenshots are reference only and not distributed.</p></template>
       </section>
-      <section class="slide" data-title="What does observability mean?" data-minutes="3" data-phase="core" hidden>
-        <p class="eyebrow">Management / Understand what happened</p>
-        <h2>Check the result. Watch the service. Follow the steps.</h2>
-        <div class="grid three"><div class="card"><h3>Evaluation</h3><p>Did it perform the task well?</p><p>Compare an answer or action with an expected result.</p></div><div class="card"><h3>Monitoring</h3><p>Is it working reliably over time?</p><p>Look for changes in errors, response time and usage.</p></div><div class="card"><h3>Tracing</h3><p>What steps did it take?</p><p>Follow recorded model calls, tools and service activity.</p></div></div>
-        <div class="callout">A registry entry tells you an agent is listed. It does not prove the agent worked or behaved safely.</div>
-        <p class="small">Concepts grounded in <a href="https://learn.microsoft.com/en-us/azure/foundry/concepts/observability" target="_blank" rel="noopener noreferrer">Microsoft Foundry observability</a>. Availability depends on the actual runtime and integrations. No Foundry setup in this module.</p>
-        <template class="speaker-notes"><p><strong>3 minutes.</strong> Explain the three concepts through the laptop example. Foundry documents evaluation, monitoring and tracing with Application Insights/OpenTelemetry integrations. Do not promise this telemetry for Copilot Studio, Agent 365 or Relay without integration proof. Traces record execution, not complete internal model reasoning. Evaluation can incur consumption charges; do not enable it for this introduction. Task testing is Module 2 and trace correlation is Module 7.</p></template>
+      <section class="slide" data-title="How do we know what an agent did?" data-minutes="3" data-phase="core" hidden>
+        <p class="eyebrow">Same job / Management needs evidence</p>
+        <h2>Did it actually open the ticket?</h2>
+        <p>In our teaching example, &ldquo;I opened a ticket&rdquo; is a claim, not proof. What evidence would you ask for?</p>
+        <div class="grid three">
+          <div class="card"><h3>Check the result</h3><p>Does a real ticket record show the right queue and problem?</p><p class="small"><strong>Evaluation:</strong> was the result right?</p></div>
+          <div class="card"><h3>Follow recorded steps</h3><p>Did the recorded ticket-creation call succeed?</p><p class="small"><strong>Tracing:</strong> what steps ran?</p></div>
+          <div class="card"><h3>Watch over time</h3><p>Watch failures, response time and usage across requests.</p><p class="small"><strong>Monitoring:</strong> is it reliable over time?</p></div>
+        </div>
+        <div class="callout"><strong>Listed does not mean completed.</strong> Ask the runtime owner for missing task evidence, not just an inventory record.</div>
+        <p><strong>What you are learning:</strong> tell a listed agent, recorded activity and a verified result apart.</p>
+        <p class="small">Reference: <a href="https://learn.microsoft.com/en-us/azure/foundry/concepts/observability" target="_blank" rel="noopener noreferrer">Microsoft Foundry observability</a>. The actual runtime and integrations determine what is recorded. No Foundry setup in this module.</p>
+        <template class="speaker-notes"><p><strong>3 minutes.</strong> Say the claimed response, then ask what proves it. Start with the actual ticket, then recorded tool calls, then service behavior across requests. Introduce evaluation, tracing and monitoring only after the concrete questions. These are complementary checks, not automatic sources in Agent 365. Logs may be incomplete; ask the runtime owner about collection gaps. Traces are not internal chain-of-thought. The ticket is hypothetical; no ticket system or Foundry setup is required. Foundry documents the concepts but integration and evaluation costs differ by runtime. Bridge into the registry lab: learn what is reported without mistaking inventory for task success.</p></template>
       </section>
       <section class="slide" data-title="One job. Four Microsoft services." data-minutes="1" data-phase="core" hidden>
         <p class="eyebrow">Who helps / Complementary responsibilities</p>
@@ -433,7 +421,7 @@
         <div class="grid three"><div class="card"><h3>Useful outcome</h3><p>Did employees get correct help or complete an approved task?</p></div><div class="card"><h3>Quality and effort</h3><p>Was time saved without more mistakes or rework?</p></div><div class="card"><h3>Cost</h3><p>What do usage, licensing and operations cost?</p></div></div>
         <div class="callout">Agree on the outcome first. Then measure whether the agent improves it.</div>
         <p class="small">Usage and token counts are clues, not a complete cost or value calculation. The adoption decision follows in Module 8.</p>
-        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Grounded in the supplied Business value screenshot. Use the IT example: speed without correct guidance is not success. Do not promise the source's planned FY27 FinOps course release or invent savings. Azure/evaluation usage costs and license costs differ; FinOps specialists can help with a full assessment. No sales slide or ROI worksheet.</p></template>
+        <template class="speaker-notes"><p><strong>1.5 minutes.</strong> Use the IT example: speed without correct guidance is not success. Do not invent savings or promise external course releases. Azure/evaluation usage costs and license costs differ; FinOps specialists can help with a full assessment. No sales slide or ROI worksheet.</p></template>
       </section>
       <section class="slide" data-title="Explain what you know and what is missing" data-minutes="3" data-phase="core" hidden>
         <p class="eyebrow">Recap / What you can now explain</p>

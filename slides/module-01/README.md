@@ -15,10 +15,12 @@ standing read-only AI Reader or labeled presenter evidence; no learner write rol
 
 ## Outcome
 
-Introduce management, governance, security and business value, then conceptual
-evaluation, monitoring and tracing. Review the existing Project Beacon Relay Agent
+Explain agent capabilities, least privilege and evidence through one support job.
+Connect management, governance, security and business value across the core lessons,
+and introduce evaluation/tracing/monitoring after concrete checks. Review the existing Project Beacon Relay Agent
 read-only and orally explain an observed fact, a gap and accountable next check.
-Teach Read > Decide > Act and the two attack surfaces before the portal walkthrough.
+Teach what an agent does, why its access matters and how to verify its work
+through one continuous laptop-help/ticket example before the portal walkthrough.
 Retain the visual five-area Entra control map and connected security-operations
 response sequence in Module 1; these lessons were not moved into Module 2.
 No external Academy lab, build, chat or knowledge test; no required copying,
@@ -27,10 +29,11 @@ worksheet or written submission.
 ## Grounding and prepared record
 
 Use generic illustrative IT support, not a deployed sample claim. The authorized
-[four-pillar screenshots](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+[four-pillar provenance note](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
 are separate from the old Agent ID scenarios image whose rights remain unconfirmed.
-The four authorized originals are expandable inside teaching slide 8; no other
-course or lab file is required.
+Slide 8 uses an original needed-versus-unrelated-access comparison. Shared course screenshots were
+reference only and are not reproduced or redistributed; no other course or lab
+file is required.
 [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability)
 grounds concepts, not guaranteed Copilot Studio/Agent 365 telemetry or a setup lab.
 The [source map](sources.md) retains Academy/Learn MCP provenance as instructor/

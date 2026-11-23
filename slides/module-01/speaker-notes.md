@@ -31,26 +31,31 @@ No deployment, chat or knowledge test. Move access failures to a helper.
 
 ## Slide 7 - What does an agent do?
 
-**3 minutes.** Use generic illustrative IT support, not a deployed sample claim.
-Knowledge informs; tools act; instructions do not replace permissions.
-Walk Read > Decide > Act, then compare two causes of the same wrong ticket:
-identity/management misuse versus misleading content. Which evidence distinguishes
-them? Sign-in success alone cannot. No attacks or tool calls are executed; keep
-credential/token mechanics and hands-on investigation for Modules 3 and 6-7.
+**3 minutes.** Read the employee's laptop-help/ticket request. Walk request,
+information and action. Explain knowledge versus tools, then the need for
+permissions. A conversational interface can also use tools; do not claim all
+chatbots only answer or that all agents can write. Ask what makes ticket creation
+different from describing it. No attack vocabulary, extra portal or build.
+This is an original illustration, not Relay's runtime.
 
-## Slide 8 - Four questions for every agent
+## Slide 8 - Why does agent access matter?
 
-**1 minute.** Introduce management, governance, security and business value using
-the authorized four-pillar grounding. Do not conflate its rights with Image 3.
-The four original screenshots are expandable on slide 8. Use the icon-based
-teaching map first; expanding the source visuals is optional, not another lesson.
-Do not attribute the source course to Microsoft or promise its planned release.
+**1 minute.** Keep the same job. Contrast guide/ticket access with unrelated
+payroll/account-management access. Define least privilege and identify who
+approves the boundary. Other jobs may legitimately need other access.
+Successful sign-in does not establish safe behavior. Identity misuse and
+misleading content are later security explanations, not today's object/attack
+lesson. No configuration. Shared course screenshots remain reference-only.
 
-## Slide 9 - What does observability mean?
+## Slide 9 - How do we know what an agent did?
 
-**3 minutes.** Evaluation assesses quality/safety; monitoring watches over time;
-tracing follows execution. Ground the concepts in Foundry observability, not
-automatic Foundry/Copilot Studio/Agent 365 integration or a setup lab.
+**3 minutes.** Start with the claimed reply and ask what proves the ticket exists.
+Then ask which recorded calls show the steps and what shows reliability across
+requests. Introduce evaluation, tracing and monitoring after those examples.
+State collection gaps and separate role/integration requirements. Traces do not
+reveal internal chain-of-thought. Foundry grounds the concepts, not automatic
+coverage or a new setup lab. Bridge to the registry review: listing is not task
+success, and the runtime owner supplies missing evidence.
 
 ## Slide 10 - One job. Four Microsoft services.
 

@@ -90,11 +90,14 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > been rehearsed with a live class.
 
 Module 1 uses generic illustrative IT support, not a deployed sample claim.
-Management, governance, security and business value precede conceptual evaluation,
-monitoring and tracing grounded in [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
+Slides 7-9 explain what an agent does, why its access matters and what proves its
+work through one laptop-help/ticket example. Concrete checks introduce evaluation,
+tracing and monitoring grounded in [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability).
+Management, governance, security and business value connect across the remaining core lessons.
 Foundry specifics do not guarantee Copilot Studio/Agent 365 telemetry.
-The authorized [four-pillar screenshots](grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
-are separate from the rights-unconfirmed old Agent ID scenarios image.
+The [four-pillar reference](grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+informs original support-task teaching, not redistributed course screenshots
+or artwork. The old Agent ID scenarios image remains rights-unconfirmed.
 Lab 1 has three access steps, Lab 2 one sign-in check, Lab 3 six read-only checks
 of the same Relay record: eleven learner screens. Lab 3 launches after slide 11
 and returns to slide 12; learners orally explain a fact, gap and accountable next

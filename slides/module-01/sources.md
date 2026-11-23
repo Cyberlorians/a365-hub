@@ -1,7 +1,7 @@
 # Module 1 Claim and Source Map
 
 **Direction update, November 21, 2026:** Keep Module 1 introductory. The
-[authorized AI Observability Overview screenshots](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
+[reference-only AI Observability Overview ideas](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars)
 ground a simple management, governance, security and business-value frame.
 The Academy sources below describe the earlier published sample-led version and
 support instructor preparation/Module 2; students should not need to open an
@@ -9,10 +9,13 @@ external course lab in Module 1. Current documentation reflects the approved
 simplification; publication and fresh learner access require separate validation.
 
 **Teaching restoration, November 23, 2026:** Introductory means no extra setup,
-not less learning. Module 1 retains the two attack surfaces through the same
-support task, the five-area Entra control map and the connected response sequence.
-These concepts were not moved into Module 2. The four authorized screenshots are
-now expandable inside slide 8, unchanged and without source-course navigation.
+not less learning. Slides 7-9 define agent capabilities, least privilege and
+evidence through the same support task. Module 1 retains the five-area Entra
+control map and connected response sequence; attack mechanics stay later.
+These concepts were not moved into Module 2. Following the November 23 clarification,
+slide 8 uses an original needed-versus-unrelated-access comparison, not source screenshots.
+Shared course material was conceptual reference only; reproduced files and the
+gallery have been removed from the current package.
 Control setup, task testing and investigation retain their later-module boundaries.
 
 Sample-learning references checked November 19, 2026 using Microsoft Learn MCP
@@ -21,7 +24,7 @@ original adaptation, not a verbatim copy or Microsoft certification course.
 
 | Claim/topic | Source | Boundary |
 |---|---|---|
-| Introductory four-pillar frame | [User-supplied AI Observability Overview screenshots](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars) | Explicit user authorization for these four images; course attribution not supplied; educational framing, not product coverage or release validation |
+| Introductory four-pillar frame | [Reference-only provenance](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars) | Informal conceptual reference, not redistribution permission. Original support-task wording and visuals; no source screenshots, copied artwork or product/release claims |
 | What observability means: evaluation, monitoring and tracing | [Microsoft Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability), [curriculum placement](../../grounding/sources.md#foundry-observability-source-grounding-and-placement) | Brief conceptual explanation after the four-pillar overview; Foundry-specific integrations and evaluation costs do not imply automatic Copilot Studio/Agent 365 coverage; no additional Module 1 setup or lab |
 | Learning/sample selection | [Microsoft Learn sample catalog](https://learn.microsoft.com/microsoft-copilot-studio/guidance/agent-samples) | Separates Microsoft-owned samples, learning labs and community resources |
 | Instructor/Module 2 learning reference | [Agent Academy Recruit standard harness](https://microsoft.github.io/agent-academy/recruit/), [Mission 06 helpdesk build](https://microsoft.github.io/agent-academy/recruit/06-create-agent-from-conversation/) | Earlier sample-led research retained; not current Module 1 learner steps or a deployed replacement claim |
@@ -31,7 +34,7 @@ original adaptation, not a verbatim copy or Microsoft certification course.
 | Alternate hands-on curricula | [Microsoft Copilot Agents Labs](https://microsoft.github.io/mcs-labs/), [Learn create-agent exercise](https://learn.microsoft.com/training/modules/build-manage-no-code-copilot-agent-sharepoint/6-exercise-create-copilot-chat-agent) | Further learning links, not extra mandatory Module 1 builds; licensed access is required |
 | Pro-code A365 route | [Agent 365 SDK samples](https://learn.microsoft.com/microsoft-agent-365/developer/samples) | Separate SDK/runtime/model prerequisites; not a Copilot Studio import or an interchangeable maker lesson |
 | Registry review and metadata | [Agent registry overview](https://learn.microsoft.com/microsoft-agent-365/admin/agent-registry-overview) | Inventory is not runtime proof; actual platform reporting and role visibility must be checked |
-| Dual attack surfaces; legitimate tool misuse | [Agent Identities](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/09e9d2365e89c1eedb36c8a01ac0a3dcbb229a27/AgentIdentities.md) | Required security spine; identity evidence remains useful but insufficient |
+| Valid access does not prove safe use | [Agent Identities](https://github.com/Cloud-Architekt/AzureAD-Attack-Defense/blob/09e9d2365e89c1eedb36c8a01ac0a3dcbb229a27/AgentIdentities.md) | Foundational distinction on slide 8; identity misuse and content-driven tool misuse are developed in later security modules |
 | Observe/govern/secure | [Agent 365 overview](https://learn.microsoft.com/microsoft-agent-365/overview) | Discovery/enrollment/activity are separate checks |
 | Governance/accountability | [Agent governance](https://learn.microsoft.com/entra/id-governance/agent-id-governance-overview) | Technical rights and sponsor differ |
 | CA/risk | [CA for agents](https://learn.microsoft.com/entra/identity/conditional-access/agent-id), [ID Protection](https://learn.microsoft.com/entra/id-protection/concept-risky-agents) | Flow/target/exception and offline-learning boundaries |

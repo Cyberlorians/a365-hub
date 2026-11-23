@@ -38,35 +38,34 @@ with evidence and response. Start with a useful employee task, not portal comple
 
 ## Slide 7 - What does an agent do?
 
-An illustrative IT support task: help an employee find approved support guidance
-and escalate what cannot be verified. Purpose, instructions, knowledge and tools
-differ. Knowledge informs; tools perform configured actions. Instructions do not
-replace permissions. This is a generic illustration, not a deployed sample claim.
+An employee asks for laptop help and a support ticket. A tool-enabled agent can
+use an approved guide to provide instructions and call a configured service-desk
+tool to create the ticket. **Knowledge supplies information. Tools perform actions.**
+Permissions govern access; instructions alone do not grant it.
+The learning goal is to distinguish answering from acting. This is an original
+teaching illustration, not a deployed helpdesk or a claim about Relay.
 
-Follow **Read > Decide > Act**, then compare two causes of the same misdirected
-ticket: misused identity/management access versus misleading content. A valid
-sign-in does not prove safe behavior. Compare sign-ins and changed grants with
-the actual input, tool call and result; no attack or tool call is executed here.
+## Slide 8 - Why does agent access matter?
 
-## Slide 8 - Four questions for every agent
+Continue the same task. Reading the approved guide and creating a service-desk
+ticket are needed; payroll/HR records and employee-account changes are not.
+**Least privilege** means access limited to what the approved task requires.
+Governance establishes the accountable owner and approved boundaries; Security
+examines unsafe use. A successful sign-in does not prove safe behavior.
+The learning goal is to explain why the job needs an owner and a data/action
+boundary. No permission changes, new scenarios or source-course artwork.
 
-| Pillar | Question |
-|---|---|
-| Management | What exists, what does it do, and who owns it? |
-| Governance | Who approves its access, changes and lifecycle? |
-| Security | What data and actions are within bounds, and how are problems handled? |
-| Business value | What useful outcome would justify it, and how will it be measured? |
+## Slide 9 - How do we know what an agent did?
 
-The four authorized source screenshots are available in the expandable visual
-reference on this slide. No other course is required; screenshot controls are
-not interactive. The original icon illustrations keep the teaching view concise.
-
-## Slide 9 - What does observability mean?
-
+The reply "I opened a ticket" is a claim, not proof. Check the actual ticket and
+its queue/problem (**Evaluation**), recorded information/tool calls and results
+(**Tracing**), then failure rates, response time and usage across requests
+(**Monitoring**). These checks support operational management.
+A registry entry establishes listing, not task success. The learning goal is to
+distinguish inventory, recorded activity and a verified result.
 [Foundry observability](https://learn.microsoft.com/en-us/azure/foundry/concepts/observability)
-introduces evaluation (assess quality and safety), monitoring (watch behavior over
-time) and tracing (follow execution steps). These are conceptual lenses here, not
-a Foundry setup lab or guarantees of Copilot Studio/Agent 365 telemetry.
+grounds the concepts; actual collection and integrations must be verified.
+No Foundry setup or ticket-system test is required in Module 1.
 
 ## Slide 10 - One job. Four Microsoft services.
 
@@ -141,6 +140,7 @@ preflight. No replacement sample or optional maker path is claimed deployed.
 
 ## Sources and scope
 
-See [sources](sources.md) and the authorized [four-pillar screenshots](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars).
-Their authorization is separate from the old Agent ID scenarios image, whose
-rights remain unconfirmed. Admin observations do not prove fresh learner access.
+See [sources](sources.md) and the [reference-only provenance note](../../grounding/reference-images.md#images-4-7---ai-observability-overview-four-pillars).
+Supplied screenshots are not reproduced or redistributed. The old Agent ID
+scenarios image also remains rights-unconfirmed. Admin observations do not prove
+fresh learner access.

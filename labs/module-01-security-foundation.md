@@ -19,22 +19,25 @@ required copying, worksheet or submission.
 
 **Do:** Open [Slide 6](https://cyberlorians.github.io/a365-hub/#slide-6), then
 [Slide 7](https://cyberlorians.github.io/a365-hub/#slide-7). Consider an illustrative
-IT support task: find approved guidance and escalate unknowns.
+IT support task: use approved guidance to help with a laptop and create a support ticket.
 
-**Check:** You can distinguish purpose, instructions, knowledge and tools. This
+**Check:** You can distinguish providing information from performing an action,
+and explain why a tool needs permission. This
 generic illustration is not a claim that a helpdesk sample is deployed.
 
 **Next:** Step 2.
 
-## Step 2: Ask four questions and understand observability
+## Step 2: Connect access to evidence
 
 **Do:** Read [Slide 8](https://cyberlorians.github.io/a365-hub/#slide-8), then
-[Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9). Ask about management,
-governance, security and business value. Evaluation assesses quality/safety;
-monitoring watches behavior over time; tracing follows execution steps.
+[Slide 9](https://cyberlorians.github.io/a365-hub/#slide-9). Explain why the ticket
+job needs guide/ticket access, not unrelated payroll/account changes. Then ask
+what proves the ticket exists, which recorded steps ran and how the service
+behaves across requests. These checks introduce evaluation, tracing and monitoring.
 
-**Check:** These observability concepts do not guarantee Foundry telemetry in
-Copilot Studio or Agent 365. No additional setup or external lab is required.
+**Check:** You can explain least privilege and distinguish registration from
+recorded activity and a verified outcome. No automatic telemetry, additional
+setup or external lab is assumed.
 
 **Next:** Step 3.
 
