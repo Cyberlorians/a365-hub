@@ -836,6 +836,41 @@ approved shared fixture can satisfy the lesson.
 | 7 | Actual queryable signals, source/engine/key mapping, response authorization, and retest/reset evidence | Bounded read-only evidence capture can help. Do not automatically execute generated playbooks, change tuning, or fabricate rows in security tables | Applicable Defender/Sentinel/read roles; connector/workspace/ingestion/retention costs and supported response scope | Static verified case pack/manual investigation is acceptable when labeled. Actual containment is instructor-controlled; restore only the affected approved target |
 | 8 | Four flags, answer key, preceding validated evidence, and pilot worksheet | None required. Optional scoring only after content/rehearsal proves useful | No additional cloud platform required for static scoring; use restricted evidence where necessary | Reset local answers/worksheet. Do not deploy a scoreboard as a hidden prerequisite |
 
+### Fixture agents by module and learner-built agents (draft decision, November 23, 2026)
+
+Nothing here has been provisioned. Hydrating the tenant and building the Module 8
+capture-the-flag stay blocked until the open decisions below are answered.
+
+| Fixture agent | Used in | Why |
+|---|---|---|
+| Workshop IT Support Agent (Copilot Studio; one public knowledge source, no write tools) | Modules 1 and 5 | Only record with real Data & tools, and it matches the slide story |
+| Project Beacon Mail Agent (the Module 2 runtime) | Modules 2, 3, 6, 7, 8 | Has an Entra agent ID and real permissions the investigation and flags need |
+| Project Beacon Relay Agent (staged High risk) | Modules 1, 6, 7, 8 | The flagged identity; never used as a useful runtime |
+| Microsoft Researcher | Contrast only | In the workshop tenant it has no knowledge, tools or owner and cannot be edited, owned or flagged, so it cannot carry a flag |
+
+**Capture-the-flag fit:** the four planned flags (actor and accountability, authority or
+control gap, evidence or a justified coverage gap, scoped response) need identities with
+permissions and activity, so they run on the Beacon agents, not the Copilot Studio agent
+(which currently has no Entra agent ID or permissions). Keep the answer key static and
+label every artifact `synthetic example`, `verified prior run`, `current run` or `missing`.
+
+**Learner-built agents:** not in the core path. Learners hold read-only AI Reader, building
+needs a maker license, an environment and Copilot credits, the shared registry already
+holds hundreds of agents, and a learner-built agent cannot be scored against one answer
+key. Offer it only as an optional, instructor-gated Module 2 extension or take-home, using
+the Copilot Studio quickstart with a per-learner name prefix and a cleanup step.
+
+**Open decisions before any hydration:**
+
+1. Confirm the workshop tenant. The Azure CLI on the authoring machine was signed into a
+   different (US government cloud) tenant than the commercial admin-center session, so
+   confirm the target before running any `a365` or setup command.
+2. Name the workshop-owned account that owns the support agent and the Beacon agents.
+3. Decide whether the learner-built agent stays an optional extension or is cut.
+4. Read-only inventory of the tenant's current licenses, Purview, Defender and Entra
+   governance state first, then a previewed hydration list for approval, per the common
+   contract below.
+
 ### Common contract for any future generator or setup script
 
 - **Purpose and mode:** Record module/scenario, fixture version, event/run ID, and
