@@ -361,7 +361,7 @@
         <p class="eyebrow">Who helps / Four services, one job each</p>
         <h2>Inventory, identity, data and defense.</h2>
         <div class="grid two">
-          <div class="card"><h3>Agent 365</h3><p>Find agents and review reported ownership, access, activity and risk.</p><span class="clue">Next: the lab</span></div>
+          <div class="card"><h3>Agent 365</h3><p>Find agents and review reported ownership, access, activity and risk. Agents built in Copilot Studio, Foundry or Agent Builder appear automatically; others must be registered.</p><span class="clue">Next: the lab</span></div>
           <div class="card"><h3>Microsoft Entra</h3><p>Manage the agent's identity, permissions, sign-in rules and accountability.</p><span class="clue">Slide 12</span></div>
           <div class="card"><h3>Microsoft Purview</h3><p>Protect the information agents read and share, and keep the record.</p><span class="clue">Slide 13</span></div>
           <div class="card"><h3>Microsoft Defender</h3><p>Recognize threats, investigate evidence and support response.</p><span class="clue">Slide 14</span></div>
@@ -374,17 +374,17 @@
         <h2>Open a record. Ask better questions.</h2>
         <p class="lede">Use our six-step walkthrough in Microsoft 365 admin center. Review the support agent from our slides, then one agent Security flagged. No other course, agent build or chat test.</p>
         <div class="grid three"><div class="card"><h3>Accountability</h3><p>What does Details report about its owner?</p></div><div class="card"><h3>Access</h3><p>What do Data &amp; tools and Permissions report?</p></div><div class="card"><h3>Evidence</h3><p>What risk and activity are visible? What is missing?</p></div></div>
-        <div class="callout">The flagged agent, Project Beacon Relay, is a separate training record with no data or tools to review. Viewing records does not run any agent.</div>
+        <div class="callout">The flagged agent, Project Beacon Relay, is a separate training record with no data or tools to review. It was registered from the command line, so no platform reports its tools. Viewing records does not run any agent.</div>
         <template class="speaker-notes"><p><strong>3 minutes.</strong> Launch Lab 3 and finish it during slide 12. Steps 1-3 and 5 use the Workshop IT Support Agent (Copilot Studio): Details, Data & tools, Permissions and Activity. Step 4 uses the separate Project Beacon Relay Agent for the staged High/compromised Security > Risk details signal; the aggregate risk filter has returned no rows, so use Total agents/search/Enter. Relay has no data or tools to review; say so. No new deployment, maker permissions or student setting changes. Rehearse learner access, especially whether AI Reader sees Data & tools; use a labeled live presenter view if blocked.</p></template>
       </section>
       <section class="slide" data-title="Who owns it and what can it reach?" data-minutes="5" data-phase="core" hidden>
         <p class="eyebrow">Governance / Agent 365 and Microsoft Entra</p>
         <h2>Who is accountable, and what can the agent reach?</h2>
-        <p class="lede">Agent 365 shows clues. Entra holds the controls. Each registry field you read points to an Entra control.</p>
+        <p class="lede">Agent 365 shows clues. Entra holds the controls behind each one.</p>
         <ol class="control-table" aria-label="Five Entra control areas for agents">
           <li class="control-row control-head" aria-hidden="true"><span>Control</span><span>Entra feature</span><span>Question to ask</span><span>Agent 365 clue</span></li>
-          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">1</span>Identity</span><p>Entra Agent ID</p><p>Which identity does the agent act as?</p><p><span class="clue">Details: Entra agent ID</span></p></li>
-          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">2</span>Accountability</span><p>Identity Governance</p><p>Who is the accountable sponsor, and when is it reviewed or retired?</p><p><span class="clue">Details: Owner, Created by</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">1</span>Identity</span><p>Entra Agent ID</p><p>Does it have its own identity, separate from people and apps?</p><p><span class="clue">Details: Entra agent ID</span></p></li>
+          <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">2</span>Accountability</span><p>Identity Governance</p><p>Who is the accountable sponsor, and when is it reviewed or retired?</p><p><span class="clue">Details: Owner, Created by</span> <span class="clue">Agents without owners</span></p></li>
           <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">3</span>Permissions</span><p>Entitlement management</p><p>Who approved this access, and until when?</p><p><span class="clue">Permissions tab</span></p></li>
           <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">4</span>Sign-in rules</span><p>Conditional Access / ID Protection</p><p>Which sign-in rules and risk checks apply?</p><p><span class="clue">Security tab: risk</span></p></li>
           <li class="control-row"><span class="name"><span class="step-number" aria-hidden="true">5</span>Network</span><p>Global Secure Access</p><p>Can its traffic be filtered and inspected?</p><p class="muted">Not shown in the registry</p></li>

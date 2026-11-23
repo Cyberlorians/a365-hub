@@ -70,7 +70,9 @@ No Foundry setup or ticket-system test is required in Module 1.
 
 ## Slide 10 - One job. Four Microsoft services.
 
-Agent 365 helps review supported inventory and accountability; Entra addresses
+Agent 365 helps review supported inventory and accountability; agents built in
+Copilot Studio, Foundry or Agent Builder appear in its registry automatically,
+while agents built elsewhere must be registered. Entra addresses
 identity and access; Purview addresses supported data/compliance controls; Defender
 supports threat investigation and response. Each has its own coverage, roles and
 configuration. No single portal proves all four pillars.
@@ -91,7 +93,8 @@ No copying, worksheet, written submission or student changes.
 Agent 365 discovers and lists agents; Microsoft Entra manages their identity and
 access. Five Entra control areas connect each registry field to its control:
 identity (**Entra Agent ID**; Details: Entra agent ID), accountability
-(**Identity Governance**; Details: Owner and Created by), permissions
+(**Identity Governance**; Details: Owner and Created by; the registry's Agents
+without owners count), permissions
 (**Entitlement management**; Permissions tab), sign-in rules (**Conditional Access /
 ID Protection**; Security tab risk) and network (**Global Secure Access**; not shown
 in the registry). A registry field is a clue, not proof a control is configured or

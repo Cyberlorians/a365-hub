@@ -47,6 +47,22 @@ the repository.
 | [Monitor and manage agents with Microsoft Agent 365](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/) (intermediate; AI Administrator and an Agent 365 license) | 12 | Overview page, registry indicators (total agents, agents at risk, agents without owners, unmanaged agents, connected platforms), agent map, exceptions, adoption and usage measures | Module 1 lab context; Module 8 value. Ownerless and unmanaged agents support the slide 12 accountability point |
 | [Govern agents using Agent 365](https://learn.microsoft.com/en-us/training/modules/agent-365-govern/) (intermediate; AI Administrator and an Agent 365 license) | 16 | Agent settings, policy templates, access packages, onboarding, owners, blocking, rules that expire or flag agents, tools, audit logs | Modules 4 and 5 (access, lifecycle, tools) |
 
+**Where the [Entra Agent ID introduction unit](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/introduction-agent-identity)
+and the beginner-level ideas belong (paraphrased):**
+
+| Idea from the Learn path | Workshop module | Use |
+|---|---|---|
+| Observe, Govern, Secure as the three jobs of a control plane | 1 | Already framed as See, Control, Protect (slide 6) |
+| Agents built in Copilot Studio, Foundry or Agent Builder register automatically and receive an agent identity; agents built elsewhere must be registered | 1 (one line, slide 10), 3 (the deep dive) | Explains why the support agent and the command-line-registered Relay differ in Data & tools |
+| An agent identity is a unique, persistent enterprise identity separate from people and generic app registrations | 1 (slide 12 row 1), 3 | Plain-language definition; Module 3 covers identity types and objects |
+| Registry counts: total agents, agents at risk, agents without owners | 1 (lab step 1, slide 12) | Read-only orientation; the at-risk filter has a known bug, so read the counts and do not click them |
+| Assistive, autonomous and user-like agents need purpose-built identity | 3 | Identity types and authority tracing |
+| Policy templates, access packages, owners, blocking, auto-expiry rules, audit logs | 4 | Administrator exercises for access and lifecycle |
+| Tools and MCP servers an agent can use | 5 | Data and tool controls |
+| Observability data handling, residency and compliance | 5 and 8 | Data handling and readiness questions |
+| Agent effectiveness: adoption, active users, run time | 8 | Value measurement beyond usage counts |
+| Exceptions (missing owner or platform, security risk, not required) and agent map | 4 and 7 | Lifecycle hygiene; investigation context |
+
 **Boundaries:** The Monitor and Govern modules are administrator exercises, including
 blocking agents and changing policy. Workshop learners hold read-only AI Reader, so use
 them as instructor or later-module grounding, not Module 1 learner steps. The

@@ -46,9 +46,11 @@ setup or external lab is assumed.
 **Do:** Read [Slide 10](https://cyberlorians.github.io/a365-hub/#slide-10), then
 [Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Launch Lab 3:
 
-1. **r3-open:** Open admin.microsoft.com > Agents > All agents > Registry.
-   Select **Total agents**, search **Workshop IT Support**, press **Enter** and
-   open **Workshop IT Support Agent (synthetic)**, the support agent from the slides.
+1. **r3-open:** Open admin.microsoft.com > Agents > All agents > Registry. Read the
+   **Total agents**, **Agents at risk** and **Agents without owners** numbers (do not
+   click them). Select **Total agents**, search **Workshop IT Support**, press
+   **Enter** and open **Workshop IT Support Agent (synthetic)**, the support agent
+   from the slides.
 2. **r3-owner:** Read Details **Owner**, **Created by** and **Entra agent ID**.
    Distinguish reporting gaps from known accountability.
 3. **r3-reach:** Inspect **Data & tools** (Capabilities, Knowledge, Tools) and

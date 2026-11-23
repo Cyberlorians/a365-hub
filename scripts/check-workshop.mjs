@@ -128,7 +128,7 @@ const valueSlide = slideByTitle("Is the agent worth it?");
 const recapSlide = slideByTitle("What can you now say about an agent?");
 for (const slide of [ownerSlide, dataSlide, wrongSlide, valueSlide, recapSlide])
   assert(slide && visible(slide).includes("What you are learning:") || slide?.includes("Your turn:"), "Every core slide after the lab needs a plain-language takeaway");
-assert(ownerSlide.includes("Agent 365 shows clues. Entra holds the controls.") && ownerSlide.includes("Details: Entra agent ID") && ownerSlide.includes("Details: Owner, Created by") && ownerSlide.includes("Permissions tab"), "Slide 12 must show how Agent 365 relates to each Entra control");
+assert(ownerSlide.includes("Agent 365 shows clues. Entra holds the controls behind each one.") && ownerSlide.includes("Details: Entra agent ID") && ownerSlide.includes("Details: Owner, Created by") && ownerSlide.includes("Permissions tab"), "Slide 12 must show how Agent 365 relates to each Entra control");
 assert(!visible(ownerSlide).includes('class="small"') && !visible(ownerSlide).includes("Modules 3-5"), "Slide 12 must not carry small-print notes");
 assert(!visible(dataSlide).includes("Module 5") && !visible(dataSlide).includes('class="small"'), "Slide 13 must not carry a later-module note");
 assert(dataSlide.includes("Microsoft Purview protections") && visible(dataSlide).includes("support agent"), "Slide 13 must connect Purview to the support agent and the registry");

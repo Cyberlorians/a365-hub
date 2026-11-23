@@ -325,7 +325,7 @@ const signInLab = [
     note: ["Handoff", "Later modules reuse the Entra, Conditional Access, Purview and Defender portal steps once the agent exists.", "Collect one sentence per learner.", "a-l2"] }
 ];
 const registryLab = [
-  { lab: 3, key: "r3-open", title: "Find the support agent", doItems: ["Open **admin.microsoft.com > Agents > All agents > Registry** with your lab account.", "Select **Total agents** to clear filters. Search **Workshop IT Support**, press **Enter**, and open **Workshop IT Support Agent (synthetic)**.", "This is the support agent from our slides. Opening the record does not run an agent."],
+  { lab: 3, key: "r3-open", title: "Find the support agent", doItems: ["Open **admin.microsoft.com > Agents > All agents > Registry** with your lab account. Read the numbers at the top: **Total agents**, **Agents at risk** and **Agents without owners**. Read them; do not click them.", "Select **Total agents** to clear filters. Search **Workshop IT Support**, press **Enter**, and open **Workshop IT Support Agent (synthetic)**.", "This is the support agent from our slides. Opening the record does not run an agent."],
     doneWhen: "You have the support agent's record open in your read-only view or the instructor's live view. If access is blocked, tell the instructor; do not use another account.",
     link: { label: "Find the support agent in the registry", href: "https://admin.microsoft.com/#/agents/all?search=Workshop%20IT%20Support" },
     visual: fig("One agent, one walkthrough", flow([["Registry", "Agents > All agents > Total agents"], ["Search", "Workshop IT Support > Enter"], ["Open", "Workshop IT Support Agent", "attention"]])),
