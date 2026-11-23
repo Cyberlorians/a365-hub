@@ -114,7 +114,10 @@ No copying, worksheet or written submission is required.
 ## Step 7: Establish normal before investigating abnormal
 
 **Do:** Read [Slide 17](https://cyberlorians.github.io/a365-hub/#slide-17).
-Reuse the four questions with other implementations.
+Reuse the four questions with other implementations. For optional extra reading,
+see [How Agent 365 monitors and manages agents](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/monitor-agent)
+and the [Explore Microsoft Agent 365 learning path](https://learn.microsoft.com/en-us/training/paths/agent-365-solutions/)
+on Microsoft Learn. Neither is part of the workshop.
 
 **Check:** Using/testing and any optional maker build belong in Module 2.
 Its current separate mail runtime/content is unchanged; no replacement sample or

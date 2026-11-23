@@ -63,6 +63,12 @@ and the beginner-level ideas belong (paraphrased):**
 | Agent effectiveness: adoption, active users, run time | 8 | Value measurement beyond usage counts |
 | Exceptions (missing owner or platform, security risk, not required) and agent map | 4 and 7 | Lifecycle hygiene; investigation context |
 
+**Learner-facing "learn more" links (optional reading, linked from Module 1 slide 17 and the
+learner guide):** the [Monitor and manage agents unit](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/monitor-agent)
+(overview page, registry and agent map) and the [learning path](https://learn.microsoft.com/en-us/training/paths/agent-365-solutions/).
+The [registry inventory exercise](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/exercise-explore-agents-inventory)
+is an optional administrator follow-up only; it covers the same ground as Lab 3.
+
 **Boundaries:** The Monitor and Govern modules are administrator exercises, including
 blocking agents and changing policy. Workshop learners hold read-only AI Reader, so use
 them as instructor or later-module grounding, not Module 1 learner steps. The

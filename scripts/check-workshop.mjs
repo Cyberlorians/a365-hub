@@ -105,6 +105,9 @@ assert(module1.includes("No Foundry setup") && module1.includes("actual runtime 
 assert(!module1.includes("https://microsoft.github.io/agent-academy/"), "Do not send Module 1 learners to an external maker course");
 assert(!module1.includes("three of four documentation tasks") && !scenarioSlide.includes("Mail Agent"), "Keep the Module 1 example distinct from the current Module 2 mail task");
 assert(!module1.includes("An agent has four parts") && !module1.includes("UserAuthMethod-TAP.ReadWrite.All"), "Detailed identity/credential-abuse mechanics belong in later modules");
+const handoffSlide = module1.match(/<section class="slide" data-title="Establish normal before investigating abnormal"[\s\S]*?<\/section>/)?.[0];
+assert(handoffSlide && handoffSlide.includes("agent-365-monitor-manage/monitor-agent") && handoffSlide.includes("agent-365-solutions") && handoffSlide.includes('rel="noopener noreferrer"') && handoffSlide.includes("not part of the workshop"), "Slide 17 offers the Microsoft Learn reading as optional external links");
+assert(!module1.includes("exercise-explore-agents-inventory"), "Microsoft's administrator exercise is not a learner step");
 assert(scenarioSlide.includes("Knowledge supplies information") && scenarioSlide.includes("Tools perform actions") && scenarioSlide.includes("permission"), "Define information, actions and required access before security jargon");
 assert(!scenarioSlide.includes("Two attack surfaces"), "Teach agent basics before attack terminology");
 for (const concept of ["Entra Agent ID", "Identity Governance", "Entitlement management", "Conditional Access / ID Protection", "Global Secure Access", "Spot it", "Find who", "Investigate", "Contain", "Check it worked", "Fix the gap"])

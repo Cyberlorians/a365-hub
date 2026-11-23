@@ -25,6 +25,13 @@ Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
 
 ## Before class
 
+- **Optional administrator follow-up:** Microsoft's
+  [registry inventory exercise](https://learn.microsoft.com/en-us/training/modules/agent-365-monitor-manage/exercise-explore-agents-inventory)
+  covers the same ground as Lab 3 (registry counts, agent search, the Details, Data & tools,
+  Security, Permissions and Activity tabs). It needs the AI Administrator role and uses the
+  Microsoft Researcher agent, which has no knowledge sources, tools or owner in the workshop
+  tenant, so learners do Lab 3 instead and administrators may try the exercise afterward.
+
 - **a-seed:** [Prepare/preflight the registry records](../../docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
   The Copilot Studio Workshop IT Support Agent (synthetic) is the main record; assign
   a workshop-owned account as owner. No Academy sample deployment is required.
