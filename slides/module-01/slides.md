@@ -35,6 +35,8 @@ If access fails, use the authorized instructor live view and report the access g
 
 See purpose and accountable people. Control data and actions. Protect useful work
 with evidence and response. Start with a useful employee task, not portal complexity.
+Shadow AI means unmanaged agents or AI apps that arrive without the organization's
+awareness, so nobody has approved them or can see what they do.
 
 ## Slide 7 - What does an agent do?
 

@@ -28,6 +28,11 @@ No deployment, chat or knowledge test. Move access failures to a helper.
 ## Slide 6 - See It. Control It. Protect It.
 
 **1 minute.** Start with useful work and purpose, people, boundaries and evidence.
+Define shadow AI in one sentence: unmanaged agents or AI apps deployed without the
+organization's awareness. The admin center's Agents > Shadow AI page checks for
+known AI platforms (20 listed in the workshop tenant on November 23, none detected);
+you can show it live. Detection confidence varies, it is not a learner step, and
+AI Reader visibility is unverified. Do not promise it finds every unmanaged agent.
 
 ## Slide 7 - What does an agent do?
 
