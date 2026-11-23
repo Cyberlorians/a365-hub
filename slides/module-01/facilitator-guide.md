@@ -25,13 +25,16 @@ Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
 
 ## Before class
 
-- **a-seed:** [Prepare/preflight the existing registry record](../../docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
-  No new helpdesk deployment is required.
+- **a-seed:** [Prepare/preflight the registry records](../../docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
+  The Copilot Studio Workshop IT Support Agent (synthetic) is the main record; assign
+  a workshop-owned account as owner. No Academy sample deployment is required.
 - **a-risk:** Rehearse the existing approved staged Relay risk without duplicate
-  flags. Same Project Beacon Relay Agent must show Security > Risk details >
+  flags. The separate Project Beacon Relay Agent must show Security > Risk details >
   High / The agent is compromised. This is training, not a live attack.
-- **a-l2:** Rehearse registry access and the six read-only checks as a fresh learner,
-  not chat/source tests. No maker role changes. Fresh learner access has not been
+- **a-l2:** Rehearse registry access and the six read-only checks as a fresh learner
+  with standing AI Reader, not chat/source tests. Record whether AI Reader sees
+  Data & tools (Learn guarantees it only for AI Administrator and Global
+  Administrator). No maker role changes. Fresh learner access has not been
   independently verified by prior admin observations.
 - There is no current Module 1 **a-publish** preparation requirement.
 - Preflight access/email/TAP privately. Never bypass CA/MFA or grant broad roles.
@@ -43,10 +46,11 @@ Module 2 uses/tests an actual agent; Modules 3-7 configure and investigate.
 
 Lab 1: three access steps. Lab 2: one account check. Lab 3: six steps, eleven
 generated learner screens total. Launch Lab 3 after slide 11 and return to slide 12.
-Find through admin.microsoft.com > Agents > All agents > Registry > Total agents >
-search Project Beacon Relay > Enter > Project Beacon Relay Agent.
-Read Details Owner/Created by; inspect Data & tools/Permissions; check staged risk;
-inspect Activity; orally explain a fact, gap and accountable next check.
+Find the support agent through admin.microsoft.com > Agents > All agents > Registry >
+Total agents > search Workshop IT Support > Enter. Read Details Owner/Created by,
+Data & tools/Permissions and Activity. For the staged risk, open the separate
+Project Beacon Relay Agent (search Project Beacon Relay > Enter) > Security > Risk
+details. Orally explain a fact, gap and accountable next check.
 No required copying, worksheet, submission, student changes or extra portals.
 
 ## Recovery and honest outcomes

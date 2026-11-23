@@ -79,7 +79,8 @@ tenant/attendee information. No Copy button executes code or stores attendee dat
 > Temporary Access Pass. That was a historical sign-in test, not the current learner
 > route. Module 1 now uses the admin center directly, and Lab 2 is a one-screen,
 > simple account check. Current Module 1 introduces four pillars and conceptual
-> observability, then reviews the existing Project Beacon Relay Agent read-only.
+> observability, then reviews a Copilot Studio support agent and the separate Project
+> Beacon Relay Agent read-only.
 > No new helpdesk deployment, Academy lab, agent build, chat or knowledge test is
 > required. Use the [registry preflight](docs/07-module-01-admin-runbook.md#prepare-the-module-1-registry-review).
 > On November 19, the
@@ -99,7 +100,7 @@ The [four-pillar reference](grounding/reference-images.md#images-4-7---ai-observ
 informs original support-task teaching, not redistributed course screenshots
 or artwork. The old Agent ID scenarios image remains rights-unconfirmed.
 Lab 1 has three access steps, Lab 2 one sign-in check, Lab 3 six read-only checks
-of the same Relay record: eleven learner screens. Lab 3 launches after slide 11
+of the support agent plus the flagged Relay record: eleven learner screens. Lab 3 launches after slide 11
 and returns to slide 12; learners orally explain a fact, gap and accountable next
 check. Missing required staged profile risk is unresolved, not complete; blank
 metadata is unknown and Activity is not full traces/security/audit evidence.

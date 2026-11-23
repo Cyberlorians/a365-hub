@@ -46,11 +46,12 @@ original adaptation, not a verbatim copy or Microsoft certification course.
 | Gateway/network | [Gateway](https://learn.microsoft.com/entra/global-secure-access/concept-secure-web-ai-gateway-agents), [GenAI Insights](https://learn.microsoft.com/entra/global-secure-access/concept-generative-ai-insights) | Copilot Studio route does not establish ACA Mail coverage; remote MCP is not local MCP |
 | E7 value/fit | [E3/E5/E7 comparison](https://learn.microsoft.com/microsoft-365/copilot/compare-copilot-e3-e5-e7) | Feature-specific entitlement/cost assessment; not every capability is exclusive |
 | Later authority/scenario depth | [Supplied Agent ID scenarios reference](../../grounding/reference-images.md#image-3---agent-id-scenarios) | Background for Module 3, not the Module 1 hands-on structure; image provenance/reuse unresolved |
-| Prepared Relay record, staged risk and registry gap | [Admin lab guide](../../docs/09-admin-lab-by-lab.md#lab-3-review-one-prepared-agent) | Same selected record throughout current Module 1; November 19 admin observation showed High/compromised while risk-filter results were empty; not fresh-learner proof or a repaired service |
+| Lab 3 records: support agent and flagged Relay | [Admin lab guide](../../docs/09-admin-lab-by-lab.md#lab-3-review-two-agents-in-the-registry) | The Copilot Studio Workshop IT Support Agent (synthetic) was created and observed November 23, 2026 in the admin view: platform Copilot Studio, Data & tools populated (public sites capability, windows-client knowledge, search_public_web tool), Activity empty, Entra agent ID blank. AI Reader visibility of Data & tools is unverified (Learn guarantees it only for AI Administrator and Global Administrator). Relay has no platform reporting, so its Data & tools is empty by design; its High/compromised risk was observed November 19 while the risk-filter results were empty; not fresh-learner proof or a repaired service |
 
 Blue16 explainers inspire original explanations, not copied code/artwork or product
-claims. Current Module 1 uses generic illustrative IT support and read-only review
-of the existing Project Beacon Relay Agent. Registration does not prove runtime,
+claims. Current Module 1 uses one support-agent story and a read-only review of the
+Copilot Studio Workshop IT Support Agent plus the separate Project Beacon Relay Agent
+for the staged risk. Registration does not prove runtime,
 effective permissions or control behavior; Activity is not complete traces/audit.
 Required High / The agent is compromised. is staged training, not a live attack.
 Missing required risk is unresolved access/setup unless observed in the instructor

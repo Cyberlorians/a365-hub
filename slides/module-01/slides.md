@@ -75,13 +75,15 @@ identity and access; Purview addresses supported data/compliance controls; Defen
 supports threat investigation and response. Each has its own coverage, roles and
 configuration. No single portal proves all four pillars.
 
-## Slide 11 - Review one prepared agent
+## Slide 11 - Review two agents in the registry
 
-Launch Lab 3 after this slide, then return to slide 12. Review the existing
-**Project Beacon Relay Agent**, not a newly deployed helpdesk sample.
+Launch Lab 3 after this slide, then return to slide 12. Review the **Workshop IT
+Support Agent (synthetic)**, the support agent from the slides, in Details, Data &
+tools, Permissions and Activity. Then open a second record, **Project Beacon Relay
+Agent**, only for the staged risk signal. No new deployment.
 The six steps are find, owner, reach, staged risk, evidence and oral explanation.
 Use admin.microsoft.com > Agents > All agents > Registry > Total agents, search
-**Project Beacon Relay**, press **Enter**, then open **Project Beacon Relay Agent**.
+**Workshop IT Support** (and **Project Beacon Relay** for step 4), press **Enter**.
 No copying, worksheet, written submission or student changes.
 
 ## Slide 12 - Who owns it and what can it reach?
@@ -134,9 +136,9 @@ value from registration or staged risk.
 
 Recap the four questions: management (is it working?), governance (who owns it and
 what can it reach?), security (what if it goes wrong?) and business value (is it
-worth it?). Then orally name one observed fact from the Relay record and one thing
-it could not tell you.
-On the same Relay record, **Security > Risk details** must show **High** and
+worth it?). Then orally name one observed fact from the lab and one thing
+the registry could not tell you.
+On the Relay record, **Security > Risk details** must show **High** and
 **The agent is compromised.** This is staged training, not a live attack.
 Do not use the faulty Agents at risk count filter. If missing, use the instructor
 live view or report unresolved access/setup; do not call the check complete.

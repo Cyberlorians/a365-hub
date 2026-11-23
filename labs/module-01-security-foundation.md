@@ -41,31 +41,33 @@ setup or external lab is assumed.
 
 **Next:** Step 3.
 
-## Step 3: Review one prepared record
+## Step 3: Review the support agent, then a flagged one
 
 **Do:** Read [Slide 10](https://cyberlorians.github.io/a365-hub/#slide-10), then
 [Slide 11](https://cyberlorians.github.io/a365-hub/#slide-11). Launch Lab 3:
 
 1. **r3-open:** Open admin.microsoft.com > Agents > All agents > Registry.
-   Select **Total agents**, search **Project Beacon Relay**, press **Enter** and
-   open **Project Beacon Relay Agent**.
-2. **r3-owner:** Read Details **Owner** and **Created by**. Distinguish reporting
-   gaps from known accountability.
-3. **r3-reach:** Inspect **Data & tools** and **Permissions**. If blank, say unknown;
-   do not infer permissions or absence of access.
-4. **r3-registry:** On this same record open **Security > Risk details**.
-   Required: **High** and **The agent is compromised.** This is staged training,
-   not a live attack. Do not use the faulty **Agents at risk** count filter.
-   If missing, use the instructor live view or report unresolved access/setup;
-   the risk check is not complete without the required observation.
-5. **r3-evidence:** Inspect **Activity**. Distinguish inventory usage from full
-   execution traces, security and audit evidence. No Foundry/Copilot Studio Test
-   activity is required.
+   Select **Total agents**, search **Workshop IT Support**, press **Enter** and
+   open **Workshop IT Support Agent (synthetic)**, the support agent from the slides.
+2. **r3-owner:** Read Details **Owner**, **Created by** and **Entra agent ID**.
+   Distinguish reporting gaps from known accountability.
+3. **r3-reach:** Inspect **Data & tools** (Capabilities, Knowledge, Tools) and
+   **Permissions**. If blank, say unknown; do not infer permissions or absence of access.
+4. **r3-registry:** Open a second record that Security flagged: search
+   **Project Beacon Relay** and open **Project Beacon Relay Agent**, then
+   **Security > Risk details**. Required: **High** and **The agent is compromised.**
+   This is staged training, not a live attack. Do not use the faulty
+   **Agents at risk** count filter. If missing, use the instructor live view or
+   report unresolved access/setup; the risk check is not complete without the
+   required observation.
+5. **r3-evidence:** Back on the support agent, inspect **Activity**. A new agent
+   shows no data. Distinguish inventory usage from full execution traces, security
+   and audit evidence. No Foundry/Copilot Studio Test activity is required.
 6. **r3-watch:** Orally explain an observed fact, a gap and the accountable next
    check. No written output.
 
-**Check:** You reviewed one existing prepared Relay record read-only, with no new
-helpdesk deployment or agent testing. Missing evidence remains a gap.
+**Check:** You reviewed two existing records read-only, with no new deployment or
+agent testing. Missing evidence remains a gap.
 
 **Next:** Return from Lab 3 to slide 12 and Step 4, not directly to Module 2.
 

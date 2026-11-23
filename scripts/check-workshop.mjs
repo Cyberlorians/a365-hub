@@ -97,7 +97,7 @@ for (const id of [1, 2]) {
 const module1 = read("slides/module-01/index.html");
 const scenarioSlide = module1.match(/<section class="slide" data-title="What does an agent do\?"[\s\S]*?<\/section>/)?.[0];
 assert(scenarioSlide, "Module 1 needs a simple agent-task illustration");
-assert(scenarioSlide.includes("This is an illustration") && scenarioSlide.includes("Module 2"), "Do not claim the illustrative task is a deployed runtime");
+assert(scenarioSlide.includes("no ticket tool") && scenarioSlide.includes("Module 2"), "Say plainly that the lab's real support agent has no ticket tool");
 for (const label of ["Management", "Governance", "Security", "Business value", "Evaluation", "Monitoring", "Tracing"])
   assert(module1.includes(label) && read("slides/module-01/slides.md").toLowerCase().includes(label.toLowerCase()), `Introductory concept missing: ${label}`);
 assert(module1.includes("https://learn.microsoft.com/en-us/azure/foundry/concepts/observability"), "Ground observability in the official Foundry source");
@@ -164,6 +164,10 @@ assert.equal(labSlides(1).filter(step => step.lab === 2).length, 1, "Do not repe
 const riskStep = registrySteps.find(step => step.key === "r3-registry");
 assert(registrySteps[0].doItems.some(item => item.includes("Total agents") && item.includes("Enter")), "Find Relay through the unfiltered registry search once");
 assert(riskStep.doItems.some(item => item.includes("Security") && item.includes("Risk details")), "Open the working agent-profile risk view");
+assert(registrySteps[0].doItems.some(item => item.includes("Workshop IT Support")) && registrySteps[0].link.href.includes("Workshop%20IT%20Support"), "Lab 3 starts on the same support agent the slides teach");
+assert(registrySteps.find(step => step.key === "r3-reach").doItems.some(item => item.includes("Knowledge") && item.includes("Tools")), "Lab 3 reads the real Data & tools sections");
+assert(riskStep.doItems.some(item => item.includes("second record") && item.includes("Project Beacon Relay")), "The risk step must introduce Relay as a separate second record");
+assert(registrySteps.find(step => step.key === "r3-evidence").doItems.some(item => /support agent/i.test(item)), "Activity is read on the support agent");
 assert(riskStep.doneWhen.includes("High") && riskStep.doneWhen.includes("The agent is compromised."), "Require the live staged risk, not an empty result");
 assert(riskStep.doItems.some(item => item.includes("this step is not complete")), "Missing risk must be reported, not accepted as completion");
 assert(riskStep.link.href.includes("search=Project%20Beacon%20Relay") && !riskStep.link.href.includes("statCard=risky"), "Risk shortcut must bypass the broken registry filter");

@@ -93,23 +93,29 @@ slide 4 sign-in walkthrough. This remains a single-screen check.
 | Asked to add a sign-in method | Stop and ask. Never loosen Conditional Access or MFA. |
 | Registry menu missing | Investigate read-only access; use authorized instructor live view, not broad learner roles. |
 
-### Lab 3: Review one prepared agent
+### Lab 3: Review two agents in the registry
 
-**Prepare (a-seed):** Preflight the existing Relay record, not a new helpdesk build.
-**a-risk** remains the approved staged-risk rehearsal; **a-l2** is fresh learner
-registry rehearsal, not chat/source testing. Remove a-publish from current Module 1
-preparation. No maker role changes.
+**Prepare (a-seed):** Preflight the Copilot Studio **Workshop IT Support Agent (synthetic)**
+(private draft; one public knowledge source, Work IQ and Search all websites removed,
+no write tools) and assign a workshop-owned account as its owner. Recreate it from the
+Copilot Studio quickstart if it is missing. **a-risk** remains the approved staged-risk
+rehearsal on the separate Relay record; **a-l2** is fresh learner registry rehearsal,
+including whether AI Reader sees Data & tools, not chat/source testing. Remove
+a-publish from current Module 1 preparation. No maker role changes for learners.
 
 **Learner does (six steps):**
 1. **r3-open:** admin.microsoft.com > Agents > All agents > Registry > Total agents >
-   search Project Beacon Relay > Enter > Project Beacon Relay Agent.
-2. **r3-owner:** Details Owner/Created by; distinguish reporting gaps.
-3. **r3-reach:** Data & tools/Permissions; blank means unknown, no inferred rights.
-4. **r3-registry:** Same record > Security > Risk details > **High** /
+   search Workshop IT Support > Enter > Workshop IT Support Agent (synthetic).
+2. **r3-owner:** Details Owner/Created by/Entra agent ID; distinguish reporting gaps.
+3. **r3-reach:** Data & tools (Capabilities, Knowledge, Tools) and Permissions; blank
+   means unknown, no inferred rights.
+4. **r3-registry:** Second record: search Project Beacon Relay > Enter > Project
+   Beacon Relay Agent > Security > Risk details > **High** /
    **The agent is compromised.** Staged training, not live attack. Never use the
    faulty Agents at risk count filter.
-5. **r3-evidence:** Activity is inventory usage, not full execution/security/audit
-   evidence. No required Foundry/Copilot Studio Test activity.
+5. **r3-evidence:** Back on the support agent, Activity is inventory usage (empty for
+   a new agent), not full execution/security/audit evidence. No required
+   Foundry/Copilot Studio Test activity.
 6. **r3-watch:** Orally explain a fact, gap and accountable next check.
 
 **Check:** Missing required risk uses instructor live view or remains unresolved

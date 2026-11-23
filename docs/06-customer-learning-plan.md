@@ -412,7 +412,7 @@ Microsoft currently states Azure-portal support ends after March 31, 2027.
 | 8 | Why does agent access matter? |
 | 9 | How do we know what an agent did? |
 | 10 | One job. Four Microsoft services. |
-| 11 | Review one prepared agent |
+| 11 | Review two agents in the registry |
 | 12 | Who owns it and what can it reach? |
 | 13 | What data can it touch? |
 | 14 | What if the agent gets it wrong? |

@@ -17,7 +17,8 @@ standing read-only AI Reader or labeled presenter evidence; no learner write rol
 
 Explain agent capabilities, least privilege and evidence through one support job.
 Connect management, governance, security and business value across the core lessons,
-and introduce evaluation/tracing/monitoring after concrete checks. Review the existing Project Beacon Relay Agent
+and introduce evaluation/tracing/monitoring after concrete checks. Review one real
+support agent (Workshop IT Support Agent) and one flagged agent (Project Beacon Relay)
 read-only and orally explain an observed fact, a gap and accountable next check.
 Teach what an agent does, why its access matters and how to verify its work
 through one continuous laptop-help/ticket example before the portal walkthrough.
@@ -82,10 +83,11 @@ sign-in check and Lab 3 six registry steps: eleven generated learner screens.
 Launch Lab 3 after slide 11 and return to slide 12, not directly to Module 2.
 Core minutes remain [1,3,1,3,1,3,5,1.5,1,1.5,3,1].
 
-Find the same prepared Relay through admin.microsoft.com > Agents > All agents >
-Registry > Total agents > search Project Beacon Relay > Enter > Project Beacon
-Relay Agent. Read Details Owner/Created by, Data & tools/Permissions, Security >
-Risk details, Activity, then discuss. Blanks mean unknown; Activity is inventory
+Find the support agent through admin.microsoft.com > Agents > All agents >
+Registry > Total agents > search Workshop IT Support > Enter. Read Details
+Owner/Created by, Data & tools/Permissions and Activity. For the risk step, open the
+separate Project Beacon Relay Agent (search Project Beacon Relay > Enter) > Security >
+Risk details, then discuss. Blanks mean unknown; Activity is inventory
 usage, not full execution/security/audit evidence. No Foundry/Copilot Test activity.
 Required risk is High / The agent is compromised., staged training not live attack.
 Avoid the faulty Agents at risk count filter. Missing risk uses instructor live

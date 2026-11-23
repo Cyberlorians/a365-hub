@@ -9,7 +9,7 @@ Use the [admin runbook](../../docs/07-module-01-admin-runbook.md) and
 | Slides only | Navigation/notes/print checks; no claim of live review |
 | Registry review | Standing read-only AI Reader for approved learners; independently preflight a fresh account |
 | Existing prepared record | Project Beacon Relay Agent, Details Owner/Created by, Data & tools/Permissions, Security > Risk details and Activity |
-| Staged risk | High / The agent is compromised. on the same Relay profile; approved training flag, not a live attack |
+| Staged risk | High / The agent is compromised. on the separate Project Beacon Relay profile; approved training flag, not a live attack |
 | Presenter recovery | Authorized live view for the same checks; report learner access failure |
 | Teaching visuals | Original workshop visuals only; shared course screenshots are reference-only and not redistributed; old Agent ID scenarios image remains rights-unconfirmed |
 | Onboarding | Actual form/workflow/email/TAP/CA behavior and private support/cleanup |

@@ -164,22 +164,30 @@ invalidates the previous TAPs for those accounts; notify the affected lab users.
 
 ### Prepare the Module 1 registry review
 
-**a-seed:** Prepare/preflight the existing **Project Beacon Relay Agent** record.
-No new helpdesk deployment, Academy course, publishing, chat or knowledge test is
-required for Module 1. The IT support task is generic illustration.
+**a-seed:** Prepare/preflight the Copilot Studio **Workshop IT Support Agent (synthetic)**
+record and the separate **Project Beacon Relay Agent** record. No Academy course,
+publishing, chat or knowledge test is required for Module 1. The support agent is a
+private draft with one public knowledge source (learn.microsoft.com/troubleshoot/windows-client),
+no write tools, Work IQ and Search all websites removed; its Data & tools shows public
+sites, the windows-client source and the search_public_web tool. Assign a workshop-owned
+account as its owner. If it is missing, recreate it from the Copilot Studio quickstart.
 
 1. Open admin.microsoft.com > **Agents > All agents > Registry > Total agents**.
-   Search **Project Beacon Relay**, press **Enter** and open **Project Beacon Relay Agent**.
-2. Read Details **Owner** and **Created by**; distinguish missing reporting from
-   known accountability.
-3. Inspect **Data & tools** and **Permissions**. Blanks mean unknown; do not infer
-   permissions, effective access or absence of tools.
-4. **a-risk:** On the same record open **Security > Risk details**. Verify **High**
-   and **The agent is compromised.** Rehearse the existing approved training risk,
-   not a live attack, without duplicate flags or changes to the Module 2 Mail Agent.
-   Do not use the faulty **Agents at risk** count filter.
-5. Inspect **Activity**. Inventory usage is not full execution traces or complete
-   security/audit evidence. No Foundry or Copilot Studio Test activity is required.
+   Search **Workshop IT Support**, press **Enter** and open **Workshop IT Support Agent (synthetic)**.
+2. Read Details **Owner**, **Created by** and **Entra agent ID**; distinguish missing
+   reporting from known accountability.
+3. Inspect **Data & tools** and **Permissions** as a real AI Reader learner. Learn
+   guarantees full Data & tools only for AI Administrator and Global Administrator,
+   so record what AI Reader sees. Blanks mean unknown; do not infer permissions,
+   effective access or absence of tools.
+4. **a-risk:** Open the separate Relay record (search **Project Beacon Relay**) >
+   **Security > Risk details**. Verify **High** and **The agent is compromised.**
+   Rehearse the existing approved training risk, not a live attack, without
+   duplicate flags or changes to the Module 2 Mail Agent. Relay has no data or tools
+   to review. Do not use the faulty **Agents at risk** count filter.
+5. On the support agent, inspect **Activity**. It is empty for an unused agent;
+   inventory usage is not full execution traces or complete security/audit evidence.
+   No Foundry or Copilot Studio Test activity is required; do not chat with the agent.
 6. **a-l2:** Rehearse these registry checks in a fresh learner's read-only session,
    not chat/source tests. Orally explain a fact, gap and accountable next check.
 
@@ -281,8 +289,9 @@ channel. Keep the recipient account with the facilitator. Then:
 3. Follow learner Steps 1-7 in order. **Next** moves slides; **N** opens your notes.
 4. At learner Step 6, use the [answer key](../slides/module-01/exercise.md).
 5. Introduce the four pillars, then conceptual evaluation/monitoring/tracing.
-   Launch six-step Lab 3 after slide 11 and return to slide 12. Review the same
-   prepared Relay record throughout. No student writes or maker-role assignments.
+   Launch six-step Lab 3 after slide 11 and return to slide 12. Review the support
+   agent first, then the flagged Relay record for the risk step. No student writes
+   or maker-role assignments.
 
 **Check:** Each learner orally explains an observed fact, a gap and the accountable
 next check. No required copying, worksheet or submission. Lab 1 has three access
@@ -366,8 +375,8 @@ Skip this section for content review.
 2. Open Microsoft 365 admin center at `https://admin.microsoft.com`.
 3. In the reviewed experience, select **Agents -> All agents -> Registry**.
    Recheck the actual tenant's navigation; do not invent a missing view.
-4. Select Total agents, search Project Beacon Relay, press Enter and open
-   Project Beacon Relay Agent. Read purpose, owner/publisher, available platform/
+4. Select Total agents, search Workshop IT Support, press Enter and open
+   Workshop IT Support Agent (synthetic); repeat for Project Beacon Relay Agent. Read purpose, owner/publisher, available platform/
    access context, and activity/security information. Do not block, deploy, delete,
    change grants, or switch policy state.
 5. Record what each field actually establishes. Verify identifiers against the real
@@ -382,7 +391,7 @@ describes the prepared registry review, not a fictional card. Preflight AI Reade
 for the exact run-owned learners as described in the lab-by-lab admin guide; if
 blocked, use the authorized presenter view rather than a write role.
 Zero risk counts, missing metadata or empty activity do not prove safety.
-The same selected Relay Agent's staged risk is required; no helpdesk sample is needed.
+The separate Relay Agent's staged risk is required; no helpdesk sample is needed.
 Select Total agents, search
 Project Beacon Relay, press Enter, and open Security > Risk details. Verify High / The agent is
 compromised. This worked in the admin view on November 19 while the risk-count
@@ -425,7 +434,7 @@ and [per-slide notes](../slides/module-01/speaker-notes.md).
 | Slides | Operator action | Checkpoint |
 |---|---|---|
 | 6-9 | Teach what an agent does, why access matters and how to verify its work through one support-ticket example | No deployed sample claim; Foundry concepts are not universal product telemetry |
-| 10-11 | Explain four services; launch Lab 3 after slide 11 | Same existing Relay record, six read-only checks |
+| 10-11 | Explain four services; launch Lab 3 after slide 11 | Support agent first, then flagged Relay; six read-only checks |
 | 12 | Return from Lab 3; map registry clues to five Entra controls | Lab fits slide 11 + 12's eight-minute internal budget; no learner duration label |
 | 13-15 | Purview data protection, a wrong-ticket response and measurable value | Blank fields stay unknown; Activity is not full traces/security/audit |
 | 16 | Four-question recap; discuss orally | One observed fact, one gap, one accountable next check; no written output |

@@ -63,14 +63,16 @@ evidence from the technical team, rather than introducing an unexplained new rol
 **1 minute.** Agent 365 inventory, Entra identity/access, Purview data/compliance
 and Defender investigation have distinct coverage and roles. No four-portal demo.
 
-## Slide 11 - Review one prepared agent
+## Slide 11 - Review two agents in the registry
 
-**3 minutes.** Launch six-step Lab 3; continue within slide 12's budget. Find the
-existing Project Beacon Relay Agent through Registry > Total agents > search
-Project Beacon Relay > Enter. Review owner, reach, risk, Activity and discuss.
-Same selected record throughout. Security > Risk details must show High /
-The agent is compromised. Staged training, not a live attack. Never use the
-faulty Agents at risk count filter. Missing risk is unresolved, not complete.
+**3 minutes.** Launch six-step Lab 3; continue within slide 12's budget. Steps 1-3
+and 5 use the Workshop IT Support Agent (Copilot Studio): find it through Registry >
+Total agents > search Workshop IT Support > Enter, then review owner, Data & tools,
+Permissions and Activity. Step 4 uses the separate Project Beacon Relay Agent
+(search Project Beacon Relay > Enter): Security > Risk details must show High /
+The agent is compromised. Staged training, not a live attack. Relay has no data or
+tools to review. Never use the faulty Agents at risk count filter. Missing risk is
+unresolved, not complete. Rehearse whether AI Reader sees Data & tools.
 
 ## Slide 12 - Who owns it and what can it reach?
 
@@ -111,7 +113,7 @@ value. Many chats can still mean many failed requests. Module 8 decides adoption
 ## Slide 16 - What can you now say about an agent?
 
 **3 minutes.** Recap management, governance, security and business value as four
-questions. Then ask orally for an observed fact from the Relay record and a gap it
+questions. Then ask orally for an observed fact from the lab and a gap it
 could not fill, plus the accountable next check. No worksheet, copying or
 submission. Missing access uses the instructor live view or remains an explicit
 unresolved issue.
